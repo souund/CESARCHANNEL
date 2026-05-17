@@ -3,364 +3,973 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta name="theme-color" content="#f5f0e8"/>
-<meta name="description" content="DJ Cesar Channel - Electronic Press Kit (EPK). Dossier de prensa, formatos de servicio y rider tecnico."/>
-<meta property="og:title" content="DJ Cesar Channel - EPK"/>
-<meta property="og:description" content="Curaduria musical para celebraciones, eventos privados y experiencias de marca."/>
-<title>DJ Cesar Channel - EPK</title>
+<meta name="theme-color" content="#0a0908"/>
+<meta name="description" content="DJ Cesar Channel — Electronic Press Kit. Curaduría musical para celebraciones, eventos privados y experiencias de marca."/>
+<meta property="og:title" content="DJ Cesar Channel — EPK"/>
+<meta property="og:description" content="Curaduría musical para celebraciones, eventos privados y experiencias de marca."/>
+<meta property="og:type" content="website"/>
+<title>DJ Cesar Channel — EPK</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="cesar1.jpg" fetchpriority="high"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --cream:#f5f0e8;
-  --cream-dark:#ede7d9;
-  --ink:#0f0e0c;
-  --ink-mid:rgba(15,14,12,0.76);
-  --ink-soft:rgba(15,14,12,0.48);
-  --gold:#9a7c3f;
-  --gold-light:#c4a35a;
-  --gold-line:rgba(154,124,63,0.25);
-  --bebas:'Bebas Neue',sans-serif;
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'DM Sans',sans-serif;
+/* ─── VARIABLES ─── */
+:root {
+  --bg: #0a0908;
+  --bg-elevated: #141211;
+  --bg-light: #f3f0ea;
+  --text: #f3f0ea;
+  --text-dark: #0a0908;
+  --text-muted: rgba(243,240,234,0.45);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201,168,76,0.25);
+  --gold-glow: rgba(201,168,76,0.12);
+  --line: rgba(243,240,234,0.06);
+  --display: 'Space Grotesk', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Inter', sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
-html{background:var(--cream);scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden}
-body::before{
-  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.022;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:180px;
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
-#loader{position:fixed;inset:0;z-index:8999;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s ease}
-#loader.out{opacity:0;visibility:hidden}
-.loader-word{font-family:var(--bebas);font-size:clamp(56px,12vw,110px);letter-spacing:0.14em;color:var(--ink);opacity:0;animation:fi 0.7s ease 0.2s forwards;max-width:100%;text-align:center}
-.loader-bar{position:absolute;bottom:calc(50% - 52px);left:50%;transform:translateX(-50%);width:80px;height:1px;background:var(--gold-line);overflow:hidden}
-.loader-bar::after{content:'';display:block;width:100%;height:100%;background:var(--gold);transform:translateX(-100%);animation:sw 1.1s ease 0.6s forwards}
-@keyframes sw{to{transform:translateX(100%)}}
-@keyframes fi{to{opacity:1}}
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:26px 48px;transition:padding 0.4s ease,background 0.4s ease,box-shadow 0.4s ease}
-nav.stuck{padding:16px 48px;background:var(--cream);box-shadow:0 1px 0 var(--gold-line)}
-@media(max-width:768px){nav{padding:18px 24px}nav.stuck{padding:14px 24px}}
-.nav-logo{display:block;height:30px;width:auto;text-decoration:none}
-.nav-logo img{height:100%;width:auto;display:block}
-.nav-right{display:flex;align-items:center;gap:22px}
-.nav-ig{display:flex;align-items:center;color:var(--gold);text-decoration:none;transition:color 0.3s,transform 0.3s;min-width:44px;min-height:44px;justify-content:center}
-.nav-ig:hover{color:var(--gold-light);transform:scale(1.08)}
-.nav-ig svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.nav-cta{font-size:10px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold-line);padding-bottom:2px;transition:border-color 0.3s,color 0.3s}
-.nav-cta:hover{border-color:var(--gold);color:var(--gold-light)}
-@media(max-width:560px){.nav-right{gap:12px}.nav-cta{font-size:9px;letter-spacing:0.18em}}
-#hero{width:100%;min-height:100vh;display:grid;grid-template-columns:52% 48%;overflow:hidden}
-@media(max-width:900px){#hero{grid-template-columns:1fr;grid-template-rows:65vw 1fr;min-height:auto}}
-.hero-img{position:relative;overflow:hidden;background:var(--cream-dark)}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:contrast(1.07) saturate(0.82);transition:transform 8s ease}
-#hero:hover .hero-img img{transform:scale(1.03)}
-.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(108deg,rgba(245,240,232,0) 42%,rgba(245,240,232,.38) 72%,var(--cream) 100%);transition:background 0.45s ease}
-@media(max-width:900px){.hero-img::after{background:linear-gradient(to bottom,rgba(245,240,232,0) 48%,rgba(245,240,232,.42) 72%,var(--cream) 100%)}}
-.hero-text{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 88px 36px}
-@media(max-width:1100px){.hero-text{padding:0 36px 64px 28px}}
-@media(max-width:900px){.hero-text{padding:28px 24px 72px}}
-.hero-epk{font-size:11px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0;animation:up 0.7s ease 1.8s forwards}
-.hero-h1{font-family:var(--bebas);font-size:clamp(88px,13vw,172px);line-height:0.86;letter-spacing:0.04em;color:var(--ink);margin-bottom:2px;opacity:0;animation:up 0.7s ease 2s forwards}
-.hero-channel{font-family:var(--bebas);font-size:clamp(22px,3.2vw,42px);letter-spacing:0.35em;color:var(--gold);display:block;margin-bottom:28px;opacity:0;animation:up 0.6s ease 2.15s forwards}
-.hero-rule{width:36px;height:1px;background:var(--gold);margin-bottom:24px;opacity:0;animation:up 0.6s ease 2.28s forwards}
-.hero-copy{max-width:30ch;font-size:clamp(15px,1.45vw,18px);line-height:1.8;color:var(--ink-mid);opacity:0;animation:up 0.7s ease 2.38s forwards}
-#bio{background:var(--ink);padding:112px 0 120px}
-.bio-wrap{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
-@media(max-width:900px){.bio-wrap{grid-template-columns:1fr;gap:52px;padding:0 28px}}
-.bio-cities{font-family:var(--bebas);font-size:clamp(40px,6vw,76px);letter-spacing:0.04em;line-height:1;color:var(--cream);margin-bottom:40px}
-.bio-cities span{display:block;color:var(--gold);font-size:0.62em;letter-spacing:0.08em;margin-top:6px}
-.bio-label{font-size:10px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:28px}
-.bio-text p,.service-card p,.rider-col li,.cta-copy{max-width:65ch}
-.bio-text p{font-size:clamp(15px,1.6vw,18px);line-height:1.9;color:rgba(245,240,232,0.72);margin-bottom:22px}
-.bio-text p:last-child{margin-bottom:0}
-.bio-text strong{color:var(--cream);font-weight:400}
-#contexto{background:var(--ink);padding:100px 48px;border-top:1px solid rgba(245,240,232,0.04);display:flex;justify-content:center}
-@media(max-width:768px){#contexto{padding:70px 24px}}
-.ctx-wrap{max-width:1100px;width:100%}
-.ctx-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--cream);text-align:center;margin-bottom:18px}
-.ctx-subtitle{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(245,240,232,0.6);text-align:center;max-width:50ch;margin:0 auto 46px}
-.ctx-grid{display:flex;flex-wrap:wrap;gap:24px 48px;max-width:1100px;justify-content:center;align-items:center}
-@media(max-width:768px){.ctx-grid{gap:16px 24px}}
-.ctx-item{font-family:var(--bebas);font-size:clamp(28px,4.5vw,48px);letter-spacing:0.15em;color:rgba(245,240,232,0.24);text-transform:uppercase;cursor:default;transition:color 0.4s ease,transform 0.4s ease,text-shadow 0.4s ease}
-.ctx-grid:hover .ctx-item{color:rgba(245,240,232,0.08);transform:scale(0.98)}
-.ctx-grid .ctx-item:hover{color:var(--gold-light);transform:scale(1.05);text-shadow:0 0 25px rgba(196,163,90,0.4);z-index:2}
-#eq{background:var(--ink);padding:0;overflow:hidden;border-top:1px solid rgba(245,240,232,0.04)}
-.eq-inner{display:flex;align-items:flex-end;justify-content:center;gap:5px;height:140px;padding:0 48px}
-@media(max-width:768px){.eq-inner{height:90px;gap:3px;padding:0 24px}}
-.eq-bar{flex:1;max-width:18px;min-width:4px;border-radius:1px 1px 0 0;transform-origin:bottom center;animation:eqPulse var(--dur,1.4s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);background:var(--bar-color,rgba(154,124,63,0.25))}
-.eq-bar.low{--bar-color:rgba(154,124,63,0.22);--dur:2.1s}.eq-bar.mid{--bar-color:rgba(196,163,90,0.45);--dur:1.3s}.eq-bar.hi{--bar-color:rgba(245,240,232,0.18);--dur:0.85s}.eq-bar.active{--bar-color:rgba(196,163,90,0.85)}
-@keyframes eqPulse{0%{transform:scaleY(var(--from,0.08))}100%{transform:scaleY(var(--to,1.0))}}
-#formatos{background:var(--cream-dark);padding:120px 0;border-top:1px solid rgba(15,14,12,0.04)}
-.form-wrap{max-width:1200px;margin:0 auto;padding:0 48px}
-@media(max-width:768px){.form-wrap{padding:0 28px}}
-.form-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--ink);margin-bottom:16px;text-align:center}
-.form-subtitle{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-mid);text-align:center;margin:0 auto 64px;max-width:44ch}
-.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-@media(max-width:980px){.services-grid{grid-template-columns:1fr;gap:28px}}
-.service-card{background:linear-gradient(145deg,#fbf7f0,#eedecb44);padding:52px 40px;border:1px solid rgba(154,124,63,0.18);box-shadow:0 10px 30px rgba(15,14,12,0.02);display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:all 0.5s cubic-bezier(0.25,1,0.5,1)}
-.service-card::after{content:'';position:absolute;inset:0;border:1px solid transparent;transition:all 0.5s ease;pointer-events:none}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(154,124,63,0.12);border-color:var(--gold-light)}
-.service-card:hover::after{border-color:rgba(196,163,90,0.3);inset:-4px}
-.service-meta{font-size:10px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block;font-weight:500}
-.service-card h3{font-family:var(--bebas);font-size:38px;letter-spacing:0.03em;color:var(--ink);margin-bottom:18px;font-weight:400;text-transform:uppercase;line-height:1}
-.service-card p{font-size:15px;line-height:1.75;color:var(--ink-mid);margin-bottom:34px;flex-grow:1}
-.service-spec{border-top:1px solid rgba(15,14,12,0.08);padding-top:26px;list-style:none}
-.service-spec li{font-size:13.5px;color:var(--ink);margin-bottom:12px;letter-spacing:0.02em;display:flex;align-items:center;gap:12px}
-.service-spec li:last-child{margin-bottom:0}
-.service-spec li::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
-#galeria{background:var(--ink);padding:0;overflow:hidden}
-.gal-grid{display:grid;grid-template-columns:3fr 2fr;gap:2px}
-@media(max-width:768px){.gal-grid{grid-template-columns:1fr}}
-.gal-main,.gal-side div{position:relative;overflow:hidden;background:#1a1815}
-.gal-main img{width:100%;display:block;height:620px;object-fit:cover;filter:contrast(1.08) saturate(0.78) sepia(0.07);transition:filter 0.6s,transform 0.7s ease}
-.gal-main:hover img{filter:contrast(1.04) saturate(1) sepia(0);transform:scale(1.03)}
-.gal-side{display:flex;flex-direction:column;gap:2px}.gal-side img{width:100%;display:block;height:309px;object-fit:cover;filter:contrast(1.08) saturate(0.78) sepia(0.07);transition:filter 0.6s,transform 0.7s ease}
-.gal-side div:hover img{filter:contrast(1.04) saturate(1) sepia(0);transform:scale(1.04)}
-.gal-label{position:absolute;bottom:20px;left:20px;font-size:10px;letter-spacing:0.2em;color:var(--cream);text-transform:uppercase;background:rgba(15,14,12,0.7);padding:4px 10px}
-@media(max-width:768px){.gal-main img{height:300px}.gal-side{flex-direction:row}.gal-side img{height:190px}}
-#rider{background:var(--ink);color:var(--cream);padding:120px 0}
-.rider-wrap{max-width:1200px;margin:0 auto;padding:0 48px}
-@media(max-width:768px){.rider-wrap{padding:0 28px}}
-.rider-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--gold);margin-bottom:60px}
-.rider-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
-@media(max-width:900px){.rider-grid{grid-template-columns:1fr;gap:36px}}
-.rider-col h3{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--cream);margin-bottom:20px;font-weight:400}
-.rider-col ul{list-style:none}
-.rider-col li{font-size:15px;line-height:1.8;color:rgba(245,240,232,0.6);margin-bottom:12px;padding-left:18px;position:relative}
-.rider-col li::before{content:'';position:absolute;left:0;top:10px;width:4px;height:4px;background:var(--gold)}
-#cta{background:var(--cream);padding:130px 0 118px}
-.cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-@media(max-width:900px){.cta-wrap{grid-template-columns:1fr;gap:44px;padding:0 28px}}
-.cta-tag{font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:18px}
-.cta-h{font-family:var(--bebas);font-size:clamp(58px,8.5vw,116px);letter-spacing:0.03em;line-height:0.86;color:var(--ink)}
-.cta-h em{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:0.72em;letter-spacing:0.01em}
-.cta-right{display:flex;flex-direction:column;gap:30px}
-.cta-copy{font-size:clamp(15px,1.6vw,18px);line-height:1.82;color:var(--ink-mid)}
-.btn-wa{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--cream);font-family:var(--bebas);font-size:17px;letter-spacing:0.2em;text-decoration:none;padding:22px 42px;position:relative;overflow:hidden;transition:color 0.4s;align-self:flex-start;min-height:44px}
-.btn-wa::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
-.btn-wa:hover::before{transform:translateX(0)}
-.btn-wa:hover{color:var(--ink)}
-.btn-wa span,.btn-wa svg{position:relative;z-index:1}.btn-wa svg{transition:transform 0.3s}.btn-wa:hover svg{transform:translateX(6px)}
-.cta-tel{font-size:12px;color:var(--ink-soft);letter-spacing:0.08em}.cta-tel a{color:var(--ink-mid);text-decoration:none;transition:color 0.3s}.cta-tel a:hover{color:var(--gold)}
-footer{background:var(--ink);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(245,240,232,0.05)}
-@media(max-width:600px){footer{flex-direction:column;gap:14px;padding:22px 28px;text-align:center}}
-.f-copy{font-size:11px;letter-spacing:0.17em;color:rgba(245,240,232,0.2)}
-#emc-credit{text-decoration:none;padding:6px 16px;border:1px solid rgba(245,240,232,0.09);border-radius:20px;transition:border-color 0.3s ease,transform 0.3s ease}
-#emc-credit:hover{border-color:rgba(245,240,232,0.24);transform:translateY(-1px)}
-#emc-text{font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(245,240,232,0.17)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.9s ease,transform 0.9s ease}.reveal.on{opacity:1;transform:translateY(0)}.d1{transition-delay:0.12s}.d2{transition-delay:0.24s}.d3{transition-delay:0.36s}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none !important;transition:none !important}
-  #loader{display:none}
-  .reveal{opacity:1;transform:none}
-  .eq-bar{animation:none !important;transform:scaleY(0.4) !important}
-  #hero:hover .hero-img img,.gal-main:hover img,.gal-side div:hover img,.service-card:hover,.nav-ig:hover,.btn-wa:hover svg,#emc-credit:hover{transform:none !important}
+
+::selection { background: var(--gold); color: var(--bg); }
+
+/* Noise texture */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ─── CURSOR ─── */
+.cursor {
+  position: fixed; width: 8px; height: 8px; background: var(--gold);
+  border-radius: 50%; pointer-events: none; z-index: 10001;
+  mix-blend-mode: difference; transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+.cursor.hover {
+  width: 48px; height: 48px; background: transparent;
+  border: 1px solid var(--gold); mix-blend-mode: normal;
+}
+@media (pointer: coarse) { .cursor { display: none; } }
+
+/* ─── LOADER ─── */
+#loader {
+  position: fixed; inset: 0; z-index: 10000; background: var(--bg);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 1.2s var(--ease-out), visibility 1.2s;
+}
+#loader.out { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-word {
+  font-family: var(--display); font-size: clamp(48px, 10vw, 100px);
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text);
+  overflow: hidden; line-height: 1;
+}
+.loader-word span {
+  display: inline-block; transform: translateY(110%);
+  animation: loaderReveal 0.9s var(--ease-out) forwards;
+}
+.loader-word.small { font-size: clamp(14px, 2vw, 18px); letter-spacing: 0.6em; margin-top: 14px; color: var(--gold); }
+.loader-line {
+  width: 1px; height: 60px; background: var(--gold-dim); margin: 28px auto;
+  transform: scaleY(0); transform-origin: top;
+  animation: loaderLineGrow 0.8s ease 0.6s forwards;
+}
+@keyframes loaderReveal { to { transform: translateY(0); } }
+@keyframes loaderLineGrow { to { transform: scaleY(1); } }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 28px 5vw;
+  transition: padding 0.5s var(--ease-out), background 0.5s, backdrop-filter 0.5s;
+}
+nav.stuck {
+  padding: 16px 5vw;
+  background: rgba(10,9,8,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo {
+  font-family: var(--serif); font-style: italic; font-size: 18px;
+  color: var(--text); text-decoration: none; letter-spacing: 0.02em;
+  position: relative;
+}
+.nav-logo::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.4s var(--ease-out);
+}
+.nav-logo:hover::after { width: 100%; }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link {
+  font-family: var(--body); font-size: 11px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+  transition: color 0.3s; position: relative;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.4s var(--ease-out);
+}
+.nav-link:hover { color: var(--text); }
+.nav-link:hover::after { width: 100%; }
+.nav-ig { display: flex; color: var(--gold); transition: color 0.3s, transform 0.3s; }
+.nav-ig:hover { color: var(--text); transform: scale(1.1); }
+.nav-ig svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 640px) {
+  nav { padding: 20px 5vw; }
+  nav.stuck { padding: 14px 5vw; }
+  .nav-link { display: none; }
+}
+
+/* ─── HERO ─── */
+#hero {
+  position: relative; width: 100%; height: 100vh; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 20%;
+  filter: contrast(1.1) saturate(0.6);
+  transform: scale(1.05);
+  animation: heroZoom 20s ease forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,9,8,0.1) 0%, rgba(10,9,8,0.5) 50%, var(--bg) 100%);
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 2; width: 100%;
+  padding: 0 5vw 10vh;
+}
+.hero-label {
+  display: inline-block; font-family: var(--body); font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px; opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s var(--ease-out) 1.4s forwards;
+}
+.hero-label::before {
+  content: ''; display: inline-block; width: 40px; height: 1px;
+  background: var(--gold-dim); margin-right: 16px; vertical-align: middle;
+}
+.hero-h1 {
+  font-family: var(--display); font-size: clamp(72px, 14vw, 200px);
+  line-height: 0.85; letter-spacing: -0.03em; text-transform: uppercase;
+  opacity: 0; transform: translateY(40px);
+  animation: fadeUp 1s var(--ease-out) 1.6s forwards;
+}
+.hero-channel {
+  display: block; font-family: var(--serif); font-style: italic;
+  font-size: clamp(24px, 3.5vw, 48px); color: var(--gold);
+  letter-spacing: 0.05em; margin-top: 8px;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s var(--ease-out) 1.8s forwards;
+}
+.hero-rule {
+  width: 60px; height: 1px; background: var(--gold); margin: 32px 0;
+  opacity: 0; transform: scaleX(0); transform-origin: left;
+  animation: ruleGrow 0.8s var(--ease-out) 2s forwards;
+}
+.hero-copy {
+  max-width: 420px; font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.8; color: var(--text-muted);
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s var(--ease-out) 2.1s forwards;
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeIn 1s ease 2.8s forwards;
+}
+.scroll-text {
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted);
+}
+.scroll-line {
+  width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+  background: var(--gold); animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%, 100% { top: -100%; } 50% { top: 100%; } }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes ruleGrow { to { opacity: 1; transform: scaleX(1); } }
+
+/* ─── SECTION BASE ─── */
+.section-dark { background: var(--bg); }
+.section-light { background: var(--bg-light); color: var(--text-dark); }
+.section-light .reveal-target { color: var(--text-dark); }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--body); font-size: 10px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 48px;
+}
+.section-label::after {
+  content: ''; display: block; width: 60px; height: 1px; background: var(--gold-dim);
+}
+
+/* ─── MARQUEE ─── */
+.marquee-section { padding: 100px 0; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.marquee-row { display: flex; white-space: nowrap; width: max-content; }
+.marquee-row.forward { animation: marqueeForward 35s linear infinite; }
+.marquee-row.reverse { animation: marqueeReverse 40s linear infinite; }
+.marquee-item {
+  font-family: var(--display); font-size: clamp(40px, 9vw, 110px);
+  text-transform: uppercase; letter-spacing: 0.03em;
+  color: rgba(243,240,234,0.04); padding: 0 40px;
+  transition: color 0.5s ease; cursor: default;
+}
+.marquee-row:hover .marquee-item { color: rgba(243,240,234,0.02); }
+.marquee-item:hover { color: var(--gold) !important; }
+
+@keyframes marqueeForward { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes marqueeReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+/* ─── BIO ─── */
+.bio-section { padding: 160px 5vw; position: relative; }
+.bio-watermark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: var(--display); font-size: clamp(180px, 22vw, 350px);
+  color: rgba(243,240,234,0.015); pointer-events: none; line-height: 1;
+  white-space: nowrap; letter-spacing: -0.02em;
+}
+.bio-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px; align-items: start;
+}
+.bio-left { position: sticky; top: 25vh; }
+.bio-cities {
+  font-family: var(--display); font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase;
+}
+.bio-cities span {
+  display: block; color: var(--gold); font-size: 0.55em;
+  letter-spacing: 0.12em; margin-top: 10px; font-weight: 300;
+}
+.bio-right { padding-top: 20px; }
+.bio-text p {
+  font-size: clamp(15px, 1.4vw, 18px); line-height: 1.9;
+  color: var(--text-muted); margin-bottom: 28px;
+}
+.bio-text strong { color: var(--text); font-weight: 400; }
+.bio-text em { font-family: var(--serif); font-style: italic; color: var(--gold); }
+
+@media (max-width: 900px) {
+  .bio-grid { grid-template-columns: 1fr; gap: 60px; }
+  .bio-left { position: static; }
+}
+
+/* ─── EQ DIVIDER ─── */
+.eq-section { padding: 0 5vw; overflow: hidden; }
+.eq-wrap {
+  display: flex; align-items: flex-end; justify-content: center;
+  height: 120px; gap: 4px; max-width: 1400px; margin: 0 auto;
+}
+.eq-bar {
+  flex: 1; max-width: 10px; min-width: 3px; border-radius: 2px 2px 0 0;
+  transform-origin: bottom center;
+  animation: eqPulse var(--dur, 1.4s) ease-in-out infinite alternate;
+  animation-delay: var(--del, 0s);
+  background: var(--c, rgba(201,168,76,0.15));
+}
+.eq-bar:nth-child(3n) { --c: rgba(201,168,76,0.35); }
+.eq-bar:nth-child(5n) { --c: rgba(243,240,234,0.08); }
+@keyframes eqPulse { 0% { transform: scaleY(var(--from, 0.05)); } 100% { transform: scaleY(var(--to, 1.0)); } }
+
+/* ─── SERVICES (STACKED LIST) ─── */
+.services-section { padding: 160px 5vw; }
+.services-header { max-width: 1200px; margin: 0 auto 100px; }
+.services-title {
+  font-family: var(--display); font-size: clamp(44px, 6.5vw, 90px);
+  letter-spacing: -0.02em; text-transform: uppercase; color: var(--text-dark);
+  line-height: 0.95;
+}
+.services-subtitle {
+  font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2vw, 22px);
+  color: rgba(10,9,8,0.45); margin-top: 16px;
+}
+
+.service-list { max-width: 1200px; margin: 0 auto; }
+.service-row {
+  border-top: 1px solid rgba(10,9,8,0.08);
+  padding: 40px 0; cursor: pointer; position: relative;
+  display: grid; grid-template-columns: 50px 1fr auto; gap: 40px; align-items: start;
+  transition: background 0.5s var(--ease-out);
+}
+.service-row::before {
+  content: ''; position: absolute; top: -1px; left: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.8s var(--ease-out);
+}
+.service-row:hover::before { width: 100%; }
+.service-row:hover { background: linear-gradient(90deg, rgba(201,168,76,0.02), transparent 60%); }
+
+.service-num {
+  font-family: var(--display); font-size: 13px; color: var(--gold);
+  letter-spacing: 0.15em; padding-top: 8px;
+}
+.service-main { display: flex; flex-direction: column; }
+.service-name {
+  font-family: var(--display); font-size: clamp(24px, 3.5vw, 44px);
+  text-transform: uppercase; letter-spacing: 0.01em; color: var(--text-dark);
+  transition: transform 0.5s var(--ease-out), color 0.3s;
+  line-height: 1.1;
+}
+.service-row:hover .service-name { transform: translateX(12px); color: var(--gold); }
+.service-desc-wrap {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.7s var(--ease-out), opacity 0.5s ease, margin 0.5s ease;
+  opacity: 0; margin-top: 0;
+}
+.service-row:hover .service-desc-wrap { max-height: 300px; opacity: 1; margin-top: 20px; }
+.service-desc { font-size: 15px; line-height: 1.7; color: rgba(10,9,8,0.55); max-width: 600px; }
+.service-spec { list-style: none; margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.service-spec li {
+  font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: rgba(10,9,8,0.7); display: flex; align-items: center; gap: 8px;
+}
+.service-spec li::before {
+  content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0;
+}
+.service-arrow {
+  font-family: var(--display); font-size: 24px; color: var(--gold);
+  opacity: 0; transform: translateX(-10px);
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-out);
+  align-self: center;
+}
+.service-row:hover .service-arrow { opacity: 1; transform: translateX(0); }
+
+/* ─── GALLERY (HORIZONTAL DRAG) ─── */
+.gallery-section { padding: 0; background: var(--bg); overflow: hidden; }
+.gallery-header { padding: 120px 5vw 60px; max-width: 1200px; margin: 0 auto; }
+.gallery-label { color: var(--gold); font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.gallery-title {
+  font-family: var(--display); font-size: clamp(36px, 5vw, 64px);
+  text-transform: uppercase; letter-spacing: -0.01em; line-height: 1;
+}
+.gallery-hint {
+  font-size: 12px; color: var(--text-muted); margin-top: 12px; letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.gallery-track {
+  display: flex; gap: 16px; padding: 0 5vw 120px;
+  overflow-x: auto; scroll-behavior: auto;
+  scrollbar-width: none; cursor: grab;
+  scroll-snap-type: x mandatory;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-track:active { cursor: grabbing; }
+
+.gallery-item {
+  flex: 0 0 auto; scroll-snap-align: start; position: relative; overflow: hidden;
+  background: var(--bg-elevated);
+}
+.gallery-item img {
+  display: block; height: 520px; width: auto; max-width: 85vw;
+  object-fit: cover;
+  filter: saturate(0.6) contrast(1.08);
+  transition: filter 0.7s ease, transform 0.7s var(--ease-out);
+}
+.gallery-item:hover img { filter: saturate(0.9) contrast(1.02); transform: scale(1.04); }
+.gallery-item.wide img { height: 380px; width: 600px; }
+.gallery-item.tall img { height: 600px; width: 400px; }
+
+.gallery-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 60px 20px 20px;
+  background: linear-gradient(to top, rgba(10,9,8,0.8), transparent);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted);
+  transform: translateY(10px); opacity: 0;
+  transition: transform 0.5s var(--ease-out), opacity 0.5s ease;
+}
+.gallery-item:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 768px) {
+  .gallery-item img { height: 350px; }
+  .gallery-item.wide img { height: 280px; width: 100%; }
+}
+
+/* ─── RIDER ─── */
+.rider-section { padding: 160px 5vw; background: var(--bg); }
+.rider-title {
+  font-family: var(--display); font-size: clamp(44px, 6.5vw, 90px);
+  color: var(--gold); text-transform: uppercase; letter-spacing: -0.02em;
+  margin-bottom: 100px; line-height: 0.95;
+}
+.rider-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px;
+}
+.rider-col { position: relative; }
+.rider-col:not(:last-child)::after {
+  content: ''; position: absolute; top: 0; right: -30px; width: 1px; height: 100%;
+  background: var(--line);
+}
+.rider-col h3 {
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: var(--text); margin-bottom: 32px; font-weight: 400;
+  padding-bottom: 16px; border-bottom: 1px solid var(--gold-dim);
+}
+.rider-col ul { list-style: none; }
+.rider-col li {
+  font-size: 15px; line-height: 1.9; color: var(--text-muted);
+  margin-bottom: 16px; padding-left: 24px; position: relative;
+}
+.rider-col li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px; background: var(--gold);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .rider-grid { grid-template-columns: 1fr; gap: 50px; }
+  .rider-col:not(:last-child)::after { display: none; }
+}
+
+/* ─── CTA ─── */
+.cta-section { padding: 180px 5vw; text-align: center; position: relative; overflow: hidden; }
+.cta-watermark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: var(--display); font-size: clamp(120px, 18vw, 280px);
+  color: rgba(243,240,234,0.015); pointer-events: none; line-height: 1;
+  white-space: nowrap;
+}
+.cta-tag {
+  display: inline-block; font-size: 10px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 40px;
+}
+.cta-h {
+  font-family: var(--display); font-size: clamp(52px, 9vw, 140px);
+  line-height: 0.9; text-transform: uppercase; letter-spacing: -0.02em;
+}
+.cta-h em {
+  font-family: var(--serif); font-style: italic; color: var(--gold);
+  font-size: 0.7em; letter-spacing: 0; display: block; margin-top: 12px;
+}
+.cta-copy {
+  font-size: 16px; line-height: 1.9; color: var(--text-muted);
+  max-width: 480px; margin: 48px auto 0;
+}
+.cta-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 56px; flex-wrap: wrap; }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--gold); color: var(--bg);
+  font-family: var(--display); font-size: 13px; letter-spacing: 0.2em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 24px 48px; position: relative; overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+}
+.btn-wa::before {
+  content: ''; position: absolute; inset: 0; background: var(--text-dark);
+  transform: translateX(-101%); transition: transform 0.5s var(--ease-out);
+}
+.btn-wa:hover::before { transform: translateX(0); }
+.btn-wa:hover { color: var(--text); }
+.btn-wa span, .btn-wa svg { position: relative; z-index: 1; }
+.btn-wa svg { transition: transform 0.3s ease; }
+.btn-wa:hover svg { transform: translateX(6px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 14px;
+  border: 1px solid var(--line); color: var(--text);
+  font-family: var(--display); font-size: 13px; letter-spacing: 0.2em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 24px 48px; transition: all 0.5s var(--ease-out);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.cta-tel { margin-top: 40px; font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; }
+.cta-tel a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.cta-tel a:hover { color: var(--gold); }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px 5vw; display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--line); font-size: 11px; letter-spacing: 0.15em;
+  color: rgba(243,240,234,0.15); text-transform: uppercase;
+}
+.footer-social { display: flex; gap: 24px; }
+.footer-social a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-social a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0; transform: translateY(50px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+.reveal.on { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #loader { display: none; }
+  .reveal { opacity: 1; transform: none; }
+  .eq-bar { animation: none !important; transform: scaleY(0.5) !important; }
+  .gallery-item:hover img, .service-row:hover .service-name { transform: none !important; }
 }
 </style>
 </head>
+
 <body>
-<div id="loader" aria-hidden="true">
-  <div class="loader-word">CESAR</div>
-  <div class="loader-bar"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-word" id="loaderWord1">CESAR</div>
+  <div class="loader-line"></div>
+  <div class="loader-word small" id="loaderWord2">CHANNEL</div>
 </div>
-<nav id="mainnav">
-  <a href="#hero" class="nav-logo" id="navLogoLink" aria-label="Ir al inicio">
-    <img src="cclogo.png" alt="DJ Cesar Channel" id="navLogoImg">
-  </a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Cesar Channel</a>
   <div class="nav-right">
-    <a href="https://instagram.com/cesarchannel" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram de Cesar Channel">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="4"/>
-        <path d="M16.5 7.5h.01"/>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      </svg>
+    <a href="#formatos" class="nav-link">Formatos</a>
+    <a href="#rider" class="nav-link">Rider</a>
+    <a href="#cta" class="nav-link">Booking</a>
+    <a href="https://instagram.com/cesarchannel" target="_blank" class="nav-ig" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="#cta" class="nav-cta">Booking / Contacto</a>
   </div>
 </nav>
+
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-img">
-    <img src="cesar1.jpg" alt="DJ Cesar Channel en cabina" fetchpriority="high" decoding="async">
+  <img src="cesar1.jpg" alt="DJ Cesar Channel en performance" class="hero-bg" loading="eager"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <span class="hero-label">Electronic Press Kit</span>
+    <h1 class="hero-h1">DJ Cesar</h1>
+    <span class="hero-channel">Channel</span>
+    <div class="hero-rule"></div>
+    <p class="hero-copy">Curaduría musical para celebraciones, eventos privados y experiencias de marca.</p>
   </div>
-  <div class="hero-text">
-    <span class="hero-epk">ELECTRONIC PRESS KIT</span>
-    <h1 class="hero-h1">DJ CESAR</h1>
-    <span class="hero-channel">CHANNEL</span>
-    <div class="hero-rule" aria-hidden="true"></div>
-    <p class="hero-copy">Curaduria musical para celebraciones, eventos privados y experiencias de marca.</p>
+  <div class="scroll-indicator">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
-<section id="bio">
-  <div class="bio-wrap">
-    <div class="bio-left reveal">
-      <h2 class="bio-cities">ROMA.<br>COYOACAN.<br>POLANCO.<br><span>TORONTO · VANCOUVER · QUEBEC</span></h2>
+
+<!-- MARQUEE CONTEXT -->
+<section class="marquee-section">
+  <div class="marquee-row forward" id="marquee1">
+    <span class="marquee-item">Celebraciones Privadas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Bodas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Eventos de Marca</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Corporativos</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Terrazas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Venues</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Clubes</span>
+    <span class="marquee-item">·</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">Celebraciones Privadas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Bodas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Eventos de Marca</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Corporativos</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Terrazas</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Venues</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Clubes</span>
+    <span class="marquee-item">·</span>
+  </div>
+  <div style="height: 24px;"></div>
+  <div class="marquee-row reverse" id="marquee2">
+    <span class="marquee-item">Roma</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Coyoacán</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Polanco</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Toronto</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Vancouver</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Quebec</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">CDMX</span>
+    <span class="marquee-item">·</span>
+    <!-- Duplicate -->
+    <span class="marquee-item">Roma</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Coyoacán</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Polanco</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Toronto</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Vancouver</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">Quebec</span>
+    <span class="marquee-item">·</span>
+    <span class="marquee-item">CDMX</span>
+    <span class="marquee-item">·</span>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio-section section-dark">
+  <div class="bio-watermark">01</div>
+  <div class="section-label reveal">Perfil de Artista</div>
+  <div class="bio-grid">
+    <div class="bio-left reveal reveal-delay-1">
+      <div class="bio-cities">
+        Roma.<br/>
+        Coyoacán.<br/>
+        Polanco.<br/>
+        <span>Toronto · Vancouver · Quebec</span>
+      </div>
     </div>
-    <div class="bio-right reveal d2">
-      <span class="bio-label">Perfil de Artista</span>
+    <div class="bio-right reveal reveal-delay-2">
       <div class="bio-text">
-        <p><strong>Ocho anos descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salon, en cada atmosfera. El lugar cambia. El oido no.</p>
-        <p>La seleccion musical no se apoya en formulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energia de los invitados y el tempo real del evento.</p>
+        <p>Ocho años descifrando la pista. El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. <strong>El lugar cambia. El oído no.</strong></p>
+        <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los invitados y el tempo real del evento.</p>
+        <p><em>Curaduría, no reproducción.</em></p>
       </div>
     </div>
   </div>
 </section>
-<section id="contexto" aria-label="Espacios y ocasiones">
-  <div class="ctx-wrap">
-    <h2 class="ctx-title reveal">ESPACIOS Y OCASIONES</h2>
-    <p class="ctx-subtitle reveal d1">Formatos sociales, privados y de marca donde la musica necesita criterio, presencia y lectura de ambiente.</p>
-    <div class="ctx-grid reveal d2">
-      <span class="ctx-item">Celebraciones Privadas</span>
-      <span class="ctx-item">Bodas</span>
-      <span class="ctx-item">Eventos de Marca</span>
-      <span class="ctx-item">Corporativos</span>
-      <span class="ctx-item">Terrazas</span>
-      <span class="ctx-item">Venues</span>
-      <span class="ctx-item">Clubes</span>
-    </div>
-  </div>
+
+<!-- EQ DIVIDER -->
+<section class="eq-section">
+  <div class="eq-wrap" id="eqWrap"></div>
 </section>
-<section id="eq" aria-hidden="true"><div class="eq-inner" id="eqInner"></div></section>
-<section id="formatos" aria-label="Formatos de servicio">
-  <div class="form-wrap">
-    <h2 class="form-title reveal">FORMATOS DE SERVICIO</h2>
-    <p class="form-subtitle reveal d1">Configuraciones de performance y produccion adaptadas a la identidad de cada evento.</p>
-    <div class="services-grid reveal d2">
-      <article class="service-card">
-        <div>
-          <span class="service-meta">Formato 01</span>
-          <h3>DJ Set</h3>
-          <p>La ejecucion central del set con control estetico de cabina y criterio musical completo. Pensado para venues o montajes que ya cuentan con infraestructura tecnica propia.</p>
+
+<!-- SERVICES -->
+<section id="formatos" class="services-section section-light">
+  <div class="services-header reveal">
+    <span class="section-label" style="color: var(--gold); margin-bottom: 24px;">Formatos de Servicio</span>
+    <h2 class="services-title">Configuraciones de<br/>performance</h2>
+    <p class="services-subtitle">Adaptadas a la identidad de cada evento.</p>
+  </div>
+
+  <div class="service-list">
+    <div class="service-row reveal reveal-delay-1">
+      <div class="service-num">01</div>
+      <div class="service-main">
+        <div class="service-name">DJ Set</div>
+        <div class="service-desc-wrap">
+          <div class="service-desc">La ejecución central del set con control estético de cabina y criterio musical completo. Pensado para venues o montajes que ya cuentan con infraestructura técnica propia.</div>
+          <ul class="service-spec">
+            <li>Cesar Channel en controles</li>
+            <li>Cabina visual frontal</li>
+            <li>Sesión adaptable al formato</li>
+          </ul>
         </div>
-        <ul class="service-spec">
-          <li>Cesar Channel en controles</li>
-          <li>Cabina visual frontal</li>
-          <li>Sesion adaptable al formato del evento</li>
-        </ul>
-      </article>
-      <article class="service-card">
-        <div>
-          <span class="service-meta">Formato 02</span>
-          <h3>DJ Set + Audio</h3>
-          <p>Una solucion mas completa para espacios que requieren refuerzo sonoro profesional ademas del set. Equilibrio entre performance, claridad tecnica y presencia visual.</p>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row reveal reveal-delay-2">
+      <div class="service-num">02</div>
+      <div class="service-main">
+        <div class="service-name">DJ Set + Audio</div>
+        <div class="service-desc-wrap">
+          <div class="service-desc">Una solución más completa para espacios que requieren refuerzo sonoro profesional además del set. Equilibrio entre performance, claridad técnica y presencia visual.</div>
+          <ul class="service-spec">
+            <li>Performance + cabina</li>
+            <li>Sistema de audio profesional</li>
+            <li>Configuración según venue y aforo</li>
+          </ul>
         </div>
-        <ul class="service-spec">
-          <li>Performance + cabina</li>
-          <li>Sistema de audio profesional</li>
-          <li>Configuracion segun venue y aforo</li>
-        </ul>
-      </article>
-      <article class="service-card">
-        <div>
-          <span class="service-meta">Formato 03</span>
-          <h3>DJ Set + Audio + Iluminacion</h3>
-          <p>Una propuesta escenica mas inmersiva donde el sonido y la iluminacion trabajan en conjunto para transformar la percepcion del espacio y sostener la atmosfera durante toda la noche.</p>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row reveal reveal-delay-3">
+      <div class="service-num">03</div>
+      <div class="service-main">
+        <div class="service-name">DJ Set + Audio + Iluminación</div>
+        <div class="service-desc-wrap">
+          <div class="service-desc">Una propuesta escénica más inmersiva donde el sonido y la iluminación trabajan en conjunto para transformar la percepción del espacio y sostener la atmósfera durante toda la noche.</div>
+          <ul class="service-spec">
+            <li>Audio profesional</li>
+            <li>Iluminación para pista y ambiente</li>
+            <li>Montaje coordinado con la identidad del evento</li>
+          </ul>
         </div>
-        <ul class="service-spec">
-          <li>Audio profesional</li>
-          <li>Iluminacion para pista y ambiente</li>
-          <li>Montaje coordinado con la identidad del evento</li>
-        </ul>
-      </article>
-      <article class="service-card">
-        <div>
-          <span class="service-meta">Formato 04</span>
-          <h3>Produccion Integral + Host</h3>
-          <p>La version mas completa del servicio: direccion de ambiente, produccion tecnica, presencia de host y acompanamiento del protocolo clave para eventos que necesitan conduccion y ritmo.</p>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row reveal reveal-delay-4">
+      <div class="service-num">04</div>
+      <div class="service-main">
+        <div class="service-name">Producción Integral + Host</div>
+        <div class="service-desc-wrap">
+          <div class="service-desc">La versión más completa del servicio: dirección de ambiente, producción técnica, presencia de host y acompañamiento del protocolo clave para eventos que necesitan conducción y ritmo.</div>
+          <ul class="service-spec">
+            <li>Audio + iluminación + cabina</li>
+            <li>Host y apoyo de protocolo</li>
+            <li>Coordinación general del bloque musical</li>
+          </ul>
         </div>
-        <ul class="service-spec">
-          <li>Audio + iluminacion + cabina</li>
-          <li>Host y apoyo de protocolo</li>
-          <li>Coordinacion general del bloque musical</li>
-        </ul>
-      </article>
+      </div>
+      <div class="service-arrow">→</div>
     </div>
   </div>
 </section>
-<section id="galeria">
-  <div class="gal-grid">
-    <div class="gal-main">
-      <img src="cesar2.jpg" alt="Cesar Channel en performance en vivo" loading="lazy" decoding="async">
-      <div class="gal-label">Performance en vivo / Pista</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-header reveal">
+    <span class="gallery-label">Archivo Visual</span>
+    <h2 class="gallery-title">Performance &<br/>Ambiente</h2>
+    <p class="gallery-hint">← Arrastra para explorar →</p>
+  </div>
+  <div class="gallery-track" id="galleryTrack">
+    <div class="gallery-item tall">
+      <img src="cesar1.jpg" alt="DJ Cesar Channel en pista" loading="lazy"/>
+      <div class="gallery-caption">Performance en vivo</div>
     </div>
-    <div class="gal-side">
-      <div>
-        <img src="cesar3.jpg" alt="Setup de cabina de Cesar Channel" loading="lazy" decoding="async">
-        <div class="gal-label">Cabina / Controles</div>
-      </div>
-      <div>
-        <img src="cesar1.jpg" alt="Retrato oficial de Cesar Channel" loading="lazy" decoding="async">
-        <div class="gal-label">Retrato oficial</div>
-      </div>
+    <div class="gallery-item wide">
+      <img src="cesar2.jpg" alt="Cabina de controles" loading="lazy"/>
+      <div class="gallery-caption">Cabina / Controles</div>
+    </div>
+    <div class="gallery-item">
+      <img src="cesar3.jpg" alt="Retrato oficial" loading="lazy"/>
+      <div class="gallery-caption">Retrato oficial</div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="cesar1.jpg" alt="Atmósfera de evento" loading="lazy"/>
+      <div class="gallery-caption">Atmósfera</div>
+    </div>
+    <div class="gallery-item wide">
+      <img src="cesar2.jpg" alt="Detalle de equipo" loading="lazy"/>
+      <div class="gallery-caption">Detalle técnico</div>
     </div>
   </div>
 </section>
-<section id="rider">
-  <div class="rider-wrap">
-    <h2 class="rider-title reveal">RIDER TECNICO</h2>
-    <div class="rider-grid reveal d2">
-      <div class="rider-col">
-        <h3>Control Booth</h3>
-        <ul>
-          <li>Mesa de control estable e independiente (minimo 1.50 m).</li>
-          <li>Alimentacion electrica regulada a pie de cabina.</li>
-          <li>Proteccion contra intemperie o rayos solares directos.</li>
-        </ul>
-      </div>
-      <div class="rider-col">
-        <h3>Audio &amp; Monitoreo</h3>
-        <ul>
-          <li>Sistema PA adecuado a las dimensiones del espacio.</li>
-          <li>Monitoreo local en cabina regulable de forma independiente.</li>
-          <li>Linea de senal limpia XLR directo a sistema central.</li>
-        </ul>
-      </div>
-      <div class="rider-col">
-        <h3>Hospitalidad</h3>
-        <ul>
-          <li>Zona de resguardo segura para equipamiento tecnico secundario.</li>
-          <li>Acceso a hidratacion constante durante montaje y ejecucion.</li>
-          <li>Coordinacion directa con el staff tecnico del venue.</li>
-        </ul>
-      </div>
+
+<!-- RIDER -->
+<section id="rider" class="rider-section">
+  <div class="section-label reveal">Rider Técnico</div>
+  <h2 class="rider-title reveal reveal-delay-1">Especificaciones<br/>de Montaje</h2>
+  <div class="rider-grid">
+    <div class="rider-col reveal reveal-delay-1">
+      <h3>Control Booth</h3>
+      <ul>
+        <li>Mesa de control estable e independiente (mínimo 1.50 m).</li>
+        <li>Alimentación eléctrica regulada a pie de cabina.</li>
+        <li>Protección contra intemperie o rayos solares directos.</li>
+      </ul>
+    </div>
+    <div class="rider-col reveal reveal-delay-2">
+      <h3>Audio & Monitoreo</h3>
+      <ul>
+        <li>Sistema PA adecuado a las dimensiones del espacio.</li>
+        <li>Monitoreo local en cabina regulable de forma independiente.</li>
+        <li>Línea de señal limpia XLR directo a sistema central.</li>
+      </ul>
+    </div>
+    <div class="rider-col reveal reveal-delay-3">
+      <h3>Hospitalidad</h3>
+      <ul>
+        <li>Zona de resguardo segura para equipamiento técnico secundario.</li>
+        <li>Acceso a hidratación constante durante montaje y ejecución.</li>
+        <li>Coordinación directa con el staff técnico del venue.</li>
+      </ul>
     </div>
   </div>
 </section>
-<section id="cta">
-  <div class="cta-wrap">
-    <div class="reveal">
-      <span class="cta-tag">Booking &amp; Management</span>
-      <h2 class="cta-h">TIENES<br>UNA FECHA<br><em>en mente?</em></h2>
-    </div>
-    <div class="cta-right reveal d2">
-      <p class="cta-copy">Cuentame el tipo de evento, la atmosfera que quieres construir y el formato que tienes en mente. La conversacion empieza ahi.</p>
-      <a href="https://wa.me/5215624685267?text=Hola%20Cesar%2C%20quiero%20platicar%20sobre%20el%20booking%20de%20un%20evento" target="_blank" rel="noopener noreferrer" class="btn-wa">
-        <span>Escribir a Cesar</span>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-          <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <p class="cta-tel">Directo&nbsp;<a href="tel:+5215624685267">+52 1 56 24 68 52 67</a>&nbsp;&middot;&nbsp;<a href="https://instagram.com/cesarchannel" target="_blank" rel="noopener noreferrer">@cesarchannel</a></p>
-    </div>
+
+<!-- CTA -->
+<section id="cta" class="cta-section section-dark">
+  <div class="cta-watermark">BOOKING</div>
+  <span class="cta-tag reveal">Booking & Management</span>
+  <h2 class="cta-h reveal reveal-delay-1">
+    TIENES<br/>UNA FECHA<br/><em>en mente?</em>
+  </h2>
+  <p class="cta-copy reveal reveal-delay-2">
+    Cuéntame el tipo de evento, la atmósfera que quieres construir y el formato que tienes en mente. La conversación empieza ahí.
+  </p>
+  <div class="cta-buttons reveal reveal-delay-3">
+    <a href="https://wa.me/5215624685267" target="_blank" class="btn-wa">
+      <span>Escribir a Cesar</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:booking@cesarchannel.com" class="btn-ghost">
+      <span>Email Directo</span>
+    </a>
   </div>
+  <p class="cta-tel reveal reveal-delay-4">
+    Directo <a href="tel:+5215624685267">+52 1 56 24 68 52 67</a> · <a href="https://instagram.com/cesarchannel" target="_blank">@cesarchannel</a>
+  </p>
 </section>
+
+<!-- FOOTER -->
 <footer>
-  <span class="f-copy">&copy; 2026 DJ CESAR CHANNEL &mdash; PRESS KIT</span>
-  <a href="https://souund.github.io/portfolio/" target="_blank" rel="noopener noreferrer" id="emc-credit">
-    <span id="emc-text">by EMC</span>
-  </a>
+  <div>© 2026 DJ Cesar Channel</div>
+  <div class="footer-social">
+    <a href="https://instagram.com/cesarchannel" target="_blank">IG</a>
+    <a href="https://wa.me/5215624685267" target="_blank">WA</a>
+    <a href="mailto:booking@cesarchannel.com">Email</a>
+  </div>
+  <div>by EMC</div>
 </footer>
+
 <script>
-window.addEventListener('load',()=>{setTimeout(()=>{const loader=document.getElementById('loader');if(loader)loader.classList.add('out')},1200)});
-(()=>{const img=document.getElementById('navLogoImg');const link=document.getElementById('navLogoLink');if(img){img.onerror=()=>{link.innerHTML='<span style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;letter-spacing:0.2em;color:#0f0e0c;">DJ CESAR CHANNEL</span>'}}})();
-const nav=document.getElementById('mainnav');window.addEventListener('scroll',()=>{nav.classList.toggle('stuck',window.scrollY>80)},{passive:true});
-(()=>{const container=document.getElementById('eqInner');if(!container)return;const bars=[{cls:'low',from:0.15,to:0.55,delay:0.00,dur:2.40},{cls:'low',from:0.22,to:0.72,delay:0.18,dur:2.10},{cls:'low',from:0.18,to:0.85,delay:0.35,dur:2.30},{cls:'low',from:0.25,to:0.92,delay:0.52,dur:1.95},{cls:'low active',from:0.35,to:0.95,delay:0.15,dur:1.85},{cls:'low active',from:0.28,to:1.00,delay:0.60,dur:2.00},{cls:'mid',from:0.20,to:0.70,delay:0.05,dur:1.50},{cls:'mid',from:0.30,to:0.88,delay:0.20,dur:1.30},{cls:'mid active',from:0.40,to:1.00,delay:0.10,dur:1.15},{cls:'mid active',from:0.45,to:1.00,delay:0.35,dur:1.00},{cls:'mid active',from:0.50,to:1.00,delay:0.00,dur:0.95},{cls:'mid active',from:0.42,to:0.98,delay:0.50,dur:1.10},{cls:'hi',from:0.08,to:0.55,delay:0.00,dur:0.90},{cls:'hi',from:0.12,to:0.68,delay:0.15,dur:0.80},{cls:'hi',from:0.10,to:0.60,delay:0.30,dur:0.75},{cls:'hi',from:0.08,to:0.50,delay:0.45,dur:0.95}];const isMobile=window.innerWidth<480;const isTablet=window.innerWidth<768;const step=isMobile?3:isTablet?2:1;bars.forEach((b,i)=>{if(i%step!==0)return;const el=document.createElement('div');el.className='eq-bar '+b.cls;el.style.setProperty('--from',b.from);el.style.setProperty('--to',b.to);el.style.setProperty('--delay',b.delay+'s');el.style.setProperty('--dur',b.dur+'s');el.style.height=(b.to*100)+'%';container.appendChild(el)})})();
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+/* ─── LOADER TEXT SPLIT ─── */
+function splitText(el, delayBase) {
+  const text = el.textContent;
+  el.innerHTML = '';
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.animationDelay = (delayBase + i * 0.04) + 's';
+    el.appendChild(span);
+  });
+}
+splitText(document.getElementById('loaderWord1'), 0.2);
+splitText(document.getElementById('loaderWord2'), 0.5);
+
+/* ─── LOADER HIDE ─── */
+setTimeout(() => {
+  document.getElementById('loader').classList.add('out');
+}, 2200);
+
+/* ─── CUSTOM CURSOR ─── */
+const cursor = document.getElementById('cursor');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cx += (mx - cx) * 0.15;
+  cy += (my - cy) * 0.15;
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+  requestAnimationFrame(animateCursor);
+}
+if (window.matchMedia('(pointer: fine)').matches) {
+  animateCursor();
+  document.querySelectorAll('a, button, .service-row, .gallery-item').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+}
+
+/* ─── NAV SCROLL ─── */
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 80) navbar.classList.add('stuck');
+  else navbar.classList.remove('stuck');
+  lastScroll = y;
+}, { passive: true });
+
+/* ─── REVEAL ON SCROLL ─── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('on');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ─── EQ BARS GENERATE ─── */
+const eqWrap = document.getElementById('eqWrap');
+const barCount = Math.min(80, Math.floor(window.innerWidth / 14));
+for (let i = 0; i < barCount; i++) {
+  const bar = document.createElement('div');
+  bar.className = 'eq-bar';
+  bar.style.setProperty('--dur', (0.6 + Math.random() * 1.2) + 's');
+  bar.style.setProperty('--del', (Math.random() * 1.5) + 's');
+  bar.style.setProperty('--from', (0.05 + Math.random() * 0.15).toFixed(2));
+  bar.style.setProperty('--to', (0.4 + Math.random() * 0.6).toFixed(2));
+  if (Math.random() > 0.7) bar.classList.add('active');
+  eqWrap.appendChild(bar);
+}
+
+/* ─── GALLERY DRAG ─── */
+const track = document.getElementById('galleryTrack');
+let isDown = false, startX, scrollLeft;
+track.addEventListener('mousedown', (e) => {
+  isDown = true; track.classList.add('active');
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+});
+track.addEventListener('mouseleave', () => isDown = false);
+track.addEventListener('mouseup', () => isDown = false);
+track.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  track.scrollLeft = scrollLeft - walk;
+});
+
+/* ─── MARQUEE PAUSE ON HOVER ─── */
+document.querySelectorAll('.marquee-row').forEach(row => {
+  row.addEventListener('mouseenter', () => row.style.animationPlayState = 'paused');
+  row.addEventListener('mouseleave', () => row.style.animationPlayState = 'running');
+});
+
+/* ─── SMOOTH ANCHOR SCROLL OFFSET ─── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 80;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    }
+  });
+});
 </script>
+
 </body>
 </html>
