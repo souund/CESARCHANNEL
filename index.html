@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#f5f0e8"/>
+<meta name="description" content="DJ Cesar Channel - Electronic Press Kit (EPK). Dossier de prensa, formatos de servicio y rider tecnico."/>
+<meta property="og:title" content="DJ Cesar Channel - EPK"/>
+<meta property="og:description" content="Curaduria musical para celebraciones, eventos privados y experiencias de marca."/>
+<title>DJ Cesar Channel - EPK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="cesar1.jpg" fetchpriority="high"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f5f0e8;
+  --cream-dark:#ede7d9;
+  --ink:#0f0e0c;
+  --ink-mid:rgba(15,14,12,0.76);
+  --ink-soft:rgba(15,14,12,0.48);
+  --gold:#9a7c3f;
+  --gold-light:#c4a35a;
+  --gold-line:rgba(154,124,63,0.25);
+  --bebas:'Bebas Neue',sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{background:var(--cream);scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+body::before{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
+}
+#loader{position:fixed;inset:0;z-index:8999;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s ease}
+#loader.out{opacity:0;visibility:hidden}
+.loader-word{font-family:var(--bebas);font-size:clamp(56px,12vw,110px);letter-spacing:0.14em;color:var(--ink);opacity:0;animation:fi 0.7s ease 0.2s forwards;max-width:100%;text-align:center}
+.loader-bar{position:absolute;bottom:calc(50% - 52px);left:50%;transform:translateX(-50%);width:80px;height:1px;background:var(--gold-line);overflow:hidden}
+.loader-bar::after{content:'';display:block;width:100%;height:100%;background:var(--gold);transform:translateX(-100%);animation:sw 1.1s ease 0.6s forwards}
+@keyframes sw{to{transform:translateX(100%)}}
+@keyframes fi{to{opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:26px 48px;transition:padding 0.4s ease,background 0.4s ease,box-shadow 0.4s ease}
+nav.stuck{padding:16px 48px;background:var(--cream);box-shadow:0 1px 0 var(--gold-line)}
+@media(max-width:768px){nav{padding:18px 24px}nav.stuck{padding:14px 24px}}
+.nav-logo{display:block;height:30px;width:auto;text-decoration:none}
+.nav-logo img{height:100%;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav-ig{display:flex;align-items:center;color:var(--gold);text-decoration:none;transition:color 0.3s,transform 0.3s;min-width:44px;min-height:44px;justify-content:center}
+.nav-ig:hover{color:var(--gold-light);transform:scale(1.08)}
+.nav-ig svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.nav-cta{font-size:10px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold-line);padding-bottom:2px;transition:border-color 0.3s,color 0.3s}
+.nav-cta:hover{border-color:var(--gold);color:var(--gold-light)}
+@media(max-width:560px){.nav-right{gap:12px}.nav-cta{font-size:9px;letter-spacing:0.18em}}
+#hero{width:100%;min-height:100vh;display:grid;grid-template-columns:52% 48%;overflow:hidden}
+@media(max-width:900px){#hero{grid-template-columns:1fr;grid-template-rows:65vw 1fr;min-height:auto}}
+.hero-img{position:relative;overflow:hidden;background:var(--cream-dark)}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:contrast(1.07) saturate(0.82);transition:transform 8s ease}
+#hero:hover .hero-img img{transform:scale(1.03)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(108deg,rgba(245,240,232,0) 42%,rgba(245,240,232,.38) 72%,var(--cream) 100%);transition:background 0.45s ease}
+@media(max-width:900px){.hero-img::after{background:linear-gradient(to bottom,rgba(245,240,232,0) 48%,rgba(245,240,232,.42) 72%,var(--cream) 100%)}}
+.hero-text{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 88px 36px}
+@media(max-width:1100px){.hero-text{padding:0 36px 64px 28px}}
+@media(max-width:900px){.hero-text{padding:28px 24px 72px}}
+.hero-epk{font-size:11px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0;animation:up 0.7s ease 1.8s forwards}
+.hero-h1{font-family:var(--bebas);font-size:clamp(88px,13vw,172px);line-height:0.86;letter-spacing:0.04em;color:var(--ink);margin-bottom:2px;opacity:0;animation:up 0.7s ease 2s forwards}
+.hero-channel{font-family:var(--bebas);font-size:clamp(22px,3.2vw,42px);letter-spacing:0.35em;color:var(--gold);display:block;margin-bottom:28px;opacity:0;animation:up 0.6s ease 2.15s forwards}
+.hero-rule{width:36px;height:1px;background:var(--gold);margin-bottom:24px;opacity:0;animation:up 0.6s ease 2.28s forwards}
+.hero-copy{max-width:30ch;font-size:clamp(15px,1.45vw,18px);line-height:1.8;color:var(--ink-mid);opacity:0;animation:up 0.7s ease 2.38s forwards}
+#bio{background:var(--ink);padding:112px 0 120px}
+.bio-wrap{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+@media(max-width:900px){.bio-wrap{grid-template-columns:1fr;gap:52px;padding:0 28px}}
+.bio-cities{font-family:var(--bebas);font-size:clamp(40px,6vw,76px);letter-spacing:0.04em;line-height:1;color:var(--cream);margin-bottom:40px}
+.bio-cities span{display:block;color:var(--gold);font-size:0.62em;letter-spacing:0.08em;margin-top:6px}
+.bio-label{font-size:10px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:28px}
+.bio-text p,.service-card p,.rider-col li,.cta-copy{max-width:65ch}
+.bio-text p{font-size:clamp(15px,1.6vw,18px);line-height:1.9;color:rgba(245,240,232,0.72);margin-bottom:22px}
+.bio-text p:last-child{margin-bottom:0}
+.bio-text strong{color:var(--cream);font-weight:400}
+#contexto{background:var(--ink);padding:100px 48px;border-top:1px solid rgba(245,240,232,0.04);display:flex;justify-content:center}
+@media(max-width:768px){#contexto{padding:70px 24px}}
+.ctx-wrap{max-width:1100px;width:100%}
+.ctx-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--cream);text-align:center;margin-bottom:18px}
+.ctx-subtitle{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(245,240,232,0.6);text-align:center;max-width:50ch;margin:0 auto 46px}
+.ctx-grid{display:flex;flex-wrap:wrap;gap:24px 48px;max-width:1100px;justify-content:center;align-items:center}
+@media(max-width:768px){.ctx-grid{gap:16px 24px}}
+.ctx-item{font-family:var(--bebas);font-size:clamp(28px,4.5vw,48px);letter-spacing:0.15em;color:rgba(245,240,232,0.24);text-transform:uppercase;cursor:default;transition:color 0.4s ease,transform 0.4s ease,text-shadow 0.4s ease}
+.ctx-grid:hover .ctx-item{color:rgba(245,240,232,0.08);transform:scale(0.98)}
+.ctx-grid .ctx-item:hover{color:var(--gold-light);transform:scale(1.05);text-shadow:0 0 25px rgba(196,163,90,0.4);z-index:2}
+#eq{background:var(--ink);padding:0;overflow:hidden;border-top:1px solid rgba(245,240,232,0.04)}
+.eq-inner{display:flex;align-items:flex-end;justify-content:center;gap:5px;height:140px;padding:0 48px}
+@media(max-width:768px){.eq-inner{height:90px;gap:3px;padding:0 24px}}
+.eq-bar{flex:1;max-width:18px;min-width:4px;border-radius:1px 1px 0 0;transform-origin:bottom center;animation:eqPulse var(--dur,1.4s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);background:var(--bar-color,rgba(154,124,63,0.25))}
+.eq-bar.low{--bar-color:rgba(154,124,63,0.22);--dur:2.1s}.eq-bar.mid{--bar-color:rgba(196,163,90,0.45);--dur:1.3s}.eq-bar.hi{--bar-color:rgba(245,240,232,0.18);--dur:0.85s}.eq-bar.active{--bar-color:rgba(196,163,90,0.85)}
+@keyframes eqPulse{0%{transform:scaleY(var(--from,0.08))}100%{transform:scaleY(var(--to,1.0))}}
+#formatos{background:var(--cream-dark);padding:120px 0;border-top:1px solid rgba(15,14,12,0.04)}
+.form-wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+@media(max-width:768px){.form-wrap{padding:0 28px}}
+.form-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--ink);margin-bottom:16px;text-align:center}
+.form-subtitle{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-mid);text-align:center;margin:0 auto 64px;max-width:44ch}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:980px){.services-grid{grid-template-columns:1fr;gap:28px}}
+.service-card{background:linear-gradient(145deg,#fbf7f0,#eedecb44);padding:52px 40px;border:1px solid rgba(154,124,63,0.18);box-shadow:0 10px 30px rgba(15,14,12,0.02);display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:all 0.5s cubic-bezier(0.25,1,0.5,1)}
+.service-card::after{content:'';position:absolute;inset:0;border:1px solid transparent;transition:all 0.5s ease;pointer-events:none}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(154,124,63,0.12);border-color:var(--gold-light)}
+.service-card:hover::after{border-color:rgba(196,163,90,0.3);inset:-4px}
+.service-meta{font-size:10px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block;font-weight:500}
+.service-card h3{font-family:var(--bebas);font-size:38px;letter-spacing:0.03em;color:var(--ink);margin-bottom:18px;font-weight:400;text-transform:uppercase;line-height:1}
+.service-card p{font-size:15px;line-height:1.75;color:var(--ink-mid);margin-bottom:34px;flex-grow:1}
+.service-spec{border-top:1px solid rgba(15,14,12,0.08);padding-top:26px;list-style:none}
+.service-spec li{font-size:13.5px;color:var(--ink);margin-bottom:12px;letter-spacing:0.02em;display:flex;align-items:center;gap:12px}
+.service-spec li:last-child{margin-bottom:0}
+.service-spec li::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+#galeria{background:var(--ink);padding:0;overflow:hidden}
+.gal-grid{display:grid;grid-template-columns:3fr 2fr;gap:2px}
+@media(max-width:768px){.gal-grid{grid-template-columns:1fr}}
+.gal-main,.gal-side div{position:relative;overflow:hidden;background:#1a1815}
+.gal-main img{width:100%;display:block;height:620px;object-fit:cover;filter:contrast(1.08) saturate(0.78) sepia(0.07);transition:filter 0.6s,transform 0.7s ease}
+.gal-main:hover img{filter:contrast(1.04) saturate(1) sepia(0);transform:scale(1.03)}
+.gal-side{display:flex;flex-direction:column;gap:2px}.gal-side img{width:100%;display:block;height:309px;object-fit:cover;filter:contrast(1.08) saturate(0.78) sepia(0.07);transition:filter 0.6s,transform 0.7s ease}
+.gal-side div:hover img{filter:contrast(1.04) saturate(1) sepia(0);transform:scale(1.04)}
+.gal-label{position:absolute;bottom:20px;left:20px;font-size:10px;letter-spacing:0.2em;color:var(--cream);text-transform:uppercase;background:rgba(15,14,12,0.7);padding:4px 10px}
+@media(max-width:768px){.gal-main img{height:300px}.gal-side{flex-direction:row}.gal-side img{height:190px}}
+#rider{background:var(--ink);color:var(--cream);padding:120px 0}
+.rider-wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+@media(max-width:768px){.rider-wrap{padding:0 28px}}
+.rider-title{font-family:var(--bebas);font-size:clamp(44px,6vw,84px);letter-spacing:0.05em;color:var(--gold);margin-bottom:60px}
+.rider-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+@media(max-width:900px){.rider-grid{grid-template-columns:1fr;gap:36px}}
+.rider-col h3{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--cream);margin-bottom:20px;font-weight:400}
+.rider-col ul{list-style:none}
+.rider-col li{font-size:15px;line-height:1.8;color:rgba(245,240,232,0.6);margin-bottom:12px;padding-left:18px;position:relative}
+.rider-col li::before{content:'';position:absolute;left:0;top:10px;width:4px;height:4px;background:var(--gold)}
+#cta{background:var(--cream);padding:130px 0 118px}
+.cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:900px){.cta-wrap{grid-template-columns:1fr;gap:44px;padding:0 28px}}
+.cta-tag{font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:18px}
+.cta-h{font-family:var(--bebas);font-size:clamp(58px,8.5vw,116px);letter-spacing:0.03em;line-height:0.86;color:var(--ink)}
+.cta-h em{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:0.72em;letter-spacing:0.01em}
+.cta-right{display:flex;flex-direction:column;gap:30px}
+.cta-copy{font-size:clamp(15px,1.6vw,18px);line-height:1.82;color:var(--ink-mid)}
+.btn-wa{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--cream);font-family:var(--bebas);font-size:17px;letter-spacing:0.2em;text-decoration:none;padding:22px 42px;position:relative;overflow:hidden;transition:color 0.4s;align-self:flex-start;min-height:44px}
+.btn-wa::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
+.btn-wa:hover::before{transform:translateX(0)}
+.btn-wa:hover{color:var(--ink)}
+.btn-wa span,.btn-wa svg{position:relative;z-index:1}.btn-wa svg{transition:transform 0.3s}.btn-wa:hover svg{transform:translateX(6px)}
+.cta-tel{font-size:12px;color:var(--ink-soft);letter-spacing:0.08em}.cta-tel a{color:var(--ink-mid);text-decoration:none;transition:color 0.3s}.cta-tel a:hover{color:var(--gold)}
+footer{background:var(--ink);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(245,240,232,0.05)}
+@media(max-width:600px){footer{flex-direction:column;gap:14px;padding:22px 28px;text-align:center}}
+.f-copy{font-size:11px;letter-spacing:0.17em;color:rgba(245,240,232,0.2)}
+#emc-credit{text-decoration:none;padding:6px 16px;border:1px solid rgba(245,240,232,0.09);border-radius:20px;transition:border-color 0.3s ease,transform 0.3s ease}
+#emc-credit:hover{border-color:rgba(245,240,232,0.24);transform:translateY(-1px)}
+#emc-text{font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(245,240,232,0.17)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.9s ease,transform 0.9s ease}.reveal.on{opacity:1;transform:translateY(0)}.d1{transition-delay:0.12s}.d2{transition-delay:0.24s}.d3{transition-delay:0.36s}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  #loader{display:none}
+  .reveal{opacity:1;transform:none}
+  .eq-bar{animation:none !important;transform:scaleY(0.4) !important}
+  #hero:hover .hero-img img,.gal-main:hover img,.gal-side div:hover img,.service-card:hover,.nav-ig:hover,.btn-wa:hover svg,#emc-credit:hover{transform:none !important}
+}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true">
+  <div class="loader-word">CESAR</div>
+  <div class="loader-bar"></div>
+</div>
+<nav id="mainnav">
+  <a href="#hero" class="nav-logo" id="navLogoLink" aria-label="Ir al inicio">
+    <img src="cclogo.png" alt="DJ Cesar Channel" id="navLogoImg">
+  </a>
+  <div class="nav-right">
+    <a href="https://instagram.com/cesarchannel" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram de Cesar Channel">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M16.5 7.5h.01"/>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      </svg>
+    </a>
+    <a href="#cta" class="nav-cta">Booking / Contacto</a>
+  </div>
+</nav>
+<section id="hero">
+  <div class="hero-img">
+    <img src="cesar1.jpg" alt="DJ Cesar Channel en cabina" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-text">
+    <span class="hero-epk">ELECTRONIC PRESS KIT</span>
+    <h1 class="hero-h1">DJ CESAR</h1>
+    <span class="hero-channel">CHANNEL</span>
+    <div class="hero-rule" aria-hidden="true"></div>
+    <p class="hero-copy">Curaduria musical para celebraciones, eventos privados y experiencias de marca.</p>
+  </div>
+</section>
+<section id="bio">
+  <div class="bio-wrap">
+    <div class="bio-left reveal">
+      <h2 class="bio-cities">ROMA.<br>COYOACAN.<br>POLANCO.<br><span>TORONTO · VANCOUVER · QUEBEC</span></h2>
+    </div>
+    <div class="bio-right reveal d2">
+      <span class="bio-label">Perfil de Artista</span>
+      <div class="bio-text">
+        <p><strong>Ocho anos descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salon, en cada atmosfera. El lugar cambia. El oido no.</p>
+        <p>La seleccion musical no se apoya en formulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energia de los invitados y el tempo real del evento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contexto" aria-label="Espacios y ocasiones">
+  <div class="ctx-wrap">
+    <h2 class="ctx-title reveal">ESPACIOS Y OCASIONES</h2>
+    <p class="ctx-subtitle reveal d1">Formatos sociales, privados y de marca donde la musica necesita criterio, presencia y lectura de ambiente.</p>
+    <div class="ctx-grid reveal d2">
+      <span class="ctx-item">Celebraciones Privadas</span>
+      <span class="ctx-item">Bodas</span>
+      <span class="ctx-item">XV Anos</span>
+      <span class="ctx-item">Eventos de Marca</span>
+      <span class="ctx-item">Corporativos</span>
+      <span class="ctx-item">Terrazas</span>
+      <span class="ctx-item">Venues</span>
+      <span class="ctx-item">Clubes</span>
+    </div>
+  </div>
+</section>
+<section id="eq" aria-hidden="true"><div class="eq-inner" id="eqInner"></div></section>
+<section id="formatos" aria-label="Formatos de servicio">
+  <div class="form-wrap">
+    <h2 class="form-title reveal">FORMATOS DE SERVICIO</h2>
+    <p class="form-subtitle reveal d1">Configuraciones de performance y produccion adaptadas a la identidad de cada evento.</p>
+    <div class="services-grid reveal d2">
+      <article class="service-card">
+        <div>
+          <span class="service-meta">Formato 01</span>
+          <h3>DJ Set</h3>
+          <p>La ejecucion central del set con control estetico de cabina y criterio musical completo. Pensado para venues o montajes que ya cuentan con infraestructura tecnica propia.</p>
+        </div>
+        <ul class="service-spec">
+          <li>Cesar Channel en controles</li>
+          <li>Cabina visual frontal</li>
+          <li>Sesion adaptable al formato del evento</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div>
+          <span class="service-meta">Formato 02</span>
+          <h3>DJ Set + Audio</h3>
+          <p>Una solucion mas completa para espacios que requieren refuerzo sonoro profesional ademas del set. Equilibrio entre performance, claridad tecnica y presencia visual.</p>
+        </div>
+        <ul class="service-spec">
+          <li>Performance + cabina</li>
+          <li>Sistema de audio profesional</li>
+          <li>Configuracion segun venue y aforo</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div>
+          <span class="service-meta">Formato 03</span>
+          <h3>DJ Set + Audio + Iluminacion</h3>
+          <p>Una propuesta escenica mas inmersiva donde el sonido y la iluminacion trabajan en conjunto para transformar la percepcion del espacio y sostener la atmosfera durante toda la noche.</p>
+        </div>
+        <ul class="service-spec">
+          <li>Audio profesional</li>
+          <li>Iluminacion para pista y ambiente</li>
+          <li>Montaje coordinado con la identidad del evento</li>
+        </ul>
+      </article>
+      <article class="service-card">
+        <div>
+          <span class="service-meta">Formato 04</span>
+          <h3>Produccion Integral + Host</h3>
+          <p>La version mas completa del servicio: direccion de ambiente, produccion tecnica, presencia de host y acompanamiento del protocolo clave para eventos que necesitan conduccion y ritmo.</p>
+        </div>
+        <ul class="service-spec">
+          <li>Audio + iluminacion + cabina</li>
+          <li>Host y apoyo de protocolo</li>
+          <li>Coordinacion general del bloque musical</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+<section id="galeria">
+  <div class="gal-grid">
+    <div class="gal-main">
+      <img src="cesar2.jpg" alt="Cesar Channel en performance en vivo" loading="lazy" decoding="async">
+      <div class="gal-label">Performance en vivo / Pista</div>
+    </div>
+    <div class="gal-side">
+      <div>
+        <img src="cesar3.jpg" alt="Setup de cabina de Cesar Channel" loading="lazy" decoding="async">
+        <div class="gal-label">Cabina / Controles</div>
+      </div>
+      <div>
+        <img src="cesar1.jpg" alt="Retrato oficial de Cesar Channel" loading="lazy" decoding="async">
+        <div class="gal-label">Retrato oficial</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="rider">
+  <div class="rider-wrap">
+    <h2 class="rider-title reveal">RIDER TECNICO</h2>
+    <div class="rider-grid reveal d2">
+      <div class="rider-col">
+        <h3>Control Booth</h3>
+        <ul>
+          <li>Mesa de control estable e independiente (minimo 1.50 m).</li>
+          <li>Alimentacion electrica regulada a pie de cabina.</li>
+          <li>Proteccion contra intemperie o rayos solares directos.</li>
+        </ul>
+      </div>
+      <div class="rider-col">
+        <h3>Audio &amp; Monitoreo</h3>
+        <ul>
+          <li>Sistema PA adecuado a las dimensiones del espacio.</li>
+          <li>Monitoreo local en cabina regulable de forma independiente.</li>
+          <li>Linea de senal limpia XLR directo a sistema central.</li>
+        </ul>
+      </div>
+      <div class="rider-col">
+        <h3>Hospitalidad</h3>
+        <ul>
+          <li>Zona de resguardo segura para equipamiento tecnico secundario.</li>
+          <li>Acceso a hidratacion constante durante montaje y ejecucion.</li>
+          <li>Coordinacion directa con el staff tecnico del venue.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="cta">
+  <div class="cta-wrap">
+    <div class="reveal">
+      <span class="cta-tag">Booking &amp; Management</span>
+      <h2 class="cta-h">TIENES<br>UNA FECHA<br><em>en mente?</em></h2>
+    </div>
+    <div class="cta-right reveal d2">
+      <p class="cta-copy">Cuentame el tipo de evento, la atmosfera que quieres construir y el formato que tienes en mente. La conversacion empieza ahi.</p>
+      <a href="https://wa.me/5215624685267?text=Hola%20Cesar%2C%20quiero%20platicar%20sobre%20el%20booking%20de%20un%20evento" target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <span>Escribir a Cesar</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="cta-tel">Directo&nbsp;<a href="tel:+5215624685267">+52 1 56 24 68 52 67</a>&nbsp;&middot;&nbsp;<a href="https://instagram.com/cesarchannel" target="_blank" rel="noopener noreferrer">@cesarchannel</a></p>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="f-copy">&copy; 2026 DJ CESAR CHANNEL &mdash; PRESS KIT</span>
+  <a href="https://souund.github.io/portfolio/" target="_blank" rel="noopener noreferrer" id="emc-credit">
+    <span id="emc-text">by EMC</span>
+  </a>
+</footer>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{const loader=document.getElementById('loader');if(loader)loader.classList.add('out')},1200)});
+(()=>{const img=document.getElementById('navLogoImg');const link=document.getElementById('navLogoLink');if(img){img.onerror=()=>{link.innerHTML='<span style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;letter-spacing:0.2em;color:#0f0e0c;">DJ CESAR CHANNEL</span>'}}})();
+const nav=document.getElementById('mainnav');window.addEventListener('scroll',()=>{nav.classList.toggle('stuck',window.scrollY>80)},{passive:true});
+(()=>{const container=document.getElementById('eqInner');if(!container)return;const bars=[{cls:'low',from:0.15,to:0.55,delay:0.00,dur:2.40},{cls:'low',from:0.22,to:0.72,delay:0.18,dur:2.10},{cls:'low',from:0.18,to:0.85,delay:0.35,dur:2.30},{cls:'low',from:0.25,to:0.92,delay:0.52,dur:1.95},{cls:'low active',from:0.35,to:0.95,delay:0.15,dur:1.85},{cls:'low active',from:0.28,to:1.00,delay:0.60,dur:2.00},{cls:'mid',from:0.20,to:0.70,delay:0.05,dur:1.50},{cls:'mid',from:0.30,to:0.88,delay:0.20,dur:1.30},{cls:'mid active',from:0.40,to:1.00,delay:0.10,dur:1.15},{cls:'mid active',from:0.45,to:1.00,delay:0.35,dur:1.00},{cls:'mid active',from:0.50,to:1.00,delay:0.00,dur:0.95},{cls:'mid active',from:0.42,to:0.98,delay:0.50,dur:1.10},{cls:'hi',from:0.08,to:0.55,delay:0.00,dur:0.90},{cls:'hi',from:0.12,to:0.68,delay:0.15,dur:0.80},{cls:'hi',from:0.10,to:0.60,delay:0.30,dur:0.75},{cls:'hi',from:0.08,to:0.50,delay:0.45,dur:0.95}];const isMobile=window.innerWidth<480;const isTablet=window.innerWidth<768;const step=isMobile?3:isTablet?2:1;bars.forEach((b,i)=>{if(i%step!==0)return;const el=document.createElement('div');el.className='eq-bar '+b.cls;el.style.setProperty('--from',b.from);el.style.setProperty('--to',b.to);el.style.setProperty('--delay',b.delay+'s');el.style.setProperty('--dur',b.dur+'s');el.style.height=(b.to*100)+'%';container.appendChild(el)})})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
