@@ -1,692 +1,727 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@200;300;400&family=Share+Tech+Mono&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#070604" />
+  <meta name="description" content="DJ César Channel. Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#04030200;
-  --black:#080604;
-  --gold:#c8a84b;
-  --gold2:#dfc27a;
-  --dim:rgba(200,168,75,0.12);
-  --text:#f0ece3;
-  --muted:rgba(240,236,227,0.45);
-  --display:'Bebas Neue',sans-serif;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --mono:'Share Tech Mono',monospace;
-  --body:'Manrope',sans-serif;
-}
-html{scroll-behavior:smooth;font-size:16px;background:#080604}
-body{background:#080604;color:var(--text);font-family:var(--body);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
-::selection{background:var(--gold);color:#080604}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DJ César Channel" />
+  <meta property="og:description" content="Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
+  <meta property="og:image" content="logo-social.jpg" />
+  <meta property="og:image:alt" content="Logo de DJ César Channel" />
+  <meta property="og:locale" content="es_ES" />
 
-/* ── CURSOR LUZ ── */
-.cursor-light{
-  position:fixed;pointer-events:none;z-index:9999;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,168,75,0.06) 0%,transparent 70%);
-  transform:translate(-50%,-50%);
-  transition:opacity 0.3s;
-  mix-blend-mode:screen;
-}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DJ César Channel" />
+  <meta name="twitter:description" content="Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
+  <meta name="twitter:image" content="logo-social.jpg" />
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:28px 6vw;
-  background:linear-gradient(to bottom,rgba(8,6,4,0.85),transparent);
-}
-.logo{font-family:var(--display);font-size:22px;letter-spacing:.1em;color:var(--text);text-decoration:none}
-.logo em{color:var(--gold);font-style:normal}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
+  <title>DJ César Channel</title>
 
-/* ── HERO ── */
-#hero{
-  position:relative;height:100vh;min-height:600px;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.hero-video-bg{
-  position:absolute;inset:0;z-index:0;
-  background:#080604;
-}
-.hero-canvas{
-  position:absolute;inset:0;z-index:1;
-  width:100%;height:100%;
-}
-.hero-content{
-  position:relative;z-index:2;
-  text-align:center;padding:0 5vw;
-}
-.h-name{
-  font-family:var(--display);
-  font-size:clamp(72px,14vw,180px);
-  line-height:.82;letter-spacing:.01em;
-  opacity:0;transform:translateY(40px) skewX(-2deg);
-  animation:upIn 1.2s cubic-bezier(0.16,1,0.3,1) .3s forwards;
-}
-.h-name em{color:var(--gold);font-style:normal}
-.h-sub{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(18px,2.5vw,28px);color:var(--gold);
-  margin-top:20px;letter-spacing:.03em;
-  opacity:0;animation:upIn 1s cubic-bezier(0.16,1,0.3,1) .6s forwards;
-}
-.h-meta{
-  font-family:var(--mono);font-size:10px;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--muted);margin-top:28px;
-  opacity:0;animation:upIn 1s cubic-bezier(0.16,1,0.3,1) .9s forwards;
-}
-.scroll-cue{
-  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
-  z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:9px;letter-spacing:.3em;
-  text-transform:uppercase;color:rgba(200,168,75,0.4);
-  animation:breathe 3s ease-in-out infinite;
-}
-.scroll-line{
-  width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);
-  animation:lineDown 2s ease-in-out infinite;
-}
-@keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@keyframes breathe{0%,100%{opacity:.4}50%{opacity:.9}}
-@keyframes upIn{to{opacity:1;transform:translateY(0) skewX(0)}}
+  <link rel="icon" type="image/png" href="logo-favicon.png" />
+  <link rel="preload" as="image" href="poster-hero.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-/* ── TRANSITION LIGHT ── */
-.section-light{
-  position:relative;
-  background:#080604;
-  overflow:hidden;
-}
-.light-sweep{
-  position:absolute;top:-200px;left:50%;
-  width:600px;height:800px;border-radius:50%;
-  background:radial-gradient(ellipse,rgba(200,168,75,0.07) 0%,transparent 65%);
-  transform:translateX(-50%);
-  pointer-events:none;
-  transition:opacity 0.8s;
-}
-
-/* ── STATEMENT ── */
-#statement{
-  padding:160px 6vw;
-  display:flex;align-items:center;justify-content:center;
-  min-height:70vh;
-  border-top:1px solid rgba(200,168,75,0.08);
-}
-.statement-inner{max-width:900px;text-align:center}
-.stat-eyebrow{
-  font-family:var(--mono);font-size:10px;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:40px;
-  display:flex;align-items:center;justify-content:center;gap:20px;
-}
-.stat-eyebrow::before,.stat-eyebrow::after{content:'';flex:1;max-width:80px;height:1px;background:var(--gold);opacity:.4}
-.stat-text{
-  font-family:var(--serif);font-size:clamp(28px,4.5vw,58px);
-  font-weight:300;line-height:1.25;letter-spacing:.01em;
-  color:var(--text);
-}
-.stat-text em{color:var(--gold);font-style:italic}
-.stat-foot{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--muted);margin-top:50px;
-}
-
-/* ── NUMBERS ── */
-#numbers{
-  padding:100px 6vw;
-  border-top:1px solid rgba(200,168,75,0.06);
-}
-.nums-grid{
-  max-width:1000px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
-}
-.num-cell{
-  padding:60px 40px;text-align:center;
-  background:rgba(200,168,75,0.02);
-  border:1px solid rgba(200,168,75,0.06);
-  transition:background .4s;
-  position:relative;overflow:hidden;
-}
-.num-cell:hover{background:rgba(200,168,75,0.05)}
-.num-cell::before{
-  content:'';position:absolute;top:0;left:0;right:0;
-  height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);
-  opacity:0;transition:opacity .4s;
-}
-.num-cell:hover::before{opacity:.6}
-.num-val{
-  font-family:var(--display);font-size:clamp(60px,7vw,90px);
-  color:var(--gold);line-height:1;
-}
-.num-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--muted);margin-top:12px;
-}
-
-/* ── SHOWREEL / VISUAL SCENE ── */
-#showreel{
-  padding:0;
-  position:relative;
-  overflow:hidden;
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  border-top:1px solid rgba(200,168,75,0.06);
-}
-.reel-canvas{
-  position:absolute;inset:0;width:100%;height:100%;
-}
-.reel-content{
-  position:relative;z-index:2;
-  text-align:center;padding:120px 6vw;
-}
-.reel-title{
-  font-family:var(--display);font-size:clamp(50px,9vw,120px);
-  letter-spacing:.04em;color:var(--text);
-  line-height:.9;
-}
-.reel-line{
-  width:1px;height:80px;background:var(--gold);
-  margin:50px auto;opacity:.4;
-}
-.reel-desc{
-  font-family:var(--serif);font-style:italic;font-size:clamp(18px,2vw,24px);
-  color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;
-}
-
-/* ── SERVICES CINEMATIC ── */
-#services{
-  padding:140px 6vw;
-  border-top:1px solid rgba(200,168,75,0.08);
-}
-.svc-header{
-  text-align:center;margin-bottom:100px;
-}
-.svc-title{
-  font-family:var(--display);font-size:clamp(40px,6vw,72px);
-  letter-spacing:.06em;
-}
-.svc-list{
-  max-width:1000px;margin:0 auto;
-}
-.svc-item{
-  display:grid;grid-template-columns:80px 1fr auto;
-  align-items:center;gap:40px;
-  padding:40px 0;
-  border-bottom:1px solid rgba(200,168,75,0.08);
-  cursor:pointer;
-  transition:padding .4s cubic-bezier(0.16,1,0.3,1);
-}
-.svc-item:hover{padding-left:20px}
-.svc-num{
-  font-family:var(--mono);font-size:11px;letter-spacing:.2em;
-  color:rgba(200,168,75,0.3);
-}
-.svc-name{
-  font-family:var(--display);font-size:clamp(32px,4vw,52px);
-  letter-spacing:.04em;transition:color .3s;
-}
-.svc-item:hover .svc-name{color:var(--gold)}
-.svc-detail{
-  font-family:var(--serif);font-style:italic;font-size:14px;
-  color:var(--muted);max-width:280px;text-align:right;
-  opacity:0;transform:translateX(20px);
-  transition:opacity .4s,transform .4s;
-}
-.svc-item:hover .svc-detail{opacity:1;transform:translateX(0)}
-.svc-arrow{
-  width:40px;height:40px;border:1px solid rgba(200,168,75,0.2);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--gold);font-size:18px;
-  transition:all .3s;border-radius:50%;
-}
-.svc-item:hover .svc-arrow{background:var(--gold);color:#080604;border-color:var(--gold)}
-
-/* ── CITIES ── */
-#cities{
-  padding:140px 6vw;
-  border-top:1px solid rgba(200,168,75,0.06);
-  text-align:center;
-}
-.cities-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:50px;
-}
-.cities-names{
-  font-family:var(--display);font-size:clamp(48px,8vw,110px);
-  letter-spacing:.02em;line-height:.88;
-  color:var(--text);
-}
-.cities-names span{
-  display:block;
-  transition:color .3s;
-  cursor:default;
-}
-.cities-names span:hover{color:var(--gold)}
-.cities-names span:nth-child(2){padding-left:8vw;color:rgba(240,236,227,0.35)}
-.cities-names span:nth-child(3){padding-left:16vw;color:rgba(240,236,227,0.18)}
-.cities-sub{
-  font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.8vw,22px);
-  color:var(--muted);margin-top:60px;
-}
-
-/* ── BOOKING ── */
-#booking{
-  padding:160px 6vw;
-  border-top:1px solid rgba(200,168,75,0.08);
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.book-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(200,168,75,0.05) 0%,transparent 70%);
-  pointer-events:none;
-}
-.book-h{
-  font-family:var(--display);font-size:clamp(52px,9vw,120px);
-  line-height:.85;letter-spacing:.02em;margin-bottom:20px;
-}
-.book-h em{color:var(--gold);font-style:normal}
-.book-sub{
-  font-family:var(--serif);font-style:italic;
-  font-size:clamp(16px,2vw,22px);color:var(--muted);margin-bottom:60px;
-}
-.book-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{
-  font-family:var(--mono);font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;text-decoration:none;
-  padding:18px 36px;transition:all .3s;display:inline-block;
-}
-.btn-gold{
-  background:var(--gold);color:#080604;border:1px solid var(--gold);
-}
-.btn-gold:hover{background:var(--gold2);border-color:var(--gold2)}
-.btn-outline{
-  background:transparent;color:var(--gold);border:1px solid rgba(200,168,75,0.4);
-}
-.btn-outline:hover{border-color:var(--gold);background:rgba(200,168,75,0.05)}
-
-/* ── FOOTER ── */
-footer{
-  padding:40px 6vw;
-  border-top:1px solid rgba(200,168,75,0.06);
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:20px;
-}
-.foot-logo{font-family:var(--display);font-size:18px;letter-spacing:.1em;color:var(--muted)}
-.foot-logo em{color:var(--gold);font-style:normal}
-.foot-copy{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:rgba(200,168,75,0.25)}
-
-/* ── PARALLAX SECTION DIVIDER ── */
-.divider-light{
-  height:1px;
-  background:linear-gradient(to right,transparent,rgba(200,168,75,0.3),transparent);
-  position:relative;
-}
-.divider-light::before{
-  content:'✦';
-  position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  font-size:12px;color:var(--gold);
-  background:#080604;padding:0 12px;
-}
-
-/* ── REVEAL ANIMATIONS ── */
-.reveal{
-  opacity:0;transform:translateY(30px);
-  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:768px){
-  .nums-grid{grid-template-columns:1fr}
-  .svc-item{grid-template-columns:1fr;gap:10px}
-  .svc-detail{display:none}
-  .cities-names span:nth-child(2),.cities-names span:nth-child(3){padding-left:0}
-  footer{justify-content:center;text-align:center}
-}
-</style>
-</head>
-<body>
-
-<div class="cursor-light" id="cursorLight"></div>
-
-<nav>
-  <a href="#hero" class="logo">DJ CÉSAR <em>CHANNEL</em></a>
-  <ul class="nav-links">
-    <li><a href="#statement">Perfil</a></li>
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#booking">Booking</a></li>
-  </ul>
-</nav>
-
-<section id="hero">
-  <div class="hero-video-bg"></div>
-  <canvas id="heroCanvas" class="hero-canvas"></canvas>
-  <div class="hero-content">
-    <h1 class="h-name">DJ CÉSAR<br><em>CHANNEL</em></h1>
-    <div class="h-sub">El set correcto no se programa. Se lee.</div>
-    <div class="h-meta">CDMX · TORONTO · BARCELONA</div>
-  </div>
-  <div class="scroll-cue">
-    <div class="scroll-line"></div>
-    <span>scroll</span>
-  </div>
-</section>
-
-<section id="statement" class="section-light">
-  <div class="light-sweep"></div>
-  <div class="statement-inner reveal">
-    <div class="stat-eyebrow">Curaduría</div>
-    <p class="stat-text">
-      La diferencia entre una <em>buena noche</em> y una que se recuerda<br>
-      no está en el repertorio.<br>
-      Está en el <em>criterio</em> del que lo ejecuta.
-    </p>
-    <div class="stat-foot">8 años · 3 ciudades · una sola firma</div>
-  </div>
-</section>
-
-<div class="divider-light"></div>
-
-<section id="numbers">
-  <div class="nums-grid">
-    <div class="num-cell reveal">
-      <div class="num-val">08</div>
-      <div class="num-label">Años en la cabina</div>
-    </div>
-    <div class="num-cell reveal" style="transition-delay:.15s">
-      <div class="num-val">3</div>
-      <div class="num-label">Ciudades activas</div>
-    </div>
-    <div class="num-cell reveal" style="transition-delay:.3s">
-      <div class="num-val">∞</div>
-      <div class="num-label">Pistas descifradas</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider-light"></div>
-
-<section id="showreel" class="section-light">
-  <canvas id="reelCanvas" class="reel-canvas"></canvas>
-  <div class="reel-content reveal">
-    <h2 class="reel-title">CADA EVENTO<br>ES ÚNICO.</h2>
-    <div class="reel-line"></div>
-    <p class="reel-desc">La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio.</p>
-  </div>
-</section>
-
-<section id="services">
-  <div class="svc-header reveal">
-    <h2 class="svc-title">CONFIGURACIONES</h2>
-  </div>
-  <div class="svc-list">
-    <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20cotizar%20DJ%20Set" target="_blank" class="svc-item reveal" style="text-decoration:none;color:inherit">
-      <span class="svc-num">01</span>
-      <span class="svc-name">DJ SET</span>
-      <div style="display:flex;align-items:center;gap:20px">
-        <span class="svc-detail">Ejecución pura. Para venues con infraestructura propia.</span>
-        <span class="svc-arrow">→</span>
-      </div>
-    </a>
-    <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20cotizar%20DJ%20Set%20%2B%20Audio" target="_blank" class="svc-item reveal" style="text-decoration:none;color:inherit;transition-delay:.1s">
-      <span class="svc-num">02</span>
-      <span class="svc-name">SET + AUDIO</span>
-      <div style="display:flex;align-items:center;gap:20px">
-        <span class="svc-detail">Sistema de sonido profesional incluido. Sin compromisos técnicos.</span>
-        <span class="svc-arrow">→</span>
-      </div>
-    </a>
-    <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20cotizar%20Set%20%2B%20Audio%20%2B%20Iluminaci%C3%B3n" target="_blank" class="svc-item reveal" style="text-decoration:none;color:inherit;transition-delay:.2s">
-      <span class="svc-num">03</span>
-      <span class="svc-name">SET + AUDIO + ILUM.</span>
-      <div style="display:flex;align-items:center;gap:20px">
-        <span class="svc-detail">Sonido e iluminación que transforman la percepción del espacio.</span>
-        <span class="svc-arrow">→</span>
-      </div>
-    </a>
-    <a href="https://wa.me/1234567890?text=Hola%2C%20me%20interesa%20cotizar%20Producci%C3%B3n%20Integral" target="_blank" class="svc-item reveal" style="text-decoration:none;color:inherit;transition-delay:.3s">
-      <span class="svc-num">04</span>
-      <span class="svc-name">PRODUCCIÓN INTEGRAL</span>
-      <div style="display:flex;align-items:center;gap:20px">
-        <span class="svc-detail">Dirección de ambiente completa. El control total de la noche.</span>
-        <span class="svc-arrow">→</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<div class="divider-light"></div>
-
-<section id="cities">
-  <div class="cities-label reveal">Presencia activa</div>
-  <div class="cities-names reveal" style="transition-delay:.1s">
-    <span>CDMX</span>
-    <span>TORONTO</span>
-    <span>BARCELONA</span>
-  </div>
-  <p class="cities-sub reveal" style="transition-delay:.2s">El lugar cambia. El oído no.</p>
-</section>
-
-<div class="divider-light"></div>
-
-<section id="booking">
-  <div class="book-bg"></div>
-  <h2 class="book-h reveal">ELEVA<br><em>TU EVENTO</em></h2>
-  <p class="book-sub reveal" style="transition-delay:.1s">Una conversación para entender lo que tu noche necesita.</p>
-  <div class="book-btns reveal" style="transition-delay:.2s">
-    <a href="https://wa.me/1234567890?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20DJ%20C%C3%A9sar%20Channel" target="_blank" class="btn btn-gold">Contactar vía WhatsApp</a>
-    <a href="mailto:booking@cesarchannel.com?subject=Cotización de evento" class="btn btn-outline">Enviar Email</a>
-  </div>
-</section>
-
-<footer>
-  <span class="foot-logo">DJ CÉSAR <em>CHANNEL</em></span>
-  <span class="foot-copy">© 2025 · Booking & EPK</span>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* ── CURSOR LUZ ── */
-  const light = document.getElementById('cursorLight');
-  document.addEventListener('mousemove', e => {
-    light.style.left = e.clientX + 'px';
-    light.style.top = e.clientY + 'px';
-  });
-
-  /* ── HERO CANVAS: luces de DJ ── */
-  const hc = document.getElementById('heroCanvas');
-  const hctx = hc.getContext('2d');
-  let W, H;
-
-  function resizeHero(){
-    W = hc.width = hc.offsetWidth;
-    H = hc.height = hc.offsetHeight;
-  }
-  resizeHero();
-  window.addEventListener('resize', resizeHero);
-
-  const BEAMS = [
-    {x:.2, a:-0.4, speed:.0004, width:0.025, color:'rgba(200,140,60,', base:.07, phase:0},
-    {x:.5, a:0, speed:.0003, width:.015, color:'rgba(200,168,75,', base:.15, phase:1.5},
-    {x:.8, a:0.3, speed:.0005, width:.02, color:'rgba(180,120,40,', base:.06, phase:3},
-    {x:.35, a:-0.1, speed:.00035, width:.012, color:'rgba(220,180,90,', base:.05, phase:5},
-    {x:.65, a:0.15, speed:.00025, width:.018, color:'rgba(160,110,30,', base:.04, phase:2},
-  ];
-
-  let particles = [];
-  for(let i=0;i<60;i++){
-    particles.push({
-      x:Math.random()*2-0.5,
-      y:Math.random(),
-      r:Math.random()*1.2+0.3,
-      speed:Math.random()*.0003+.00005,
-      opacity:Math.random()*.5+.1,
-      drift:Math.random()*.0002-.0001
-    });
-  }
-
-  let t = 0;
-  function drawHero(){
-    hctx.clearRect(0,0,W,H);
-    t++;
-
-    /* Floor reflection */
-    const floorY = H * 0.72;
-    const fGrad = hctx.createLinearGradient(0,floorY,0,H);
-    fGrad.addColorStop(0,'rgba(200,168,75,0.0)');
-    fGrad.addColorStop(1,'rgba(200,168,75,0.0)');
-    hctx.fillStyle = fGrad;
-    hctx.fillRect(0, floorY, W, H - floorY);
-
-    BEAMS.forEach(b => {
-      const swing = Math.sin(t * b.speed * 1000 + b.phase) * 0.35;
-      const angle = b.a + swing;
-      const ox = W * b.x;
-      const oy = -20;
-      const reach = H * 1.3;
-      const ex = ox + Math.sin(angle) * reach;
-      const ey = oy + Math.cos(angle) * reach;
-      const pw = W * b.width;
-
-      const intensity = b.base + Math.sin(t * b.speed * 800 + b.phase) * 0.03;
-
-      const grad = hctx.createLinearGradient(ox, oy, ex, ey);
-      grad.addColorStop(0, b.color + (intensity*2) + ')');
-      grad.addColorStop(0.3, b.color + intensity + ')');
-      grad.addColorStop(1, b.color + '0)');
-
-      hctx.save();
-      hctx.beginPath();
-      const perpX = Math.cos(angle);
-      const perpY = -Math.sin(angle);
-      hctx.moveTo(ox - perpX * 2, oy - perpY * 2);
-      hctx.lineTo(ex - perpX * pw, ey - perpY * pw);
-      hctx.lineTo(ex + perpX * pw, ey + perpY * pw);
-      hctx.lineTo(ox + perpX * 2, oy + perpY * 2);
-      hctx.closePath();
-      hctx.fillStyle = grad;
-      hctx.globalCompositeOperation = 'screen';
-      hctx.fill();
-      hctx.restore();
-
-      /* Source glow */
-      const sg = hctx.createRadialGradient(ox,oy,0,ox,oy,40);
-      sg.addColorStop(0, b.color + '0.6)');
-      sg.addColorStop(1, 'transparent');
-      hctx.save();
-      hctx.globalCompositeOperation = 'screen';
-      hctx.fillStyle = sg;
-      hctx.beginPath();
-      hctx.arc(ox,oy,40,0,Math.PI*2);
-      hctx.fill();
-      hctx.restore();
-    });
-
-    /* Floating dust particles */
-    particles.forEach(p => {
-      p.y -= p.speed;
-      p.x += p.drift;
-      if(p.y < -0.02){p.y=1.02;p.x=Math.random()*1.5-0.25}
-      const px = p.x * W;
-      const py = p.y * H;
-      const fade = p.y < 0.1 ? p.y*10 : p.y > 0.9 ? (1-p.y)*10 : 1;
-      hctx.save();
-      hctx.globalCompositeOperation = 'screen';
-      hctx.beginPath();
-      hctx.arc(px, py, p.r, 0, Math.PI*2);
-      hctx.fillStyle = `rgba(200,168,75,${p.opacity * fade * 0.6})`;
-      hctx.fill();
-      hctx.restore();
-    });
-
-    /* Bottom vignette */
-    const vig = hctx.createLinearGradient(0, H*0.6, 0, H);
-    vig.addColorStop(0,'transparent');
-    vig.addColorStop(1,'rgba(8,6,4,1)');
-    hctx.fillStyle = vig;
-    hctx.fillRect(0, H*0.6, W, H);
-
-    requestAnimationFrame(drawHero);
-  }
-  drawHero();
-
-  /* ── SHOWREEL CANVAS: círculos de frecuencia ── */
-  const rc = document.getElementById('reelCanvas');
-  const rctx = rc.getContext('2d');
-
-  function resizeReel(){
-    rc.width = rc.offsetWidth;
-    rc.height = rc.offsetHeight;
-  }
-  resizeReel();
-  window.addEventListener('resize', resizeReel);
-
-  let rt = 0;
-  function drawReel(){
-    const RW = rc.width, RH = rc.height;
-    rctx.clearRect(0,0,RW,RH);
-    rt++;
-    const cx = RW/2, cy = RH/2;
-    const maxR = Math.min(RW,RH) * 0.45;
-
-    for(let ring=0;ring<12;ring++){
-      const progress = ring / 12;
-      const baseR = maxR * progress;
-      const pulse = Math.sin(rt * 0.02 - ring * 0.5) * maxR * 0.012;
-      const r = baseR + pulse;
-      const alpha = (1 - progress) * 0.12;
-
-      rctx.beginPath();
-      rctx.arc(cx, cy, r, 0, Math.PI*2);
-      rctx.strokeStyle = `rgba(200,168,75,${alpha})`;
-      rctx.lineWidth = 1;
-      rctx.stroke();
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#070604;
+      --bg-soft:#0f0d0a;
+      --bg-card:#11100d;
+      --gold:#c8a84b;
+      --gold-2:#e0c271;
+      --text:#f2ede2;
+      --muted:rgba(242,237,226,.62);
+      --faint:rgba(242,237,226,.28);
+      --line:rgba(200,168,75,.12);
+      --line-strong:rgba(200,168,75,.22);
+      --shadow:0 24px 60px rgba(0,0,0,.45);
+      --D:'Bebas Neue',sans-serif;
+      --S:'Cormorant Garamond',serif;
+      --B:'Manrope',sans-serif;
+      --M:'Share Tech Mono',monospace;
+      --container:min(1180px,88vw);
+      --ease:cubic-bezier(.16,1,.3,1);
     }
 
-    /* Center pulse */
-    const cp = Math.sin(rt * 0.03) * 0.5 + 0.5;
-    const cpGrad = rctx.createRadialGradient(cx,cy,0,cx,cy,maxR*0.3);
-    cpGrad.addColorStop(0, `rgba(200,168,75,${0.04 + cp * 0.03})`);
-    cpGrad.addColorStop(1, 'transparent');
-    rctx.fillStyle = cpGrad;
-    rctx.beginPath();
-    rctx.arc(cx,cy,maxR*0.3,0,Math.PI*2);
-    rctx.fill();
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--B);
+      font-weight:300;
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      cursor:default;
+    }
 
-    requestAnimationFrame(drawReel);
-  }
-  drawReel();
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9998;
+      opacity:.028;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:200px 200px;
+    }
 
-  /* ── SCROLL REVEAL ── */
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting) e.target.classList.add('visible');
+    img,video{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+
+    .container{width:var(--container);margin:0 auto}
+    .divider{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.22),transparent)}
+
+    .rev{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .rev.on{opacity:1;transform:none}
+
+    nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:200;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px 6vw;
+      background:linear-gradient(to bottom,rgba(7,6,4,.95),rgba(7,6,4,.72) 60%,transparent);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      transition:transform .45s var(--ease),opacity .45s var(--ease);
+    }
+    nav.hidden{transform:translateY(-110%);opacity:0}
+    .logo-wrap{display:flex;align-items:center;gap:14px}
+    .logo-mark{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))}
+    .nav-right{display:flex;align-items:center;gap:28px}
+    .nav-links{display:flex;list-style:none;gap:26px}
+    .nav-links a,.nav-ig{
+      font-family:var(--M);
+      font-size:9px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--muted);
+      position:relative;
+      transition:color .3s ease;
+    }
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:-6px;
+      width:0;height:1px;
+      background:var(--gold);
+      transition:width .35s var(--ease);
+    }
+    .nav-links a:hover,.nav-ig:hover{color:var(--text)}
+    .nav-links a:hover::after{width:100%}
+    .nav-ig{font-size:1rem}
+
+    #hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-media{position:absolute;inset:0;z-index:0}
+    .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-vignette{
+      position:absolute;inset:0;z-index:1;
+      background:linear-gradient(to bottom,rgba(7,6,4,.5) 0%,rgba(7,6,4,.15) 28%,rgba(7,6,4,.15) 54%,rgba(7,6,4,.96) 100%);
+    }
+
+    .hero-content{position:relative;z-index:3;width:100%;padding:0 6vw 72px}
+    .hero-inner{max-width:1100px}
+    .hero-h1{
+      font-family:var(--B);
+      font-weight:500;
+      font-size:clamp(72px,14vw,170px);
+      line-height:.78;
+      letter-spacing:.16em;
+      display:inline-block;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(200,168,75,.42);
+      text-shadow:0 0 80px rgba(0,0,0,.4);
+      mix-blend-mode:screen;
+      opacity:0;
+      transform:translateY(50px);
+      animation:up 1.15s var(--ease) .18s forwards;
+    }
+    .hero-h1 em{
+      display:block;
+      font-style:normal;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(200,168,75,.72);
+    }
+
+    .scroll-hint{
+      position:absolute;right:6vw;bottom:28px;z-index:3;
+      display:flex;align-items:center;gap:10px;
+      font-family:var(--M);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,168,75,.36);
+      animation:breathe 3s ease-in-out infinite;
+    }
+    .scroll-hint::after{content:"";width:40px;height:1px;background:var(--gold);opacity:.24}
+
+    section{position:relative}
+
+    /* STATS CARD */
+    #stats{padding:80px 0 60px;border-top:1px solid rgba(200,168,75,.06)}
+    .stats-card{
+      border:1px solid rgba(200,168,75,.18);
+      background:rgba(10,9,7,.96);
+      padding:24px 22px;
+      max-width:520px;
+      margin:70px auto 80px;
+      box-shadow:0 20px 46px rgba(0,0,0,.55);
+    }
+    .stats-intro{
+      font-family:var(--M);
+      font-size:11px;
+      letter-spacing:.34em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+      text-align:center;
+    }
+    .stats-intro .city{color:var(--gold);}
+    .stats-intro span:hover{color:var(--gold-2);}
+    .stat-row{
+      padding:14px 0;
+      border-top:1px solid rgba(200,168,75,.14);
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      text-align:center;
+    }
+    .stat-row:first-of-type{margin-top:4px}
+    .stat-val{
+      font-family:var(--B);
+      font-weight:500;
+      font-size:26px;
+      letter-spacing:.1em;
+      color:var(--text);
+    }
+    .stat-label{
+      font-family:var(--B);
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    #bio{padding:110px 0;border-top:1px solid rgba(200,168,75,.06)}
+    .bio-grid{display:grid;grid-template-columns:.9fr 1.2fr;gap:72px;align-items:center}
+    .bio-tag{font-family:var(--M);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .bio-tag::after{content:"";flex:1;height:1px;background:rgba(200,168,75,.2)}
+    .bio-h{font-family:var(--D);font-size:clamp(46px,5.5vw,74px);line-height:.88;letter-spacing:.03em;margin-bottom:28px}
+    .bio-genres{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+    .genre-pill{padding:8px 16px;border:1px solid rgba(200,168,75,.15);font-family:var(--M);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:all .3s ease}
+    .genre-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,.04)}
+    .bio-copy p{font-size:clamp(15px,1.34vw,18px);line-height:1.84;color:var(--muted);margin-bottom:20px;max-width:60ch}
+    .bio-copy strong{color:var(--text);font-weight:500}
+
+    #gallery{padding:110px 0;border-top:1px solid rgba(200,168,75,.06)}
+    .gal-header{text-align:center;margin-bottom:56px}
+    .gal-title{font-family:var(--D);font-size:clamp(38px,5vw,64px);letter-spacing:.06em}
+    .gal-sub{font-family:var(--S);font-style:italic;font-size:18px;color:var(--muted);margin-top:6px}
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:8px;align-items:stretch}
+    .gallery-main,.gallery-side{display:grid;gap:8px}
+    .gallery-main{min-height:720px}
+    .gallery-side{grid-template-rows:1fr 1fr}
+    .gallery-top,.gallery-bottom{display:grid;gap:8px}
+    .gallery-top{grid-template-columns:.92fr 1.08fr}
+    .gallery-bottom{grid-template-columns:.95fr 1.05fr}
+    .media-card{
+      position:relative;overflow:hidden;background:var(--bg-card);min-height:220px;
+      border:1px solid rgba(200,168,75,.08);box-shadow:var(--shadow);
+      isolation:isolate;
+      transition:transform .45s var(--ease),border-color .35s ease,filter .35s ease;
+    }
+    .media-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s var(--ease)}
+    .media-card::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(7,6,4,.56),rgba(7,6,4,.16) 42%,rgba(7,6,4,.06));
+      z-index:1;transition:opacity .45s ease,background .45s ease;
+    }
+    .media-card::after{
+      content:"";position:absolute;inset:auto 0 0 0;height:38%;
+      background:linear-gradient(to top,rgba(7,6,4,.56),transparent);
+      z-index:1;pointer-events:none;
+    }
+    .media-meta{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+    .media-label{font-family:var(--M);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,237,226,.72)}
+    .media-caption{font-family:var(--S);font-style:italic;font-size:18px;color:var(--text)}
+    .gallery-grid:hover .media-card:not(:hover){filter:brightness(.78)}
+    .media-card:hover{transform:translateY(-4px);border-color:rgba(200,168,75,.2)}
+    .media-card:hover img{transform:scale(1.03);filter:brightness(1.06) contrast(1.04)}
+    .media-card:hover::before{background:linear-gradient(to top,rgba(7,6,4,.38),rgba(7,6,4,.08) 42%,rgba(7,6,4,.02))}
+    .media-tall{min-height:350px}
+    .media-wide{min-height:260px}
+
+    #services{padding:120px 0;border-top:1px solid rgba(200,168,75,.06)}
+    .svc-header{text-align:center;margin-bottom:54px}
+    .svc-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .svc-h{font-family:var(--D);font-size:clamp(42px,5.8vw,72px);line-height:.9;letter-spacing:.04em}
+    .services-shell{max-width:980px;margin:0 auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .service-item{
+      display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:start;
+      padding:32px 10px;border-bottom:1px solid rgba(200,168,75,.08);position:relative;
+      transition:padding-left .36s var(--ease),background .36s ease;
+    }
+    .service-item:last-child{border-bottom:none}
+    .service-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .38s var(--ease)}
+    .service-item:hover{padding-left:18px;background:rgba(200,168,75,.02)}
+    .service-item:hover::before{transform:scaleY(1)}
+    .service-num{font-family:var(--M);font-size:10px;letter-spacing:.25em;color:rgba(200,168,75,.36);padding-top:10px}
+    .service-copy{display:grid;gap:6px}
+    .service-name{font-family:var(--D);font-size:clamp(32px,4vw,54px);letter-spacing:.04em;line-height:.9;color:var(--text)}
+    .service-line{font-family:var(--B);font-weight:400;font-size:clamp(15px,1.6vw,19px);color:var(--muted);max-width:42ch}
+
+    .services-cta-wrap{text-align:center;margin-top:34px}
+    .btn-lite{
+      display:inline-flex;align-items:center;gap:10px;padding:15px 28px;
+      border:1px solid rgba(200,168,75,.3);color:var(--gold);
+      font-family:var(--M);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+      transition:all .3s ease;
+    }
+    .btn-lite:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(200,168,75,.05)}
+
+    #booking{padding:130px 0;border-top:1px solid rgba(200,168,75,.06);text-align:center;overflow:hidden}
+    #booking canvas{position:absolute;inset:0;pointer-events:none;z-index:0}
+    .book-glow{position:absolute;left:50%;bottom:-140px;transform:translateX(-50%);width:min(860px,90vw);height:440px;border-radius:50%;background:radial-gradient(ellipse,rgba(200,168,75,.06) 0%,transparent 72%);pointer-events:none;z-index:0}
+    .booking-shell{position:relative;z-index:1;max-width:900px;margin:0 auto}
+    .book-h{font-family:var(--D);font-size:clamp(54px,9vw,118px);line-height:.84;letter-spacing:.02em;margin-bottom:14px}
+    .book-sub{font-family:var(--S);font-style:italic;font-size:clamp(18px,1.9vw,23px);color:var(--muted);max-width:34ch;margin:0 auto 44px}
+    .booking-panel{border:1px solid rgba(200,168,75,.14);background:linear-gradient(to bottom,rgba(17,16,13,.88),rgba(10,9,7,.9));padding:34px;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+    .booking-grid{display:grid;gap:18px}
+    .booking-copy{text-align:left}
+    .booking-copy h3{font-family:var(--D);font-size:clamp(34px,4.5vw,54px);letter-spacing:.04em;line-height:.92;margin-bottom:10px}
+    .booking-copy p{font-size:16px;color:var(--muted);max-width:46ch}
+
+    .book-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+    .btn,.btn-out{
+      display:inline-flex;align-items:center;gap:10px;padding:16px 28px;
+      font-family:var(--M);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+      transition:all .3s ease;border:1px solid var(--gold);
+    }
+    .btn{background:var(--gold);color:var(--bg)}
+    .btn:hover{background:var(--gold-2);transform:translateY(-3px);box-shadow:0 18px 38px rgba(0,0,0,.45)}
+    .btn-out{background:transparent;color:var(--gold);border-color:rgba(200,168,75,.28)}
+    .btn-out:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(200,168,75,.05)}
+
+    footer{padding:34px 0 42px;border-top:1px solid rgba(200,168,75,.06)}
+    .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .foot-left{display:flex;align-items:center;gap:14px}
+    .foot-logo-img{width:30px;height:30px;object-fit:contain;opacity:.7}
+    .foot-logo{font-family:var(--D);font-size:18px;letter-spacing:.1em;color:rgba(242,237,226,.26)}
+    .foot-logo em{font-style:normal;color:rgba(200,168,75,.52)}
+    .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+    .foot-links a,.foot-copy{font-family:var(--M);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,168,75,.32)}
+    .foot-links a:hover{color:var(--gold)}
+
+    @keyframes up{to{opacity:1;transform:translateY(0)}}
+    @keyframes breathe{0%,100%{opacity:.35}50%{opacity:.72}}
+
+    @media (max-width: 1024px){
+      .gallery-grid{grid-template-columns:1fr}
+      .gallery-main{min-height:520px}
+      .gallery-side{grid-template-rows:auto;gap:8px}
+    }
+
+    @media (max-width: 900px){
+      nav{padding:16px 4.5vw}
+      .logo-mark{width:38px;height:38px}
+      .nav-right{gap:16px}
+      .nav-links{gap:14px}
+      .nav-links a{font-size:8px;letter-spacing:.2em}
+      .stats-card{margin:60px auto 70px}
+      .bio-grid{grid-template-columns:1fr;gap:40px;padding:0 6vw}
+      .gallery-top,.gallery-bottom{grid-template-columns:1fr 1fr}
+      .booking-panel{padding:24px}
+    }
+
+    @media (max-width: 640px){
+      body::after{opacity:.022}
+      .container{width:min(92vw,560px)}
+      .nav-links{display:none}
+      .nav-right{gap:12px}
+      .logo-wrap{gap:10px}
+      .logo-mark{width:34px;height:34px}
+      .hero-content{padding:0 4.5vw 56px}
+      .hero-h1{font-size:clamp(58px,15vw,92px);-webkit-text-stroke:1.2px rgba(200,168,75,.42)}
+      .hero-h1 em{-webkit-text-stroke:1.2px rgba(200,168,75,.7)}
+      .scroll-hint{right:4.5vw;bottom:18px;font-size:8px;letter-spacing:.2em}
+      #bio,#gallery,#services,#booking{padding:84px 0}
+      .bio-grid{gap:34px}
+      .bio-h{font-size:36px}
+      .bio-copy p{font-size:15px}
+      .gal-header{margin-bottom:28px}
+      .gal-title{font-size:40px}
+      .gal-sub{font-size:16px}
+      .gallery-main{min-height:420px}
+      .gallery-top,.gallery-bottom{grid-template-columns:1fr;gap:8px}
+      .gallery-grid,.gallery-main,.gallery-side{gap:8px}
+      .media-card,.media-tall,.media-wide{min-height:240px}
+      .media-main{min-height:420px}
+      .media-meta{left:14px;right:14px;bottom:12px}
+      .media-caption{font-size:16px}
+      .svc-h{font-size:42px}
+      .service-item{grid-template-columns:1fr;gap:10px;padding:24px 0}
+      .service-num{padding-top:0}
+      .service-name{font-size:34px}
+      .service-line{font-size:18px}
+      .booking-panel{padding:20px}
+      .booking-copy h3{font-size:34px}
+      .booking-copy p{font-size:15px}
+      .book-btns{flex-direction:column}
+      .btn,.btn-out,.btn-lite{justify-content:center;width:100%}
+      .foot{justify-content:center;text-align:center}
+      .foot-left{flex-direction:column;gap:8px}
+      .foot-links{justify-content:center}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .rev{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <a href="#hero" class="logo-wrap" aria-label="Ir al inicio">
+      <img src="logo.png" alt="Logo DJ César Channel" class="logo-mark" />
+    </a>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#bio">Perfil</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#booking">Booking</a></li>
+      </ul>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram de DJ César Channel">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline poster="poster-hero.jpg" id="heroVideo">
+          <source src="cesarvideo.mp4" type="video/mp4" />
+          <source src="cesarvideo.webm" type="video/webm" />
+          <img src="poster-hero.jpg" alt="DJ César Channel en performance" />
+        </video>
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-inner">
+          <h1 class="hero-h1">CÉSAR <em>CHANNEL</em></h1>
+        </div>
+      </div>
+
+      <div class="scroll-hint">Desliza</div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="stats">
+      <div class="container">
+        <div class="stats-card rev">
+          <div class="stats-intro">CDMX · <span class="city">Toronto</span> · Barcelona</div>
+          <div class="stat-row">
+            <div class="stat-val">8+</div>
+            <div class="stat-label">Años descifrando la pista</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-val">400+</div>
+            <div class="stat-label">Eventos realizados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="bio">
+      <div class="container bio-grid">
+        <div class="rev">
+          <div class="bio-tag">Acerca de</div>
+          <h2 class="bio-h">CURADURÍA,<br />NO<br />REPRODUCCIÓN.</h2>
+          <div class="bio-genres">
+            <span class="genre-pill">House</span>
+            <span class="genre-pill">Funk</span>
+            <span class="genre-pill">Latin</span>
+            <span class="genre-pill">Afrobeats</span>
+            <span class="genre-pill">Electronic</span>
+            <span class="genre-pill">Open Format</span>
+          </div>
+        </div>
+
+        <div class="bio-copy rev" style="transition-delay:.12s">
+          <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
+          <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>
+          <p>CDMX le dio el groove. Toronto le dio el criterio. Barcelona le dio el matiz. Tres escuelas, una sola firma.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="gallery">
+      <div class="container">
+        <header class="gal-header rev">
+          <h2 class="gal-title">PRESENCIA VISUAL</h2>
+          <p class="gal-sub">Performance · Ambiente</p>
+        </header>
+
+        <div class="gallery-grid rev" style="transition-delay:.08s">
+          <div class="gallery-main">
+            <article class="media-card media-main">
+              <img src="foto2.jpg" alt="Retrato de DJ César Channel" loading="lazy" width="1200" height="1500" />
+              <div class="media-meta">
+                <div>
+                  <div class="media-label">Foto 02</div>
+                  <div class="media-caption">Presencia</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="gallery-side">
+            <div class="gallery-top">
+              <article class="media-card media-tall">
+                <img src="foto1.jpg" alt="Manos de DJ César Channel en los controles" loading="lazy" width="900" height="1200" />
+                <div class="media-meta">
+                  <div>
+                    <div class="media-label">Foto 01</div>
+                    <div class="media-caption">Control</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="media-card media-wide">
+                <img src="foto3.jpg" alt="Ambiente y luces en evento" loading="lazy" width="1200" height="900" />
+                <div class="media-meta">
+                  <div>
+                    <div class="media-label">Foto 03</div>
+                    <div class="media-caption">Atmósfera</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="gallery-bottom">
+              <article class="media-card media-wide">
+                <img src="foto4.jpg" alt="Invitados disfrutando la pista de baile" loading="lazy" width="1200" height="900" />
+                <div class="media-meta">
+                  <div>
+                    <div class="media-label">Foto 04</div>
+                    <div class="media-caption">Respuesta</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="media-card media-wide">
+                <img src="foto5.jpg" alt="Venue completo preparado para el evento" loading="lazy" width="1200" height="900" />
+                <div class="media-meta">
+                  <div>
+                    <div class="media-label">Foto 05</div>
+                    <div class="media-caption">Escala</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="services">
+      <div class="container">
+        <header class="svc-header rev">
+          <div class="svc-eyebrow">Configuraciones de performance</div>
+          <h2 class="svc-h">LO QUE PUEDO<br />HACER POR TU EVENTO</h2>
+        </header>
+
+        <div class="services-shell rev" style="transition-delay:.08s">
+          <article class="service-item">
+            <div class="service-num">01</div>
+            <div class="service-copy">
+              <h3 class="service-name">DJ SET</h3>
+              <p class="service-line">Curaduría musical y ejecución en cabina para eventos con infraestructura propia.</p>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <div class="service-num">02</div>
+            <div class="service-copy">
+              <h3 class="service-name">DJ + AUDIO</h3>
+              <p class="service-line">Sonido profesional para bodas, eventos privados y celebraciones donde la pista importa.</p>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <div class="service-num">03</div>
+            <div class="service-copy">
+              <h3 class="service-name">PRODUCCIÓN INTEGRAL</h3>
+              <p class="service-line">Dirección completa de la experiencia: música, tiempos y energía de la noche.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="services-cta-wrap rev" style="transition-delay:.14s">
+          <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20cotizar%20un%20servicio" target="_blank" rel="noopener noreferrer" class="btn-lite">
+            <i class="fa-brands fa-whatsapp"></i>
+            Cotizar servicio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="booking">
+      <canvas id="bookingCanvas"></canvas>
+      <div class="book-glow"></div>
+
+      <div class="container booking-shell">
+        <h2 class="book-h rev">HABLEMOS DE<br />TU EVENTO</h2>
+        <p class="book-sub rev" style="transition-delay:.08s">Fecha, ciudad y número de invitados. Con eso preparo una propuesta clara.</p>
+
+        <div class="booking-panel rev" style="transition-delay:.14s">
+          <div class="booking-grid">
+            <div class="booking-copy">
+              <h3>Un punto de partida nítido.</h3>
+              <p>Cuando me escribas, incluye fecha tentativa, ciudad, tipo de evento y número aproximado de invitados. Desde ahí armamos la noche sin vueltas.</p>
+            </div>
+
+            <div class="book-btns">
+              <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento" target="_blank" rel="noopener noreferrer" class="btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                RESERVAR FECHA
+              </a>
+              <a href="mailto:booking@cesarchannel.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel" class="btn-out">
+                <i class="fa-regular fa-envelope"></i>
+                SOLICITAR INFO
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="container foot">
+      <div class="foot-left">
+        <img src="logo.png" alt="Logo DJ César Channel" class="foot-logo-img" />
+        <span class="foot-logo">DJ CÉSAR <em>CHANNEL</em></span>
+      </div>
+
+      <div class="foot-links">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:booking@cesarchannel.com">Email</a>
+        <span class="foot-copy">2026 Booking EPK</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.getElementById('mainNav');
+      let lastScroll = 0;
+      let navTimeout;
+      window.addEventListener('scroll', () => {
+        const current = window.pageYOffset;
+        if (current < 50) {
+          nav.classList.remove('hidden');
+          return;
+        }
+        if (current > lastScroll && current > 150) nav.classList.add('hidden');
+        else if (current < lastScroll) nav.classList.remove('hidden');
+        clearTimeout(navTimeout);
+        navTimeout = setTimeout(() => {
+          if (window.pageYOffset > 150) nav.classList.add('hidden');
+        }, 2600);
+        lastScroll = current;
+      }, { passive: true });
+
+      const revs = document.querySelectorAll('.rev');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('on');
+        });
+      }, { threshold: 0.12 });
+      revs.forEach(el => io.observe(el));
+
+      const heroVideo = document.getElementById('heroVideo');
+      if (heroVideo) heroVideo.muted = true;
+
+      const bc = document.getElementById('bookingCanvas');
+      if (bc) {
+        const bctx = bc.getContext('2d');
+        let bw = 0, bh = 0;
+        let mouseX = -100, mouseY = -100;
+        const section = document.getElementById('booking');
+        const particles = Array.from({ length: 30 }, () => ({
+          x: 0, y: 0,
+          size: Math.random() * 1.8 + .6,
+          spdX: Math.random() - .5,
+          spdY: Math.random() - .5,
+          op: Math.random() * .35 + .08,
+          seeded: false
+        }));
+        function resize() {
+          bw = bc.width = bc.offsetWidth;
+          bh = bc.height = bc.offsetHeight;
+          particles.forEach(p => {
+            if (!p.seeded) {
+              p.x = Math.random() * bw;
+              p.y = Math.random() * bh;
+              p.seeded = true;
+            }
+          });
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        section.addEventListener('mousemove', e => {
+          const rect = bc.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+        });
+        section.addEventListener('mouseleave', () => {
+          mouseX = -100; mouseY = -100;
+        });
+        function draw() {
+          bctx.clearRect(0, 0, bw, bh);
+          particles.forEach(p => {
+            p.x += p.spdX * .22;
+            p.y += p.spdY * .22;
+            if (p.x < 0) p.x = bw;
+            if (p.x > bw) p.x = 0;
+            if (p.y < 0) p.y = bh;
+            if (p.y > bh) p.y = 0;
+            const dx = mouseX - p.x;
+            const dy = mouseY - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const pull = dist < 180 ? (1 - dist / 180) : 0;
+            p.x -= dx * pull * .01;
+            p.y -= dy * pull * .01;
+            bctx.beginPath();
+            bctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            bctx.fillStyle = `rgba(200,168,75,${p.op + pull * .25})`;
+            bctx.fill();
+          });
+          requestAnimationFrame(draw);
+        }
+        draw();
+      }
     });
-  }, {threshold: 0.15});
-  reveals.forEach(el => observer.observe(el));
-
-  /* ── SECTION LIGHT SWEEP ── */
-  const sweeps = document.querySelectorAll('.light-sweep');
-  const sweepObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      e.target.style.opacity = e.isIntersecting ? '1' : '0';
-    });
-  }, {threshold: 0.1});
-  sweeps.forEach(s => sweepObs.observe(s.parentElement));
-
-});
-</script>
+  </script>
 </body>
 </html>
