@@ -137,11 +137,11 @@
       font-weight:500;
       font-size:clamp(72px,14vw,170px);
       line-height:.78;
-      letter-spacing:.16em;
+      letter-spacing:.12em;
       display:inline-block;
       color:transparent;
-      -webkit-text-stroke:1px rgba(200,168,75,.42);
-      text-shadow:0 0 80px rgba(0,0,0,.4);
+      -webkit-text-stroke:0.8px rgba(242,237,226,.9);
+      text-shadow:0 0 40px rgba(0,0,0,.7);
       mix-blend-mode:screen;
       opacity:0;
       transform:translateY(50px);
@@ -151,7 +151,7 @@
       display:block;
       font-style:normal;
       color:transparent;
-      -webkit-text-stroke:1px rgba(200,168,75,.72);
+      -webkit-text-stroke:0.8px rgba(242,237,226,.95);
     }
 
     .scroll-hint{
@@ -164,150 +164,342 @@
 
     section{position:relative}
 
-    /* STATS CARD */
-    #stats{padding:80px 0 60px;border-top:1px solid rgba(200,168,75,.06)}
-    .stats-card{
-      border:1px solid rgba(200,168,75,.18);
-      background:rgba(10,9,7,.96);
-      padding:24px 22px;
-      max-width:520px;
-      margin:70px auto 80px;
-      box-shadow:0 20px 46px rgba(0,0,0,.55);
+    /* BIO + STATS ATMÓSFERA */
+    #bio{
+      padding:120px 0;
+      border-top:1px solid rgba(200,168,75,.06);
+      position:relative;
+      overflow:hidden;
     }
-    .stats-intro{
+    #bio::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to right,rgba(7,6,4,.9) 0%,rgba(7,6,4,.7) 26%,rgba(7,6,4,.92) 68%,rgba(7,6,4,1) 100%),
+        url("foto-stats.jpg") left center / cover no-repeat;
+      opacity:.9;
+      z-index:0;
+    }
+    .bio-shell{position:relative;z-index:1}
+    .bio-grid{
+      display:grid;
+      grid-template-columns:1.1fr 1.3fr;
+      gap:56px;
+      align-items:flex-start;
+    }
+    .bio-tag{
+      font-family:var(--M);font-size:10px;letter-spacing:.34em;
+      text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+    }
+    .bio-h{
+      font-family:var(--D);
+      font-size:clamp(44px,5vw,68px);
+      line-height:.86;
+      letter-spacing:.03em;
+      margin-bottom:26px;
+    }
+    .bio-cities{
       font-family:var(--M);
-      font-size:11px;
-      letter-spacing:.34em;
+      font-size:10px;
+      letter-spacing:.3em;
       text-transform:uppercase;
       color:var(--muted);
       margin-bottom:10px;
-      text-align:center;
     }
-    .stats-intro .city{color:var(--gold);}
-    .stats-intro span:hover{color:var(--gold-2);}
-    .stat-row{
-      padding:14px 0;
-      border-top:1px solid rgba(200,168,75,.14);
-      display:flex;
+    .bio-cities span{color:var(--gold);}
+    .bio-stats{
+      display:inline-flex;
       flex-direction:column;
-      gap:4px;
-      text-align:center;
+      gap:6px;
+      padding:14px 16px;
+      border:1px solid rgba(200,168,75,.26);
+      background:rgba(7,6,4,.9);
+      box-shadow:0 16px 34px rgba(0,0,0,.55);
+      margin-bottom:32px;
     }
-    .stat-row:first-of-type{margin-top:4px}
-    .stat-val{
+    .bio-stat{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:baseline;
+      border-top:1px solid rgba(200,168,75,.18);
+      padding-top:6px;
+    }
+    .bio-stat:first-child{border-top:none;padding-top:0}
+    .bio-stat-val{
       font-family:var(--B);
       font-weight:500;
-      font-size:26px;
-      letter-spacing:.1em;
-      color:var(--text);
+      font-size:22px;
+      letter-spacing:.12em;
     }
-    .stat-label{
-      font-family:var(--B);
-      font-size:14px;
+    .bio-stat-label{
+      font-family:var(--M);
+      font-size:9px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
       color:var(--muted);
     }
-
-    #bio{padding:110px 0;border-top:1px solid rgba(200,168,75,.06)}
-    .bio-grid{display:grid;grid-template-columns:.9fr 1.2fr;gap:72px;align-items:center}
-    .bio-tag{font-family:var(--M);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:16px}
-    .bio-tag::after{content:"";flex:1;height:1px;background:rgba(200,168,75,.2)}
-    .bio-h{font-family:var(--D);font-size:clamp(46px,5.5vw,74px);line-height:.88;letter-spacing:.03em;margin-bottom:28px}
-    .bio-genres{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
-    .genre-pill{padding:8px 16px;border:1px solid rgba(200,168,75,.15);font-family:var(--M);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:all .3s ease}
-    .genre-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,.04)}
-    .bio-copy p{font-size:clamp(15px,1.34vw,18px);line-height:1.84;color:var(--muted);margin-bottom:20px;max-width:60ch}
+    .bio-genres{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;
+    }
+    .genre-pill{
+      padding:7px 14px;
+      border:1px solid rgba(200,168,75,.18);
+      font-family:var(--M);
+      font-size:9px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--muted);
+      background:rgba(7,6,4,.7);
+    }
+    .bio-copy p{
+      font-size:clamp(15px,1.34vw,18px);
+      line-height:1.84;
+      color:var(--muted);
+      margin-bottom:20px;
+      max-width:60ch;
+    }
     .bio-copy strong{color:var(--text);font-weight:500}
 
-    #gallery{padding:110px 0;border-top:1px solid rgba(200,168,75,.06)}
-    .gal-header{text-align:center;margin-bottom:56px}
-    .gal-title{font-family:var(--D);font-size:clamp(38px,5vw,64px);letter-spacing:.06em}
-    .gal-sub{font-family:var(--S);font-style:italic;font-size:18px;color:var(--muted);margin-top:6px}
-    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:8px;align-items:stretch}
-    .gallery-main,.gallery-side{display:grid;gap:8px}
-    .gallery-main{min-height:720px}
+    /* PRESENCIA VISUAL – FRANJA CINE */
+    #gallery{
+      padding:80px 0 90px;
+      border-top:1px solid rgba(200,168,75,.06);
+    }
+    .gal-header{text-align:center;margin-bottom:34px}
+    .gal-title{font-family:var(--D);font-size:clamp(34px,4.6vw,56px);letter-spacing:.06em}
+    .gal-sub{font-family:var(--S);font-style:italic;font-size:18px;color:var(--muted);margin-top:4px}
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:8px;
+      align-items:stretch;
+      min-height:320px;
+    }
+    .gallery-main,.gallery-side{display:grid;gap:6px}
+    .gallery-main{min-height:420px}
     .gallery-side{grid-template-rows:1fr 1fr}
-    .gallery-top,.gallery-bottom{display:grid;gap:8px}
-    .gallery-top{grid-template-columns:.92fr 1.08fr}
+    .gallery-top,.gallery-bottom{display:grid;gap:6px}
+    .gallery-top{grid-template-columns:.9fr 1.1fr}
     .gallery-bottom{grid-template-columns:.95fr 1.05fr}
     .media-card{
-      position:relative;overflow:hidden;background:var(--bg-card);min-height:220px;
+      position:relative;overflow:hidden;background:var(--bg-card);min-height:190px;
       border:1px solid rgba(200,168,75,.08);box-shadow:var(--shadow);
       isolation:isolate;
       transition:transform .45s var(--ease),border-color .35s ease,filter .35s ease;
     }
-    .media-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s var(--ease)}
+    .media-card img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s var(--ease)}
     .media-card::before{
       content:"";position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(7,6,4,.56),rgba(7,6,4,.16) 42%,rgba(7,6,4,.06));
+      background:linear-gradient(to top,rgba(7,6,4,.54),rgba(7,6,4,.16) 42%,rgba(7,6,4,.06));
       z-index:1;transition:opacity .45s ease,background .45s ease;
     }
     .media-card::after{
-      content:"";position:absolute;inset:auto 0 0 0;height:38%;
+      content:"";position:absolute;inset:auto 0 0 0;height:34%;
       background:linear-gradient(to top,rgba(7,6,4,.56),transparent);
       z-index:1;pointer-events:none;
     }
-    .media-meta{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+    .media-meta{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
     .media-label{font-family:var(--M);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,237,226,.72)}
-    .media-caption{font-family:var(--S);font-style:italic;font-size:18px;color:var(--text)}
+    .media-caption{font-family:var(--S);font-style:italic;font-size:17px;color:var(--text)}
     .gallery-grid:hover .media-card:not(:hover){filter:brightness(.78)}
-    .media-card:hover{transform:translateY(-4px);border-color:rgba(200,168,75,.2)}
-    .media-card:hover img{transform:scale(1.03);filter:brightness(1.06) contrast(1.04)}
-    .media-card:hover::before{background:linear-gradient(to top,rgba(7,6,4,.38),rgba(7,6,4,.08) 42%,rgba(7,6,4,.02))}
-    .media-tall{min-height:350px}
-    .media-wide{min-height:260px}
+    .media-card:hover{transform:translateY(-3px);border-color:rgba(200,168,75,.2)}
+    .media-card:hover img{transform:scale(1.03);filter:brightness(1.05) contrast(1.04)}
+    .media-card:hover::before{background:linear-gradient(to top,rgba(7,6,4,.36),rgba(7,6,4,.08) 42%,rgba(7,6,4,.02))}
+    .media-tall{min-height:280px}
+    .media-wide{min-height:210px}
 
-    #services{padding:120px 0;border-top:1px solid rgba(200,168,75,.06)}
-    .svc-header{text-align:center;margin-bottom:54px}
-    .svc-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-    .svc-h{font-family:var(--D);font-size:clamp(42px,5.8vw,72px);line-height:.9;letter-spacing:.04em}
-    .services-shell{max-width:980px;margin:0 auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .service-item{
-      display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:start;
-      padding:32px 10px;border-bottom:1px solid rgba(200,168,75,.08);position:relative;
-      transition:padding-left .36s var(--ease),background .36s ease;
+    /* SERVICIOS – 3 NIVELES */
+    #services{
+      padding:110px 0;
+      border-top:1px solid rgba(200,168,75,.06);
     }
-    .service-item:last-child{border-bottom:none}
-    .service-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .38s var(--ease)}
-    .service-item:hover{padding-left:18px;background:rgba(200,168,75,.02)}
-    .service-item:hover::before{transform:scaleY(1)}
-    .service-num{font-family:var(--M);font-size:10px;letter-spacing:.25em;color:rgba(200,168,75,.36);padding-top:10px}
-    .service-copy{display:grid;gap:6px}
-    .service-name{font-family:var(--D);font-size:clamp(32px,4vw,54px);letter-spacing:.04em;line-height:.9;color:var(--text)}
-    .service-line{font-family:var(--B);font-weight:400;font-size:clamp(15px,1.6vw,19px);color:var(--muted);max-width:42ch}
-
-    .services-cta-wrap{text-align:center;margin-top:34px}
-    .btn-lite{
-      display:inline-flex;align-items:center;gap:10px;padding:15px 28px;
-      border:1px solid rgba(200,168,75,.3);color:var(--gold);
-      font-family:var(--M);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-      transition:all .3s ease;
+    .svc-header{text-align:center;margin-bottom:42px}
+    .svc-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .svc-h{font-family:var(--D);font-size:clamp(40px,5.4vw,68px);line-height:.9;letter-spacing:.04em}
+    .services-shell{
+      max-width:900px;
+      margin:0 auto;
+      padding-left:18px;
+      border-left:1px solid rgba(200,168,75,.26);
     }
-    .btn-lite:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(200,168,75,.05)}
-
-    #booking{padding:130px 0;border-top:1px solid rgba(200,168,75,.06);text-align:center;overflow:hidden}
-    #booking canvas{position:absolute;inset:0;pointer-events:none;z-index:0}
-    .book-glow{position:absolute;left:50%;bottom:-140px;transform:translateX(-50%);width:min(860px,90vw);height:440px;border-radius:50%;background:radial-gradient(ellipse,rgba(200,168,75,.06) 0%,transparent 72%);pointer-events:none;z-index:0}
-    .booking-shell{position:relative;z-index:1;max-width:900px;margin:0 auto}
-    .book-h{font-family:var(--D);font-size:clamp(54px,9vw,118px);line-height:.84;letter-spacing:.02em;margin-bottom:14px}
-    .book-sub{font-family:var(--S);font-style:italic;font-size:clamp(18px,1.9vw,23px);color:var(--muted);max-width:34ch;margin:0 auto 44px}
-    .booking-panel{border:1px solid rgba(200,168,75,.14);background:linear-gradient(to bottom,rgba(17,16,13,.88),rgba(10,9,7,.9));padding:34px;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
-    .booking-grid{display:grid;gap:18px}
-    .booking-copy{text-align:left}
-    .booking-copy h3{font-family:var(--D);font-size:clamp(34px,4.5vw,54px);letter-spacing:.04em;line-height:.92;margin-bottom:10px}
-    .booking-copy p{font-size:16px;color:var(--muted);max-width:46ch}
-
-    .book-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
-    .btn,.btn-out{
-      display:inline-flex;align-items:center;gap:10px;padding:16px 28px;
-      font-family:var(--M);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-      transition:all .3s ease;border:1px solid var(--gold);
+    .service-row{
+      display:grid;
+      grid-template-columns:70px 1fr;
+      gap:18px;
+      padding:20px 0;
+      position:relative;
     }
-    .btn{background:var(--gold);color:var(--bg)}
-    .btn:hover{background:var(--gold-2);transform:translateY(-3px);box-shadow:0 18px 38px rgba(0,0,0,.45)}
-    .btn-out{background:transparent;color:var(--gold);border-color:rgba(200,168,75,.28)}
-    .btn-out:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(200,168,75,.05)}
+    .service-row:not(:last-child){
+      border-bottom:1px solid rgba(200,168,75,.12);
+    }
+    .service-dot{
+      position:relative;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+    .service-dot::before{
+      content:"";
+      width:9px;height:9px;border-radius:50%;
+      border:1px solid rgba(200,168,75,.6);
+      background:rgba(7,6,4,1);
+      box-shadow:0 0 0 0 rgba(200,168,75,.0);
+      transition:box-shadow .4s var(--ease),background .3s ease;
+      margin-top:6px;
+    }
+    .service-row:hover .service-dot::before{
+      background:var(--gold);
+      box-shadow:0 0 0 6px rgba(200,168,75,.12);
+    }
+    .service-num{
+      position:absolute;
+      left:0;
+      font-family:var(--M);
+      font-size:10px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(200,168,75,.6);
+      transform:translateX(-4px);
+    }
+    .service-main h3{
+      font-family:var(--D);
+      font-size:clamp(30px,3.6vw,48px);
+      letter-spacing:.04em;
+      margin-bottom:4px;
+    }
+    .service-main p{
+      font-family:var(--B);
+      font-size:15px;
+      color:var(--muted);
+    }
 
-    footer{padding:34px 0 42px;border-top:1px solid rgba(200,168,75,.06)}
+    /* BOOKING – PANEL TIPO MIXER */
+    #booking{
+      padding:110px 0 120px;
+      border-top:1px solid rgba(200,168,75,.06);
+      text-align:center;
+    }
+    .booking-shell{max-width:820px;margin:0 auto}
+    .book-h{
+      font-family:var(--D);
+      font-size:clamp(52px,8.6vw,112px);
+      line-height:.84;
+      letter-spacing:.02em;
+      margin-bottom:14px;
+    }
+    .book-sub{
+      font-family:var(--S);
+      font-style:italic;
+      font-size:clamp(17px,1.8vw,22px);
+      color:var(--muted);
+      margin-bottom:44px;
+    }
+    .booking-panel{
+      position:relative;
+      padding:24px 26px;
+      background:linear-gradient(to right,rgba(17,16,13,.96),rgba(10,9,7,.96));
+      border-radius:8px;
+      border:1px solid rgba(200,168,75,.24);
+      box-shadow:0 22px 52px rgba(0,0,0,.7);
+      overflow:hidden;
+      transform:translateY(26px);
+      opacity:0;
+      animation:panel-in .9s var(--ease) .2s forwards;
+    }
+    .booking-panel::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:inherit;
+      background:radial-gradient(circle at 20% 0%,rgba(200,168,75,.18),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .booking-grid{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      z-index:1;
+    }
+    .booking-label{
+      font-family:var(--M);
+      font-size:10px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .booking-copy-line{
+      font-family:var(--B);
+      font-size:15px;
+      color:var(--text);
+    }
+
+    .pad-group{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pad{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:13px 20px 13px 18px;
+      border-radius:999px;
+      border:1px solid rgba(242,237,226,.5);
+      background:rgba(7,6,4,.9);
+      color:var(--text);
+      cursor:pointer;
+      font-family:var(--M);
+      font-size:10px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      text-decoration:none;
+      overflow:hidden;
+      transform:scaleX(0.4);
+      opacity:0;
+      animation:pad-in .6s var(--ease) .5s forwards;
+    }
+    .pad-secondary{
+      border-style:dashed;
+      border-color:rgba(200,168,75,.6);
+      background:transparent;
+      animation-delay:.65s;
+    }
+    .pad::before{
+      content:"";
+      width:8px;height:8px;border-radius:50%;
+      background:rgba(117,209,142,.15);
+      border:1px solid rgba(117,209,142,.5);
+      box-shadow:0 0 0 0 rgba(117,209,142,.0);
+      transition:box-shadow .35s var(--ease),background .3s ease,border-color .3s ease;
+    }
+    .pad-secondary::before{
+      background:rgba(200,168,75,.09);
+      border-color:rgba(200,168,75,.5);
+    }
+    .pad:hover::before{
+      background:rgba(117,209,142,.9);
+      border-color:rgba(117,209,142,1);
+      box-shadow:0 0 0 6px rgba(117,209,142,.18);
+    }
+    .pad-secondary:hover::before{
+      background:rgba(200,168,75,.9);
+      border-color:rgba(200,168,75,1);
+      box-shadow:0 0 0 6px rgba(200,168,75,.22);
+    }
+    .pad span{position:relative;z-index:1}
+
+    footer{
+      padding:34px 0 42px;
+      border-top:1px solid rgba(200,168,75,.06)
+    }
     .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
     .foot-left{display:flex;align-items:center;gap:14px}
     .foot-logo-img{width:30px;height:30px;object-fit:contain;opacity:.7}
@@ -319,11 +511,20 @@
 
     @keyframes up{to{opacity:1;transform:translateY(0)}}
     @keyframes breathe{0%,100%{opacity:.35}50%{opacity:.72}}
+    @keyframes panel-in{
+      0%{opacity:0;transform:translateY(26px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+    @keyframes pad-in{
+      0%{opacity:0;transform:scaleX(0.4);}
+      100%{opacity:1;transform:scaleX(1);}
+    }
 
     @media (max-width: 1024px){
       .gallery-grid{grid-template-columns:1fr}
-      .gallery-main{min-height:520px}
-      .gallery-side{grid-template-rows:auto;gap:8px}
+      .gallery-main{min-height:360px}
+      .gallery-side{grid-template-rows:auto;gap:6px}
+      .bio-grid{grid-template-columns:1fr;gap:34px}
     }
 
     @media (max-width: 900px){
@@ -332,10 +533,12 @@
       .nav-right{gap:16px}
       .nav-links{gap:14px}
       .nav-links a{font-size:8px;letter-spacing:.2em}
-      .stats-card{margin:60px auto 70px}
-      .bio-grid{grid-template-columns:1fr;gap:40px;padding:0 6vw}
-      .gallery-top,.gallery-bottom{grid-template-columns:1fr 1fr}
-      .booking-panel{padding:24px}
+      #bio{padding:100px 0}
+      .gallery-grid{min-height:280px}
+      #services{padding:90px 0}
+      .booking-panel{padding:22px}
+      .booking-grid{flex-direction:column;align-items:flex-start}
+      .pad-group{justify-content:flex-start}
     }
 
     @media (max-width: 640px){
@@ -346,33 +549,27 @@
       .logo-wrap{gap:10px}
       .logo-mark{width:34px;height:34px}
       .hero-content{padding:0 4.5vw 56px}
-      .hero-h1{font-size:clamp(58px,15vw,92px);-webkit-text-stroke:1.2px rgba(200,168,75,.42)}
-      .hero-h1 em{-webkit-text-stroke:1.2px rgba(200,168,75,.7)}
+      .hero-h1{font-size:clamp(58px,15vw,92px);-webkit-text-stroke:0.7px rgba(242,237,226,.9)}
+      .hero-h1 em{-webkit-text-stroke:0.7px rgba(242,237,226,.95)}
       .scroll-hint{right:4.5vw;bottom:18px;font-size:8px;letter-spacing:.2em}
-      #bio,#gallery,#services,#booking{padding:84px 0}
-      .bio-grid{gap:34px}
-      .bio-h{font-size:36px}
-      .bio-copy p{font-size:15px}
-      .gal-header{margin-bottom:28px}
-      .gal-title{font-size:40px}
+      #bio,#gallery,#services,#booking{padding:80px 0}
+      .gal-header{margin-bottom:24px}
+      .gal-title{font-size:38px}
       .gal-sub{font-size:16px}
-      .gallery-main{min-height:420px}
-      .gallery-top,.gallery-bottom{grid-template-columns:1fr;gap:8px}
-      .gallery-grid,.gallery-main,.gallery-side{gap:8px}
-      .media-card,.media-tall,.media-wide{min-height:240px}
-      .media-main{min-height:420px}
-      .media-meta{left:14px;right:14px;bottom:12px}
+      .gallery-main{min-height:320px}
+      .gallery-top,.gallery-bottom{grid-template-columns:1fr;gap:6px}
+      .gallery-grid,.gallery-main,.gallery-side{gap:6px}
+      .media-card,.media-tall,.media-wide{min-height:210px}
+      .media-meta{left:14px;right:14px;bottom:10px}
       .media-caption{font-size:16px}
-      .svc-h{font-size:42px}
-      .service-item{grid-template-columns:1fr;gap:10px;padding:24px 0}
-      .service-num{padding-top:0}
-      .service-name{font-size:34px}
-      .service-line{font-size:18px}
-      .booking-panel{padding:20px}
-      .booking-copy h3{font-size:34px}
-      .booking-copy p{font-size:15px}
-      .book-btns{flex-direction:column}
-      .btn,.btn-out,.btn-lite{justify-content:center;width:100%}
+      .services-shell{padding-left:12px}
+      .service-row{grid-template-columns:54px 1fr;padding:18px 0}
+      .booking-grid{gap:18px}
+      .book-h{font-size:46px}
+      .book-sub{font-size:16px}
+      .booking-copy-line{font-size:15px}
+      .pad-group{flex-direction:column;align-items:stretch}
+      .pad,.pad-secondary{width:100%;justify-content:flex-start}
       .foot{justify-content:center;text-align:center}
       .foot-left{flex-direction:column;gap:8px}
       .foot-links{justify-content:center}
@@ -380,7 +577,7 @@
 
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-      .rev{opacity:1;transform:none}
+      .rev,.booking-panel,.pad{opacity:1;transform:none}
     }
   </style>
 </head>
@@ -404,6 +601,7 @@
   </nav>
 
   <main>
+    <!-- HERO -->
     <section id="hero">
       <div class="hero-media">
         <video autoplay muted loop playsinline poster="poster-hero.jpg" id="heroVideo">
@@ -425,49 +623,49 @@
 
     <div class="divider"></div>
 
-    <section id="stats">
-      <div class="container">
-        <div class="stats-card rev">
-          <div class="stats-intro">CDMX · <span class="city">Toronto</span> · Barcelona</div>
-          <div class="stat-row">
-            <div class="stat-val">8+</div>
-            <div class="stat-label">Años descifrando la pista</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-val">400+</div>
-            <div class="stat-label">Eventos realizados</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
+    <!-- BIO + STATS -->
     <section id="bio">
-      <div class="container bio-grid">
-        <div class="rev">
-          <div class="bio-tag">Acerca de</div>
-          <h2 class="bio-h">CURADURÍA,<br />NO<br />REPRODUCCIÓN.</h2>
-          <div class="bio-genres">
-            <span class="genre-pill">House</span>
-            <span class="genre-pill">Funk</span>
-            <span class="genre-pill">Latin</span>
-            <span class="genre-pill">Afrobeats</span>
-            <span class="genre-pill">Electronic</span>
-            <span class="genre-pill">Open Format</span>
-          </div>
-        </div>
+      <div class="container bio-shell">
+        <div class="bio-grid">
+          <div class="rev">
+            <div class="bio-tag">Acerca de</div>
+            <h2 class="bio-h">CURADURÍA,<br />NO<br />REPRODUCCIÓN.</h2>
 
-        <div class="bio-copy rev" style="transition-delay:.12s">
-          <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
-          <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>
-          <p>CDMX le dio el groove. Toronto le dio el criterio. Barcelona le dio el matiz. Tres escuelas, una sola firma.</p>
+            <p class="bio-cities">CDMX <span>·</span> Toronto <span>·</span> Barcelona</p>
+
+            <div class="bio-stats">
+              <div class="bio-stat">
+                <div class="bio-stat-val">8+</div>
+                <div class="bio-stat-label">AÑOS DESCIFRANDO LA PISTA</div>
+              </div>
+              <div class="bio-stat">
+                <div class="bio-stat-val">400+</div>
+                <div class="bio-stat-label">EVENTOS REALIZADOS</div>
+              </div>
+            </div>
+
+            <div class="bio-genres">
+              <span class="genre-pill">House</span>
+              <span class="genre-pill">Funk</span>
+              <span class="genre-pill">Latin</span>
+              <span class="genre-pill">Afrobeats</span>
+              <span class="genre-pill">Electronic</span>
+              <span class="genre-pill">Open Format</span>
+            </div>
+          </div>
+
+          <div class="bio-copy rev" style="transition-delay:.12s">
+            <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
+            <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>
+            <p>CDMX le dio el groove. Toronto le dio el criterio. Barcelona le dio el matiz. Tres escuelas, una sola firma.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
+    <!-- PRESENCIA VISUAL -->
     <section id="gallery">
       <div class="container">
         <header class="gal-header rev">
@@ -539,73 +737,69 @@
 
     <div class="divider"></div>
 
+    <!-- SERVICIOS -->
     <section id="services">
       <div class="container">
         <header class="svc-header rev">
-          <div class="svc-eyebrow">Configuraciones de performance</div>
-          <h2 class="svc-h">LO QUE PUEDO<br />HACER POR TU EVENTO</h2>
+          <div class="svc-eyebrow">Formas de trabajar</div>
+          <h2 class="svc-h">TRES NIVELES<br />SEGÚN TU EVENTO</h2>
         </header>
 
         <div class="services-shell rev" style="transition-delay:.08s">
-          <article class="service-item">
-            <div class="service-num">01</div>
-            <div class="service-copy">
-              <h3 class="service-name">DJ SET</h3>
-              <p class="service-line">Curaduría musical y ejecución en cabina para eventos con infraestructura propia.</p>
+          <div class="service-row">
+            <div class="service-dot">
+              <span class="service-num">01</span>
             </div>
-          </article>
-
-          <article class="service-item">
-            <div class="service-num">02</div>
-            <div class="service-copy">
-              <h3 class="service-name">DJ + AUDIO</h3>
-              <p class="service-line">Sonido profesional para bodas, eventos privados y celebraciones donde la pista importa.</p>
+            <div class="service-main">
+              <h3>SOLO DJ</h3>
+              <p>Set de DJ con equipo de audio e iluminación del venue.</p>
             </div>
-          </article>
+          </div>
 
-          <article class="service-item">
-            <div class="service-num">03</div>
-            <div class="service-copy">
-              <h3 class="service-name">PRODUCCIÓN INTEGRAL</h3>
-              <p class="service-line">Dirección completa de la experiencia: música, tiempos y energía de la noche.</p>
+          <div class="service-row">
+            <div class="service-dot">
+              <span class="service-num">02</span>
             </div>
-          </article>
-        </div>
+            <div class="service-main">
+              <h3>DJ + SONIDO &amp; LUCES</h3>
+              <p>DJ, sistema de audio y paquete de iluminación para pista.</p>
+            </div>
+          </div>
 
-        <div class="services-cta-wrap rev" style="transition-delay:.14s">
-          <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20cotizar%20un%20servicio" target="_blank" rel="noopener noreferrer" class="btn-lite">
-            <i class="fa-brands fa-whatsapp"></i>
-            Cotizar servicio
-          </a>
+          <div class="service-row">
+            <div class="service-dot">
+              <span class="service-num">03</span>
+            </div>
+            <div class="service-main">
+              <h3>DJ + PRODUCCIÓN &amp; HOST</h3>
+              <p>DJ, audio, iluminación y conducción de momentos clave del evento.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
+    <!-- BOOKING -->
     <section id="booking">
-      <canvas id="bookingCanvas"></canvas>
-      <div class="book-glow"></div>
-
       <div class="container booking-shell">
         <h2 class="book-h rev">HABLEMOS DE<br />TU EVENTO</h2>
         <p class="book-sub rev" style="transition-delay:.08s">Fecha, ciudad y número de invitados. Con eso preparo una propuesta clara.</p>
 
-        <div class="booking-panel rev" style="transition-delay:.14s">
+        <div class="booking-panel">
           <div class="booking-grid">
             <div class="booking-copy">
-              <h3>Un punto de partida nítido.</h3>
-              <p>Cuando me escribas, incluye fecha tentativa, ciudad, tipo de evento y número aproximado de invitados. Desde ahí armamos la noche sin vueltas.</p>
+              <div class="booking-label">Información mínima</div>
+              <div class="booking-copy-line">Fecha tentativa, ciudad, tipo de evento y número aproximado de invitados.</div>
             </div>
 
-            <div class="book-btns">
-              <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento" target="_blank" rel="noopener noreferrer" class="btn">
-                <i class="fa-brands fa-whatsapp"></i>
-                RESERVAR FECHA
+            <div class="pad-group">
+              <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pad">
+                <span>RESERVAR FECHA</span>
               </a>
-              <a href="mailto:booking@cesarchannel.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel" class="btn-out">
-                <i class="fa-regular fa-envelope"></i>
-                SOLICITAR INFO
+              <a href="mailto:booking@cesarchannel.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel" class="pad pad-secondary">
+                <span>SOLICITAR INFO</span>
               </a>
             </div>
           </div>
@@ -661,66 +855,6 @@
 
       const heroVideo = document.getElementById('heroVideo');
       if (heroVideo) heroVideo.muted = true;
-
-      const bc = document.getElementById('bookingCanvas');
-      if (bc) {
-        const bctx = bc.getContext('2d');
-        let bw = 0, bh = 0;
-        let mouseX = -100, mouseY = -100;
-        const section = document.getElementById('booking');
-        const particles = Array.from({ length: 30 }, () => ({
-          x: 0, y: 0,
-          size: Math.random() * 1.8 + .6,
-          spdX: Math.random() - .5,
-          spdY: Math.random() - .5,
-          op: Math.random() * .35 + .08,
-          seeded: false
-        }));
-        function resize() {
-          bw = bc.width = bc.offsetWidth;
-          bh = bc.height = bc.offsetHeight;
-          particles.forEach(p => {
-            if (!p.seeded) {
-              p.x = Math.random() * bw;
-              p.y = Math.random() * bh;
-              p.seeded = true;
-            }
-          });
-        }
-        resize();
-        window.addEventListener('resize', resize);
-        section.addEventListener('mousemove', e => {
-          const rect = bc.getBoundingClientRect();
-          mouseX = e.clientX - rect.left;
-          mouseY = e.clientY - rect.top;
-        });
-        section.addEventListener('mouseleave', () => {
-          mouseX = -100; mouseY = -100;
-        });
-        function draw() {
-          bctx.clearRect(0, 0, bw, bh);
-          particles.forEach(p => {
-            p.x += p.spdX * .22;
-            p.y += p.spdY * .22;
-            if (p.x < 0) p.x = bw;
-            if (p.x > bw) p.x = 0;
-            if (p.y < 0) p.y = bh;
-            if (p.y > bh) p.y = 0;
-            const dx = mouseX - p.x;
-            const dy = mouseY - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const pull = dist < 180 ? (1 - dist / 180) : 0;
-            p.x -= dx * pull * .01;
-            p.y -= dy * pull * .01;
-            bctx.beginPath();
-            bctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            bctx.fillStyle = `rgba(200,168,75,${p.op + pull * .25})`;
-            bctx.fill();
-          });
-          requestAnimationFrame(draw);
-        }
-        draw();
-      }
     });
   </script>
 </body>
