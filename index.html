@@ -3,746 +3,1236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#070604" />
-  <meta name="description" content="DJ César Channel. Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
-
+  <meta name="theme-color" content="#050403" />
+  <meta name="description" content="DJ César Channel. Curaduría musical y performance para bodas, eventos privados y producciones integrales. CDMX." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="DJ César Channel" />
   <meta property="og:description" content="Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
   <meta property="og:image" content="logo-social.jpg" />
-  <meta property="og:image:alt" content="Logo de DJ César Channel" />
   <meta property="og:locale" content="es_ES" />
-
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DJ César Channel" />
-  <meta name="twitter:description" content="Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
-  <meta name="twitter:image" content="logo-social.jpg" />
-
   <title>DJ César Channel</title>
-
   <link rel="icon" type="image/png" href="logo-favicon.png" />
   <link rel="preload" as="image" href="poster-hero.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#060504;
-      --bg-soft:#0c0b09;
-      --bg-card:#12100e;
-      --gold:#d4af37;
-      --gold-soft:rgba(212,175,55,0.15);
-      --text:#f5f2eb;
-      --muted:rgba(245,242,235,0.65);
-      --faint:rgba(245,242,235,0.15);
-      --shadow:0 30px 60px rgba(0,0,0,0.6);
-      
-      /* Identidad Tipográfica Renovada */
-      --F-Display:'Syne', sans-serif;
-      --F-Body:'Plus Jakarta Sans', sans-serif;
-      
-      --container:min(1200px,88vw);
-      --ease:cubic-bezier(.16,1,.3,1);
+    /* ─── RESET & TOKENS ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #050403;
+      --bg2:         #090806;
+      --bg3:         #0f0d0a;
+      --gold:        #c9a84c;
+      --gold2:       #e8c96a;
+      --red:         #8b1a1a;
+      --text:        #f0ece3;
+      --muted:       rgba(240,236,227,0.55);
+      --faint:       rgba(240,236,227,0.10);
+      --FD:          'Antonio', sans-serif;
+      --FB:          'Barlow', sans-serif;
+      --FC:          'Barlow Condensed', sans-serif;
+      --ease:        cubic-bezier(.16,1,.3,1);
+      --ease2:       cubic-bezier(.4,0,.2,1);
+      --w:           min(1240px, 90vw);
     }
 
-    html{scroll-behavior:smooth;background:var(--bg)}
-    body{
-      background:radial-gradient(circle at top, rgba(212,175,55,0.03), transparent 60%), var(--bg);
-      color:var(--text);
-      font-family:var(--F-Body);
-      font-weight:300;
-      line-height:1.65;
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-      cursor:default;
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      font-family: var(--FB);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
     }
 
-    /* Malla de diseño musical de fondo - sutil y elegante */
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:9998;
-      opacity:.015;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='g' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 30h60M30 0v60' stroke='rgba(255,255,255,1)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E");
+    /* ─── CUSTOM CURSOR ─── */
+    .cur {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 10px; height: 10px;
+      border-radius: 50%; background: var(--gold);
+      transform: translate(-50%,-50%);
+      transition: transform .1s, opacity .3s;
+      mix-blend-mode: difference;
+    }
+    .cur-ring {
+      position: fixed; z-index: 9998; pointer-events: none;
+      width: 36px; height: 36px;
+      border-radius: 50%; border: 1px solid rgba(201,168,76,0.5);
+      transform: translate(-50%,-50%);
+      transition: width .35s var(--ease), height .35s var(--ease), border-color .35s, transform .12s;
+    }
+    body:has(a:hover, button:hover) .cur-ring,
+    body:has(.media-card:hover) .cur-ring {
+      width: 64px; height: 64px;
+      border-color: var(--gold2);
+    }
+    @media (hover: none) { .cur, .cur-ring { display: none; } * { cursor: auto !important; } }
+
+    /* ─── NOISE GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9990; pointer-events: none;
+      opacity: .028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
     }
 
-    img,video{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    button,input,textarea{font:inherit}
-    .container{width:var(--container);margin:0 auto}
-    .divider{height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.2),transparent)}
+    a { color: inherit; text-decoration: none; cursor: none; }
+    button { cursor: none; }
+    img, video { display: block; max-width: 100%; height: auto; }
+    .W { width: var(--w); margin: 0 auto; }
+    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,.18), transparent); }
 
-    .rev{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-    .rev.on{opacity:1;transform:none}
+    /* ─── REVEAL ─── */
+    .rv { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    .rv.in { opacity: 1; transform: none; }
+    .rv2 { opacity: 0; transform: translateX(-24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .rv2.in { opacity: 1; transform: none; }
 
-    /* NAV */
-    nav{
-      position:fixed;
-      inset:0 0 auto 0;
-      z-index:200;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:24px 6vw;
-      background:linear-gradient(to bottom,rgba(6,5,4,0.98),rgba(6,5,4,0.7) 60%,transparent);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      transition:transform .45s var(--ease),opacity .45s var(--ease);
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    #nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 5vw;
+      background: linear-gradient(to bottom, rgba(5,4,3,.96) 0%, rgba(5,4,3,.5) 70%, transparent 100%);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      transition: transform .5s var(--ease), opacity .5s;
     }
-    nav.hidden{transform:translateY(-110%);opacity:0}
-    .logo-wrap{display:flex;align-items:center}
-    .logo-mark{width:36px;height:36px;object-fit:contain}
-    .nav-right{display:flex;align-items:center;gap:40px}
-    .nav-links{display:flex;list-style:none;gap:32px}
-    .nav-links a{
-      font-family:var(--F-Body);
-      font-size:11px;
-      font-weight:500;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      color:var(--muted);
-      position:relative;
-      transition:color .3s ease;
-    }
-    .nav-links a::after{
-      content:"";
-      position:absolute;left:50%;bottom:-6px;width:0;height:2px;
-      background:var(--gold);transition:width .3s var(--ease), left .3s var(--ease);
-    }
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a:hover::after{width:100%;left:0}
-    .nav-ig{font-size:1.15rem;color:var(--muted);transition:color .3s ease}
-    .nav-ig:hover{color:var(--gold)}
+    #nav.hide { transform: translateY(-110%); opacity: 0; }
 
-    /* HERO */
-    #hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-    .hero-media{position:absolute;inset:0;z-index:0}
-    .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover}
-    .hero-vignette{
-      position:absolute;inset:0;z-index:1;
-      background:linear-gradient(to bottom,rgba(6,5,4,0.4) 0%,rgba(6,5,4,0.1) 40%,rgba(6,5,4,0.6) 75%,var(--bg) 100%);
-    }
-    .hero-content{position:relative;z-index:3;width:100%;padding:0 6vw 80px}
-    .hero-h1{
-      font-family:var(--F-Display);
-      font-weight:700;
-      font-size:clamp(55px,12vw,140px);
-      line-height:.85;
-      letter-spacing:-0.03em;
-      color:var(--text);
-      opacity:0;
-      transform:translateY(40px);
-      animation:up 1.2s var(--ease) .2s forwards;
-    }
-    .hero-h1 em{
-      display:block;
-      font-style:normal;
-      font-weight:500;
-      color:transparent;
-      -webkit-text-stroke:1px var(--text);
-    }
-    .scroll-hint{
-      position:absolute;right:6vw;bottom:32px;z-index:3;
-      display:flex;align-items:center;gap:12px;
-      font-size:10px;
-      font-weight:500;
-      letter-spacing:.25em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.3);
-      animation:breathe 3s ease-in-out infinite;
-    }
-    .scroll-hint::after{content:"";width:30px;height:1px;background:var(--text);opacity:.3}
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; }
 
-    /* BIO + STATS */
-    #bio{
-      padding:140px 0 120px;
-      position:relative;
+    .nav-r { display: flex; align-items: center; gap: 36px; }
+    .nav-links { display: flex; list-style: none; gap: 28px; }
+    .nav-links a {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted);
+      position: relative; transition: color .3s;
     }
-    .bio-grid{
-      display:grid;
-      grid-template-columns:1fr 1.2fr;
-      gap:80px;
-      align-items:start;
+    .nav-links a::after {
+      content: ''; position: absolute; left: 50%; bottom: -5px;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width .35s var(--ease), left .35s var(--ease);
     }
-    .bio-tag{
-      font-family:var(--F-Display);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      color:var(--gold);
-      margin-bottom:24px;
-    }
-    .bio-h{
-      font-family:var(--F-Display);
-      font-size:clamp(38px,4.5vw,58px);
-      font-weight:700;
-      line-height:1.05;
-      letter-spacing:-0.01em;
-      margin-bottom:24px;
-    }
-    .bio-cities{
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-bottom:32px;
-    }
-    .bio-cities span{color:var(--gold);margin:0 4px}
-    
-    .bio-stats{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-bottom:40px;
-    }
-    .bio-stat{
-      border-left:2px solid var(--gold);
-      padding-left:16px;
-    }
-    .bio-stat-val{
-      font-family:var(--F-Display);
-      font-weight:700;
-      font-size:28px;
-      line-height:1;
-      margin-bottom:6px;
-    }
-    .bio-stat-label{
-      font-size:10px;
-      font-weight:500;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; left: 0; }
 
-    /* Nueva Zona Hermosa: Estética y Dirección de Arte */
-    .bio-aesthetic-box {
-      background: linear-gradient(135deg, rgba(20,18,15,0.6), rgba(12,11,9,0.4));
-      border: 1px solid rgba(212,175,55,0.12);
-      border-radius: 8px;
-      padding: 24px;
-      margin-top: 20px;
+    .nav-socials { display: flex; align-items: center; gap: 18px; }
+    .nav-socials a { font-size: 1.1rem; color: var(--muted); transition: color .3s; }
+    .nav-socials a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       HERO — Video clipping behind transparent text
+    ───────────────────────────────────────────── */
+    #hero {
       position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
-    .bio-aesthetic-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 4px; height: 100%;
-      background: var(--gold);
+
+    /* BG video — full frame */
+    .h-bg {
+      position: absolute; inset: 0; z-index: 0;
     }
-    .aesthetic-title {
-      font-family:var(--F-Display);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:0.2em;
-      text-transform:uppercase;
-      color:var(--text);
-      margin-bottom:12px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .aesthetic-title::after {
-      content:''; height:1px; flex-grow:1; background:rgba(255,255,255,0.08);
-    }
-    .aesthetic-desc {
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
+    .h-bg video, .h-bg img {
+      width: 100%; height: 100%; object-fit: cover;
     }
 
-    .bio-copy p{
-      font-size:clamp(16px,1.2vw,19px);
-      line-height:1.8;
-      color:var(--muted);
-      margin-bottom:24px;
-    }
-    .bio-copy strong{color:var(--text);font-weight:500}
-
-    /* PRESENCIA VISUAL (GALERÍA REDISEÑADA) */
-    #gallery{padding:120px 0}
-    .gal-header{text-align:center;margin-bottom:60px}
-    .gal-title{font-family:var(--F-Display);font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-0.02em}
-    .gal-sub{font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:8px;font-weight:500}
-    
-    /* Grid fluido basado en proporciones estéticas fijas */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:16px;
-    }
-    .gallery-main{display:flex}
-    .gallery-side{display:grid;grid-template-rows:1fr 1fr;gap:16px}
-    .gallery-top, .gallery-bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-
-    .media-card{
-      position:relative;
-      overflow:hidden;
-      background:var(--bg-card);
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.04);
-      box-shadow:var(--shadow);
-      aspect-ratio: 4 / 3;
-    }
-    .gallery-main .media-card {
-      aspect-ratio: auto;
-      width: 100%;
+    /* Heavy vignette so text reads */
+    .h-vignette {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse at center, rgba(5,4,3,0) 20%, rgba(5,4,3,.72) 100%),
+        linear-gradient(to bottom, rgba(5,4,3,.45) 0%, rgba(5,4,3,.0) 35%, rgba(5,4,3,.0) 65%, var(--bg) 100%);
     }
 
-    .media-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-    .media-card::before{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(to top, rgba(6,5,4,0.7) 0%, rgba(6,5,4,0.1) 50%, transparent 100%);
-      z-index:1;transition:opacity 0.4s ease;
+    /* The giant clipped text — VIDEO shows through the letterforms */
+    .h-title-wrap {
+      position: relative; z-index: 3;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      user-select: none;
     }
-    .media-meta{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}
-    .media-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-    .media-caption{font-family:var(--F-Display);font-size:18px;font-weight:700;color:var(--text)}
-    
-    .gallery-grid:hover .media-card:not(:hover){opacity:0.6;filter:grayscale(20%)}
-    .media-card:hover img{transform:scale(1.04)}
 
-    /* SERVICIOS (FORMAS DE TRABAJAR) */
-    #services{padding:120px 0;background:rgba(20,18,15,0.2)}
-    .svc-header{text-align:center;margin-bottom:60px}
-    .svc-eyebrow{font-family:var(--F-Display);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-    .svc-h{font-family:var(--F-Display);font-size:clamp(36px,4.5vw,58px);font-weight:700;line-height:1.05;letter-spacing:-0.01em}
-    
-    .services-shell{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:24px;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 8px;
-      padding: 40px 32px;
+    /* "DJ CÉSAR" — video as background, clipped by text */
+    .h-name-clip {
       position: relative;
-      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+      line-height: .88;
     }
-    .service-card:hover {
-      border-color: rgba(212,175,55,0.3);
-      transform: translateY(-4px);
-    }
-    .service-num {
-      font-family: var(--F-Display);
-      font-size: 14px;
+    .h-name-clip .clip-layer {
+      /* The video-clip trick via background-clip: text */
+      font-family: var(--FD);
       font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.1em;
+      font-size: clamp(72px, 16vw, 200px);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(240,236,227,.22);
+      /* We'll overlay a copy that shows the video via mix-blend */
+    }
+
+    /* Two-layer approach: outline layer + video-reveal layer */
+    .h-name-outer {
+      font-family: var(--FD);
+      font-weight: 700;
+      font-size: clamp(72px, 16vw, 200px);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
       display: block;
-      margin-bottom: 24px;
+      position: relative;
+      /* Outline — always visible */
+      -webkit-text-stroke: 1.5px rgba(240,236,227,.30);
+      color: transparent;
     }
-    .service-card h3 {
-      font-family: var(--F-Display);
-      font-size: 22px;
+    /* Video-fill overlay using mix-blend-mode */
+    .h-name-fill {
+      position: absolute; inset: 0;
+      font-family: var(--FD);
       font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-    .service-card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
+      font-size: clamp(72px, 16vw, 200px);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      display: block;
+      color: rgba(240,236,227,.85);
+      mix-blend-mode: overlay;
+      pointer-events: none;
     }
 
-    /* BOOKING – CTAs ESTILO MIXER PREMIUM */
-    #booking{
-      padding:140px 0;
-      text-align:center;
-      position:relative;
-    }
-    .booking-shell{max-width:860px;margin:0 auto}
-    .book-h{
-      font-family:var(--F-Display);
-      font-size:clamp(46px,7vw,96px);
-      font-weight:800;
-      line-height:.9;
-      letter-spacing:-0.03em;
-      margin-bottom:20px;
-    }
-    .book-sub{
-      font-size: clamp(16px,1.5vw,20px);
-      color:var(--muted);
-      margin-bottom:56px;
-      font-weight:300;
-    }
-    .booking-panel{
-      background: linear-gradient(180deg, #12100e 0%, #0a0908 100%);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: var(--shadow);
-    }
-    .booking-grid{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:40px;
-      text-align:left;
-    }
-    .booking-label{
-      font-size:11px;
-      font-weight:600;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--gold);
-      margin-bottom:8px;
-    }
-    .booking-copy-line{
-      font-size:15px;
-      color:var(--text);
-      line-height:1.5;
-    }
-    
-    /* Grupo de Botones de Interacción Mínima y Pulida */
-    .pad-group{
-      display:flex;
-      gap:16px;
-      flex-shrink:0;
-    }
-    .pad{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      padding:16px 28px;
-      border-radius:6px;
-      font-family:var(--F-Body);
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      transition: background 0.3s, border-color 0.3s, color 0.3s;
-    }
-    
-    /* CTA Principal: Sólido, elegante, monolítico */
-    .pad-primary {
-      background: var(--text);
-      color: var(--bg);
-      border: 1px solid var(--text);
-    }
-    .pad-primary:hover {
-      background: transparent;
-      color: var(--text);
-    }
-    
-    /* CTA Secundario: Lineal, contorno sutil */
-    .pad-secondary{
-      background: transparent;
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-    .pad-secondary:hover{
-      border-color: var(--gold);
+    /* "CHANNEL" second line — block style */
+    .h-channel {
+      font-family: var(--FC);
+      font-weight: 300;
+      font-size: clamp(24px, 5.5vw, 72px);
+      letter-spacing: .35em;
+      text-transform: uppercase;
       color: var(--gold);
+      margin-top: -.01em;
+      display: block;
     }
 
-    /* Pequeño led "Live" que evoca el hardware de audio */
-    .pad::before {
+    /* Tagline */
+    .h-tag {
+      margin-top: 32px;
+      font-family: var(--FC);
+      font-size: clamp(11px, 1.1vw, 13px);
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(240,236,227,.35);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .h-tag::before, .h-tag::after {
+      content: ''; width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,.5));
+    }
+    .h-tag::after { background: linear-gradient(to left, transparent, rgba(201,168,76,.5)); }
+
+    .h-scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: var(--FC); font-size: 9px; letter-spacing: .25em;
+      color: rgba(240,236,227,.25); text-transform: uppercase;
+    }
+    .h-scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.6));
+      animation: scrollpulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollpulse {
+      0%,100% { opacity: .3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.3); }
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO INTRO ANIMATION
+    ───────────────────────────────────────────── */
+    .h-name-outer {
+      opacity: 0; transform: translateY(30px);
+      animation: heroUp 1.4s var(--ease) .1s forwards;
+    }
+    .h-channel {
+      opacity: 0; transform: translateY(20px);
+      animation: heroUp 1.2s var(--ease) .4s forwards;
+    }
+    .h-tag {
+      opacity: 0; animation: fadeIn 1s var(--ease) .9s forwards;
+    }
+    @keyframes heroUp {
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────────────
+       BIO — ACERCA DE
+    ───────────────────────────────────────────── */
+    #bio { padding: 140px 0 120px; }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: .9fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Left: Photo */
+    .bio-photo-wrap {
+      position: sticky; top: 100px;
+    }
+    .bio-photo {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .bio-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(20%) contrast(1.08);
+      transition: filter 1s var(--ease), transform 1.4s var(--ease);
+    }
+    .bio-photo:hover img {
+      filter: grayscale(0%) contrast(1.0);
+      transform: scale(1.03);
+    }
+    /* Gold accent line */
+    .bio-photo::before {
       content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-      display: inline-block;
+      position: absolute; left: -8px; top: 32px; bottom: 32px;
+      width: 2px; background: var(--gold); z-index: 2;
+    }
+    /* Overlay gradient */
+    .bio-photo::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(5,4,3,.5) 0%, transparent 50%);
     }
 
-    /* FOOTER */
-    footer{
-      padding:40px 0;
-      border-top:1px solid rgba(255,255,255,0.05);
+    /* Floating stats pill */
+    .bio-stats-float {
+      position: absolute; right: -20px; bottom: 40px; z-index: 3;
+      background: rgba(9,8,6,.92);
+      border: 1px solid rgba(201,168,76,.25);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-radius: 6px;
+      padding: 20px 24px;
+      display: flex; gap: 28px;
     }
-    .foot{display:flex;justify-content:space-between;align-items:center;gap:24px}
-    .foot-left{display:flex;align-items:center;gap:16px}
-    .foot-logo-img{width:28px;height:28px;opacity:.8}
-    .foot-logo{font-family:var(--F-Display);font-size:16px;font-weight:700;letter-spacing:0.05em}
-    .foot-links{display:flex;gap:24px;font-size:12px}
-    .foot-links a{color:var(--muted);transition:color 0.3s}
-    .foot-links a:hover{color:var(--gold)}
-    .foot-copy{color:rgba(255,255,255,0.25)}
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 1024px){
-      .bio-grid{grid-template-columns:1fr;gap:48px}
-      .gallery-grid{grid-template-columns:1fr}
-      .services-shell{grid-template-columns:1fr;gap:16px}
-      .booking-grid{flex-direction:column;text-align:center;gap:32px}
-      .pad-group{width:100%;justify-content:center}
+    .stat-item {}
+    .stat-val {
+      font-family: var(--FD);
+      font-size: 32px; font-weight: 700;
+      color: var(--gold2); line-height: 1;
+      display: block;
     }
-
-    @media (max-width: 640px){
-      nav{padding:18px 4.5vw}
-      .nav-links{display:none}
-      .hero-content{padding:0 4.5vw 60px}
-      #bio, #gallery, #services, #booking{padding:80px 0}
-      .booking-panel{padding:24px}
-      .pad-group{flex-direction:column}
-      .pad{width:100%}
-      .gallery-top, .gallery-bottom{grid-template-columns:1fr}
-      .foot{flex-direction:column;text-align:center}
+    .stat-label {
+      font-family: var(--FC);
+      font-size: 9px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); margin-top: 4px;
+      display: block;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(201,168,76,.2);
+      align-self: stretch;
     }
 
-    @media (prefers-reduced-motion: reduce){
-      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-      .rev{opacity:1;transform:none}
+    /* Right: text */
+    .bio-text { padding-top: 8px; }
+    .bio-eyebrow {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .bio-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--gold);
+    }
+    .bio-h {
+      font-family: var(--FD);
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: .9; letter-spacing: -.01em;
+      margin-bottom: 36px;
+      text-transform: uppercase;
+    }
+    .bio-h span { color: var(--gold); }
+
+    .bio-cities {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 36px;
+    }
+    .bio-cities .dot { color: var(--gold); font-size: 16px; }
+
+    .bio-body p {
+      font-size: clamp(15px, 1.2vw, 18px);
+      line-height: 1.8; color: var(--muted);
+      margin-bottom: 22px;
+    }
+    .bio-body strong { color: var(--text); font-weight: 500; }
+
+    /* CDMX badge */
+    .bio-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 2px;
+      font-family: var(--FC);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bio-badge i { color: var(--gold); font-size: .9rem; }
+
+    /* ─────────────────────────────────────────────
+       GALLERY — PRESENCIA VISUAL
+    ───────────────────────────────────────────── */
+    #gallery { padding: 120px 0; }
+
+    .gal-header { margin-bottom: 56px; }
+    .gal-eyebrow {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .gal-h {
+      font-family: var(--FD);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 700; letter-spacing: -.02em;
+      text-transform: uppercase; line-height: .9;
+    }
+
+    /* Cinematic layout: 2.39:1-ish aspect ratio for the big one */
+    .gal-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 10px;
+    }
+    .gal-main {
+      grid-row: 1 / 3;
+    }
+    .gal-strip {
+      display: grid; grid-template-rows: 1fr 1fr; gap: 10px;
+    }
+
+    .mc { /* media card */
+      position: relative; overflow: hidden;
+      background: var(--bg3);
+      border-radius: 3px;
+    }
+    .gal-main .mc { aspect-ratio: 9/16; }
+    .gal-strip .mc { aspect-ratio: 16/10; }
+
+    .mc img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.6s var(--ease), filter 1s var(--ease);
+      filter: grayscale(25%) brightness(.92);
+      will-change: transform;
+    }
+    .mc:hover img {
+      transform: scale(1.06);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    /* Cinematic overlay */
+    .mc::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top,
+        rgba(5,4,3,.75) 0%,
+        rgba(5,4,3,.1) 40%,
+        transparent 100%
+      );
+      transition: opacity .6s;
+    }
+    .mc:hover::before { opacity: .6; }
+
+    /* Hover — full-frame gold border flash */
+    .mc::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 2;
+      border: 1px solid transparent;
+      transition: border-color .4s;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .mc:hover::after { border-color: rgba(201,168,76,.35); }
+
+    .mc-meta {
+      position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 3;
+      transition: transform .5s var(--ease), opacity .5s;
+    }
+    .mc-num {
+      font-family: var(--FC);
+      font-size: 9px; font-weight: 600;
+      letter-spacing: .2em; color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .mc-cap {
+      font-family: var(--FD);
+      font-size: 20px; font-weight: 700;
+      color: var(--text); text-transform: uppercase;
+      transition: transform .5s var(--ease);
+      transform: translateY(4px);
+    }
+    .mc:hover .mc-cap { transform: translateY(0); }
+
+    /* Bottom row of 3 */
+    .gal-row3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .gal-row3 .mc { aspect-ratio: 4/3; }
+
+    /* ─────────────────────────────────────────────
+       SERVICES — TRES NIVELES
+    ───────────────────────────────────────────── */
+    #services { padding: 130px 0; }
+
+    .svc-header { margin-bottom: 64px; }
+    .svc-eyebrow {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .svc-h {
+      font-family: var(--FD);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 700; letter-spacing: -.02em;
+      text-transform: uppercase; line-height: .9;
+    }
+
+    .svc-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .svc-card {
+      position: relative;
+      padding: 52px 36px 48px;
+      border-right: 1px solid rgba(255,255,255,.05);
+      transition: background .5s var(--ease);
+      overflow: hidden;
+    }
+    .svc-card:last-child { border-right: none; }
+    .svc-card:hover { background: rgba(15,13,10,.9); }
+
+    /* Animated gradient line at top */
+    .svc-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform .6s var(--ease);
+    }
+    .svc-card:hover::before { transform: scaleX(1); }
+
+    /* Big background number — decorative */
+    .svc-bg-num {
+      position: absolute;
+      right: -10px; bottom: -20px;
+      font-family: var(--FD);
+      font-size: 160px; font-weight: 700;
+      color: rgba(201,168,76,.04);
+      line-height: 1;
+      pointer-events: none;
+      transition: color .6s, transform .6s var(--ease);
+      letter-spacing: -.05em;
+    }
+    .svc-card:hover .svc-bg-num {
+      color: rgba(201,168,76,.07);
+      transform: scale(1.05) translateX(-5px);
+    }
+
+    .svc-num-label {
+      font-family: var(--FC);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .svc-num-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(201,168,76,.15);
+    }
+
+    .svc-icon {
+      font-size: 28px; color: var(--muted);
+      margin-bottom: 20px;
+      transition: color .4s, transform .4s var(--ease);
+    }
+    .svc-card:hover .svc-icon {
+      color: var(--gold);
+      transform: scale(1.15);
+    }
+
+    .svc-name {
+      font-family: var(--FD);
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: -.01em;
+      color: var(--text); margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .svc-tier {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 20px;
+    }
+
+    .svc-desc {
+      font-size: 14px; line-height: 1.7;
+      color: var(--muted); margin-bottom: 28px;
+    }
+
+    /* Service tags */
+    .svc-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .svc-tag {
+      font-family: var(--FC);
+      font-size: 9px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 2px;
+      color: var(--muted);
+      transition: border-color .3s, color .3s;
+    }
+    .svc-card:hover .svc-tag {
+      border-color: rgba(201,168,76,.2);
+      color: var(--text);
+    }
+
+    /* ─────────────────────────────────────────────
+       BOOKING — DISEÑEMOS TU ATMÓSFERA
+    ───────────────────────────────────────────── */
+    #booking {
+      padding: 0 0 120px;
+      position: relative;
+    }
+
+    /* Full-width immersive block */
+    .bk-hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* Atmospheric gradient */
+    .bk-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(139,26,26,.18), transparent),
+        radial-gradient(ellipse 50% 60% at 20% 50%, rgba(201,168,76,.07), transparent),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(201,168,76,.05), transparent);
+    }
+
+    /* Animated scan lines */
+    .bk-scan {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,.04) 3px,
+        rgba(0,0,0,.04) 4px
+      );
+      animation: scanShift 8s linear infinite;
+    }
+    @keyframes scanShift {
+      from { background-position: 0 0; }
+      to { background-position: 0 60px; }
+    }
+
+    /* Border frame */
+    .bk-frame {
+      position: absolute;
+      inset: 40px; z-index: 1; pointer-events: none;
+      border: 1px solid rgba(201,168,76,.08);
+      border-radius: 4px;
+    }
+    .bk-frame::before {
+      content: '';
+      position: absolute; top: -1px; left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .bk-frame::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .bk-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 60px 5vw;
+      max-width: 800px;
+    }
+
+    .bk-pre {
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .bk-pre::before, .bk-pre::after {
+      content: ''; width: 50px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,.5));
+    }
+    .bk-pre::after { background: linear-gradient(to left, transparent, rgba(201,168,76,.5)); }
+
+    .bk-h {
+      font-family: var(--FD);
+      font-size: clamp(52px, 9vw, 120px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: .88;
+      letter-spacing: -.02em;
+      margin-bottom: 28px;
+    }
+    .bk-h em {
+      font-style: normal;
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,.6);
+    }
+
+    .bk-sub {
+      font-size: clamp(15px, 1.3vw, 19px);
+      color: var(--muted); line-height: 1.7;
+      max-width: 520px; margin: 0 auto 52px;
+    }
+    .bk-sub strong { color: var(--text); font-weight: 500; }
+
+    .bk-btns {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+
+    /* Primary CTA — monolith */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 40px;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: var(--FC);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      border-radius: 2px;
+      border: none;
+      position: relative; overflow: hidden;
+      transition: background .4s, color .4s;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(5,4,3,.0);
+      transition: background .4s;
+    }
+    .btn-primary:hover { background: var(--gold2); }
+    .btn-primary:hover::before { background: rgba(5,4,3,.08); }
+    .btn-primary i { font-size: 1rem; }
+
+    /* Secondary CTA — ghost */
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 36px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--FC);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,.18);
+      transition: border-color .4s, color .4s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Info strip below CTA */
+    .bk-info {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .bk-info-item {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--FC);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bk-info-item i { color: var(--gold); font-size: .9rem; }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+    .ft {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ft-logo { display: flex; align-items: center; }
+    .ft-logo img { width: 30px; height: 30px; object-fit: contain; opacity: .8; }
+
+    .ft-socials {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .ft-socials a {
+      font-size: 1.1rem; color: var(--muted);
+      transition: color .3s;
+    }
+    .ft-socials a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .bio-grid { grid-template-columns: 1fr; gap: 56px; }
+      .bio-photo-wrap { position: static; }
+      .bio-stats-float { right: 0; }
+      .gal-grid { grid-template-columns: 1fr; }
+      .gal-main .mc { aspect-ratio: 4/5; }
+      .svc-track { grid-template-columns: 1fr; }
+      .svc-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); }
+      .svc-card:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 768px) {
+      #nav { padding: 18px 5vw; }
+      .nav-links { display: none; }
+      .gal-row3 { grid-template-columns: 1fr 1fr; }
+      .bk-frame { inset: 16px; }
+      .bk-info { gap: 20px; }
+      .bk-btns { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-ghost { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      #bio, #gallery, #services { padding: 80px 0; }
+      .gal-row3 { grid-template-columns: 1fr; }
+      .bio-stats-float { position: static; margin-top: 20px; flex-direction: column; gap: 16px; }
+      .stat-divider { width: 100%; height: 1px; }
+      .ft { flex-direction: column; gap: 24px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: duration .01ms !important;
+      }
+      .rv, .rv2 { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
 <body>
-  <nav id="mainNav">
-    <a href="#hero" class="logo-wrap" aria-label="Ir al inicio">
-      <img src="logo.png" alt="Logo DJ César Channel" class="logo-mark" />
-    </a>
 
-    <div class="nav-right">
+  <!-- Custom cursor -->
+  <div class="cur" id="cur"></div>
+  <div class="cur-ring" id="curRing"></div>
+
+  <!-- ────────── NAV ────────── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Ir al inicio">
+      <img src="logo.png" alt="Logo DJ César Channel" />
+    </a>
+    <div class="nav-r">
       <ul class="nav-links">
         <li><a href="#bio">Perfil</a></li>
         <li><a href="#gallery">Galería</a></li>
         <li><a href="#services">Servicios</a></li>
         <li><a href="#booking">Booking</a></li>
       </ul>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram de DJ César Channel">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
+      <div class="nav-socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
     </div>
   </nav>
 
   <main>
+
+    <!-- ────────── HERO ────────── -->
     <section id="hero">
-      <div class="hero-media">
+      <div class="h-bg">
         <video autoplay muted loop playsinline poster="poster-hero.jpg" id="heroVideo">
-          <source src="cesarvideo.mp4" type="video/mp4" />
-          <source src="cesarvideo.webm" type="video/webm" />
+          <source src="video.mp4" type="video/mp4" />
+          <source src="video.webm" type="video/webm" />
           <img src="poster-hero.jpg" alt="DJ César Channel en performance" />
         </video>
-        <div class="hero-vignette"></div>
+        <div class="h-vignette"></div>
       </div>
 
-      <div class="hero-content">
-        <h1 class="hero-h1">CÉSAR <em>CHANNEL</em></h1>
+      <div class="h-title-wrap">
+        <span class="h-name-outer">DJ CÉSAR</span>
+        <span class="h-channel">CHANNEL</span>
+        <div class="h-tag">CDMX &nbsp;·&nbsp; Bodas &nbsp;·&nbsp; Eventos Privados &nbsp;·&nbsp; Gourmet</div>
       </div>
 
-      <div class="scroll-hint">Desliza</div>
+      <div class="h-scroll">
+        <div class="h-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="rule"></div>
 
+    <!-- ────────── BIO ────────── -->
     <section id="bio">
-      <div class="container">
+      <div class="W">
         <div class="bio-grid">
-          <div class="rev">
-            <div class="bio-tag">Acerca de</div>
-            <h2 class="bio-h">CURADURÍA,<br />NO<br />REPRODUCCIÓN.</h2>
 
-            <p class="bio-cities">CDMX <span>·</span> Toronto <span>·</span> Barcelona</p>
-
-            <div class="bio-stats">
-              <div class="bio-stat">
-                <div class="bio-stat-val">8+</div>
-                <div class="bio-stat-label">Años de Criterio</div>
-              </div>
-              <div class="bio-stat">
-                <div class="bio-stat-val">400+</div>
-                <div class="bio-stat-label">Atmósferas Creadas</div>
-              </div>
+          <!-- Photo column -->
+          <div class="bio-photo-wrap rv2">
+            <div class="bio-photo">
+              <img src="foto1.jpg" alt="DJ César Channel — retrato" loading="lazy" />
             </div>
-
-            <div class="bio-aesthetic-box">
-              <div class="aesthetic-title">Dirección de Arte e Identidad</div>
-              <p class="aesthetic-desc">Exploración sonora de vanguardia que une la elegancia del Deep &amp; Minimal House con la vibración orgánica del Funk global, Afrobeats y texturas latinas alternativas. Sin clichés de club comercial.</p>
+            <!-- Floating stats card -->
+            <div class="bio-stats-float">
+              <div class="stat-item">
+                <span class="stat-val">8+</span>
+                <span class="stat-label">Años de criterio</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-val">400+</span>
+                <span class="stat-label">Atmósferas creadas</span>
+              </div>
             </div>
           </div>
 
-          <div class="bio-copy rev" style="transition-delay:.12s">
-            <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
-            <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>
-            <p>CDMX le dio el groove. Toronto le dio el criterio. Barcelona le dio el matiz. Tres escuelas, una sola firma.</p>
+          <!-- Text column -->
+          <div class="bio-text rv" style="transition-delay:.15s">
+            <div class="bio-eyebrow">Acerca de</div>
+            <h2 class="bio-h">
+              CURADURÍA,<br />NO<br /><span>REPRODUCCIÓN.</span>
+            </h2>
+
+            <div class="bio-cities">
+              <span>CDMX</span>
+              <span class="dot">·</span>
+              <span>Toronto</span>
+              <span class="dot">·</span>
+              <span>Barcelona</span>
+            </div>
+
+            <div class="bio-body">
+              <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
+              <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>
+              <p>De la cumbia al techno, del merengue al deep house, de una boda hasta un bautizo. <strong>La noche es el territorio.</strong></p>
+            </div>
+
+            <div class="bio-badge">
+              <i class="fa-solid fa-location-dot"></i>
+              Residente CDMX &nbsp;·&nbsp; Disponible en todo México
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="rule"></div>
 
+    <!-- ────────── GALLERY ────────── -->
     <section id="gallery">
-      <div class="container">
-        <header class="gal-header rev">
-          <h2 class="gal-title">PRESENCIA VISUAL</h2>
-          <p class="gal-sub">Performance · Ambiente</p>
+      <div class="W">
+        <header class="gal-header rv">
+          <p class="gal-eyebrow">Performance · Ambiente</p>
+          <h2 class="gal-h">PRESENCIA<br/>VISUAL</h2>
         </header>
 
-        <div class="gallery-grid rev" style="transition-delay:.08s">
-          <div class="gallery-main">
-            <article class="media-card">
-              <img src="foto2.jpg" alt="Retrato de DJ César Channel" loading="lazy" width="1200" height="1500" />
-              <div class="media-meta">
-                <div class="media-label">Foto 02</div>
-                <div class="media-caption">Presencia</div>
+        <!-- Main cinematic grid -->
+        <div class="gal-grid rv" style="transition-delay:.1s">
+          <div class="gal-main">
+            <article class="mc">
+              <img src="foto2.jpg" alt="DJ César Channel — presencia en el booth" loading="lazy" />
+              <div class="mc-meta">
+                <div class="mc-num">01 / PRESENCIA</div>
+                <div class="mc-cap">El artista</div>
               </div>
             </article>
           </div>
-
-          <div class="gallery-side">
-            <div class="gallery-top">
-              <article class="media-card">
-                <img src="foto1.jpg" alt="Manos de DJ César Channel en los controles" loading="lazy" width="900" height="1200" />
-                <div class="media-meta">
-                  <div class="media-label">Foto 01</div>
-                  <div class="media-caption">Control</div>
-                </div>
-              </article>
-
-              <article class="media-card">
-                <img src="foto3.jpg" alt="Ambiente y luces en evento" loading="lazy" width="1200" height="900" />
-                <div class="media-meta">
-                  <div class="media-label">Foto 03</div>
-                  <div class="media-caption">Atmósfera</div>
-                </div>
-              </article>
-            </div>
-
-            <div class="gallery-bottom">
-              <article class="media-card">
-                <img src="foto4.jpg" alt="Invitados disfrutando la pista de baile" loading="lazy" width="1200" height="900" />
-                <div class="media-meta">
-                  <div class="media-label">Foto 04</div>
-                  <div class="media-caption">Respuesta</div>
-                </div>
-              </article>
-
-              <article class="media-card">
-                <img src="foto5.jpg" alt="Venue completo preparado para el evento" loading="lazy" width="1200" height="900" />
-                <div class="media-meta">
-                  <div class="media-label">Foto 05</div>
-                  <div class="media-caption">Escala</div>
-                </div>
-              </article>
-            </div>
+          <div class="gal-strip">
+            <article class="mc">
+              <img src="foto3.jpg" alt="Control en cabina" loading="lazy" />
+              <div class="mc-meta">
+                <div class="mc-num">02 / TÉCNICA</div>
+                <div class="mc-cap">Control</div>
+              </div>
+            </article>
+            <article class="mc">
+              <img src="foto4.jpg" alt="Atmósfera del evento" loading="lazy" />
+              <div class="mc-meta">
+                <div class="mc-num">03 / AMBIENTE</div>
+                <div class="mc-cap">Atmósfera</div>
+              </div>
+            </article>
           </div>
+        </div>
+
+        <!-- Bottom row -->
+        <div class="gal-row3 rv" style="transition-delay:.2s">
+          <article class="mc">
+            <img src="foto5.jpg" alt="Invitados en pista" loading="lazy" />
+            <div class="mc-meta">
+              <div class="mc-num">04 / RESPUESTA</div>
+              <div class="mc-cap">La pista</div>
+            </div>
+          </article>
+          <article class="mc">
+            <img src="foto1.jpg" alt="Venue del evento" loading="lazy" />
+            <div class="mc-meta">
+              <div class="mc-num">05 / ESCALA</div>
+              <div class="mc-cap">El espacio</div>
+            </div>
+          </article>
+          <article class="mc" style="background: linear-gradient(135deg, rgba(15,13,10,1), rgba(9,8,6,1));">
+            <!-- Quote card — no image, typographic -->
+            <div style="
+              position:absolute; inset:0; display:flex; flex-direction:column;
+              align-items:center; justify-content:center; padding:32px; text-align:center;
+            ">
+              <div style="
+                font-family:var(--FD); font-size:clamp(60px,6vw,90px); font-weight:700;
+                color:transparent; -webkit-text-stroke:1px rgba(201,168,76,.25);
+                line-height:1; margin-bottom:16px;
+              ">&ldquo;</div>
+              <p style="
+                font-family:var(--FC); font-size:clamp(13px,1.1vw,16px);
+                font-weight:400; letter-spacing:.06em;
+                color:var(--muted); line-height:1.6; font-style:italic;
+              ">El lugar cambia.<br/>El oído no.</p>
+              <div style="
+                margin-top:20px; font-family:var(--FC);
+                font-size:9px; font-weight:600; letter-spacing:.2em;
+                text-transform:uppercase; color:var(--gold);
+              ">— DJ César Channel</div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="rule"></div>
 
+    <!-- ────────── SERVICES ────────── -->
     <section id="services">
-      <div class="container">
-        <header class="svc-header rev">
-          <div class="svc-eyebrow">Formas de trabajar</div>
-          <h2 class="svc-h">TRES NIVELES DE PRODUCCIÓN</h2>
+      <div class="W">
+        <header class="svc-header rv">
+          <p class="svc-eyebrow">Formas de trabajar</p>
+          <h2 class="svc-h">TRES NIVELES<br/>DE PRODUCCIÓN</h2>
         </header>
 
-        <div class="services-shell rev" style="transition-delay:.08s">
-          <div class="service-card">
-            <span class="service-num">01 // ESENCIAL</span>
-            <h3>SOLO DJ</h3>
-            <p>Set de DJ enfocado puramente en la curaduría acústica. Integración directa con el equipamiento sonoro existente del espacio.</p>
+        <div class="svc-track rv" style="transition-delay:.1s">
+
+          <div class="svc-card">
+            <div class="svc-bg-num">01</div>
+            <div class="svc-num-label">01 // Esencial</div>
+            <div class="svc-icon"><i class="fa-solid fa-headphones"></i></div>
+            <h3 class="svc-name">Solo DJ</h3>
+            <p class="svc-tier">Curaduría pura</p>
+            <p class="svc-desc">Set de DJ enfocado puramente en la selección acústica. Integración directa con el equipamiento sonoro del espacio. La música como protagonista silenciosa.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">Bodas</span>
+              <span class="svc-tag">Bautizos</span>
+              <span class="svc-tag">Reuniones</span>
+              <span class="svc-tag">Garden Party</span>
+            </div>
           </div>
 
-          <div class="service-card">
-            <span class="service-num">02 // DISEÑO SONORO</span>
-            <h3>DJ + AUDIO &amp; ILUMINACIÓN</h3>
-            <p>Despliegue técnico completo. Sistema de audio de alta fidelidad adaptado al espacio físico y diseño lumínico arquitectónico de pista.</p>
+          <div class="svc-card">
+            <div class="svc-bg-num">02</div>
+            <div class="svc-num-label">02 // Diseño Sonoro</div>
+            <div class="svc-icon"><i class="fa-solid fa-sliders"></i></div>
+            <h3 class="svc-name">DJ + Audio & Luz</h3>
+            <p class="svc-tier">Despliegue técnico completo</p>
+            <p class="svc-desc">Sistema de audio de alta fidelidad adaptado al espacio físico más diseño lumínico arquitectónico de pista. La atmósfera como obra de arte.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">Eventos Gourmet</span>
+              <span class="svc-tag">Quinceañeras</span>
+              <span class="svc-tag">Corporativos</span>
+              <span class="svc-tag">Fiestas Privadas</span>
+            </div>
           </div>
 
-          <div class="service-card">
-            <span class="service-num">03 // EXPERIENCIA INTEGRAL</span>
-            <h3>PRODUCTION &amp; HOSTING</h3>
-            <p>Dirección general del evento. Curaduría musical ininterrumpida combinada con conducción y acentuación de momentos clave de alta etiqueta.</p>
+          <div class="svc-card">
+            <div class="svc-bg-num">03</div>
+            <div class="svc-num-label">03 // Integral</div>
+            <div class="svc-icon"><i class="fa-solid fa-star"></i></div>
+            <h3 class="svc-name">Production & Hosting</h3>
+            <p class="svc-tier">Dirección total del evento</p>
+            <p class="svc-desc">Curaduría musical ininterrumpida combinada con conducción de alta etiqueta y acentuación de momentos clave. De la entrada al último brindis.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">Bodas de Lujo</span>
+              <span class="svc-tag">Galas</span>
+              <span class="svc-tag">Lanzamientos</span>
+              <span class="svc-tag">Producción Integral</span>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <div class="divider"></div>
-
+    <!-- ────────── BOOKING ────────── -->
     <section id="booking">
-      <div class="container booking-shell">
-        <h2 class="book-h rev">DISEÑEMOS TU<br />ATMÓSFERA</h2>
-        <p class="book-sub rev" style="transition-delay:.08s">Comparte la fecha, la locación y la escala de tu evento para estructurar una propuesta sonora a medida.</p>
+      <div class="bk-hero">
+        <div class="bk-bg"></div>
+        <div class="bk-scan"></div>
+        <div class="bk-frame"></div>
 
-        <div class="booking-panel">
-          <div class="booking-grid">
-            <div class="booking-copy">
-              <div class="booking-label">Especificaciones mínimas</div>
-              <div class="booking-copy-line">Fecha estimada, ciudad sede y aforo aproximado.</div>
+        <div class="bk-content rv">
+          <div class="bk-pre">Disponible 2025–2026</div>
+          <h2 class="bk-h">
+            DISEÑEMOS<br />
+            <em>TU ATMÓSFERA</em>
+          </h2>
+          <p class="bk-sub">
+            Comparte la <strong>fecha</strong>, la <strong>locación</strong> y la escala de tu evento.
+            Estructuramos una propuesta sonora completamente a medida — desde la primera canción hasta el último beat.
+          </p>
+
+          <div class="bk-btns">
+            <a
+              href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento"
+              target="_blank" rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+              RESERVAR FECHA
+            </a>
+            <a
+              href="mailto:booking@cesarchannel.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel"
+              class="btn-ghost"
+            >
+              SOLICITAR INFO
+            </a>
+          </div>
+
+          <div class="bk-info">
+            <div class="bk-info-item">
+              <i class="fa-solid fa-calendar-check"></i>
+              Respuesta en &lt; 24h
             </div>
-
-            <div class="pad-group">
-              <a href="https://wa.me/1234567890?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pad pad-primary">
-                RESERVAR FECHA
-              </a>
-              <a href="mailto:booking@cesarchannel.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel" class="pad pad-secondary">
-                SOLICITAR INFO
-              </a>
+            <div class="bk-info-item">
+              <i class="fa-solid fa-map-location-dot"></i>
+              CDMX · Todo México
+            </div>
+            <div class="bk-info-item">
+              <i class="fa-solid fa-music"></i>
+              Cumbia · Techno · Reggaetón · Deep House
+            </div>
+            <div class="bk-info-item">
+              <i class="fa-solid fa-champagne-glasses"></i>
+              Bodas · Bautizos · Gourmet · Galas
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <div class="divider"></div>
+  <div class="rule"></div>
 
+  <!-- ────────── FOOTER ────────── -->
   <footer>
-    <div class="container foot">
-      <div class="foot-left">
-        <img src="logo.png" alt="Logo DJ César Channel" class="foot-logo-img" />
-        <span class="foot-logo">CÉSAR CHANNEL</span>
-      </div>
-
-      <div class="foot-links">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="mailto:booking@cesarchannel.com">Email</a>
-        <span class="foot-copy">2026 EPK</span>
+    <div class="W ft">
+      <a href="#hero" class="ft-logo" aria-label="Volver al inicio">
+        <img src="logo.png" alt="Logo DJ César Channel" />
+      </a>
+      <div class="ft-socials">
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const nav = document.getElementById('mainNav');
-      let lastScroll = 0;
-      let navTimeout;
-      window.addEventListener('scroll', () => {
-        const current = window.pageYOffset;
-        if (current < 50) {
-          nav.classList.remove('hidden');
-          return;
-        }
-        if (current > lastScroll && current > 150) nav.classList.add('hidden');
-        else if (current < lastScroll) nav.classList.remove('hidden');
-        clearTimeout(navTimeout);
-        navTimeout = setTimeout(() => {
-          if (window.pageYOffset > 150) nav.classList.add('hidden');
-        }, 2600);
-        lastScroll = current;
-      }, { passive: true });
+    /* ── Cursor ── */
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('curRing');
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      rx += (mx - rx) * .14; ry += (my - ry) * .14;
+      cur.style.left  = mx + 'px'; cur.style.top  = my + 'px';
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(loop);
+    })();
 
-      const revs = document.querySelectorAll('.rev');
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('on');
-        });
-      }, { threshold: 0.12 });
-      revs.forEach(el => io.observe(el));
+    /* ── Nav hide on scroll ── */
+    const nav = document.getElementById('nav');
+    let lastY = 0, navTimer;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < 60) { nav.classList.remove('hide'); lastY = y; return; }
+      if (y > lastY && y > 120) nav.classList.add('hide');
+      else nav.classList.remove('hide');
+      clearTimeout(navTimer);
+      navTimer = setTimeout(() => { if (window.scrollY > 120) nav.classList.add('hide'); }, 2800);
+      lastY = y;
+    }, { passive: true });
 
-      const heroVideo = document.getElementById('heroVideo');
-      if (heroVideo) heroVideo.muted = true;
-    });
+    /* ── Reveal on scroll ── */
+    const revEls = document.querySelectorAll('.rv, .rv2');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: .1 });
+    revEls.forEach(el => io.observe(el));
+
+    /* ── Hero video mute ── */
+    const vid = document.getElementById('heroVideo');
+    if (vid) vid.muted = true;
   </script>
 </body>
 </html>
