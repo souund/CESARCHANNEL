@@ -768,15 +768,15 @@
     @media (max-width: 768px) {
       #nav { padding: 18px 5vw; }
       .nav-links { display: none; }
-      .gal-row3 { grid-template-columns: 1fr 1fr; }
-      .bk-frame { inset: 16px; }
+      .gal-grid, .gal-row3 { display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }   .gal-grid::-webkit-scrollbar, .gal-row3::-webkit-scrollbar { display: none; }   .gal-grid .mc, .gal-row3 .mc { flex: 0 0 78vw; scroll-snap-align: start; aspect-ratio: 4/5; }   .gal-main, .gal-strip { display: contents; }   .gal-main .mc { aspect-ratio: 4/5; }
+      .bk-frame { inset: 16px; }   #hero { min-height: 60svh; max-height: 70svh; }   .h-bg video, .h-bg img { height: 100%; width: 100%; object-fit: cover; object-position: center top; }
       .bk-btns { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-ghost { justify-content: center; }
     }
 
     @media (max-width: 480px) {
       #bio, #gallery, #services { padding: 80px 0; }
-      .gal-row3 { grid-template-columns: 1fr; }
+      .gal-grid .mc, .gal-row3 .mc { flex: 0 0 85vw; }
       .bio-stats-float {
         position: static;
         margin-top: 20px;
