@@ -54,6 +54,18 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Protección global anti-overflow horizontal */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    main {
+      width: 100%;
+      overflow-x: clip;
+    }
+
     body::before {
       content: "";
       position: fixed;
@@ -788,11 +800,24 @@
       .nav-end { gap: 10px; }
 
       .hero {
+        width: 100%;
+        width: 100dvw;
         min-height: 100svh;
         min-height: 100dvh;
+        overflow: clip;
+        isolation: isolate;
       }
 
       .hero video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
         object-position: center center;
       }
 
@@ -835,12 +860,34 @@
         text-align: left;
       }
 
+      /* GALERÍA MOBILE: carrusel horizontal táctil */
+      .sequence {
+        overflow: hidden;
+      }
+
+      .sequence > .shell:last-child {
+        width: 100%;
+        margin: 0;
+      }
+
       .filmstrip {
-        grid-template-columns: 1fr;
+        display: flex;
         gap: 12px;
         width: 100%;
-        margin-left: 0;
-        padding: 0;
+        margin: 0;
+        padding: 0 4vw 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 4vw;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+      }
+
+      .filmstrip::-webkit-scrollbar {
+        display: none;
       }
 
       .frame,
@@ -849,8 +896,13 @@
       .frame:nth-child(3),
       .frame:nth-child(4),
       .frame:nth-child(5) {
-        height: 118vw;
-        margin-top: 0;
+        flex: 0 0 88vw;
+        width: 88vw;
+        height: min(118vw, 620px);
+        min-width: 0;
+        margin: 0;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       .signals { padding: 110px 0 95px; }
