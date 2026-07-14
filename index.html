@@ -3,818 +3,1048 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#050403" />
-  <meta name="description" content="DJ César Channel. Curaduría musical y performance para bodas, eventos privados y producciones integrales. CDMX." />
+  <meta name="theme-color" content="#090806" />
+  <meta name="description" content="DJ César Channel para bodas, fiestas privadas, celebraciones familiares, graduaciones, inauguraciones y eventos corporativos en Ciudad de México y zona metropolitana." />
+
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="DJ César Channel" />
-  <meta property="og:description" content="Curaduría musical y performance para bodas, eventos privados y producciones integrales." />
-      <meta property="og:image" content="https://souund.github.io/CESARCHANNEL/assets/img/preview-cesar-channel..jpg" />   <meta property="og:image:width" content="1200" />   <meta property="og:image:height" content="630" />   <meta property="og:url" content="https://souund.github.io/CESARCHANNEL/" />
-  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="DJ César Channel | Eventos en CDMX" />
+  <meta property="og:description" content="DJ, sonido, iluminación y conducción para bodas, fiestas privadas, graduaciones y eventos corporativos en Ciudad de México y zona metropolitana." />
+  <meta property="og:image" content="https://souund.github.io/CESARCHANNEL/preview-cesar-channel.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://souund.github.io/CESARCHANNEL/" />
+  <meta property="og:locale" content="es_MX" />
+
   <meta name="twitter:card" content="summary_large_image" />
-  <title>DJ César Channel</title>
-      <link rel="icon" type="image/png" href="assets/img/favicon-32.png" />
-      <link rel="preload" as="image" href="assets/img/hero-poster.jpg" />
+  <meta name="twitter:title" content="DJ César Channel | Eventos en CDMX" />
+  <meta name="twitter:description" content="DJ, sonido, iluminación y conducción para eventos en Ciudad de México y zona metropolitana." />
+  <meta name="twitter:image" content="https://souund.github.io/CESARCHANNEL/preview-cesar-channel.jpg" />
+
+  <title>DJ César Channel | Eventos en CDMX</title>
+
+  <link rel="icon" type="image/png" href="favicon-32.png" />
+  <link rel="preload" as="image" href="hero-poster.webp" />
+  <link rel="preload" as="image" href="bio-portrait-cesar.webp" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
-    /* ─── RESET & TOKENS ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:          #050403;
-      --bg2:         #090806;
-      --bg3:         #0f0d0a;
-      --gold:        #c9a84c;
-      --gold2:       #e8c96a;
-      --red:         #8b1a1a;
-      --text:        #f0ece3;
-      --muted:       rgba(240,236,227,0.55);
-      --faint:       rgba(240,236,227,0.10);
-      --FD:          'Antonio', sans-serif;
-      --FB:          'Barlow', sans-serif;
-      --FC:          'Barlow Condensed', sans-serif;
-      --ease:        cubic-bezier(.16,1,.3,1);
-      --ease2:       cubic-bezier(.4,0,.2,1);
-      --w:           min(1240px, 90vw);
+      --bg: #090806;
+      --bg-deep: #050403;
+      --panel: #11100d;
+      --gold: #c9a84c;
+      --gold-light: #efd27a;
+      --cream: #f3efe6;
+      --muted: rgba(243, 239, 230, .58);
+      --line: rgba(243, 239, 230, .10);
+      --fd: "Antonio", sans-serif;
+      --fb: "Barlow", sans-serif;
+      --fc: "Barlow Condensed", sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      --width: min(1240px, 90vw);
     }
 
-    html { scroll-behavior: smooth; background: var(--bg); }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--bg-deep);
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: var(--FB);
+      background: var(--bg-deep);
+      color: var(--cream);
+      font-family: var(--fb);
       font-weight: 300;
-      color: var(--text);
-      background: var(--bg);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      cursor: auto;
     }
 
-    /* ─── NOISE GRAIN OVERLAY ─── */
     body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 9990; pointer-events: none;
-      opacity: .028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 180px 180px;
-    }
-
-    a { color: inherit; text-decoration: none; cursor: pointer; }
-    button { cursor: pointer; }
-    img, video { display: block; max-width: 100%; height: auto; }
-    .W { width: var(--w); margin: 0 auto; }
-    .rule { height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,.18), transparent); }
-
-    /* ─── REVEAL ─── */
-    .rv { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
-    .rv.in { opacity: 1; transform: none; }
-    .rv2 { opacity: 0; transform: translateX(-24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-    .rv2.in { opacity: 1; transform: none; }
-
-    /* ─────────────────────────────────────────────
-       NAV
-    ───────────────────────────────────────────── */
-    #nav {
-      position: fixed; inset: 0 0 auto 0; z-index: 500;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 5vw;
-      background: linear-gradient(to bottom, rgba(5,4,3,.96) 0%, rgba(5,4,3,.5) 70%, transparent 100%);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      transition: transform .5s var(--ease), opacity .5s;
-    }
-    #nav.hide { transform: translateY(-110%); opacity: 0; }
-
-    .nav-logo { display: flex; align-items: center; }
-    .nav-logo img { width: 34px; height: 34px; object-fit: contain; }
-
-    .nav-r { display: flex; align-items: center; gap: 36px; }
-    .nav-links { display: flex; list-style: none; gap: 28px; }
-    .nav-links a {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--muted);
-      position: relative; transition: color .3s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; left: 50%; bottom: -5px;
-      width: 0; height: 1px; background: var(--gold);
-      transition: width .35s var(--ease), left .35s var(--ease);
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; left: 0; }
-
-    .nav-socials { display: flex; align-items: center; gap: 18px; }
-    .nav-socials a { font-size: 1.1rem; color: var(--muted); transition: color .3s; }
-    .nav-socials a:hover { color: var(--gold); }
-
-    /* ─────────────────────────────────────────────
-       HERO — SOLO VIDEO
-    ───────────────────────────────────────────── */
-    #hero {
-      position: relative;
-      min-height: 100svh;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-
-    .h-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
-    .h-bg video, .h-bg img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-
-    .h-vignette {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        radial-gradient(ellipse at center, rgba(5,4,3,0) 20%, rgba(5,4,3,.72) 100%),
-        linear-gradient(to bottom, rgba(5,4,3,.45) 0%, rgba(5,4,3,.0) 35%, rgba(5,4,3,.0) 65%, var(--bg) 100%);
-    }
-
-    .h-scroll {
-      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-      z-index: 3;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-family: var(--FC); font-size: 9px; letter-spacing: .25em;
-      color: rgba(240,236,227,.25); text-transform: uppercase;
-    }
-    .h-scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, transparent, rgba(201,168,76,.6));
-      animation: scrollpulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollpulse {
-      0%,100% { opacity: .3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.3); }
-    }
-
-    /* ─────────────────────────────────────────────
-       BIO — ACERCA DE
-    ───────────────────────────────────────────── */
-    #bio { padding: 140px 0 120px; }
-
-    .bio-grid {
-      display: grid;
-      grid-template-columns: .9fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .bio-photo-wrap {
-      position: sticky; top: 100px;
-    }
-    .bio-photo {
-      position: relative;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-      border-radius: 4px;
-    }
-    .bio-photo img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: grayscale(20%) contrast(1.08);
-      transition: filter 1s var(--ease), transform 1.4s var(--ease);
-    }
-    .bio-photo:hover img {
-      filter: grayscale(0%) contrast(1.0);
-      transform: scale(1.03);
-    }
-    .bio-photo::before {
-      content: '';
-      position: absolute; left: -8px; top: 32px; bottom: 32px;
-      width: 2px; background: var(--gold); z-index: 2;
-    }
-    .bio-photo::after {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to top, rgba(5,4,3,.5) 0%, transparent 50%);
-    }
-
-    /* Floating stats premium tipo “ojo” */
-    .bio-stats-float {
-      position: absolute; right: -10px; bottom: 50px; z-index: 3;
-      background: radial-gradient(circle at 30% 0%, rgba(201,168,76,0.22), transparent 60%),
-                  rgba(9,8,6,0.94);
-      border-radius: 3px;
-      padding: 18px 26px;
-      border: 1px solid rgba(201,168,76,0.35);
-      box-shadow: 0 0 30px rgba(0,0,0,0.65);
-      display: flex; gap: 28px;
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      transform-origin: center;
-      transition:
-        transform .6s var(--ease),
-        box-shadow .6s var(--ease),
-        border-color .6s var(--ease),
-        background .6s var(--ease),
-        opacity .4s var(--ease);
-    }
-    .bio-stats-float::before {
       content: "";
-      position: absolute;
-      inset: 8px;
-      border-radius: 3px;
-      border: 1px solid rgba(201,168,76,0.20);
-      opacity: 0.7;
+      position: fixed;
+      inset: 0;
+      z-index: 900;
       pointer-events: none;
-    }
-    .bio-stats-float:hover {
-      transform: translateY(-6px) scale(1.02) rotate(-0.5deg);
-      box-shadow: 0 0 40px rgba(201,168,76,0.25);
-      border-color: rgba(201,168,76,0.6);
-      background: radial-gradient(circle at 20% 10%, rgba(201,168,76,0.32), transparent 60%),
-                  rgba(9,8,6,0.98);
+      opacity: .026;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px;
     }
 
-    .stat-val {
-      font-family: var(--FD);
-      font-size: 32px; font-weight: 700;
-      color: var(--gold2); line-height: 1;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
       display: block;
-    }
-    .stat-label {
-      font-family: var(--FC);
-      font-size: 9px; font-weight: 600;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--muted); margin-top: 4px;
-      display: block;
-    }
-    .stat-divider {
-      width: 1px;
-      background: rgba(201,168,76,.2);
-      align-self: stretch;
+      max-width: 100%;
     }
 
-    .bio-text { padding-top: 8px; }
-    .bio-eyebrow {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .bio-eyebrow::before {
-      content: ''; width: 24px; height: 1px; background: var(--gold);
-    }
-    .bio-h {
-      font-family: var(--FD);
-      font-size: clamp(42px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: .9; letter-spacing: -.01em;
-      margin-bottom: 36px;
-      text-transform: uppercase;
-    }
-    .bio-h span { color: var(--gold); }
-
-    .bio-cities {
-      display: flex; align-items: center; gap: 8px;
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 36px;
-    }
-    .bio-cities .dot { color: var(--gold); font-size: 16px; }
-
-    .bio-body p {
-      font-size: clamp(15px, 1.2vw, 18px);
-      line-height: 1.8; color: var(--muted);
-      margin-bottom: 22px;
-    }
-    .bio-body strong { color: var(--text); font-weight: 500; }
-
-    .bio-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 20px;
-      padding: 10px 18px;
-      border: 1px solid rgba(201,168,76,.2);
-      border-radius: 2px;
-      font-family: var(--FC);
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .bio-badge i { color: var(--gold); font-size: .9rem; }
-
-    /* ─────────────────────────────────────────────
-       GALLERY — PRESENCIA VISUAL
-    ───────────────────────────────────────────── */
-    #gallery { padding: 120px 0; }
-
-    .gal-header { margin-bottom: 56px; }
-    .gal-eyebrow {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 10px;
-    }
-    .gal-h {
-      font-family: var(--FD);
-      font-size: clamp(40px, 6vw, 80px);
-      font-weight: 700; letter-spacing: -.02em;
-      text-transform: uppercase; line-height: .9;
+    button {
+      font: inherit;
     }
 
-    .gal-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 10px;
-    }
-    .gal-main { grid-row: 1 / 3; }
-    .gal-strip {
-      display: grid; grid-template-rows: 1fr 1fr; gap: 10px;
+    .wrap {
+      width: var(--width);
+      margin: 0 auto;
     }
 
-    .mc {
-      position: relative; overflow: hidden;
-      background: var(--bg3);
-      border-radius: 3px;
-    }
-    .gal-main .mc { aspect-ratio: unset; height: 100%; }
-    .gal-strip .mc { aspect-ratio: 16/10; }
-
-    .mc img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 1.6s var(--ease), filter 1s var(--ease), opacity .5s var(--ease);
-      filter: grayscale(25%) brightness(.92);
-      will-change: transform;
+    .section-rule {
+      width: var(--width);
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, .26), transparent);
     }
 
-    /* Estado dramático cuando el grid está en hover */
-    .gal-grid:hover .mc img,
-    .gal-row3:hover .mc img {
-      filter: grayscale(70%) brightness(.65);
-      transform: scale(1.02);
-      opacity: 0.5;
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
     }
-    .gal-grid .mc:hover img,
-    .gal-row3 .mc:hover img {
-      filter: grayscale(0) brightness(1);
-      transform: scale(1.06);
+
+    .reveal.is-visible {
       opacity: 1;
+      transform: translateY(0);
     }
 
-    .mc::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to top,
-        rgba(5,4,3,.75) 0%,
-        rgba(5,4,3,.1) 40%,
-        transparent 100%
-      );
-      transition: opacity .6s;
-    }
-    .mc:hover::before { opacity: .6; }
+    /* NAV */
 
-    .mc::after {
-      content: '';
-      position: absolute; inset: 0; z-index: 2;
-      border: 1px solid transparent;
-      transition: border-color .4s;
-      border-radius: 3px;
-      pointer-events: none;
-    }
-    .mc:hover::after { border-color: rgba(201,168,76,.35); }
-
-    .mc-meta {
-      position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 3;
-      transition: transform .5s var(--ease), opacity .5s var(--ease);
-    }
-    .mc-num {
-      font-family: var(--FC);
-      font-size: 9px; font-weight: 600;
-      letter-spacing: .2em; color: var(--gold);
-      margin-bottom: 3px;
-    }
-    .mc-cap {
-      font-family: var(--FD);
-      font-size: 20px; font-weight: 700;
-      color: var(--text); text-transform: uppercase;
-      transition: transform .5s var(--ease);
-      transform: translateY(4px);
-    }
-    .mc:hover .mc-cap { transform: translateY(0); }
-
-    .gal-grid:hover .mc .mc-meta,
-    .gal-row3:hover .mc .mc-meta {
-      opacity: 0; transform: translateY(6px);
-    }
-    .gal-grid .mc:hover .mc-meta,
-    .gal-row3 .mc:hover .mc-meta {
-      opacity: 1; transform: translateY(0);
-    }
-
-    .gal-row3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .gal-row3 .mc { aspect-ratio: 4/3; }
-
-    /* ─────────────────────────────────────────────
-       SERVICES — TRES NIVELES
-    ───────────────────────────────────────────── */
-    #services { padding: 130px 0; }
-
-    .svc-header { margin-bottom: 64px; }
-    .svc-eyebrow {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 10px;
-    }
-    .svc-h {
-      font-family: var(--FD);
-      font-size: clamp(40px, 6vw, 80px);
-      font-weight: 700; letter-spacing: -.02em;
-      text-transform: uppercase; line-height: .9;
-    }
-
-    .svc-track {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .svc-card {
-      position: relative;
-      padding: 52px 36px 48px;
-      border-right: 1px solid rgba(255,255,255,.05);
-      transition: background .5s var(--ease);
-      overflow: hidden;
-    }
-    .svc-card:last-child { border-right: none; }
-    .svc-card:hover { background: rgba(15,13,10,.9); }
-
-    .svc-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      transform: scaleX(0);
-      transition: transform .6s var(--ease);
-    }
-    .svc-card:hover::before { transform: scaleX(1); }
-
-    .svc-bg-num {
-      position: absolute;
-      right: -10px; bottom: -20px;
-      font-family: var(--FD);
-      font-size: 160px; font-weight: 700;
-      color: rgba(201,168,76,.04);
-      line-height: 1;
-      pointer-events: none;
-      transition: color .6s, transform .6s var(--ease);
-      letter-spacing: -.05em;
-    }
-    .svc-card:hover .svc-bg-num {
-      color: rgba(201,168,76,.07);
-      transform: scale(1.05) translateX(-5px);
-    }
-
-    .svc-num-label {
-      font-family: var(--FC);
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 28px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .svc-num-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: rgba(201,168,76,.15);
-    }
-
-    .svc-icon {
-      font-size: 28px; color: var(--muted);
-      margin-bottom: 20px;
-      transition: color .4s, transform .4s var(--ease);
-    }
-    .svc-card:hover .svc-icon {
-      color: var(--gold);
-      transform: scale(1.15);
-    }
-
-    .svc-name {
-      font-family: var(--FD);
-      font-size: 28px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: -.01em;
-      color: var(--text); margin-bottom: 8px;
-      line-height: 1.1;
-    }
-
-    .svc-tier {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .15em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 20px;
-    }
-
-    .svc-desc {
-      font-size: 14px; line-height: 1.7;
-      color: var(--muted); margin-bottom: 20px;
-    }
-
-    .svc-tags {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 24px;
-    }
-    .svc-tag {
-      font-family: var(--FC);
-      font-size: 9px; font-weight: 600;
-      letter-spacing: .14em; text-transform: uppercase;
-      padding: 5px 10px;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 2px;
-      color: rgba(240,236,227,0.45);
-      background: rgba(9,8,6,0.65);
-      transition: border-color .3s, color .3s;
-    }
-
-    .svc-card:hover .svc-tag {
-      border-color: rgba(201,168,76,.2);
-      color: var(--text);
-    }
-
-    /* CTA con flecha */
-    .svc-cta {
-      margin-top: 4px;
-      display: inline-flex;
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: var(--FC);
+      justify-content: space-between;
+      padding: 18px 5vw;
+      background: linear-gradient(180deg, rgba(5, 4, 3, .96) 0%, rgba(5, 4, 3, .56) 65%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform .45s var(--ease), opacity .45s var(--ease);
+    }
+
+    .nav.is-hidden {
+      opacity: 0;
+      transform: translateY(-105%);
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .nav-right,
+    .nav-links,
+    .nav-socials {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      gap: 28px;
+    }
+
+    .nav-links {
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-family: var(--fc);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: .18em;
       text-transform: uppercase;
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-socials a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-socials {
+      gap: 16px;
+    }
+
+    .nav-socials a {
       color: var(--muted);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 4px;
+      font-size: 1.05rem;
+      transition: color .25s ease;
     }
-    .svc-cta::after {
-      content: "";
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      background: var(--bg-deep);
+    }
+
+    .hero-media,
+    .hero-media video,
+    .hero-shade {
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold));
-      transition: width .4s var(--ease);
+      inset: 0;
     }
-    .svc-cta i {
-      font-size: 0.9rem;
-      transition: transform .4s var(--ease), color .4s var(--ease);
-      color: var(--gold);
-    }
-    .svc-card:hover .svc-cta {
-      color: var(--text);
-    }
-    .svc-card:hover .svc-cta::after {
+
+    .hero-media video {
       width: 100%;
-    }
-    .svc-card:hover .svc-cta i {
-      transform: translateX(4px);
-      color: var(--gold2);
-    }
-
-    /* ─────────────────────────────────────────────
-       BOOKING — DISEÑEMOS TU ATMÓSFERA
-    ───────────────────────────────────────────── */
-    #booking {
-      padding: 0 0 120px;
-      position: relative;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
-    .bk-hero {
+    .hero-shade {
+      background:
+        radial-gradient(ellipse 75% 75% at 50% 45%, transparent 15%, rgba(5, 4, 3, .24) 64%, rgba(5, 4, 3, .9) 100%),
+        linear-gradient(180deg, rgba(5, 4, 3, .45), transparent 35%, transparent 65%, var(--bg-deep) 100%);
+    }
+
+    .hero-copy {
+      position: absolute;
+      z-index: 2;
+      left: 5vw;
+      right: 5vw;
+      bottom: clamp(88px, 12vh, 145px);
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-title {
+      max-width: 830px;
+      color: transparent;
+      font-family: var(--fd);
+      font-size: clamp(70px, 11vw, 176px);
+      font-weight: 700;
+      letter-spacing: -.035em;
+      line-height: .78;
+      text-transform: uppercase;
+      -webkit-text-stroke: 1px rgba(243, 239, 230, .88);
+      text-wrap: balance;
+    }
+
+    .hero-side {
+      max-width: 210px;
+      padding-bottom: 7px;
+      color: rgba(243, 239, 230, .75);
+      font-family: var(--fc);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      line-height: 1.55;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      z-index: 2;
+      bottom: 26px;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(243, 239, 230, .36);
+      font-family: var(--fc);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+    }
+
+    .hero-scroll span:first-child {
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(180deg, transparent, var(--gold));
+      animation: drift 1.8s ease-in-out infinite;
+      transform-origin: top;
+    }
+
+    @keyframes drift {
+      50% { opacity: .35; transform: scaleY(.65); }
+    }
+
+    /* ABOUT */
+
+    .about {
       position: relative;
-      min-height: 85vh;
-      display: flex; align-items: center; justify-content: center;
+      padding: 132px 0 128px;
       overflow: hidden;
       background: var(--bg);
     }
 
-    .bk-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(139,26,26,.18), transparent),
-        radial-gradient(ellipse 50% 60% at 20% 50%, rgba(201,168,76,.07), transparent),
-        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(201,168,76,.05), transparent);
-    }
-
-    .bk-scan {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0,0,0,.04) 3px,
-        rgba(0,0,0,.04) 4px
-      );
-      animation: scanShift 8s linear infinite;
-    }
-    @keyframes scanShift {
-      from { background-position: 0 0; }
-      to { background-position: 0 60px; }
-    }
-
-    .bk-frame {
+    .about::before {
+      content: "";
       position: absolute;
-      inset: 40px; z-index: 1; pointer-events: none;
-      border: 1px solid rgba(201,168,76,.08);
-      border-radius: 4px;
-    }
-    .bk-frame::before {
-      content: '';
-      position: absolute; top: -1px; left: 10%; right: 10%;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .bk-frame::after {
-      content: '';
-      position: absolute; bottom: -1px; left: 10%; right: 10%;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: min(48vw, 720px);
+      opacity: .24;
+      background:
+        linear-gradient(90deg, var(--bg) 0%, rgba(9, 8, 6, .15) 62%, var(--bg) 100%),
+        url("bio-portrait-cesar.webp") center/cover no-repeat;
+      filter: grayscale(100%) contrast(1.12);
+      pointer-events: none;
     }
 
-    .bk-content {
-      position: relative; z-index: 2;
-      text-align: center;
-      padding: 60px 5vw;
-      max-width: 800px;
+    .about-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(190px, .55fr) minmax(0, 1.1fr) minmax(185px, .5fr);
+      gap: clamp(28px, 5vw, 88px);
+      align-items: end;
     }
 
-    .bk-pre {
-      font-family: var(--FC);
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 24px;
-      display: flex; align-items: center; justify-content: center; gap: 16px;
-    }
-    .bk-pre::before, .bk-pre::after {
-      content: ''; width: 50px; height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,168,76,.5));
-    }
-    .bk-pre::after { background: linear-gradient(to left, transparent, rgba(201,168,76,.5)); }
-
-    .bk-h {
-      font-family: var(--FD);
-      font-size: clamp(52px, 9vw, 120px);
-      font-weight: 700;
+    .about-kicker,
+    .section-kicker,
+    .service-number {
+      color: var(--gold);
+      font-family: var(--fc);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .21em;
       text-transform: uppercase;
-      line-height: .88;
-      letter-spacing: -.02em;
-      margin-bottom: 28px;
     }
-    .bk-h em {
-      font-style: normal;
+
+    .about-kicker {
+      margin-bottom: 20px;
+    }
+
+    .about-title,
+    .gallery-title,
+    .services-title,
+    .contact-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: .86;
+      text-transform: uppercase;
+    }
+
+    .about-title {
+      max-width: 660px;
+      font-size: clamp(53px, 7.4vw, 102px);
+    }
+
+    .about-title span {
+      color: var(--gold);
+    }
+
+    .about-body {
+      max-width: 555px;
+      margin-top: 32px;
+    }
+
+    .about-body p {
+      margin-bottom: 17px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.25vw, 18px);
+      line-height: 1.72;
+    }
+
+    .about-body strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .about-area {
+      margin-top: 30px;
+      color: rgba(243, 239, 230, .66);
+      font-family: var(--fc);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .stats {
+      position: relative;
+      padding: 24px 20px 22px;
+      background: rgba(9, 8, 6, .72);
+      border-top: 1px solid rgba(201, 168, 76, .65);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .stats::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 44px;
+      height: 44px;
+      border-top: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+      opacity: .72;
+    }
+
+    .stat + .stat {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .stat-value {
+      display: block;
+      color: var(--gold-light);
+      font-family: var(--fd);
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: .75;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-family: var(--fc);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      padding: 126px 0;
+      background: var(--bg-deep);
+    }
+
+    .gallery-head,
+    .services-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 46px;
+    }
+
+    .section-kicker {
+      margin-bottom: 13px;
+    }
+
+    .gallery-title,
+    .services-title {
+      font-size: clamp(52px, 7.6vw, 108px);
+    }
+
+    .gallery-note {
+      max-width: 230px;
+      padding-bottom: 4px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      text-align: right;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr .75fr;
+      grid-template-rows: minmax(210px, 28vw) minmax(160px, 19vw);
+      gap: 8px;
+    }
+
+    .shot {
+      position: relative;
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .shot:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .shot:nth-child(2) {
+      grid-column: 2 / 4;
+    }
+
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(16%) brightness(.82);
+      transition: transform 1.1s var(--ease), filter .8s ease;
+    }
+
+    .shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(5, 4, 3, .75), transparent 55%);
+      pointer-events: none;
+    }
+
+    .shot-meta {
+      position: absolute;
+      z-index: 1;
+      right: 17px;
+      bottom: 15px;
+      left: 17px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .shot-index,
+    .shot-label {
+      font-family: var(--fc);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .shot-index {
+      color: var(--gold);
+    }
+
+    .shot-label {
+      color: rgba(243, 239, 230, .85);
+      text-align: right;
+    }
+
+    .shot:hover img {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.055);
+    }
+
+    /* SERVICES */
+
+    .services {
+      padding: 126px 0;
+      background: var(--bg);
+    }
+
+    .services-title span {
+      color: var(--gold);
+    }
+
+    .service-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .service {
+      position: relative;
+      display: grid;
+      grid-template-columns: 88px minmax(210px, .8fr) minmax(250px, 1.1fr) minmax(180px, .65fr);
+      gap: 28px;
+      align-items: center;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding .45s var(--ease), background .45s ease;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -3vw;
+      width: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transform: scaleY(.3);
+      transition: opacity .35s ease, transform .45s var(--ease);
+    }
+
+    .service:hover {
+      padding-right: 20px;
+      padding-left: 20px;
+      background: rgba(255, 255, 255, .018);
+    }
+
+    .service:hover::before {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .service-number {
+      color: rgba(201, 168, 76, .72);
+    }
+
+    .service-name {
+      font-family: var(--fd);
+      font-size: clamp(30px, 3.2vw, 49px);
+      font-weight: 700;
+      letter-spacing: -.015em;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+
+    .service-copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .service-tag {
+      padding: 5px 8px;
+      border: 1px solid rgba(243, 239, 230, .12);
+      color: rgba(243, 239, 230, .52);
+      font-family: var(--fc);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      position: relative;
+      padding: 0 0 112px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .contact-stage {
+      position: relative;
+      min-height: min(78svh, 760px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 65% 60% at 50% 110%, rgba(201, 168, 76, .18), transparent 68%),
+        linear-gradient(135deg, #0d0b08, #060504 75%);
+    }
+
+    .contact-stage::before,
+    .contact-stage::after {
+      content: "";
+      position: absolute;
+      width: 70vw;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .5;
+      transform: rotate(-20deg);
+    }
+
+    .contact-stage::before {
+      top: 21%;
+      left: -14%;
+    }
+
+    .contact-stage::after {
+      right: -18%;
+      bottom: 22%;
+      transform: rotate(-20deg);
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 1;
+      width: min(780px, 90vw);
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-size: clamp(63px, 10.5vw, 150px);
+    }
+
+    .contact-title span {
       display: block;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(201,168,76,.6);
+      -webkit-text-stroke: 1px rgba(201, 168, 76, .75);
     }
 
-    .bk-sub {
-      font-size: clamp(15px, 1.3vw, 19px);
-      color: var(--muted); line-height: 1.7;
-      max-width: 520px; margin: 0 auto 40px;
-    }
-    .bk-sub strong { color: var(--text); font-weight: 500; }
-
-    .bk-btns {
-      display: flex; align-items: center; justify-content: center;
-      gap: 16px; flex-wrap: wrap;
-      margin-bottom: 10px;
+    .contact-copy {
+      max-width: 550px;
+      margin: 30px auto 37px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.35vw, 19px);
+      line-height: 1.65;
     }
 
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 18px 40px;
+    .contact-copy strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      min-width: 208px;
+      padding: 17px 26px;
+      border: 1px solid transparent;
+      font-family: var(--fc);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: transform .3s var(--ease), background .3s ease, border-color .3s ease, color .3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+    }
+
+    .button-primary {
       background: var(--gold);
-      color: var(--bg);
-      font-family: var(--FC);
-      font-size: 12px; font-weight: 700;
-      letter-spacing: .2em; text-transform: uppercase;
-      border-radius: 2px;
-      border: none;
-      position: relative; overflow: hidden;
-      transition: background .4s, color .4s;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(5,4,3,.0);
-      transition: background .4s;
-    }
-    .btn-primary:hover { background: var(--gold2); }
-    .btn-primary:hover::before { background: rgba(5,4,3,.08); }
-    .btn-primary i { font-size: 1rem; }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 18px 36px;
-      background: transparent;
-      color: var(--text);
-      font-family: var(--FC);
-      font-size: 12px; font-weight: 600;
-      letter-spacing: .2em; text-transform: uppercase;
-      border-radius: 2px;
-      border: 1px solid rgba(255,255,255,.18);
-      transition: border-color .4s, color .4s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-    /* ─────────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────────── */
-    footer {
-      padding: 32px 0;
-      border-top: 1px solid rgba(255,255,255,.04);
-    }
-    .ft {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .ft-logo { display: flex; align-items: center; }
-    .ft-logo img { width: 30px; height: 30px; object-fit: contain; opacity: .8; }
-
-    .ft-socials {
-      display: flex; align-items: center; gap: 20px;
-    }
-    .ft-socials a {
-      font-size: 1.1rem; color: var(--muted);
-      transition: color .3s;
-    }
-    .ft-socials a:hover { color: var(--gold); }
-
-    /* ─────────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .bio-grid { grid-template-columns: 1fr; gap: 56px; }
-      .bio-photo-wrap { position: static; }
-      .bio-stats-float { right: 0; }
-      .gal-grid { grid-template-columns: 1fr; }
-      .gal-main .mc { aspect-ratio: 4/5; }
-      .svc-track { grid-template-columns: 1fr; }
-      .svc-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); }
-      .svc-card:last-child { border-bottom: none; }
+      color: var(--bg-deep);
     }
 
-    @media (max-width: 768px) {
-      #nav { padding: 18px 5vw; }
-      .nav-links { display: none; }
-      .gal-grid, .gal-row3 { display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }   .gal-grid::-webkit-scrollbar, .gal-row3::-webkit-scrollbar { display: none; }   .gal-grid .mc, .gal-row3 .mc { flex: 0 0 78vw; scroll-snap-align: start; aspect-ratio: 4/5; }   .gal-main, .gal-strip { display: contents; }   .gal-main .mc { aspect-ratio: 4/5; }
-      .bk-frame { inset: 16px; }   #hero { min-height: 60svh; max-height: 70svh; }   .h-bg video, .h-bg img { height: 100%; width: 100%; object-fit: cover; object-position: center top; }
-      .bk-btns { flex-direction: column; align-items: stretch; }
-      .btn-primary, .btn-ghost { justify-content: center; }
+    .button-primary:hover {
+      background: var(--gold-light);
     }
 
-    @media (max-width: 480px) {
-      #bio, #gallery, #services { padding: 80px 0; }
-      .gal-grid .mc, .gal-row3 .mc { flex: 0 0 85vw; }
-      .bio-stats-float {
-        position: static;
-        margin-top: 20px;
-        flex-direction: column;
-        gap: 16px;
+    .button-secondary {
+      border-color: rgba(243, 239, 230, .3);
+      color: var(--cream);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .contact-area {
+      margin-top: 24px;
+      color: rgba(243, 239, 230, .42);
+      font-family: var(--fc);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      line-height: 1.55;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 27px 0;
+      background: var(--bg-deep);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-logo img {
+      width: 30px;
+      height: 30px;
+      opacity: .86;
+    }
+
+    .footer-copy {
+      color: rgba(243, 239, 230, .42);
+      font-family: var(--fc);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 17px;
+    }
+
+    .footer-socials a {
+      color: var(--muted);
+      transition: color .25s ease;
+    }
+
+    .footer-socials a:hover {
+      color: var(--gold-light);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .about-grid {
+        grid-template-columns: 1fr minmax(185px, .38fr);
       }
-      .stat-divider { width: 100%; height: 1px; }
-      .ft { flex-direction: column; gap: 24px; text-align: center; }
+
+      .about-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+
+      .about::before {
+        width: 65vw;
+        opacity: .17;
+      }
+
+      .service {
+        grid-template-columns: 58px minmax(180px, .75fr) 1.15fr;
+      }
+
+      .service-tags {
+        grid-column: 2 / -1;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding: 15px 5vw;
+      }
+
+      .brand img {
+        width: 31px;
+        height: 31px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-right {
+        gap: 0;
+      }
+
+      .hero {
+        min-height: 80svh;
+      }
+
+      .hero-media video {
+        object-position: center;
+      }
+
+      .hero-copy {
+        right: 7vw;
+        bottom: 82px;
+        left: 7vw;
+        display: block;
+      }
+
+      .hero-title {
+        font-size: clamp(67px, 19vw, 115px);
+        line-height: .79;
+        -webkit-text-stroke: .8px rgba(243, 239, 230, .88);
+      }
+
+      .hero-side {
+        margin-top: 19px;
+        max-width: 260px;
+        color: rgba(243, 239, 230, .68);
+        text-align: left;
+      }
+
+      .about,
+      .gallery,
+      .services {
+        padding: 86px 0;
+      }
+
+      .about::before {
+        top: 0;
+        width: 100%;
+        height: 65%;
+        opacity: .14;
+        background: linear-gradient(180deg, rgba(9, 8, 6, .12), var(--bg) 90%), url("bio-portrait-cesar.webp") center 18%/cover no-repeat;
+      }
+
+      .about-grid {
+        display: block;
+      }
+
+      .about-title {
+        font-size: clamp(54px, 16vw, 85px);
+      }
+
+      .about-body {
+        margin-top: 28px;
+      }
+
+      .stats {
+        max-width: 330px;
+        margin-top: 44px;
+      }
+
+      .gallery-head,
+      .services-head {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .gallery-title,
+      .services-title {
+        font-size: clamp(53px, 16vw, 88px);
+      }
+
+      .gallery-note {
+        margin-top: 17px;
+        max-width: 330px;
+        padding: 0;
+        text-align: left;
+      }
+
+      .gallery-grid {
+        display: flex;
+        width: 100%;
+        margin-right: calc(-5vw);
+        overflow-x: auto;
+        gap: 8px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .gallery-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .shot,
+      .shot:first-child,
+      .shot:nth-child(2) {
+        flex: 0 0 76vw;
+        height: 106vw;
+        max-height: 540px;
+        scroll-snap-align: start;
+      }
+
+      .service {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        padding: 28px 0;
+      }
+
+      .service-name {
+        font-size: clamp(32px, 10.3vw, 52px);
+      }
+
+      .service-copy,
+      .service-tags {
+        grid-column: 2;
+      }
+
+      .service-tags {
+        justify-content: flex-start;
+      }
+
+      .service:hover {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .contact {
+        padding-bottom: 78px;
+      }
+
+      .contact-stage {
+        min-height: 78svh;
+      }
+
+      .contact-inner {
+        padding: 74px 0;
+      }
+
+      .contact-title {
+        font-size: clamp(65px, 20vw, 115px);
+      }
+
+      .contact-actions {
+        display: grid;
+      }
+
+      .button {
+        width: min(310px, 84vw);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: duration .01ms !important;
+      html {
+        scroll-behavior: auto;
       }
-      .rv, .rv2 { opacity: 1 !important; transform: none !important; }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
-</head>
-<body>
 
-  <!-- ────────── NAV ────────── -->
-  <nav id="nav">
-    <a href="#hero" class="nav-logo" aria-label="Ir al inicio">
-      <img src="assets/img/logo-dj-cesar-channel.svg" alt="Logo DJ César Channel" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "DJ César Channel",
+    "description": "DJ, sonido, iluminación y conducción para bodas, fiestas privadas, celebraciones familiares, graduaciones, inauguraciones y eventos corporativos.",
+    "url": "https://souund.github.io/CESARCHANNEL/",
+    "image": "https://souund.github.io/CESARCHANNEL/preview-cesar-channel.jpg",
+    "areaServed": ["Ciudad de México", "Zona Metropolitana del Valle de México"],
+    "sameAs": [
+      "https://www.instagram.com/cesarchannel/",
+      "https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <img src="logo-dj-cesar-channel.svg" alt="Logo DJ César Channel" />
     </a>
-    <div class="nav-r">
+
+    <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#bio">Perfil</a></li>
-        <li><a href="#gallery">Galería</a></li>
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#booking">Booking</a></li>
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
+
       <div class="nav-socials">
-        <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DJ César Channel">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener" aria-label="TikTok">
+        <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok de DJ César Channel">
           <i class="fa-brands fa-tiktok"></i>
         </a>
       </div>
@@ -822,327 +1052,251 @@
   </nav>
 
   <main>
-
-    <!-- ────────── HERO ────────── -->
-    <section id="hero">
-      <div class="h-bg">
-        <video autoplay muted loop playsinline poster="assets/img/hero-poster.jpg" id="heroVideo">
-          <source src="assets/img/hero-main.mp4" type="video/mp4" />
-          <source src="assets/img/hero-main.webm" type="video/webm" />
-          <img src="poster-hero.jpg" alt="DJ César Channel en performance" />
+    <section class="hero" id="inicio" aria-label="DJ César Channel">
+      <div class="hero-media">
+        <video id="hero-video" autoplay muted loop playsinline poster="hero-poster.webp">
+          <source src="hero-main.mp4" type="video/mp4" />
+          <source src="hero-main.webm" type="video/webm" />
         </video>
-        <div class="h-vignette"></div>
       </div>
 
-      <div class="h-scroll">
-        <div class="h-scroll-line"></div>
-        <span>Scroll</span>
+      <div class="hero-shade"></div>
+
+      <div class="hero-copy">
+        <h1 class="hero-title">DJ CÉSAR<br />CHANNEL</h1>
+        <p class="hero-side">Música para eventos<br />Ciudad de México</p>
       </div>
+
+      <a class="hero-scroll" href="#perfil" aria-label="Bajar a perfil">
+        <span></span>
+        <span>Explorar</span>
+      </a>
     </section>
 
-    <div class="rule"></div>
+    <div class="section-rule"></div>
 
-    <!-- ────────── BIO ────────── -->
-    <section id="bio">
-      <div class="W">
-        <div class="bio-grid">
+    <section class="about" id="perfil">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <p class="about-kicker">Sobre César Channel</p>
+          <h2 class="about-title">MÚSICA PARA<br /><span>QUE EL EVENTO</span><br />FUNCIONE.</h2>
 
-          <div class="bio-photo-wrap rv2">
-            <div class="bio-photo">
-              <img src="assets/img/bio-portrait-cesar.jpg" alt="DJ César Channel — retrato" loading="lazy" />
-            </div>
-            <div class="bio-stats-float">
-              <div class="stat-item">
-                <span class="stat-val">8+</span>
-                <span class="stat-label">Años de trayectoria</span>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <span class="stat-val">400+</span>
-                <span class="stat-label">Eventos realizados</span>
-              </div>
-            </div>
+          <div class="about-body">
+            <p><strong>DJ para bodas, fiestas privadas y eventos de empresa.</strong> César trabaja la música de acuerdo con el lugar, el horario y las personas que están celebrando.</p>
+            <p>Con más de ocho años de experiencia y más de 400 eventos realizados, ofrece desde un set de DJ hasta audio, iluminación y conducción de los momentos clave.</p>
           </div>
 
-          <div class="bio-text rv" style="transition-delay:.15s">
-            <div class="bio-eyebrow">BIOGRAFÍA</div>
-            <h2 class="bio-h">
-              CURADURÍA,<br />MUSICAL<br /><span>EN TU EVENTO.</span>
-            </h2>
+          <p class="about-area">Zona habitual: Ciudad de México y área metropolitana.<br />Eventos fuera de la zona, sujetos a disponibilidad.</p>
+        </div>
 
-            <div class="bio-cities">
-              <span>CDMX</span>
-              <span class="dot">·</span>
-              <span>TORONTO</span>
-              <span class="dot">·</span>
-              <span>BARCELONA</span>
-            </div>
-
-            <div class="bio-body">
-              <p><strong>Ocho años descifrando la pista.</strong> El mismo criterio en cada ciudad, en cada salón, en cada atmósfera. El lugar cambia. El oído no.</p>
-              <p>La selección musical no se apoya en fórmulas ni playlists previsibles. Cada set se construye desde la lectura del espacio, la energía de los presentes y el tempo real del momento.</p>  
-            </div>
-
-            <div class="bio-badge">
-              <i class="fa-solid fa-location-dot"></i>
-              Residente CDMX &nbsp;·&nbsp; Disponible en todo México
-            </div>
+        <div class="stats reveal" style="transition-delay:.12s">
+          <div class="stat">
+            <span class="stat-value">8+</span>
+            <span class="stat-label">Años de experiencia</span>
           </div>
-
+          <div class="stat">
+            <span class="stat-value">400+</span>
+            <span class="stat-label">Eventos realizados</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="rule"></div>
+    <div class="section-rule"></div>
 
-    <!-- ────────── GALLERY ────────── -->
-    <section id="gallery">
-      <div class="W">
-        <header class="gal-header rv">
-          <p class="gal-eyebrow">Performance · Ambiente</p>
-          <h2 class="gal-h">PRESENCIA<br/>VISUAL</h2>
+    <section class="gallery" id="eventos">
+      <div class="wrap">
+        <header class="gallery-head reveal">
+          <div>
+            <p class="section-kicker">Eventos reales</p>
+            <h2 class="gallery-title">EN<br />ACCIÓN</h2>
+          </div>
+          <p class="gallery-note">Bodas, celebraciones familiares, graduaciones, inauguraciones, fiestas privadas y eventos corporativos.</p>
         </header>
 
-        <div class="gal-grid rv" style="transition-delay:.1s">
-          <div class="gal-main">
-            <article class="mc">
-              <img src="assets/img/gallery-ambiente.jpg" alt="DJ César Channel — presencia en el booth" loading="lazy" />
-              <div class="mc-meta">
-                <div class="mc-num">01 / PRESENCIA</div>
-                <div class="mc-cap">CÉSAR CHANNEL</div>
-              </div>
-            </article>
-          </div>
-          <div class="gal-strip">
-            <article class="mc">
-              <img src="assets/img/gallery-booth.jpg" alt="Control en cabina" loading="lazy" />
-              <div class="mc-meta">
-                <div class="mc-num">02 / TÉCNICA</div>
-                <div class="mc-cap">Control</div>
-              </div>
-            </article>
-            <article class="mc">
-              <img src="assets/img/gallery-cabina.jpg" alt="Atmósfera del evento" loading="lazy" />
-              <div class="mc-meta">
-                <div class="mc-num">03 / AMBIENTE</div>
-                <div class="mc-cap">Atmósfera</div>
-              </div>
-            </article>
-          </div>
-        </div>
+        <div class="gallery-grid reveal" style="transition-delay:.08s">
+          <figure class="shot">
+            <img src="gallery-ambiente.webp" alt="DJ César Channel durante un evento" loading="lazy" />
+            <figcaption class="shot-meta">
+              <span class="shot-index">01</span>
+              <span class="shot-label">En cabina</span>
+            </figcaption>
+          </figure>
 
-        <div class="gal-row3 rv" style="transition-delay:.2s">
-          <article class="mc">
-            <img src="assets/img/gallery-espacio.jpg" alt="Invitados en pista" loading="lazy" />
-            <div class="mc-meta">
-              <div class="mc-num">04 / RESPUESTA</div>
-              <div class="mc-cap">La pista</div>
-            </div>
-          </article>
-          <article class="mc">
-            <img src="assets/img/bio-portrait-cesar.jpg" alt="Venue del evento" loading="lazy" />
-            <div class="mc-meta">
-              <div class="mc-num">05 / ESCALA</div>
-              <div class="mc-cap">El espacio</div>
-            </div>
-          </article>
-          <article class="mc" style="background: linear-gradient(135deg, rgba(15,13,10,1), rgba(9,8,6,1));">
-            <div style="
-              position:absolute; inset:0; display:flex; flex-direction:column;
-              align-items:center; justify-content:center; padding:32px; text-align:center;
-            ">
-              <div style="
-                font-family:var(--FD); font-size:clamp(60px,6vw,90px); font-weight:700;
-                color:transparent; -webkit-text-stroke:1px rgba(201,168,76,.25);
-                line-height:1; margin-bottom:16px;
-              ">&ldquo;</div>
-              <p style="
-                font-family:var(--FC); font-size:clamp(13px,1.1vw,16px);
-                font-weight:400; letter-spacing:.06em;
-                color:var(--muted); line-height:1.6; font-style:italic;
-              ">El lugar cambia.<br/>El oído no.</p>
-              <div style="
-                margin-top:20px; font-family:var(--FC);
-                font-size:9px; font-weight:600; letter-spacing:.2em;
-                text-transform:uppercase; color:var(--gold);
-              ">— DJ César Channel</div>
-            </div>
-          </article>
+          <figure class="shot">
+            <img src="gallery-booth.webp" alt="Cabina y equipo de DJ durante un evento" loading="lazy" />
+            <figcaption class="shot-meta">
+              <span class="shot-index">02</span>
+              <span class="shot-label">Música en vivo</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="gallery-cabina.webp" alt="DJ César Channel en controles" loading="lazy" />
+            <figcaption class="shot-meta">
+              <span class="shot-index">03</span>
+              <span class="shot-label">El montaje</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="gallery-espacio.webp" alt="Invitados durante una celebración" loading="lazy" />
+            <figcaption class="shot-meta">
+              <span class="shot-index">04</span>
+              <span class="shot-label">La celebración</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="gallery-pista.webp" alt="Pista de baile en un evento" loading="lazy" />
+            <figcaption class="shot-meta">
+              <span class="shot-index">05</span>
+              <span class="shot-label">La pista</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <div class="rule"></div>
+    <div class="section-rule"></div>
 
-    <!-- ────────── SERVICES ────────── -->
-    <section id="services">
-      <div class="W">
-        <header class="svc-header rv">
-          <p class="svc-eyebrow">Formas de trabajar</p>
-          <h2 class="svc-h">TRES NIVELES<br/>DE PRODUCCIÓN</h2>
+    <section class="services" id="servicios">
+      <div class="wrap">
+        <header class="services-head reveal">
+          <div>
+            <p class="section-kicker">Formas de trabajar</p>
+            <h2 class="services-title">ELIGE EL<br /><span>FORMATO</span></h2>
+          </div>
         </header>
 
-        <div class="svc-track rv" style="transition-delay:.1s">
-
-          <div class="svc-card">
-            <div class="svc-bg-num">01</div>
-            <div class="svc-num-label">01 // Esencial</div>
-            <div class="svc-icon"><i class="fa-solid fa-headphones"></i></div>
-            <h3 class="svc-name">Solo DJ</h3>
-            <p class="svc-tier">Curaduría pura</p>
-            <p class="svc-desc">Set de DJ enfocado puramente en la selección acústica. Integración directa con el equipamiento sonoro del espacio. La música como protagonista silenciosa.</p>
-            <div class="svc-tags">
-              <span class="svc-tag">Bodas</span>
-              <span class="svc-tag">Bautizos</span>
-              <span class="svc-tag">Reuniones</span>
-              <span class="svc-tag">Garden Party</span>
+        <div class="service-list reveal" style="transition-delay:.08s">
+          <article class="service">
+            <p class="service-number">01</p>
+            <h3 class="service-name">Solo DJ</h3>
+            <p class="service-copy">Set de DJ para eventos que ya cuentan con equipo de audio e iluminación en el lugar.</p>
+            <div class="service-tags">
+              <span class="service-tag">Bodas</span>
+              <span class="service-tag">Fiestas privadas</span>
+              <span class="service-tag">Graduaciones</span>
             </div>
-            <a href="#booking" class="svc-cta">
-              <span>Diseñar esta atmósfera</span>
-              <i class="fa-solid fa-arrow-right-long"></i>
-            </a>
-          </div>
+          </article>
 
-          <div class="svc-card">
-            <div class="svc-bg-num">02</div>
-            <div class="svc-num-label">02 // Diseño Sonoro</div>
-            <div class="svc-icon"><i class="fa-solid fa-sliders"></i></div>
-            <h3 class="svc-name">DJ + Audio & Luz</h3>
-            <p class="svc-tier">Despliegue técnico completo</p>
-            <p class="svc-desc">Sistema de audio de alta fidelidad adaptado al espacio físico más diseño lumínico arquitectónico de pista. La atmósfera como obra de arte.</p>
-            <div class="svc-tags">
-              <span class="svc-tag">Eventos Gourmet</span>
-              <span class="svc-tag">Quinceañeras</span>
-              <span class="svc-tag">Corporativos</span>
-              <span class="svc-tag">Fiestas Privadas</span>
+          <article class="service">
+            <p class="service-number">02</p>
+            <h3 class="service-name">DJ + Sonido<br />+ Iluminación</h3>
+            <p class="service-copy">DJ, sistema de sonido e iluminación para resolver la música y la pista en un solo servicio.</p>
+            <div class="service-tags">
+              <span class="service-tag">Terrazas</span>
+              <span class="service-tag">Salones</span>
+              <span class="service-tag">Eventos de empresa</span>
             </div>
-            <a href="#booking" class="svc-cta">
-              <span>Diseñar esta atmósfera</span>
-              <i class="fa-solid fa-arrow-right-long"></i>
-            </a>
-          </div>
+          </article>
 
-          <div class="svc-card">
-            <div class="svc-bg-num">03</div>
-            <div class="svc-num-label">03 // Integral</div>
-            <div class="svc-icon"><i class="fa-solid fa-star"></i></div>
-            <h3 class="svc-name">Production & Hosting</h3>
-            <p class="svc-tier">Dirección total del evento</p>
-            <p class="svc-desc">Curaduría musical ininterrumpida combinada con conducción de alta etiqueta y acentuación de momentos clave. De la entrada al último brindis.</p>
-            <div class="svc-tags">
-              <span class="svc-tag">Bodas de Lujo</span>
-              <span class="svc-tag">Galas</span>
-              <span class="svc-tag">Lanzamientos</span>
-              <span class="svc-tag">Producción Integral</span>
+          <article class="service">
+            <p class="service-number">03</p>
+            <h3 class="service-name">DJ + Producción<br />+ Conducción</h3>
+            <p class="service-copy">DJ, audio, iluminación y apoyo para entradas, brindis, ceremonia, reconocimientos y anuncios.</p>
+            <div class="service-tags">
+              <span class="service-tag">Bodas</span>
+              <span class="service-tag">Inauguraciones</span>
+              <span class="service-tag">Celebraciones familiares</span>
             </div>
-            <a href="#booking" class="svc-cta">
-              <span>Diseñar esta atmósfera</span>
-              <i class="fa-solid fa-arrow-right-long"></i>
-            </a>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ────────── BOOKING ────────── -->
-    <section id="booking">
-      <div class="bk-hero">
-        <div class="bk-bg"></div>
-        <div class="bk-scan"></div>
-        <div class="bk-frame"></div>
+    <section class="contact" id="contacto">
+      <div class="contact-stage">
+        <div class="contact-inner reveal">
+          <p class="section-kicker">Cotiza tu fecha</p>
+          <h2 class="contact-title">HABLEMOS<br /><span>DE TU EVENTO</span></h2>
+          <p class="contact-copy">Comparte la <strong>fecha</strong>, la <strong>zona</strong>, el tipo de evento y el número aproximado de invitados. Con esa información se prepara una propuesta según lo que necesites.</p>
 
-        <div class="bk-content rv">
-          <div class="bk-pre">Disponible 2025–2026</div>
-          <h2 class="bk-h">
-            BOOKING<br />
-            <em>CONTACTO</em>
-          </h2>
-          <p class="bk-sub">
-            Comparte la <strong>fecha</strong>, la <strong>locación</strong> y la escala de tu evento.
-            Estructuramos una propuesta sonora completamente a medida — desde la primera canción hasta el último beat.
-          </p>
-
-          <div class="bk-btns">
+          <div class="contact-actions">
             <a
-              href="https://wa.me/5215524685267?text=Hola%20C%C3%A9sar%2C%20quiero%20reservar%20fecha%20para%20mi%20evento"
-              target="_blank" rel="noopener noreferrer"
-              class="btn-primary"
+              class="button button-primary"
+              href="https://wa.me/5215524685267?text=Hola%20C%C3%A9sar%2C%20quiero%20cotizar%20un%20evento.%0A%0AFecha%3A%20%0AZona%3A%20%0ATipo%20de%20evento%3A%20%0AInvitados%20aprox.%3A%20%0A%0AEstoy%20interesado%2Fa%20en%3A%20Solo%20DJ%20%2F%20DJ%20%2B%20Sonido%20%2B%20Iluminaci%C3%B3n%20%2F%20Producci%C3%B3n%20%2B%20Conducci%C3%B3n"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i class="fa-brands fa-whatsapp"></i>
-              RESERVAR FECHA
+              Reservar fecha
             </a>
+
             <a
+              class="button button-secondary"
               href="mailto:emc121091@me.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel"
-              class="btn-ghost"
             >
-              SOLICITAR INFO
+              Solicitar info
             </a>
           </div>
+
+          <p class="contact-area">CDMX y zona metropolitana · Eventos fuera de la zona, sujetos a disponibilidad</p>
         </div>
       </div>
     </section>
-
   </main>
 
-  <div class="rule"></div>
-
-  <!-- ────────── FOOTER ────────── -->
-  <footer>
-    <div class="W ft">
-      <a href="#hero" class="ft-logo" aria-label="Volver al inicio">
-        <img src="assets/img/logo-dj-cesar-channel.svg" alt="Logo DJ César Channel" />
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="footer-logo" href="#inicio" aria-label="Volver al inicio">
+        <img src="logo-dj-cesar-channel.svg" alt="Logo DJ César Channel" />
       </a>
-      <div class="ft-socials">
-        <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
-        </a>
-        <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener" aria-label="Instagram">
+
+      <p class="footer-copy">DJ César Channel · Ciudad de México</p>
+
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
         </a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Nav hide on scroll
-    const nav = document.getElementById('nav');
-    let lastY = 0, navTimer;
+    const nav = document.getElementById("nav");
+    let previousScroll = window.scrollY;
+    let hideTimer;
 
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y < 60) {
-        nav.classList.remove('hide');
-        lastY = y;
-        return;
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll < 80) {
+        nav.classList.remove("is-hidden");
+      } else if (currentScroll > previousScroll + 16) {
+        nav.classList.add("is-hidden");
+      } else if (currentScroll < previousScroll - 8) {
+        nav.classList.remove("is-hidden");
       }
-      if (y > lastY && y - lastY > 120) {
-        nav.classList.add('hide');
-      } else {
-        nav.classList.remove('hide');
-      }
-      clearTimeout(navTimer);
-      navTimer = setTimeout(() => {
-        if (window.scrollY > 120) {
-          nav.classList.add('hide');
-        }
-      }, 2800);
-      lastY = y;
+
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (window.scrollY > 220) nav.classList.add("is-hidden");
+      }, 2600);
+
+      previousScroll = currentScroll;
     }, { passive: true });
 
-    // Reveal on scroll
-    const revEls = document.querySelectorAll('.rv, .rv2');
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
       });
-    }, { threshold: .1 });
-    revEls.forEach(el => io.observe(el));
+    }, { threshold: 0.12 });
 
-    // Hero video mute
-    const vid = document.getElementById('heroVideo');
-    if (vid) vid.muted = true;
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+    const video = document.getElementById("hero-video");
+    if (video) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
   </script>
-
 </body>
 </html>
