@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f8f2eb" />
-  <meta name="description" content="DJ César Channel: DJ, audio, iluminación, música en vivo y producción para bodas, fiestas y eventos corporativos en Ciudad de México." />
+  <meta name="theme-color" content="#fbf7f2" />
+  <meta name="description" content="DJ César Channel: DJ, producción audiovisual y música en vivo para bodas, fiestas y eventos corporativos en Ciudad de México." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="DJ César Channel | Eventos en CDMX" />
   <meta property="og:description" content="DJ, música y producción para celebrar en grande en Ciudad de México." />
@@ -22,268 +22,293 @@
 
   <style>
     :root {
-      --ink: #252221;
-      --ink-muted: #655e59;
-      --surface: #f8f2eb;
-      --surface-deep: #e9ddd2;
-      --coral: #ec6d4e;
-      --coral-deep: #c94b34;
-      --apricot: #f0b47c;
-      --lavender: #b7a5cc;
-      --sage: #8da59b;
-      --line: rgba(55, 42, 32, .15);
-      --glass-light: rgba(255, 252, 248, .60);
-      --glass-border: rgba(255, 255, 255, .70);
-      --shadow: 0 18px 48px rgba(70, 47, 33, .13);
-      --shadow-soft: 0 8px 26px rgba(70, 47, 33, .08);
+      --ink: #171615;
+      --ink-soft: #625b55;
+      --paper: #fbf7f2;
+      --paper-deep: #eee6dd;
+      --white: #fffdf9;
+      --coral: #f37335;
+      --coral-dark: #cb4e17;
+      --sage: #527a70;
+      --sage-dark: #315d53;
+      --apricot: #f4b07b;
+      --lavender: #b8a8cc;
+      --line: rgba(23, 22, 21, .14);
       --sans: "DM Sans", sans-serif;
       --mono: "Space Mono", monospace;
       --ease: cubic-bezier(.16, 1, .3, 1);
-      --wide: min(1240px, 92vw);
-      --gutter: 4vw;
+      --wide: min(1320px, 92vw);
+      --gutter: 3.5vw;
     }
 
     * { box-sizing: border-box; }
-    html { background: var(--surface); scroll-behavior: smooth; scroll-padding-top: 95px; }
-    body { min-width: 320px; margin: 0; overflow-x: hidden; background: var(--surface); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    html { background: var(--paper); scroll-behavior: smooth; scroll-padding-top: 110px; }
+    body { min-width: 320px; margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body.modal-open { overflow: hidden; }
     a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
+    button, input, textarea { font: inherit; }
     button { border: 0; }
     img { display: block; max-width: 100%; }
-    button, a, input { -webkit-tap-highlight-color: transparent; }
-    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid rgba(236, 109, 78, .42); outline-offset: 4px; }
+    button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(243, 115, 53, .48); outline-offset: 4px; }
     .shell { width: var(--wide); margin: 0 auto; }
-    .eyebrow { margin: 0; color: var(--coral-deep); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .eyebrow { margin: 0; color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .085em; line-height: 1.5; text-transform: uppercase; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .68s var(--ease), transform .68s var(--ease); }
     .reveal.on { opacity: 1; transform: none; }
-    .glass { border: 1px solid var(--glass-border); background: var(--glass-light); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px) saturate(130%); -webkit-backdrop-filter: blur(18px) saturate(130%); }
 
-    .button { display: inline-flex; min-height: 51px; align-items: center; justify-content: center; gap: 9px; padding: 14px 19px; border: 1px solid var(--coral); border-radius: 999px; background: var(--coral); box-shadow: 0 9px 20px rgba(201, 75, 52, .21); color: #fff; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: -.02em; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .28s var(--ease); }
-    .button:hover { border-color: var(--coral-deep); background: var(--coral-deep); box-shadow: 0 13px 26px rgba(201, 75, 52, .28); transform: translateY(-3px); }
-    .button.secondary { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .34); box-shadow: none; color: var(--ink); }
-    .button.secondary:hover { border-color: rgba(255, 255, 255, .95); background: rgba(255, 255, 255, .68); box-shadow: var(--shadow-soft); }
+    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 9px; padding: 13px 20px; border: 1px solid var(--coral); border-radius: 999px; background: var(--coral); box-shadow: 0 9px 20px rgba(203, 78, 23, .20); color: #fff; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: -.015em; transition: background .22s ease, border-color .22s ease, color .22s ease, box-shadow .25s ease, transform .25s var(--ease); }
+    .button:hover { border-color: var(--coral-dark); background: var(--coral-dark); box-shadow: 0 13px 28px rgba(203, 78, 23, .28); transform: translateY(-3px); }
+    .button.light { border-color: #1d1a18; background: rgba(255, 255, 255, .96); box-shadow: 0 7px 15px rgba(0, 0, 0, .12); color: var(--ink); }
+    .button.light:hover { border-color: var(--coral); background: var(--coral); color: #fff; }
+    .button.ghost { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .12); box-shadow: none; color: #fff; }
+    .button.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .22); }
 
     /* Header */
-    .header { position: fixed; z-index: 60; top: 0; right: 0; left: 0; padding: 15px var(--gutter); transition: transform .42s var(--ease); }
-    .header.off { transform: translateY(-125%); }
-    .header-inner { display: flex; max-width: 1420px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 18px; transition: border-color .3s ease, background .3s ease, box-shadow .3s ease, padding .3s ease, border-radius .3s ease; }
-    .header.scrolled .header-inner { padding: 9px 13px 9px 15px; border: 1px solid var(--glass-border); border-radius: 22px; background: rgba(255, 252, 248, .69); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px) saturate(130%); -webkit-backdrop-filter: blur(18px) saturate(130%); }
-    .brand { position: relative; display: grid; width: 60px; height: 54px; flex: 0 0 auto; place-items: center; }
-    .brand::before { position: absolute; width: 48px; height: 48px; border: 1px solid rgba(236, 109, 78, .48); border-radius: 50%; content: ""; transition: transform .42s var(--ease), border-color .25s ease, box-shadow .25s ease; }
-    .brand img { position: relative; width: 45px; height: 45px; object-fit: contain; transition: transform .35s var(--ease), filter .25s ease; }
-    .brand:hover::before { border-color: var(--coral); box-shadow: 0 0 0 7px rgba(236, 109, 78, .11); transform: rotate(13deg) scale(1.08); }
-    .brand:hover img { filter: sepia(.28) saturate(1.2); transform: rotate(-3deg) translateY(-2px); }
-    .desktop-nav { display: flex; align-items: center; gap: clamp(16px, 2vw, 31px); margin-left: auto; }
-    .desktop-nav a { position: relative; padding: 7px 0; color: var(--ink-muted); font-size: 13px; font-weight: 700; transition: color .2s ease; }
-    .desktop-nav a::after { position: absolute; right: 0; bottom: 1px; left: 0; height: 2px; border-radius: 999px; background: var(--coral); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
-    .desktop-nav a:hover, .desktop-nav a.active { color: var(--ink); }
-    .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); }
-    .header-actions { display: flex; align-items: center; gap: 8px; }
-    .social-icon { display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid rgba(255, 255, 255, .58); border-radius: 50%; background: rgba(255, 255, 255, .28); color: var(--ink-muted); font-size: 14px; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s var(--ease); }
-    .social-icon:hover { border-color: rgba(236, 109, 78, .62); background: rgba(255, 240, 233, .7); color: var(--coral-deep); transform: translateY(-2px); }
-    .header-cta { min-height: 42px; padding: 10px 15px; font-size: 12px; }
-    .menu-toggle { display: none; width: 42px; height: 42px; align-items: center; justify-content: center; border: 1px solid var(--glass-border); border-radius: 50%; background: rgba(255, 252, 248, .58); color: var(--ink); cursor: pointer; font-size: 16px; backdrop-filter: blur(12px); }
-    .mobile-menu { position: fixed; z-index: 55; top: 0; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; padding: 100px 7vw 31px; background: linear-gradient(145deg, rgba(248, 242, 235, .94), rgba(232, 218, 207, .88)); opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity .3s ease, transform .3s var(--ease); backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
-    .mobile-menu.open { opacity: 1; pointer-events: auto; transform: none; }
-    .mobile-menu nav { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
-    .mobile-menu nav a:not(.button) { color: var(--ink); font-size: clamp(35px, 10vw, 55px); font-weight: 700; letter-spacing: -.07em; line-height: .9; }
-    .mobile-menu .button { width: 100%; margin-top: 12px; }
-    .mobile-socials { display: flex; gap: 9px; margin-top: auto; }
+    .header { position: relative; z-index: 50; min-height: 120px; padding: 17px var(--gutter) 0; border-bottom: 1px solid var(--line); background: var(--white); }
+    .header-inner { display: grid; max-width: 1440px; min-height: 102px; margin: 0 auto; grid-template-columns: minmax(260px, 1fr) auto; grid-template-rows: 42px 60px; column-gap: 30px; }
+    .brand { display: flex; grid-row: 1 / 3; align-items: center; gap: 14px; width: fit-content; }
+    .brand-mark { position: relative; display: grid; width: 58px; height: 58px; flex: 0 0 58px; place-items: center; }
+    .brand-mark::before { position: absolute; width: 48px; height: 48px; border: 2px solid var(--ink); border-radius: 50%; content: ""; transition: border-color .25s ease, box-shadow .25s ease, transform .35s var(--ease); }
+    .brand-mark::after { position: absolute; width: 28px; height: 28px; border: 2px solid var(--ink); border-radius: 50%; content: ""; transform: translate(-5px, -4px); transition: border-color .25s ease, transform .35s var(--ease); }
+    .brand:hover .brand-mark::before { border-color: var(--coral); box-shadow: 0 0 0 7px rgba(243, 115, 53, .11); transform: rotate(14deg) scale(1.06); }
+    .brand:hover .brand-mark::after { border-color: var(--coral); transform: translate(-2px, -2px) rotate(-14deg); }
+    .brand-logo { width: 47px; height: 47px; object-fit: contain; }
+    .brand-name { color: var(--ink); font-size: clamp(25px, 2.7vw, 39px); font-weight: 700; letter-spacing: -.07em; line-height: .88; text-transform: uppercase; }
+    .top-actions { display: flex; grid-column: 2; align-items: center; justify-content: flex-end; gap: 18px; }
+    .top-link { display: inline-grid; width: 26px; height: 26px; place-items: center; color: var(--ink); font-size: 17px; transition: color .2s ease, transform .2s var(--ease); }
+    .top-link:hover { color: var(--coral); transform: translateY(-2px); }
+    .top-divider { width: 1px; height: 18px; background: var(--line); }
+    .main-nav { display: flex; grid-column: 2; align-items: end; justify-content: flex-end; gap: 0; }
+    .main-nav a { display: flex; min-height: 49px; align-items: center; padding: 0 19px; color: var(--ink); font-size: 15px; font-weight: 500; transition: background .2s ease, color .2s ease; }
+    .main-nav a:hover, .main-nav a.active { background: var(--coral); color: #fff; }
+    .menu-toggle { display: none; }
+    .mobile-nav { display: none; }
 
     /* Hero */
-    .hero { position: relative; min-height: min(830px, 100svh); padding: 119px 0 57px; overflow: hidden; background: var(--surface-deep); }
-    .hero-media { position: absolute; inset: 0; background: url("assets/img/hero-poster.webp") center / cover no-repeat; filter: saturate(.86) contrast(.96); transform: scale(1.02); }
-    .hero-media::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(248, 242, 235, .89) 0%, rgba(248, 242, 235, .73) 36%, rgba(248, 242, 235, .20) 72%, rgba(248, 242, 235, .08) 100%), linear-gradient(0deg, rgba(40, 34, 33, .18), transparent 45%); content: ""; }
-    .hero-orb { position: absolute; border-radius: 50%; filter: blur(8px); pointer-events: none; }
-    .hero-orb.one { top: 12%; right: 13%; width: min(22vw, 270px); height: min(22vw, 270px); background: rgba(183, 165, 204, .42); }
-    .hero-orb.two { right: 30%; bottom: -10%; width: min(28vw, 360px); height: min(28vw, 360px); background: rgba(240, 180, 124, .37); }
-    .hero .shell { position: relative; z-index: 1; display: grid; min-height: calc(min(830px, 100svh) - 176px); grid-template-columns: minmax(0, .95fr) minmax(270px, .55fr); align-items: end; }
-    .hero-card { max-width: 690px; padding: clamp(24px, 3.5vw, 43px); border-radius: 27px; }
-    .hero-card .eyebrow { display: inline-flex; padding: 7px 10px; border: 1px solid rgba(236, 109, 78, .24); border-radius: 999px; background: rgba(255, 240, 233, .57); }
-    .hero h1 { max-width: 660px; margin: 16px 0 18px; font-size: clamp(57px, 7.5vw, 112px); font-weight: 700; letter-spacing: -.09em; line-height: .79; text-transform: uppercase; }
-    .hero h1 span { color: var(--coral); }
-    .hero-lead { max-width: 495px; margin: 0; color: var(--ink-muted); font-size: clamp(17px, 1.42vw, 21px); line-height: 1.52; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 27px; }
-    .hero-tag { justify-self: end; max-width: 252px; margin: 0 5px 8px auto; padding: 16px; border-radius: 19px; color: var(--ink); font-family: var(--mono); font-size: 9px; letter-spacing: .03em; line-height: 1.55; text-transform: uppercase; }
-    .hero-tag i { display: inline-grid; width: 28px; height: 28px; place-items: center; margin-bottom: 9px; border-radius: 50%; background: rgba(236, 109, 78, .13); color: var(--coral-deep); font-size: 13px; }
-
-    /* Shared section head */
-    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .5fr); gap: 42px; align-items: end; }
-    .section-head h2, .about h2, .quote h2, .contact-card h2 { margin: 12px 0 0; font-size: clamp(48px, 6.4vw, 94px); font-weight: 700; letter-spacing: -.085em; line-height: .82; text-transform: uppercase; }
-    .section-head h2 span, .about h2 span, .contact-card h2 span { color: var(--coral); }
-    .section-intro { max-width: 34ch; margin: 0 0 4px auto; color: var(--ink-muted); font-size: 16px; line-height: 1.62; }
+    .hero { position: relative; min-height: min(720px, 76svh); overflow: hidden; background: #312820; }
+    .hero-image { position: absolute; inset: 0; background: url("assets/img/hero-poster.webp") center / cover no-repeat; filter: saturate(1.03) contrast(1.02); transform: scale(1.01); }
+    .hero-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 6, 5, .06) 0%, rgba(7, 6, 5, .2) 100%); content: ""; }
+    .hero-content { position: relative; z-index: 1; display: grid; min-height: min(720px, 76svh); place-items: center; padding: 56px var(--gutter); text-align: center; }
+    .hero-title { margin: 0; color: #fff; font-size: clamp(48px, 6.2vw, 95px); font-weight: 700; letter-spacing: -.065em; line-height: 1.01; text-transform: uppercase; }
+    .hero-title span { display: table; margin: 0 auto 10px; padding: 4px 14px 7px; background: rgba(9, 8, 7, .76); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .hero-title span:last-child { margin-bottom: 0; }
+    .hero-actions { display: flex; justify-content: center; margin-top: 25px; }
+    .hero-actions .button { min-width: 195px; }
 
     /* Services */
-    .services { position: relative; padding: clamp(83px, 10vw, 133px) 0; overflow: hidden; background: linear-gradient(155deg, var(--surface) 0%, #f2e7dc 100%); }
-    .services::before { position: absolute; top: -18%; left: -7%; width: min(33vw, 420px); height: min(33vw, 420px); border-radius: 50%; background: rgba(183, 165, 204, .20); content: ""; filter: blur(18px); }
-    .event-selector { position: relative; margin-top: clamp(41px, 5.8vw, 68px); padding: clamp(22px, 3.3vw, 39px); border-radius: 25px; }
-    .event-group + .event-group { margin-top: 26px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .7); }
-    .group-label { display: grid; grid-template-columns: 1fr auto 1fr; gap: 13px; align-items: center; margin: 0 0 17px; color: var(--ink-muted); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-align: center; text-transform: uppercase; }
-    .group-label::before, .group-label::after { height: 1px; background: rgba(101, 94, 89, .25); content: ""; }
-    .pills { display: flex; flex-wrap: wrap; gap: 9px; }
-    .event-pill { display: inline-flex; min-height: 47px; align-items: center; justify-content: space-between; gap: 18px; padding: 9px 12px 9px 16px; border: 1px solid rgba(255, 255, 255, .74); border-radius: 999px; background: rgba(255, 255, 255, .43); box-shadow: 0 4px 13px rgba(72, 53, 39, .04); color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: -.02em; transition: border-color .22s ease, background .22s ease, color .22s ease, box-shadow .22s ease, transform .26s var(--ease); }
-    .event-pill i { color: var(--coral); font-size: 12px; font-style: normal; transition: color .2s ease, transform .22s var(--ease); }
-    .event-pill:hover, .event-pill.active { border-color: var(--coral); background: var(--coral); box-shadow: 0 9px 20px rgba(201, 75, 52, .20); color: #fff; transform: translateY(-2px); }
-    .event-pill:hover i, .event-pill.active i { color: #fff; transform: translateX(3px); }
-    .hidden-pills { display: none; margin-top: 9px; }
-    .hidden-pills.visible { display: flex; }
-    .more-events { margin-top: 15px; padding: 0; background: transparent; color: var(--coral-deep); cursor: pointer; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-    .more-events:hover { color: var(--ink); }
-    .event-detail { max-height: 0; margin-top: 0; overflow: hidden; opacity: 0; transition: max-height .65s var(--ease), margin .42s var(--ease), opacity .32s ease; }
-    .event-detail.open { max-height: 1040px; margin-top: 26px; opacity: 1; }
-    .event-detail-inner { display: grid; grid-template-columns: minmax(0, .73fr) minmax(0, 1.27fr); gap: clamp(25px, 5.5vw, 74px); padding: clamp(23px, 3.2vw, 38px); border: 1px solid rgba(255, 255, 255, .73); border-radius: 21px; background: rgba(255, 252, 248, .73); box-shadow: var(--shadow-soft); backdrop-filter: blur(20px) saturate(130%); -webkit-backdrop-filter: blur(20px) saturate(130%); }
-    .detail-kicker { display: block; margin-bottom: 14px; color: var(--coral-deep); font-family: var(--mono); font-size: 9px; letter-spacing: .09em; }
-    .event-detail h3 { max-width: 12ch; margin: 0; font-size: clamp(31px, 4vw, 55px); font-weight: 700; letter-spacing: -.075em; line-height: .85; text-transform: uppercase; }
-    .detail-copy { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.64; }
-    .detail-options { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0; }
-    .detail-options span { padding: 8px 10px; border: 1px solid rgba(236, 109, 78, .17); border-radius: 999px; background: rgba(255, 240, 233, .65); color: var(--coral-deep); font-family: var(--mono); font-size: 8px; letter-spacing: .025em; line-height: 1.35; text-transform: uppercase; }
-    .detail-note { margin: 0 0 21px; color: var(--ink-muted); font-size: 13px; line-height: 1.55; }
+    .services { padding: clamp(72px, 9vw, 116px) 0; background: var(--white); }
+    .services-head { max-width: 760px; margin: 0 auto 42px; text-align: center; }
+    .services-head h2 { margin: 10px 0 0; font-size: clamp(39px, 5vw, 67px); font-weight: 700; letter-spacing: -.075em; line-height: .9; text-transform: uppercase; }
+    .services-head h2 span { color: var(--coral); }
+    .service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(19px, 2.5vw, 37px); }
+    .service-card { position: relative; display: flex; flex-direction: column; min-width: 0; align-items: center; color: var(--ink); text-align: center; }
+    .service-image-wrap { position: relative; width: min(100%, 245px); overflow: hidden; border-radius: 50%; aspect-ratio: 1; background: var(--paper-deep); box-shadow: 0 10px 22px rgba(51, 35, 27, .09); }
+    .service-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .75s var(--ease), filter .45s ease; }
+    .service-image-wrap::after { position: absolute; inset: 0; border: 1px solid rgba(23, 22, 21, .12); border-radius: inherit; content: ""; pointer-events: none; transition: box-shadow .35s ease; }
+    .service-card:hover .service-image-wrap img { filter: saturate(1.13) contrast(1.02); transform: scale(1.07); }
+    .service-card:hover .service-image-wrap::after { box-shadow: inset 0 0 0 8px rgba(243, 115, 53, .14); }
+    .service-card h3 { min-height: 48px; margin: 24px 0 13px; color: var(--coral); font-size: clamp(20px, 1.75vw, 28px); font-weight: 700; letter-spacing: -.06em; line-height: .94; text-transform: uppercase; }
+    .service-card p { max-width: 26ch; margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -.025em; line-height: 1.33; }
+    .service-detail-trigger { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; padding: 0; background: transparent; color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 700; transition: color .2s ease, transform .2s var(--ease); }
+    .service-detail-trigger i { color: var(--coral); font-size: 12px; transition: transform .2s var(--ease); }
+    .service-detail-trigger:hover { color: var(--coral-dark); transform: translateY(-2px); }
+    .service-detail-trigger:hover i { transform: translateX(4px); }
 
-    /* Four visual services */
-    .service-photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin-top: clamp(28px, 4vw, 48px); }
-    .service-photo-card { position: relative; display: flex; min-height: 460px; overflow: hidden; align-items: flex-end; border: 1px solid rgba(255, 255, 255, .7); border-radius: 29px; background: #524039; box-shadow: 0 12px 34px rgba(70, 47, 33, .10); color: #fff; isolation: isolate; transition: transform .45s var(--ease), box-shadow .45s ease, border-radius .45s var(--ease), opacity .35s ease; }
-    .service-photo-card img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) brightness(.80); transform: scale(1.01); transition: transform .8s var(--ease), filter .55s ease; }
-    .service-photo-card::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgba(31, 24, 20, .05) 16%, rgba(31, 24, 20, .79) 100%); content: ""; transition: opacity .45s ease; }
-    .service-photo-card:hover { border-radius: 35px; box-shadow: 0 23px 48px rgba(70, 47, 33, .20); transform: translateY(-7px); }
-    .service-photo-card:hover img { filter: saturate(1.07) brightness(1); transform: scale(1.065); }
-    .service-photo-card:hover::after { opacity: .72; }
-    .service-photo-grid:has(.service-photo-card:hover) .service-photo-card:not(:hover) { opacity: .83; }
-    .service-photo-content { width: 100%; padding: 21px; transition: transform .4s var(--ease); }
-    .service-photo-card:hover .service-photo-content { transform: translateY(-4px); }
-    .service-photo-content > span { display: inline-block; margin-bottom: 13px; padding: 6px 8px; border: 1px solid rgba(255, 255, 255, .45); border-radius: 999px; background: rgba(255, 255, 255, .12); font-family: var(--mono); font-size: 8px; letter-spacing: .05em; text-transform: uppercase; backdrop-filter: blur(8px); }
-    .service-photo-content h3 { margin: 0; font-size: clamp(25px, 2.1vw, 34px); font-weight: 700; letter-spacing: -.065em; line-height: .86; text-transform: uppercase; }
-    .service-photo-content p { margin: 14px 0 0; font-size: 13px; line-height: 1.5; }
-    .service-photo-content button { display: inline-flex; align-items: center; gap: 8px; margin-top: 17px; padding: 0; background: transparent; color: #fff; cursor: pointer; font-size: 13px; font-weight: 700; transition: color .2s ease, transform .22s var(--ease); }
-    .service-photo-content button:hover { color: #ffe09a; transform: translateX(3px); }
-    .service-photo-content button i { font-size: 12px; }
-
-    /* Quick quote */
-    .quote { position: relative; padding: clamp(83px, 10vw, 133px) 0; overflow: hidden; background: linear-gradient(125deg, #efdacb 0%, #f5b991 49%, #e29a7f 100%); }
-    .quote::before { position: absolute; top: -23%; right: -7%; width: min(44vw, 560px); height: min(44vw, 560px); border: 1px solid rgba(255, 255, 255, .40); border-radius: 50%; content: ""; }
-    .quote::after { position: absolute; bottom: -32%; left: 22%; width: min(29vw, 380px); height: min(29vw, 380px); border-radius: 50%; background: rgba(183, 165, 204, .25); content: ""; filter: blur(20px); }
-    .quote-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(35px, 7vw, 110px); align-items: start; }
-    .quote .eyebrow { color: rgba(92, 47, 35, .85); }
-    .quote h2 { margin: 12px 0 20px; }
-    .quote-intro { max-width: 33ch; margin: 0; color: rgba(54, 37, 30, .76); font-size: 17px; line-height: 1.6; }
-    .quote-note { display: flex; gap: 10px; align-items: flex-start; max-width: 34ch; margin: 25px 0 0; color: rgba(54, 37, 30, .68); font-family: var(--mono); font-size: 9px; letter-spacing: .025em; line-height: 1.65; text-transform: uppercase; }
-    .quote-note i { margin-top: 1px; color: var(--coral-deep); font-size: 14px; }
-    .quote-form { padding: clamp(22px, 3.3vw, 37px); border-radius: 23px; }
-    .field-block { padding: 0 0 21px; margin: 0 0 21px; border: 0; border-bottom: 1px solid rgba(101, 94, 89, .18); }
-    .field-title { display: flex; gap: 10px; align-items: baseline; margin: 0 0 14px; font-size: 16px; font-weight: 700; letter-spacing: -.035em; }
-    .field-title b { color: var(--coral-deep); font-family: var(--mono); font-size: 9px; font-weight: 400; letter-spacing: .08em; }
-    .choice-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .choice { padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .66); border-radius: 999px; background: rgba(255, 255, 255, .43); color: var(--ink-muted); cursor: pointer; font-size: 13px; font-weight: 700; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .22s var(--ease); }
+    /* Funnel */
+    .funnel { position: relative; padding: clamp(75px, 10vw, 130px) 0; overflow: hidden; background: linear-gradient(125deg, #f4c399 0%, #f39d71 46%, #de7e61 100%); }
+    .funnel::before { position: absolute; top: -180px; right: -130px; width: 420px; height: 420px; border: 1px solid rgba(255, 255, 255, .48); border-radius: 50%; content: ""; }
+    .funnel::after { position: absolute; bottom: -220px; left: 8%; width: 400px; height: 400px; border-radius: 50%; background: rgba(184, 168, 204, .30); content: ""; filter: blur(24px); }
+    .funnel-shell { position: relative; z-index: 1; }
+    .funnel-head { max-width: 680px; margin-bottom: 34px; }
+    .funnel-head .eyebrow { color: rgba(76, 37, 25, .88); }
+    .funnel-head h2 { margin: 10px 0 13px; font-size: clamp(43px, 6vw, 78px); font-weight: 700; letter-spacing: -.08em; line-height: .85; text-transform: uppercase; }
+    .funnel-head p:not(.eyebrow) { max-width: 49ch; margin: 0; color: rgba(49, 29, 23, .76); font-size: 16px; line-height: 1.57; }
+    .funnel-ui { max-width: 950px; padding: clamp(22px, 3.2vw, 38px); border: 1px solid rgba(255, 255, 255, .67); border-radius: 25px; background: rgba(255, 252, 248, .73); box-shadow: 0 18px 46px rgba(102, 47, 28, .14); backdrop-filter: blur(20px) saturate(135%); -webkit-backdrop-filter: blur(20px) saturate(135%); }
+    .progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 32px; }
+    .progress-item { display: flex; align-items: center; gap: 8px; color: rgba(23, 22, 21, .45); font-family: var(--mono); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; }
+    .progress-item::before { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border: 1px solid rgba(23, 22, 21, .22); border-radius: 50%; content: attr(data-step); font-size: 8px; }
+    .progress-item.active { color: var(--ink); }
+    .progress-item.active::before { border-color: var(--coral); background: var(--coral); color: #fff; }
+    .funnel-step { display: none; animation: step-in .35s var(--ease); }
+    .funnel-step.active { display: block; }
+    @keyframes step-in { from { opacity: 0; transform: translateX(13px); } to { opacity: 1; transform: none; } }
+    .step-title { margin: 0; font-size: clamp(28px, 3.7vw, 43px); font-weight: 700; letter-spacing: -.06em; line-height: .93; text-transform: uppercase; }
+    .step-help { max-width: 55ch; margin: 10px 0 22px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
+    .persona-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+    .persona-card { display: flex; min-height: 148px; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 21px; border: 1px solid rgba(23, 22, 21, .14); border-radius: 17px; background: rgba(255, 255, 255, .48); color: var(--ink); cursor: pointer; text-align: left; transition: border-color .22s ease, background .22s ease, box-shadow .22s ease, transform .25s var(--ease); }
+    .persona-card i { color: var(--coral); font-size: 22px; }
+    .persona-card strong { display: block; margin-top: 16px; font-size: 18px; letter-spacing: -.04em; }
+    .persona-card span { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 13px; line-height: 1.35; }
+    .persona-card:hover, .persona-card.active { border-color: var(--coral); background: rgba(255, 240, 232, .72); box-shadow: 0 10px 22px rgba(195, 82, 38, .12); transform: translateY(-3px); }
+    .choice-grid { display: flex; flex-wrap: wrap; gap: 9px; }
+    .choice { min-height: 44px; padding: 10px 15px; border: 1px solid rgba(23, 22, 21, .18); border-radius: 999px; background: rgba(255, 255, 255, .48); color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 700; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s var(--ease); }
     .choice:hover, .choice.active { border-color: var(--coral); background: var(--coral); color: #fff; transform: translateY(-2px); }
-    .quick-fields { display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; margin-top: 3px; }
-    .input-label { display: block; color: var(--ink-muted); font-family: var(--mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
-    .input-label input { width: 100%; margin-top: 9px; padding: 11px 0; border: 0; border-bottom: 1px solid rgba(101, 94, 89, .35); outline: none; background: transparent; color: var(--ink); font-family: var(--sans); font-size: 15px; transition: border-color .2s ease; }
-    .input-label input:focus { border-color: var(--coral); }
-    .quote-actions { display: flex; flex-direction: column; gap: 9px; margin-top: 25px; }
-    .quote-actions .button { width: 100%; }
-    .validation { min-height: 17px; margin: 0; color: #a13d2b; font-family: var(--mono); font-size: 9px; letter-spacing: .025em; line-height: 1.45; text-align: center; text-transform: uppercase; }
+    .funnel-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 29px; }
+    .funnel-actions .back { padding: 10px 0; background: transparent; color: var(--ink-soft); cursor: pointer; font-size: 13px; font-weight: 700; }
+    .funnel-actions .back:hover { color: var(--coral-dark); }
+    .funnel-actions .next { min-width: 136px; }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field-label { display: block; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .055em; text-transform: uppercase; }
+    .field-label input, .field-label textarea { width: 100%; margin-top: 9px; padding: 11px 0; border: 0; border-bottom: 1px solid rgba(23, 22, 21, .28); outline: 0; background: transparent; color: var(--ink); font-family: var(--sans); font-size: 15px; transition: border-color .2s ease; }
+    .field-label input:focus, .field-label textarea:focus { border-color: var(--coral); }
+    .field-label textarea { min-height: 82px; resize: vertical; }
+    .location-field { margin-top: 24px; }
+    .notes-field { margin-top: 22px; }
+    .tiny-note { margin: 19px 0 0; color: rgba(49, 29, 23, .65); font-family: var(--mono); font-size: 9px; line-height: 1.55; text-transform: uppercase; }
+    .validation { min-height: 17px; margin: 0; color: #a33f27; font-family: var(--mono); font-size: 9px; line-height: 1.4; text-transform: uppercase; }
 
     /* About */
-    .about { padding: clamp(83px, 10vw, 133px) 0; background: linear-gradient(165deg, var(--surface) 0%, #f3e7dc 100%); }
-    .about-grid { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: clamp(37px, 7vw, 105px); align-items: center; }
-    .portrait-card { position: relative; max-width: 480px; padding: 9px; border-radius: 26px; }
-    .portrait-card::after { position: absolute; right: -18px; bottom: 25px; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .72); border-radius: 13px; background: rgba(255, 252, 248, .68); box-shadow: var(--shadow-soft); color: var(--coral-deep); content: "MÚSICA QUE SE ADAPTA A TU GENTE."; font-family: var(--mono); font-size: 8px; letter-spacing: .04em; line-height: 1.45; text-transform: uppercase; backdrop-filter: blur(13px); }
-    .about-image { overflow: hidden; border-radius: 19px; aspect-ratio: 4 / 4.7; background: var(--surface-deep); }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
-    .portrait-card:hover img { transform: scale(1.035); }
-    .about h2 { margin: 12px 0 26px; }
-    .about-copy > p:not(.eyebrow) { max-width: 55ch; margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.66; }
-    .about-copy > p + p { margin-top: 13px !important; }
-    .trust-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 30px; }
-    .trust-card { min-height: 101px; padding: 16px; border-radius: 16px; }
-    .trust-card strong { display: block; color: var(--coral-deep); font-size: clamp(25px, 3vw, 38px); font-weight: 700; letter-spacing: -.07em; line-height: .9; }
-    .trust-card span { display: block; margin-top: 9px; color: var(--ink-muted); font-family: var(--mono); font-size: 8px; letter-spacing: .04em; line-height: 1.45; text-transform: uppercase; }
-    .about-location { margin-top: 16px !important; color: var(--ink-muted) !important; font-family: var(--mono); font-size: 9px !important; letter-spacing: .04em; line-height: 1.6 !important; text-transform: uppercase; }
-    .about .button { margin-top: 25px; }
+    .about { padding: clamp(77px, 10vw, 130px) 0; background: var(--paper); }
+    .about-layout { display: grid; grid-template-columns: minmax(0, .93fr) minmax(0, 1.07fr); gap: clamp(33px, 6vw, 93px); align-items: center; }
+    .about-photo { position: relative; width: min(100%, 520px); overflow: visible; }
+    .about-photo-frame { overflow: hidden; border-radius: 31px; aspect-ratio: 4 / 4.6; background: var(--paper-deep); box-shadow: 0 18px 42px rgba(54, 39, 30, .14); }
+    .about-photo-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .85s var(--ease); }
+    .about-photo:hover img { transform: scale(1.04); }
+    .about-kicker { position: absolute; right: -15px; bottom: 26px; max-width: 200px; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, .74); border-radius: 15px; background: rgba(255, 253, 249, .79); box-shadow: 0 11px 27px rgba(54, 39, 30, .12); color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .04em; line-height: 1.42; text-transform: uppercase; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .about-copy h2 { margin: 11px 0 19px; font-size: clamp(42px, 5.8vw, 78px); font-weight: 700; letter-spacing: -.08em; line-height: .86; text-transform: uppercase; }
+    .about-copy h2 span { color: var(--coral); }
+    .about-copy .lead { max-width: 38ch; margin: 0; color: var(--ink); font-size: clamp(18px, 1.7vw, 23px); font-weight: 600; letter-spacing: -.035em; line-height: 1.3; }
+    .about-copy .body { max-width: 49ch; margin: 18px 0 0; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
+    .about-proof { display: flex; flex-wrap: wrap; gap: 9px 18px; margin: 27px 0 0; padding-top: 17px; border-top: 1px solid var(--line); color: var(--ink); font-family: var(--mono); font-size: 10px; letter-spacing: .025em; line-height: 1.5; text-transform: uppercase; }
+    .about-proof span + span::before { margin-right: 18px; color: var(--coral); content: "•"; }
+    .about-network { margin: 11px 0 0; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .055em; line-height: 1.5; text-transform: uppercase; }
 
     /* Contact */
-    .contact { padding: 0 0 clamp(55px, 7vw, 82px); background: var(--surface); }
-    .contact-card { position: relative; overflow: hidden; padding: clamp(48px, 7vw, 88px); border-radius: 28px; background: linear-gradient(130deg, #91a99e 0%, #83a298 52%, #6d9388 100%); color: #fff; text-align: center; }
-    .contact-card::before, .contact-card::after { position: absolute; border: 1px solid rgba(255, 255, 255, .28); border-radius: 50%; content: ""; pointer-events: none; }
-    .contact-card::before { top: -50%; left: -10%; width: min(52vw, 680px); height: min(52vw, 680px); }
-    .contact-card::after { right: -8%; bottom: -77%; width: min(44vw, 560px); height: min(44vw, 560px); }
-    .contact-card > * { position: relative; z-index: 1; }
-    .contact-card .eyebrow { color: rgba(255, 255, 255, .83); }
-    .contact-card h2 { max-width: 760px; margin-right: auto; margin-left: auto; font-size: clamp(52px, 7vw, 99px); line-height: .8; }
-    .contact-card h2 span { color: #ffe09a; }
-    .contact-intro { max-width: 520px; margin: 0 auto; color: rgba(255, 255, 255, .9); font-size: 17px; line-height: 1.62; }
+    .contact { padding: 0 0 clamp(52px, 7vw, 85px); background: var(--paper); }
+    .contact-panel { position: relative; overflow: hidden; padding: clamp(51px, 7vw, 92px); border-radius: 32px; background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 52%, #759c8d 100%); box-shadow: 0 18px 45px rgba(49, 83, 73, .23); color: #fff; text-align: center; }
+    .contact-panel::before { position: absolute; top: -34%; right: -6%; width: min(47vw, 610px); height: min(47vw, 610px); border: 1px solid rgba(255, 255, 255, .26); border-radius: 50%; content: ""; }
+    .contact-panel::after { position: absolute; bottom: -45%; left: -7%; width: min(39vw, 505px); height: min(39vw, 505px); border-radius: 50%; background: rgba(244, 176, 123, .25); content: ""; filter: blur(24px); }
+    .contact-panel > * { position: relative; z-index: 1; }
+    .contact-panel .eyebrow { color: rgba(255, 255, 255, .75); }
+    .contact-panel h2 { max-width: 830px; margin: 10px auto 18px; font-size: clamp(46px, 6.6vw, 91px); font-weight: 700; letter-spacing: -.08em; line-height: .84; text-transform: uppercase; }
+    .contact-panel h2 span { color: #ffe09a; }
+    .contact-panel p:not(.eyebrow):not(.contact-meta) { max-width: 490px; margin: 0 auto; color: rgba(255, 255, 255, .91); font-size: 17px; line-height: 1.58; }
     .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .contact-card .button { border-color: #ffe09a; background: #ffe09a; box-shadow: 0 10px 22px rgba(37, 47, 42, .16); color: var(--ink); }
-    .contact-card .button:hover { border-color: #ffeab8; background: #ffeab8; }
-    .contact-card .button.secondary { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .12); color: #fff; }
-    .contact-card .button.secondary:hover { border-color: #fff; background: rgba(255, 255, 255, .2); }
-    .contact-foot { margin: 20px 0 0; color: rgba(255, 255, 255, .76); font-family: var(--mono); font-size: 8px; letter-spacing: .06em; line-height: 1.6; text-transform: uppercase; }
+    .contact-panel .button { border-color: #ffe09a; background: #ffe09a; box-shadow: 0 10px 22px rgba(14, 45, 37, .22); color: var(--ink); }
+    .contact-panel .button:hover { border-color: #fff0c7; background: #fff0c7; }
+    .contact-panel .button.ghost { border-color: rgba(255, 255, 255, .66); background: rgba(255, 255, 255, .08); box-shadow: none; color: #fff; }
+    .contact-panel .button.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .18); }
+    .contact-meta { margin: 20px 0 0; color: rgba(255, 255, 255, .74); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; line-height: 1.5; text-transform: uppercase; }
 
-    footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px var(--gutter) calc(21px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--surface); }
-    .footer-brand img { width: 39px; height: 39px; object-fit: contain; }
-    footer p { margin: 0; color: var(--ink-muted); font-family: var(--mono); font-size: 8px; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
+    /* Footer */
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px var(--gutter) calc(22px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--white); }
+    .footer-mark { display: grid; width: 38px; height: 38px; place-items: center; }
+    .footer-mark img { width: 34px; height: 34px; object-fit: contain; }
+    footer p { margin: 0; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
     .footer-socials { display: flex; gap: 7px; }
-    .footer-socials a { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255, 255, 255, .68); border-radius: 50%; background: rgba(255, 255, 255, .38); color: var(--ink-muted); font-size: 13px; transition: color .2s ease, border-color .2s ease, transform .2s var(--ease); }
-    .footer-socials a:hover { border-color: var(--coral); color: var(--coral-deep); transform: translateY(-2px); }
-    .mobile-quote { position: fixed; z-index: 45; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .60); border-radius: 999px; background: var(--coral); box-shadow: 0 11px 25px rgba(150, 67, 45, .29); color: #fff; font-size: 13px; font-weight: 700; }
+    .footer-socials a { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink-soft); font-size: 13px; transition: border-color .2s ease, color .2s ease, transform .2s var(--ease); }
+    .footer-socials a:hover { border-color: var(--coral); color: var(--coral-dark); transform: translateY(-2px); }
+    .mobile-whatsapp { position: fixed; z-index: 42; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .68); border-radius: 999px; background: var(--coral); box-shadow: 0 12px 27px rgba(176, 65, 24, .3); color: #fff; font-size: 13px; font-weight: 700; }
 
-    @media (max-width: 1080px) {
-      .service-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .service-photo-card { min-height: 410px; }
+    /* Service modal */
+    .service-modal { position: fixed; z-index: 100; inset: 0; display: grid; overflow-y: auto; padding: clamp(14px, 3vw, 38px); background: rgba(21, 18, 16, .58); opacity: 0; pointer-events: none; transition: opacity .25s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .service-modal.open { opacity: 1; pointer-events: auto; }
+    .modal-dialog { position: relative; width: min(1120px, 100%); min-height: min(700px, calc(100svh - 28px)); margin: auto; overflow: hidden; border-radius: 27px; background: var(--paper); box-shadow: 0 25px 70px rgba(0, 0, 0, .28); transform: translateY(16px) scale(.985); transition: transform .32s var(--ease); }
+    .service-modal.open .modal-dialog { transform: none; }
+    .modal-close { position: absolute; z-index: 3; top: 18px; right: 18px; display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid rgba(255, 255, 255, .72); border-radius: 50%; background: rgba(255, 253, 249, .78); color: var(--ink); cursor: pointer; font-size: 19px; box-shadow: 0 5px 15px rgba(0, 0, 0, .1); backdrop-filter: blur(12px); }
+    .modal-back { position: absolute; z-index: 3; top: 20px; left: 21px; display: inline-flex; min-height: 39px; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid rgba(255, 255, 255, .70); border-radius: 999px; background: rgba(255, 253, 249, .78); color: var(--ink); cursor: pointer; font-size: 12px; font-weight: 700; box-shadow: 0 5px 15px rgba(0, 0, 0, .1); backdrop-filter: blur(12px); }
+    .modal-grid { display: grid; min-height: inherit; grid-template-columns: minmax(330px, .83fr) minmax(0, 1.17fr); }
+    .modal-photo { position: relative; min-height: 100%; background: var(--paper-deep); }
+    .modal-photo img { width: 100%; height: 100%; min-height: 100%; object-fit: cover; }
+    .modal-photo::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12, 10, 9, .47), transparent 48%); content: ""; }
+    .modal-photo-label { position: absolute; z-index: 1; right: 29px; bottom: 27px; left: 29px; color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
+    .modal-content { padding: clamp(92px, 9vw, 122px) clamp(27px, 5vw, 69px) 38px; }
+    .modal-content .eyebrow { margin-bottom: 12px; }
+    .modal-content h2 { max-width: 13ch; margin: 0; font-size: clamp(42px, 5.4vw, 74px); font-weight: 700; letter-spacing: -.085em; line-height: .84; text-transform: uppercase; }
+    .modal-intro { max-width: 49ch; margin: 25px 0 0; color: var(--ink); font-size: 18px; font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
+    .modal-body { max-width: 54ch; margin: 16px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
+    .modal-list-title { margin: 26px 0 11px; color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .modal-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .modal-list span { padding: 9px 11px; border: 1px solid rgba(243, 115, 53, .19); border-radius: 999px; background: #fff1e8; color: var(--coral-dark); font-family: var(--mono); font-size: 8px; letter-spacing: .025em; line-height: 1.35; text-transform: uppercase; }
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+
+    @media (max-width: 1000px) {
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 42px; }
+      .service-image-wrap { width: min(100%, 290px); }
+      .modal-grid { grid-template-columns: .8fr 1.2fr; }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 760px) {
       :root { --wide: 88vw; --gutter: 6vw; }
-      .desktop-nav, .header-actions > .social-icon, .header-cta { display: none; }
-      .menu-toggle { display: inline-flex; }
-      .hero { min-height: auto; padding: 104px 0 42px; }
-      .hero-media { background-position: 62% center; }
-      .hero-media::after { background: linear-gradient(180deg, rgba(248, 242, 235, .74) 0%, rgba(248, 242, 235, .52) 46%, rgba(248, 242, 235, .18) 100%), linear-gradient(90deg, rgba(248, 242, 235, .5), transparent 70%); }
-      .hero .shell { min-height: 643px; grid-template-columns: 1fr; align-items: start; }
-      .hero-card { max-width: 590px; padding: 24px; }
-      .hero h1 { font-size: clamp(54px, 13.7vw, 90px); }
-      .hero-tag { align-self: end; justify-self: start; margin: 0 0 4px; }
-      .section-head { grid-template-columns: 1fr; gap: 23px; }
-      .section-head h2, .about h2, .quote h2 { font-size: clamp(49px, 13.5vw, 84px); }
-      .section-intro { margin: 0; }
-      .event-detail.open { max-height: 1510px; }
-      .event-detail-inner { grid-template-columns: 1fr; gap: 23px; }
-      .quote-layout { grid-template-columns: 1fr; gap: 33px; }
-      .about-grid { grid-template-columns: 1fr; gap: 35px; }
-      .portrait-card { width: min(100%, 510px); }
-      .mobile-quote { display: inline-flex; }
-      .contact-card::before { top: -10%; left: -42%; width: 95vw; height: 95vw; }
-      .contact-card::after { right: -36%; bottom: -20%; width: 87vw; height: 87vw; }
-    }
-
-    @media (max-width: 580px) {
-      .header { padding-top: 10px; padding-bottom: 10px; }
-      .brand { width: 57px; height: 49px; }
-      .brand::before { width: 45px; height: 45px; }
-      .brand img { width: 42px; height: 42px; }
-      .hero .shell { min-height: 592px; }
-      .hero-card { padding: 21px; border-radius: 22px; }
-      .hero h1 { font-size: clamp(49px, 14.7vw, 72px); line-height: .81; }
-      .hero-lead { font-size: 16px; }
-      .hero-actions { display: grid; grid-template-columns: 1fr; }
-      .button { width: 100%; }
-      .section-head h2, .about h2, .quote h2 { font-size: clamp(45px, 14.9vw, 68px); line-height: .83; }
-      .event-selector { padding: 19px; border-radius: 20px; }
-      .event-pill { width: 100%; }
-      .group-label { font-size: 8px; }
-      .event-detail-inner { padding: 22px; }
-      .event-detail h3 { font-size: clamp(32px, 10.8vw, 47px); }
-      .detail-copy { font-size: 15px; }
-      .service-photo-grid { display: flex; width: calc(100% + 12vw); margin-right: -6vw; margin-left: -6vw; padding: 0 6vw 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-      .service-photo-grid::-webkit-scrollbar { display: none; }
-      .service-photo-card { min-width: 83vw; min-height: 500px; scroll-snap-align: start; }
-      .service-photo-grid:has(.service-photo-card:hover) .service-photo-card:not(:hover) { opacity: 1; }
-      .quick-fields { grid-template-columns: 1fr; }
+      .header { position: sticky; top: 0; min-height: 72px; padding: 8px var(--gutter); box-shadow: 0 3px 18px rgba(43, 32, 25, .07); }
+      .header-inner { display: flex; min-height: 56px; align-items: center; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 44px; height: 44px; flex-basis: 44px; }
+      .brand-mark::before { width: 37px; height: 37px; border-width: 1.5px; }
+      .brand-mark::after { width: 21px; height: 21px; border-width: 1.5px; transform: translate(-4px, -3px); }
+      .brand-logo { width: 35px; height: 35px; }
+      .brand-name { font-size: 23px; }
+      .top-actions, .main-nav { display: none; }
+      .menu-toggle { display: inline-grid; width: 43px; height: 43px; margin-left: auto; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--ink); cursor: pointer; font-size: 17px; }
+      .mobile-nav { position: fixed; z-index: 49; top: 72px; right: 0; left: 0; display: flex; min-height: calc(100svh - 72px); flex-direction: column; padding: 32px var(--gutter); background: rgba(251, 247, 242, .97); opacity: 0; pointer-events: none; transform: translateY(-10px); transition: opacity .25s ease, transform .28s var(--ease); backdrop-filter: blur(18px); }
+      .mobile-nav.open { opacity: 1; pointer-events: auto; transform: none; }
+      .mobile-nav a:not(.button) { padding: 12px 0; color: var(--ink); font-size: clamp(34px, 11vw, 52px); font-weight: 700; letter-spacing: -.075em; line-height: .95; }
+      .mobile-nav .button { width: 100%; margin-top: 18px; }
+      .mobile-socials { display: flex; gap: 14px; margin-top: auto; }
+      .mobile-socials a { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); }
+      .hero { min-height: 580px; }
+      .hero-content { min-height: 580px; padding: 35px var(--gutter); }
+      .hero-title { font-size: clamp(40px, 12.4vw, 61px); line-height: 1.04; }
+      .hero-title span { margin-bottom: 7px; padding: 5px 9px 7px; }
+      .hero-actions { margin-top: 20px; }
+      .hero-actions .button { min-width: 0; }
+      .services { padding: 65px 0 72px; }
+      .services-head { margin-bottom: 34px; }
+      .services-head h2 { font-size: clamp(37px, 11.4vw, 52px); }
+      .service-grid { display: flex; width: calc(100% + 12vw); margin-right: -6vw; margin-left: -6vw; gap: 15px; padding: 0 6vw 14px; overflow-x: auto; scroll-padding-left: 6vw; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .service-grid::-webkit-scrollbar { display: none; }
+      .service-card { min-width: 80vw; scroll-snap-align: start; }
+      .service-image-wrap { width: min(72vw, 290px); }
+      .service-card h3 { margin-top: 21px; font-size: 26px; }
+      .service-card p { max-width: 27ch; font-size: 15px; }
+      .funnel { padding: 67px 0 75px; }
+      .funnel::before { top: -120px; right: -205px; width: 360px; height: 360px; }
+      .funnel-head { margin-bottom: 26px; }
+      .funnel-head h2 { font-size: clamp(40px, 12vw, 58px); }
+      .funnel-ui { padding: 21px; border-radius: 21px; }
+      .progress { gap: 4px; margin-bottom: 25px; }
+      .progress-item { justify-content: center; font-size: 0; }
+      .progress-item::before { width: 24px; height: 24px; flex-basis: 24px; font-size: 9px; }
+      .step-title { font-size: clamp(29px, 9.5vw, 41px); }
+      .step-help { margin-bottom: 18px; font-size: 15px; }
+      .persona-grid { grid-template-columns: 1fr; }
+      .persona-card { min-height: 108px; padding: 17px; }
+      .persona-card i { font-size: 19px; }
+      .persona-card strong { margin-top: 7px; }
+      .choice-grid { gap: 8px; }
+      .choice { min-height: 45px; font-size: 13px; }
+      .details-grid { grid-template-columns: 1fr; gap: 20px; }
+      .funnel-actions { margin-top: 25px; }
+      .funnel-actions .button { width: auto; }
+      .about { padding: 69px 0 80px; }
+      .about-layout { grid-template-columns: 1fr; gap: 39px; }
+      .about-photo { width: 100%; }
+      .about-photo-frame { border-radius: 25px; aspect-ratio: 4 / 4.5; }
+      .about-kicker { right: 11px; bottom: -15px; }
+      .about-copy h2 { font-size: clamp(41px, 12.4vw, 60px); }
+      .about-copy .lead { font-size: 20px; }
+      .about-copy .body { font-size: 16px; }
+      .about-proof { gap: 7px 10px; font-size: 9px; }
+      .about-proof span + span::before { margin-right: 10px; }
       .contact { padding-bottom: 42px; }
-      .contact-card { padding: 48px 21px; border-radius: 21px; }
-      .contact-card h2 { font-size: clamp(48px, 14vw, 68px); }
+      .contact-panel { padding: 50px 21px; border-radius: 24px; }
+      .contact-panel h2 { font-size: clamp(42px, 12vw, 61px); }
       .contact-actions { display: grid; grid-template-columns: 1fr; }
-      .portrait-card::after { right: -5px; bottom: 15px; max-width: 160px; }
+      .contact-actions .button { width: 100%; }
       footer p { display: none; }
+      .mobile-whatsapp { display: inline-flex; }
+      .service-modal { padding: 0; }
+      .modal-dialog { min-height: 100svh; border-radius: 0; }
+      .modal-grid { display: block; }
+      .modal-photo { min-height: 260px; height: 37svh; }
+      .modal-photo img { min-height: 0; }
+      .modal-content { padding: 36px 23px 110px; }
+      .modal-back { top: 15px; left: 15px; }
+      .modal-close { top: 14px; right: 14px; }
+      .modal-content h2 { font-size: clamp(39px, 11vw, 58px); }
+      .modal-intro { font-size: 17px; }
+      .modal-actions { position: fixed; z-index: 4; right: 0; bottom: 0; left: 0; margin: 0; padding: 12px 16px max(12px, env(safe-area-inset-bottom)); background: rgba(251, 247, 242, .94); box-shadow: 0 -8px 21px rgba(42, 28, 20, .09); backdrop-filter: blur(12px); }
+      .modal-actions .button { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -294,253 +319,216 @@
   </style>
 </head>
 <body>
-  <header class="header" id="header">
+  <header class="header">
     <div class="header-inner">
-      <a class="brand" href="#inicio" aria-label="DJ César Channel, volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
-      <nav class="desktop-nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="DJ César Channel, volver al inicio">
+        <span class="brand-mark" aria-hidden="true"><img class="brand-logo" src="assets/img/logo-dj-cesar-channel.svg" alt="" /></span>
+        <span class="brand-name">DJ César Channel</span>
+      </a>
+
+      <div class="top-actions" aria-label="Contacto y redes">
+        <a class="top-link" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a class="top-link" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        <a class="top-link" href="https://wa.me/525624685267" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+        <a class="top-link" href="mailto:cesarmejiacarballo43@gmail.com" aria-label="Enviar email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
         <a class="active" href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="#quien-soy">Quién soy</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#contacto">Contactar</a>
       </nav>
-      <div class="header-actions">
-        <a class="social-icon" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DJ César Channel"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-        <a class="social-icon" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok de DJ César Channel"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-        <a class="button header-cta" href="#cotiza">Cotiza tu evento</a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
-      </div>
+
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
     </div>
   </header>
 
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <nav aria-label="Navegación móvil">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#quien-soy">Quién soy</a>
-      <a href="#contacto">Contacto</a>
-      <a class="button" href="#cotiza">Cotiza tu evento</a>
-    </nav>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" aria-hidden="true">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#quien-soy">Quién soy</a>
+    <a href="#contacto">Contactar</a>
+    <a class="button" href="#funnel">Cotiza tu evento</a>
     <div class="mobile-socials" aria-label="Redes sociales">
-      <a class="social-icon" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-      <a class="social-icon" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      <a href="https://wa.me/525624685267" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+      <a href="mailto:cesarmejiacarballo43@gmail.com" aria-label="Enviar email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
     </div>
-  </div>
+  </nav>
 
   <main>
-    <section class="hero" id="inicio" aria-label="DJ César Channel, eventos en Ciudad de México">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-orb one" aria-hidden="true"></div>
-      <div class="hero-orb two" aria-hidden="true"></div>
-      <div class="shell">
-        <div class="hero-card glass reveal">
-          <p class="eyebrow">DJ César Channel · CDMX</p>
-          <h1>DJ, música y producción para celebrar <span>en grande.</span></h1>
-          <p class="hero-lead">Bodas, fiestas privadas y eventos corporativos. Una propuesta musical y técnica pensada para tu gente, tu espacio y tu momento.</p>
-          <div class="hero-actions">
-            <a class="button" href="#cotiza"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza por WhatsApp</a>
-            <a class="button secondary" href="#servicios">Ver servicios</a>
-          </div>
+    <section class="hero" id="inicio" aria-label="DJ César Channel: DJ, música y producción">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="reveal">
+          <h1 class="hero-title"><span>DJ, MÚSICA</span><span>Y PRODUCCIÓN</span></h1>
+          <div class="hero-actions"><a class="button light" href="#funnel">Cotiza tu evento</a></div>
         </div>
-        <aside class="hero-tag glass reveal" aria-label="Servicios disponibles">
-          <i class="fa-solid fa-music" aria-hidden="true"></i><br />
-          DJ · Audio · Iluminación<br />Música en vivo · Producción
-        </aside>
       </div>
     </section>
 
     <section class="services" id="servicios">
       <div class="shell">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">01 / Servicios</p>
-            <h2>Eventos que <span>suenan</span><br />y <span>lucen</span> increíbles.</h2>
-          </div>
-          <p class="section-intro">Música, sonido, iluminación y talento adaptados a tu celebración. Elige el tipo de evento para conocer las posibilidades.</p>
+        <div class="services-head reveal">
+          <p class="eyebrow">Servicios</p>
+          <h2>Todo para que tu evento <span>se sienta increíble.</span></h2>
         </div>
 
-        <div class="event-selector glass reveal">
-          <div class="event-group">
-            <p class="group-label">Empresas / profesionales</p>
-            <div class="pills" role="group" aria-label="Eventos para empresas y profesionales">
-              <button class="event-pill" type="button" data-event="Corporativo"><span>Corporativo</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Afterwork"><span>Afterwork</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Inauguración"><span>Inauguración</span><i aria-hidden="true">→</i></button>
-            </div>
-            <div class="pills hidden-pills" id="business-more">
-              <button class="event-pill" type="button" data-event="Lanzamiento de marca"><span>Lanzamiento de marca</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Gala o cena de empresa"><span>Gala o cena de empresa</span><i aria-hidden="true">→</i></button>
-            </div>
-            <button class="more-events" type="button" data-target="business-more">+ Ver todos los formatos</button>
-          </div>
-
-          <div class="event-group">
-            <p class="group-label">Particulares</p>
-            <div class="pills" role="group" aria-label="Eventos particulares">
-              <button class="event-pill" type="button" data-event="Boda"><span>Boda</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Fiesta privada"><span>Fiesta privada</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Graduación"><span>Graduación</span><i aria-hidden="true">→</i></button>
-            </div>
-            <div class="pills hidden-pills" id="private-more">
-              <button class="event-pill" type="button" data-event="Cumpleaños"><span>Cumpleaños</span><i aria-hidden="true">→</i></button>
-              <button class="event-pill" type="button" data-event="Aniversario"><span>Aniversario</span><i aria-hidden="true">→</i></button>
-            </div>
-            <button class="more-events" type="button" data-target="private-more">+ Ver todos los formatos</button>
-          </div>
-
-          <div class="event-detail" id="event-detail" aria-live="polite">
-            <div class="event-detail-inner">
-              <div>
-                <span class="detail-kicker" id="detail-kicker">01 / FORMATO</span>
-                <h3 id="detail-title">TU EVENTO.</h3>
-              </div>
-              <div>
-                <p class="detail-copy" id="detail-copy">Elige el formato que buscas para conocer las posibilidades.</p>
-                <div class="detail-options" id="detail-options"></div>
-                <p class="detail-note" id="detail-note"></p>
-                <a class="button" id="detail-whatsapp" href="https://wa.me/525624685267" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-photo-grid reveal" aria-label="Soluciones para tu evento">
-          <article class="service-photo-card">
-            <img src="assets/img/gallery-pista.webp" alt="Personas celebrando en una pista de baile" loading="lazy" decoding="async" />
-            <div class="service-photo-content">
-              <span>01 / Eventos</span>
-              <h3>Eventos<br />y fiestas</h3>
-              <p>Bodas, celebraciones, graduaciones y corporativos pensados para disfrutar de principio a fin.</p>
-              <button type="button" data-solution="Eventos y fiestas">Ver opciones <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
+        <div class="service-grid" aria-label="Servicios de DJ César Channel">
+          <article class="service-card reveal">
+            <div class="service-image-wrap"><img src="assets/img/gallery-booth.webp" alt="Evento corporativo con DJ y asistentes" loading="lazy" decoding="async" /></div>
+            <h3>Eventos<br />corporativos</h3>
+            <p>Música, producción y formatos para marcas, empresas y celebraciones profesionales.</p>
+            <button class="service-detail-trigger" type="button" data-service="corporativo">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
-          <article class="service-photo-card">
-            <img src="assets/img/gallery-booth.webp" alt="DJ César Channel en cabina durante un evento" loading="lazy" decoding="async" />
-            <div class="service-photo-content">
-              <span>02 / DJ</span>
-              <h3>DJ y<br />curaduría</h3>
-              <p>Selección musical en vivo y sets que se adaptan al ritmo de cada celebración.</p>
-              <button type="button" data-solution="DJ y curaduría musical">Ver DJ sets <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
+          <article class="service-card reveal">
+            <div class="service-image-wrap"><img src="assets/img/gallery-pista.webp" alt="Pista de baile durante una boda o fiesta" loading="lazy" decoding="async" /></div>
+            <h3>Bodas y<br />fiestas</h3>
+            <p>DJ, producción y energía para celebrar cada momento, desde la bienvenida hasta el último baile.</p>
+            <button class="service-detail-trigger" type="button" data-service="bodas">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
-          <article class="service-photo-card">
-            <img src="assets/img/gallery-cabina.webp" alt="Equipo de sonido e iluminación para un evento" loading="lazy" decoding="async" />
-            <div class="service-photo-content">
-              <span>03 / Producción</span>
-              <h3>Audio, luz<br />y producción</h3>
-              <p>Sonido, iluminación y recursos técnicos para que todo se vea y se escuche como debe.</p>
-              <button type="button" data-solution="Audio, luz y producción">Ver producción <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
+          <article class="service-card reveal">
+            <div class="service-image-wrap"><img src="assets/img/gallery-cabina.webp" alt="Equipo de audio e iluminación para un evento" loading="lazy" decoding="async" /></div>
+            <h3>Audio, luz<br />y producción</h3>
+            <p>Sonido, iluminación y recursos técnicos adaptados a tu espacio, aforo y tipo de evento.</p>
+            <button class="service-detail-trigger" type="button" data-service="produccion">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
-          <article class="service-photo-card">
-            <img src="assets/img/gallery-ambiente.webp" alt="Música en vivo durante un evento" loading="lazy" decoding="async" />
-            <div class="service-photo-content">
-              <span>04 / Talento</span>
-              <h3>Música en vivo<br />y talento</h3>
-              <p>Mariachi, norteño, músicos, artistas y formatos especiales para otra dimensión del evento.</p>
-              <button type="button" data-solution="Música en vivo y talento">Ver talento <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-            </div>
+          <article class="service-card reveal">
+            <div class="service-image-wrap"><img src="assets/img/gallery-ambiente.webp" alt="Músico actuando en vivo durante un evento" loading="lazy" decoding="async" /></div>
+            <h3>Música en vivo<br />y talento</h3>
+            <p>Mariachi, norteño, músicos, artistas, DJs y formatos especiales para darle otra dimensión al evento.</p>
+            <button class="service-detail-trigger" type="button" data-service="talento">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="quote" id="cotiza">
-      <div class="shell quote-layout">
-        <div class="reveal">
-          <p class="eyebrow">02 / Cotización rápida</p>
+    <section class="funnel" id="funnel">
+      <div class="shell funnel-shell">
+        <div class="funnel-head reveal">
+          <p class="eyebrow">Cotización</p>
           <h2>Cuéntanos<br />tu idea.</h2>
-          <p class="quote-intro">En menos de un minuto puedes preparar un mensaje con lo básico. César te responde con opciones pensadas para tu evento.</p>
-          <p class="quote-note"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> La solicitud se abre directamente en WhatsApp. No guardamos tus datos en la web.</p>
+          <p>Elige lo esencial y te llevamos a WhatsApp con una solicitud lista para enviar. Toma menos de un minuto.</p>
         </div>
 
-        <form class="quote-form glass reveal" id="quote-form" novalidate>
-          <fieldset class="field-block">
-            <legend class="field-title"><b>01</b> ¿Qué quieres celebrar?</legend>
-            <div class="choice-list" data-choice-group="eventType">
-              <button class="choice" type="button" data-value="Boda">Boda</button>
-              <button class="choice" type="button" data-value="Fiesta privada">Fiesta privada</button>
-              <button class="choice" type="button" data-value="Corporativo / marca">Corporativo / marca</button>
-              <button class="choice" type="button" data-value="Graduación">Graduación</button>
-              <button class="choice" type="button" data-value="Otro">Otro</button>
+        <div class="funnel-ui reveal" id="funnel-ui">
+          <div class="progress" aria-label="Progreso de cotización">
+            <div class="progress-item active" data-progress="1" data-step="1">Perfil</div>
+            <div class="progress-item" data-progress="2" data-step="2">Evento</div>
+            <div class="progress-item" data-progress="3" data-step="3">Servicios</div>
+            <div class="progress-item" data-progress="4" data-step="4">Detalles</div>
+          </div>
+
+          <div class="funnel-step active" data-step="1">
+            <h3 class="step-title">¿Quién eres?</h3>
+            <p class="step-help">Así entendemos mejor el tipo de propuesta que necesitas.</p>
+            <div class="persona-grid">
+              <button class="persona-card" type="button" data-persona="Empresa / profesional">
+                <i class="fa-solid fa-building" aria-hidden="true"></i>
+                <span><strong>Empresa / profesional</strong><span>Organizo un evento de marca, empresa o institución.</span></span>
+              </button>
+              <button class="persona-card" type="button" data-persona="Particular">
+                <i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i>
+                <span><strong>Particular</strong><span>Estoy organizando una boda, fiesta o celebración personal.</span></span>
+              </button>
             </div>
-          </fieldset>
-          <fieldset class="field-block">
-            <legend class="field-title"><b>02</b> ¿Qué necesitas?</legend>
-            <div class="choice-list" data-choice-group="service">
-              <button class="choice" type="button" data-value="Solo DJ">Solo DJ</button>
-              <button class="choice" type="button" data-value="DJ + Audio">DJ + Audio</button>
-              <button class="choice" type="button" data-value="DJ + Audio + Iluminación">DJ + Audio + Iluminación</button>
-              <button class="choice" type="button" data-value="Producción completa">Producción completa</button>
-              <button class="choice" type="button" data-value="Necesito orientación">Quiero orientación</button>
+            <div class="funnel-actions"><span></span><button class="button next" type="button" data-next="2">Siguiente <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+          </div>
+
+          <div class="funnel-step" data-step="2">
+            <h3 class="step-title">¿Qué quieres celebrar?</h3>
+            <p class="step-help">Elige la opción más cercana. Si tu evento es diferente, también lo podemos armar.</p>
+            <div class="choice-grid" id="event-options" aria-label="Tipo de evento"></div>
+            <div class="funnel-actions"><button class="back" type="button" data-back="1"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Atrás</button><button class="button next" type="button" data-next="3">Siguiente <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+          </div>
+
+          <div class="funnel-step" data-step="3">
+            <h3 class="step-title">¿Qué necesitas?</h3>
+            <p class="step-help">Puedes elegir una o varias opciones. Si no lo tienes claro, te orientamos.</p>
+            <div class="choice-grid" id="service-options" aria-label="Servicios necesarios">
+              <button class="choice multi-choice" type="button" data-service-choice="DJ / curaduría musical">DJ / curaduría musical</button>
+              <button class="choice multi-choice" type="button" data-service-choice="Audio e iluminación">Audio e iluminación</button>
+              <button class="choice multi-choice" type="button" data-service-choice="Producción completa">Producción completa</button>
+              <button class="choice multi-choice" type="button" data-service-choice="Música en vivo y talento">Música en vivo y talento</button>
+              <button class="choice multi-choice" type="button" data-service-choice="Apoyo con proveedores">Apoyo con proveedores</button>
+              <button class="choice multi-choice" type="button" data-service-choice="Quiero orientación">Quiero orientación</button>
             </div>
-          </fieldset>
-          <div class="quick-fields">
-            <label class="input-label">Fecha del evento
-              <input id="event-date" type="date" name="date" />
-            </label>
-            <fieldset style="margin:0; padding:0; border:0;">
-              <legend class="input-label" style="margin-bottom:9px;">Zona</legend>
-              <div class="choice-list" data-choice-group="location">
-                <button class="choice" type="button" data-value="CDMX">CDMX</button>
-                <button class="choice" type="button" data-value="Área metropolitana">Área metropolitana</button>
-                <button class="choice" type="button" data-value="Evento foráneo">Fuera de CDMX</button>
+            <p class="tiny-note">Podemos coordinar salones, mobiliario, ambientación, copas, visuales y otros recursos mediante una red de colaboradores, según disponibilidad.</p>
+            <div class="funnel-actions"><button class="back" type="button" data-back="2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Atrás</button><button class="button next" type="button" data-next="4">Siguiente <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+          </div>
+
+          <div class="funnel-step" data-step="4">
+            <h3 class="step-title">¿Cuándo y dónde?</h3>
+            <p class="step-help">Con una fecha aproximada y la zona podemos empezar a revisar opciones.</p>
+            <div class="details-grid">
+              <label class="field-label">Fecha del evento
+                <input id="event-date" type="date" />
+              </label>
+              <label class="field-label">Invitados aproximados <span style="opacity:.55; text-transform:none;">(opcional)</span>
+                <input id="event-guests" type="text" maxlength="40" placeholder="Ej. 120 personas" />
+              </label>
+            </div>
+            <div class="location-field">
+              <p class="field-label" style="margin:0 0 10px;">Zona</p>
+              <div class="choice-grid" id="location-options">
+                <button class="choice" type="button" data-location="CDMX">CDMX</button>
+                <button class="choice" type="button" data-location="Área metropolitana">Área metropolitana</button>
+                <button class="choice" type="button" data-location="Fuera de CDMX">Fuera de CDMX</button>
               </div>
-            </fieldset>
+            </div>
+            <label class="field-label notes-field">¿Algo más que debamos saber? <span style="opacity:.55; text-transform:none;">(opcional)</span>
+              <textarea id="event-notes" maxlength="300" placeholder="Lugar, horario, estilo, artistas que te interesan o cualquier idea."></textarea>
+            </label>
+            <div class="funnel-actions"><button class="back" type="button" data-back="3"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Atrás</button><button class="button" id="send-whatsapp" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotizar por WhatsApp</button></div>
+            <p class="validation" id="funnel-validation" role="alert"></p>
+            <p class="tiny-note">Al continuar se abrirá WhatsApp con los datos que seleccionaste. No guardamos tu información en esta web.</p>
           </div>
-          <div class="quote-actions">
-            <p class="validation" id="validation" role="alert"></p>
-            <button class="button" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Preparar mensaje de WhatsApp</button>
-          </div>
-        </form>
+        </div>
       </div>
     </section>
 
     <section class="about" id="quien-soy">
-      <div class="shell about-grid">
-        <figure class="portrait-card glass reveal">
-          <div class="about-image"><img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" /></div>
+      <div class="shell about-layout">
+        <figure class="about-photo reveal">
+          <div class="about-photo-frame"><img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" /></div>
+          <figcaption class="about-kicker">8+ años creando momentos</figcaption>
         </figure>
         <div class="about-copy reveal">
-          <p class="eyebrow">03 / Quién soy</p>
+          <p class="eyebrow">Quién soy</p>
           <h2>Hola, soy<br /><span>César Channel.</span></h2>
-          <p>Soy DJ, manager y creador de experiencias musicales para eventos.</p>
-          <p>Durante más de ocho años he acompañado bodas, celebraciones familiares, graduaciones, fiestas privadas, inauguraciones y eventos corporativos en Ciudad de México.</p>
-          <p>Cada celebración es distinta. Por eso la música, el equipo y el talento que proponemos se adaptan a tus invitados, al espacio y a la energía que quieres crear.</p>
-          <div class="trust-grid" aria-label="Experiencia profesional">
-            <div class="trust-card glass"><strong>8+</strong><span>Años de experiencia</span></div>
-            <div class="trust-card glass"><strong>400+</strong><span>Eventos realizados</span></div>
-            <div class="trust-card glass"><strong>CDMX</strong><span>Y área metropolitana</span></div>
-            <div class="trust-card glass"><strong>RED</strong><span>De talento y proveedores</span></div>
-          </div>
-          <p class="about-location">Eventos foráneos sujetos a disponibilidad.</p>
-          <a class="button" href="#cotiza">Cuéntame tu idea <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <p class="lead">DJ, manager y creador de experiencias musicales para eventos.</p>
+          <p class="body">No trabajo con playlists fijas. Escucho el lugar, leo a la gente y construyo la energía que necesita cada momento. Bodas, fiestas privadas, graduaciones, inauguraciones y eventos corporativos.</p>
+          <div class="about-proof"><span>400+ eventos realizados</span><span>CDMX + área metropolitana</span></div>
+          <p class="about-network">Red de talento y proveedores · Eventos foráneos sujetos a disponibilidad.</p>
         </div>
       </div>
     </section>
 
     <section class="contact" id="contacto">
       <div class="shell">
-        <div class="contact-card reveal">
-          <p class="eyebrow">04 / Contacto</p>
-          <h2>¿Listo para<br /><span>celebrar?</span></h2>
-          <p class="contact-intro">Cuéntanos la fecha y la idea. Armamos una propuesta para tu espacio, tu gente y el tipo de momento que quieres crear.</p>
+        <div class="contact-panel reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2>Hagamos que<br /><span>suceda.</span></h2>
+          <p>Cuéntanos la fecha, el lugar y lo que imaginas. Te ayudamos a convertirlo en una experiencia que todos quieran recordar.</p>
           <div class="contact-actions">
-            <a class="button" href="#cotiza"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp · Cotiza tu evento</a>
-            <a class="button secondary" href="mailto:cesarmejiacarballo43@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel">Escribir por email</a>
+            <a class="button" href="#funnel"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp · Cotiza tu evento</a>
+            <a class="button ghost" href="mailto:cesarmejiacarballo43@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel">Escribir por email</a>
           </div>
-          <p class="contact-foot">Respuesta personalizada · CDMX y área metropolitana</p>
+          <p class="contact-meta">CDMX + área metropolitana · Respuesta personalizada</p>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="mobile-quote" href="#cotiza" aria-label="Ir a cotizar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza tu evento</a>
+  <a class="mobile-whatsapp" href="#funnel" aria-label="Cotizar tu evento por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza tu evento</a>
 
   <footer>
-    <a class="footer-brand" href="#inicio" aria-label="Volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
+    <a class="footer-mark" href="#inicio" aria-label="Volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
     <p>DJ César Channel · Ciudad de México · <span id="year"></span></p>
     <div class="footer-socials" aria-label="Redes sociales">
       <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -548,155 +536,243 @@
     </div>
   </footer>
 
+  <div class="service-modal" id="service-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <article class="modal-dialog">
+      <button class="modal-back" id="modal-back" type="button"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a servicios</button>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Cerrar detalle de servicio"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <div class="modal-grid">
+        <div class="modal-photo"><img id="modal-image" src="" alt="" /><span class="modal-photo-label" id="modal-photo-label"></span></div>
+        <div class="modal-content">
+          <p class="eyebrow" id="modal-eyebrow">Servicio</p>
+          <h2 id="modal-title">Servicio</h2>
+          <p class="modal-intro" id="modal-intro"></p>
+          <p class="modal-body" id="modal-body"></p>
+          <p class="modal-list-title" id="modal-list-title">Formatos posibles</p>
+          <div class="modal-list" id="modal-list"></div>
+          <div class="modal-actions"><a class="button" id="modal-whatsapp" href="https://wa.me/525624685267" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Solicitar propuesta</a></div>
+        </div>
+      </div>
+    </article>
+  </div>
+
   <script>
-    const waNumber = "525624685267";
-    const header = document.getElementById("header");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const WA_NUMBER = "525624685267";
+    const mobileNav = document.getElementById("mobile-nav");
     const menuToggle = document.getElementById("menu-toggle");
-    const eventDetail = document.getElementById("event-detail");
-    const detailKicker = document.getElementById("detail-kicker");
-    const detailTitle = document.getElementById("detail-title");
-    const detailCopy = document.getElementById("detail-copy");
-    const detailOptions = document.getElementById("detail-options");
-    const detailNote = document.getElementById("detail-note");
-    const detailWhatsApp = document.getElementById("detail-whatsapp");
-    const form = document.getElementById("quote-form");
-    const validation = document.getElementById("validation");
-    const state = { eventType: "", service: "", location: "" };
+    const modal = document.getElementById("service-modal");
+    const modalClose = document.getElementById("modal-close");
+    const modalBack = document.getElementById("modal-back");
+    const modalTitle = document.getElementById("modal-title");
+    const modalImage = document.getElementById("modal-image");
+    const modalEye = document.getElementById("modal-eyebrow");
+    const modalIntro = document.getElementById("modal-intro");
+    const modalBody = document.getElementById("modal-body");
+    const modalList = document.getElementById("modal-list");
+    const modalListTitle = document.getElementById("modal-list-title");
+    const modalPhotoLabel = document.getElementById("modal-photo-label");
+    const modalWhatsApp = document.getElementById("modal-whatsapp");
+    const funnelValidation = document.getElementById("funnel-validation");
 
-    const eventData = {
-      "Corporativo": { kicker: "01 / EMPRESAS", title: "EVENTOS CORPORATIVOS", copy: "Música y producción para marcas, equipos y celebraciones de empresa. La propuesta se adapta a la audiencia, el concepto y cada momento: recepción, cóctel, cena, networking o pista de baile.", options: ["DJ y curaduría musical", "Audio e iluminación", "Microfonía", "Música en vivo y talento", "Producción a medida"], note: "Servicios y talento coordinados según tus necesidades, presupuesto y disponibilidad.", cta: "Cotizar evento corporativo" },
-      "Afterwork": { kicker: "01 / EMPRESAS", title: "AFTERWORK", copy: "Una transición perfecta entre trabajo y celebración. Música, ambiente y producción para conectar equipos, clientes o comunidades en un formato relajado y bien cuidado.", options: ["DJ set a medida", "Audio e iluminación", "Curaduría por horario", "Música en vivo", "Producción ligera"], note: "La propuesta se adapta al venue, duración, público y energía que buscas crear.", cta: "Cotizar afterwork" },
-      "Inauguración": { kicker: "01 / EMPRESAS", title: "INAUGURACIONES", copy: "Una apertura necesita una atmósfera con identidad. Diseñamos el acompañamiento musical y técnico para recibir, presentar y celebrar un nuevo espacio, marca o proyecto.", options: ["DJ y ambientación", "Audio y microfonía", "Iluminación", "Música en vivo", "Formato de marca"], note: "También podemos coordinar recursos complementarios mediante una red de proveedores.", cta: "Cotizar inauguración" },
-      "Lanzamiento de marca": { kicker: "01 / EMPRESAS", title: "LANZAMIENTOS DE MARCA", copy: "Música y producción alineadas al universo de tu marca. Desde la llegada de invitados hasta el momento central y la celebración posterior, cada parte sostiene el concepto.", options: ["DJ curado por concepto", "Audio e iluminación", "Visuales", "Talento y shows", "Producción a medida"], note: "La propuesta se construye alrededor del briefing, público, espacio y presupuesto.", cta: "Cotizar lanzamiento" },
-      "Gala o cena de empresa": { kicker: "01 / EMPRESAS", title: "GALAS Y CENAS", copy: "Una experiencia elegante, con música y recursos técnicos que acompañan la conversación, los reconocimientos y el momento de celebración sin perder el ritmo.", options: ["DJ de recepción y pista", "Audio para speeches", "Microfonía", "Iluminación", "Música en vivo"], note: "Los formatos se ajustan al protocolo, aforo y programación del evento.", cta: "Cotizar gala o cena" },
-      "Boda": { kicker: "02 / PARTICULARES", title: "BODAS", copy: "Desde la bienvenida y el cóctel hasta el último baile. La música se construye alrededor de la historia de la pareja, sus invitados y los momentos que quieren recordar.", options: ["DJ para recepción y pista", "Audio e iluminación", "Ceremonia y brindis", "Mariachi, norteño o música en vivo", "Visuales y formatos especiales"], note: "¿Necesitas algo más? Coordinamos proveedores y soluciones complementarias según tu idea y disponibilidad.", cta: "Cotizar una boda" },
-      "Fiesta privada": { kicker: "02 / PARTICULARES", title: "FIESTAS PRIVADAS", copy: "Cumpleaños, aniversarios y celebraciones que necesitan una pista con energía real. Todo se adapta al espacio, invitados, duración y estilo de tu evento.", options: ["DJ set a medida", "Audio e iluminación", "Cabina y microfonía", "Artistas, músicos o shows", "Producción personalizada"], note: "Cuéntanos tu idea: coordinamos la solución adecuada a través de una red profesional.", cta: "Cotizar mi fiesta" },
-      "Graduación": { kicker: "02 / PARTICULARES", title: "GRADUACIONES", copy: "Una celebración para cerrar una etapa y abrir otra con toda la energía. DJ, producción y formatos especiales para una noche que se queda en la memoria.", options: ["DJ y curaduría musical", "Audio e iluminación", "Micrófonos", "Música en vivo", "Formatos especiales"], note: "La propuesta se ajusta al número de invitados, salón, escuela o venue y horario del evento.", cta: "Cotizar graduación" },
-      "Cumpleaños": { kicker: "02 / PARTICULARES", title: "CUMPLEAÑOS", copy: "Una fiesta pensada para celebrar como se debe: con la música correcta, una pista viva y opciones de producción que hagan que cada momento se sienta especial.", options: ["DJ set a medida", "Audio e iluminación", "Música en vivo", "Shows y artistas", "Producción especial"], note: "Desde una reunión íntima hasta una fiesta grande: todo se adapta a tu idea y disponibilidad.", cta: "Cotizar cumpleaños" },
-      "Aniversario": { kicker: "02 / PARTICULARES", title: "ANIVERSARIOS", copy: "Un aniversario merece una atmósfera personal. Diseñamos la música y el formato para acompañar la celebración desde el primer brindis hasta el último baile.", options: ["DJ personalizado", "Audio e iluminación", "Micrófonos", "Mariachi o música en vivo", "Ambientación y producción"], note: "Podemos ayudar a coordinar soluciones complementarias según el concepto del evento.", cta: "Cotizar aniversario" }
+    const services = {
+      corporativo: {
+        eyebrow: "01 / Servicios", title: "Eventos corporativos", image: "assets/img/gallery-booth.webp", imageAlt: "Evento corporativo con DJ y asistentes", photoLabel: "Música con identidad para marcas, equipos y empresas.",
+        intro: "Un lanzamiento, una inauguración o una fiesta de empresa necesitan una atmósfera que acompañe la identidad de la marca y a las personas que están presentes.",
+        body: "César Channel diseña la selección musical y el formato técnico según el objetivo, el público, el horario y el espacio. Desde una recepción elegante hasta una pista de baile, cada momento tiene un ritmo distinto. Como DJ y manager, también puede coordinar audio, iluminación, músicos, DJs invitados, artistas y soluciones de producción mediante una red de colaboradores profesionales.",
+        listTitle: "Formatos posibles", list: ["Convenciones", "Inauguraciones", "Lanzamientos de marca", "Cenas y galas", "Fiestas de fin de año", "Desfiles y activaciones"], cta: "Cotizar evento corporativo"
+      },
+      bodas: {
+        eyebrow: "02 / Servicios", title: "Bodas y fiestas", image: "assets/img/gallery-pista.webp", imageAlt: "Pista de baile durante una boda o fiesta", photoLabel: "La música acompaña cada momento, hasta el último baile.",
+        intro: "Una boda, un cumpleaños o un aniversario se recuerdan por sus personas y por los momentos que compartieron. La música es parte de todo: bienvenida, brindis, cena y pista.",
+        body: "César Channel trabaja con selección musical en vivo, lectura de pista y una propuesta que se adapta a los anfitriones y sus invitados. No se trata de una playlist fija: se trata de saber qué necesita cada momento para que todos quieran quedarse. Además del DJ set, es posible sumar audio, iluminación, microfonía para ceremonias o brindis y formatos especiales de música en vivo, según la idea y disponibilidad.",
+        listTitle: "Celebraciones", list: ["Bodas", "Cumpleaños", "Aniversarios", "Graduaciones", "Reuniones sociales", "Fiestas privadas"], cta: "Cotizar boda o fiesta"
+      },
+      produccion: {
+        eyebrow: "03 / Servicios", title: "Audio, luz y producción", image: "assets/img/gallery-cabina.webp", imageAlt: "Equipo de audio e iluminación para un evento", photoLabel: "La producción correcta cambia por completo cómo se vive el evento.",
+        intro: "El sonido y la iluminación no son un extra: son la diferencia entre un evento que simplemente ocurre y uno que se siente como debe.",
+        body: "Cada propuesta se adapta al número de invitados, la acústica, la distribución del venue y el tipo de celebración. César puede coordinar sistemas de audio, cabina de DJ, iluminación, microfonía, pantallas, visuales y recursos técnicos mediante proveedores profesionales. También se pueden gestionar soluciones complementarias como copas para boda, renta de salones, mobiliario, ambientación o producción a medida, según necesidades y disponibilidad.",
+        listTitle: "Puede integrar", list: ["Audio profesional", "Iluminación para pista", "Cabina de DJ", "Micrófonos para speeches", "Pantallas y visuales", "Producción a medida"], cta: "Pedir propuesta de producción"
+      },
+      talento: {
+        eyebrow: "04 / Servicios", title: "Música en vivo y talento", image: "assets/img/gallery-ambiente.webp", imageAlt: "Músico actuando en vivo durante un evento", photoLabel: "El talento adecuado puede transformar la energía de la noche.",
+        intro: "Algunos eventos piden algo más que una cabina: una entrada con mariachi, una intervención norteña o el artista adecuado para cambiar la energía por completo.",
+        body: "Gracias a una red construida durante más de ocho años como DJ y manager, César Channel puede proponer y coordinar talento profesional según el estilo, formato, presupuesto y disponibilidad de cada evento. La idea no es llenar el evento por llenar: es encontrar la participación que tenga sentido para tu celebración y conecte con tus invitados.",
+        listTitle: "Opciones disponibles", list: ["Mariachi", "Norteño", "DJs profesionales", "Músicos en vivo", "Artistas y shows", "Imitadores y formatos especiales"], cta: "Quiero música en vivo"
+      }
     };
 
-    const solutionMap = {
-      "Eventos y fiestas": "Necesito orientación",
-      "DJ y curaduría musical": "Solo DJ",
-      "Audio, luz y producción": "Producción completa",
-      "Música en vivo y talento": "Necesito orientación"
+    const funnel = {
+      current: 1,
+      persona: "",
+      event: "",
+      needs: [],
+      location: ""
     };
 
-    function makeWhatsAppUrl(eventType, service) {
-      const message = ["Hola César, quiero solicitar una cotización.", "", "Tipo de evento: " + (eventType || "Por definir"), "Servicio de interés: " + (service || "Quiero orientación"), "Fecha:", "Ubicación:", "", "¿Tienes disponibilidad?"].join("\n");
-      return "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+    const eventOptions = {
+      "Empresa / profesional": ["Convención o congreso", "Inauguración", "Lanzamiento de marca", "Afterwork", "Cena o gala", "Fiesta de fin de año", "Activación o evento especial", "Otro"],
+      "Particular": ["Boda", "Fiesta privada", "Cumpleaños", "Aniversario", "Graduación", "Reunión familiar", "Otro"]
+    };
+
+    function whatsappUrl(lines) {
+      return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
     }
 
-    function syncEventChoice(eventName) {
-      const corporate = ["Corporativo", "Afterwork", "Inauguración", "Lanzamiento de marca", "Gala o cena de empresa"];
-      const other = ["Cumpleaños", "Aniversario"];
-      document.querySelectorAll('[data-choice-group="eventType"] .choice').forEach((choice) => {
-        const matches = choice.dataset.value === eventName || (corporate.includes(eventName) && choice.dataset.value === "Corporativo / marca") || (other.includes(eventName) && choice.dataset.value === "Otro");
-        choice.classList.toggle("active", matches);
-        if (matches) state.eventType = choice.dataset.value;
-      });
+    function openModal(serviceKey) {
+      const service = services[serviceKey];
+      if (!service) return;
+      modalEye.textContent = service.eyebrow;
+      modalTitle.textContent = service.title;
+      modalImage.src = service.image;
+      modalImage.alt = service.imageAlt;
+      modalPhotoLabel.textContent = service.photoLabel;
+      modalIntro.textContent = service.intro;
+      modalBody.textContent = service.body;
+      modalListTitle.textContent = service.listTitle;
+      modalList.innerHTML = service.list.map((item) => "<span>" + item + "</span>").join("");
+      modalWhatsApp.innerHTML = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ' + service.cta;
+      modalWhatsApp.href = whatsappUrl([
+        "Hola César, quiero solicitar información.", "",
+        "Servicio de interés: " + service.title,
+        "Tipo de evento:", "Fecha:", "Ubicación:", "Número de invitados:", "Idea general:", "",
+        "¿Tienes disponibilidad y me puedes compartir una propuesta?"
+      ]);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      modalClose.focus();
     }
 
-    function showEventDetail(eventName, pill) {
-      const data = eventData[eventName];
-      if (!data) return;
-      document.querySelectorAll(".event-pill").forEach((item) => item.classList.remove("active"));
-      pill.classList.add("active");
-      detailKicker.textContent = data.kicker;
-      detailTitle.textContent = data.title;
-      detailCopy.textContent = data.copy;
-      detailOptions.innerHTML = data.options.map((item) => "<span>" + item + "</span>").join("");
-      detailNote.textContent = data.note;
-      detailWhatsApp.innerHTML = data.cta + ' <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>';
-      detailWhatsApp.href = makeWhatsAppUrl(eventName, "Información y propuesta para " + eventName);
-      eventDetail.classList.add("open");
-      state.eventType = eventName;
-      syncEventChoice(eventName);
-      if (innerWidth < 901) eventDetail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
     }
 
-    document.querySelectorAll(".event-pill").forEach((pill) => pill.addEventListener("click", () => showEventDetail(pill.dataset.event, pill)));
+    document.querySelectorAll(".service-detail-trigger").forEach((button) => button.addEventListener("click", () => openModal(button.dataset.service)));
+    modalClose.addEventListener("click", closeModal);
+    modalBack.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
+    addEventListener("keydown", (event) => { if (event.key === "Escape" && modal.classList.contains("open")) closeModal(); });
 
-    document.querySelectorAll(".more-events").forEach((button) => button.addEventListener("click", () => {
-      const target = document.getElementById(button.dataset.target);
-      const visible = target.classList.toggle("visible");
-      button.textContent = visible ? "− Ver menos formatos" : "+ Ver todos los formatos";
-    }));
+    function showStep(step) {
+      funnel.current = step;
+      document.querySelectorAll(".funnel-step").forEach((item) => item.classList.toggle("active", Number(item.dataset.step) === step));
+      document.querySelectorAll(".progress-item").forEach((item) => item.classList.toggle("active", Number(item.dataset.progress) <= step));
+      funnelValidation.textContent = "";
+    }
 
-    document.querySelectorAll(".service-photo-content button").forEach((button) => button.addEventListener("click", () => {
-      const selectedService = solutionMap[button.dataset.solution] || "Necesito orientación";
-      state.service = selectedService;
-      document.querySelectorAll('[data-choice-group="service"] .choice').forEach((choice) => choice.classList.toggle("active", choice.dataset.value === selectedService));
-      document.getElementById("cotiza").scrollIntoView({ behavior: "smooth" });
-    }));
-
-    document.querySelectorAll("[data-choice-group]").forEach((group) => {
-      const groupName = group.dataset.choiceGroup;
-      group.querySelectorAll(".choice").forEach((choice) => choice.addEventListener("click", () => {
-        group.querySelectorAll(".choice").forEach((item) => item.classList.remove("active"));
-        choice.classList.add("active");
-        state[groupName] = choice.dataset.value;
-        validation.textContent = "";
+    function renderEventOptions() {
+      const target = document.getElementById("event-options");
+      const items = eventOptions[funnel.persona] || [];
+      target.innerHTML = items.map((item) => '<button class="choice" type="button" data-event="' + item + '">' + item + "</button>").join("");
+      target.querySelectorAll("[data-event]").forEach((button) => button.addEventListener("click", () => {
+        target.querySelectorAll("[data-event]").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        funnel.event = button.dataset.event;
       }));
-    });
+    }
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!state.eventType || !state.service) {
-        validation.textContent = "Elige qué quieres celebrar y qué necesitas para continuar.";
+    document.querySelectorAll(".persona-card").forEach((button) => button.addEventListener("click", () => {
+      document.querySelectorAll(".persona-card").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      funnel.persona = button.dataset.persona;
+      funnel.event = "";
+      renderEventOptions();
+    }));
+
+    document.querySelectorAll(".multi-choice").forEach((button) => button.addEventListener("click", () => {
+      const value = button.dataset.serviceChoice;
+      const active = button.classList.toggle("active");
+      if (active && !funnel.needs.includes(value)) funnel.needs.push(value);
+      if (!active) funnel.needs = funnel.needs.filter((item) => item !== value);
+    }));
+
+    document.querySelectorAll("[data-location]").forEach((button) => button.addEventListener("click", () => {
+      document.querySelectorAll("[data-location]").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      funnel.location = button.dataset.location;
+    }));
+
+    function validateStep(nextStep) {
+      if (funnel.current === 1 && !funnel.persona) return "Elige si organizas el evento como empresa/profesional o particular.";
+      if (funnel.current === 2 && !funnel.event) return "Elige la opción más cercana al evento que quieres celebrar.";
+      if (funnel.current === 3 && !funnel.needs.length) return "Elige al menos una opción o selecciona “Quiero orientación”.";
+      return "";
+    }
+
+    document.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", () => {
+      const error = validateStep(Number(button.dataset.next));
+      if (error) {
+        const step = button.closest(".funnel-step");
+        const helper = step.querySelector(".step-help");
+        helper.textContent = error;
+        helper.style.color = "#a33f27";
+        setTimeout(() => { helper.style.color = ""; }, 1800);
+        return;
+      }
+      showStep(Number(button.dataset.next));
+    }));
+
+    document.querySelectorAll("[data-back]").forEach((button) => button.addEventListener("click", () => showStep(Number(button.dataset.back))));
+
+    document.getElementById("send-whatsapp").addEventListener("click", () => {
+      if (!funnel.location) {
+        funnelValidation.textContent = "Elige una zona para continuar.";
         return;
       }
       const rawDate = document.getElementById("event-date").value;
-      const date = rawDate ? new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "long", year: "numeric" }).format(new Date(rawDate + "T12:00:00")) : "Aún por definir";
-      const message = [
-        "Hola César, me gustaría solicitar una cotización para mi evento.", "",
-        "Tipo de evento: " + state.eventType,
-        "Servicio de interés: " + state.service,
+      const date = rawDate ? new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "long", year: "numeric" }).format(new Date(rawDate + "T12:00:00")) : "Aún no tengo fecha definida";
+      const guests = document.getElementById("event-guests").value.trim() || "Aún por definir";
+      const notes = document.getElementById("event-notes").value.trim() || "Sin detalles adicionales";
+      const url = whatsappUrl([
+        "Hola César, me gustaría solicitar una cotización.", "",
+        "Soy: " + funnel.persona,
+        "Evento: " + funnel.event,
+        "Necesito: " + funnel.needs.join(", "),
         "Fecha: " + date,
-        "Ubicación: " + (state.location || "Aún por definir"), "",
+        "Zona: " + funnel.location,
+        "Invitados aproximados: " + guests,
+        "Detalles: " + notes,
+        "",
         "¿Tienes disponibilidad y me puedes compartir una propuesta?"
-      ].join("\n");
-      window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+      ]);
+      window.open(url, "_blank", "noopener,noreferrer");
     });
 
-    function closeMobileMenu() {
-      mobileMenu.classList.remove("open");
-      mobileMenu.setAttribute("aria-hidden", "true");
+    function closeMobileNav() {
+      mobileNav.classList.remove("open");
+      mobileNav.setAttribute("aria-hidden", "true");
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     }
 
     menuToggle.addEventListener("click", () => {
-      const open = mobileMenu.classList.toggle("open");
-      mobileMenu.setAttribute("aria-hidden", String(!open));
-      menuToggle.setAttribute("aria-expanded", String(open));
-      menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+      const opened = mobileNav.classList.toggle("open");
+      mobileNav.setAttribute("aria-hidden", String(!opened));
+      menuToggle.setAttribute("aria-expanded", String(opened));
+      menuToggle.innerHTML = opened ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     });
-    document.querySelectorAll(".mobile-menu a").forEach((link) => link.addEventListener("click", closeMobileMenu));
+    document.querySelectorAll(".mobile-nav a").forEach((link) => link.addEventListener("click", closeMobileNav));
 
-    const navLinks = [...document.querySelectorAll(".desktop-nav a")];
+    const mainLinks = [...document.querySelectorAll(".main-nav a")];
     const sections = [...document.querySelectorAll("main section[id]")];
     const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      const link = document.querySelector('.desktop-nav a[href="#' + entry.target.id + '"]');
-      if (link) { navLinks.forEach((item) => item.classList.remove("active")); link.classList.add("active"); }
-    }), { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+      const link = document.querySelector('.main-nav a[href="#' + entry.target.id + '"]');
+      if (link) {
+        mainLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      }
+    }), { rootMargin: "-38% 0px -55% 0px", threshold: 0 });
     sections.forEach((section) => sectionObserver.observe(section));
 
     const revealObserver = new IntersectionObserver((entries, observer) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add("on"); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add("on");
+        observer.unobserve(entry.target);
+      }
     }), { threshold: .12 });
     document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
-
-    let lastY = 0;
-    addEventListener("scroll", () => {
-      const y = scrollY;
-      header.classList.toggle("scrolled", y > 12);
-      if (y > lastY && y > 170 && !mobileMenu.classList.contains("open")) header.classList.add("off"); else header.classList.remove("off");
-      lastY = y;
-    }, { passive: true });
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
