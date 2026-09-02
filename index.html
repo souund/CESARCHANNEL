@@ -3,1676 +3,702 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#090807" />
-  <meta name="description" content="DJ César Channel para bodas, fiestas privadas, eventos familiares, graduaciones, inauguraciones y proyectos corporativos en Ciudad de México y área metropolitana." />
-
+  <meta name="theme-color" content="#f8f2eb" />
+  <meta name="description" content="DJ César Channel: DJ, audio, iluminación, música en vivo y producción para bodas, fiestas y eventos corporativos en Ciudad de México." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="DJ César Channel | Eventos en CDMX" />
-  <meta property="og:description" content="Selección musical para lo que está sonando. Música en vivo para eventos en Ciudad de México." />
+  <meta property="og:description" content="DJ, música y producción para celebrar en grande en Ciudad de México." />
   <meta property="og:url" content="https://souund.github.io/CESARCHANNEL/" />
   <meta property="og:image" content="https://souund.github.io/CESARCHANNEL/assets/img/preview-cesar-channel.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="es_MX" />
-
   <title>DJ César Channel | Eventos en CDMX</title>
 
   <link rel="icon" type="image/png" href="assets/img/favicon-32.png" />
   <link rel="preload" as="image" href="assets/img/hero-poster.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
     :root {
-      --ink: #090807;
-      --paper: #ece7de;
-      --muted: rgba(236, 231, 222, .62);
-      --quiet: rgba(236, 231, 222, .13);
-      --signal: #e96c3e;
-      --signal-soft: rgba(233, 108, 62, .18);
-      --mono: "DM Mono", monospace;
-      --sans: "Manrope", sans-serif;
+      --ink: #252221;
+      --ink-muted: #655e59;
+      --surface: #f8f2eb;
+      --surface-deep: #e9ddd2;
+      --coral: #ec6d4e;
+      --coral-deep: #c94b34;
+      --apricot: #f0b47c;
+      --lavender: #b7a5cc;
+      --sage: #8da59b;
+      --line: rgba(55, 42, 32, .15);
+      --glass-light: rgba(255, 252, 248, .60);
+      --glass-border: rgba(255, 255, 255, .70);
+      --shadow: 0 18px 48px rgba(70, 47, 33, .13);
+      --shadow-soft: 0 8px 26px rgba(70, 47, 33, .08);
+      --sans: "DM Sans", sans-serif;
+      --mono: "Space Mono", monospace;
       --ease: cubic-bezier(.16, 1, .3, 1);
-      --wide: min(1440px, 92vw);
-      --mobile-gutter: 6vw;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      background: var(--ink);
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
-    body {
-      min-width: 320px;
-      margin: 0;
-      overflow-x: clip;
-      background: var(--ink);
-      color: var(--paper);
-      font-family: var(--sans);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      z-index: 99;
-      inset: 0;
-      opacity: .028;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-    }
-
-    img,
-    video {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    a,
-    input {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button:focus-visible,
-    a:focus-visible,
-    input:focus-visible {
-      outline: 2px solid var(--signal);
-      outline-offset: 4px;
-    }
-
-    .shell {
-      width: var(--wide);
-      margin: 0 auto;
-    }
-
-    .mono {
-      font-family: var(--mono);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s var(--ease), transform .8s var(--ease);
-    }
-
-    .reveal.on {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* NAV */
-
-    .nav {
-      position: fixed;
-      z-index: 20;
-      top: 0;
-      right: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 4vw;
-      background: linear-gradient(180deg, rgba(9, 8, 7, .94), rgba(9, 8, 7, 0));
-      transition: transform .45s var(--ease);
-    }
-
-    .nav.off {
-      transform: translateY(-120%);
-    }
-
-    .mark {
-      display: grid;
-      width: 44px;
-      height: 44px;
-      place-items: center;
-    }
-
-    .mark img {
-      width: 37px;
-      height: 37px;
-      object-fit: contain;
-    }
-
-    .nav-end {
-      display: flex;
-      align-items: center;
-      gap: 21px;
-    }
-
-    .nav-end > a:not(.social-icon) {
-      color: rgba(236, 231, 222, .74);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      transition: color .2s ease;
-    }
-
-    .nav-end > a:not(.social-icon):hover {
-      color: var(--signal);
-    }
-
-    .social-icon {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border: 1px solid rgba(236, 231, 222, .3);
-      border-radius: 50%;
-      color: rgba(236, 231, 222, .82);
-      font-size: 13px;
-      transition: border-color .25s ease, color .25s ease, transform .25s var(--ease);
-    }
-
-    .social-icon:hover {
-      border-color: var(--signal);
-      color: var(--signal);
-      transform: translateY(-2px);
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      min-height: 100dvh;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .hero video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(9, 8, 7, .3) 0%, transparent 31%, transparent 68%, var(--ink) 100%),
-        radial-gradient(circle at 50% 44%, transparent 36%, rgba(0, 0, 0, .22) 100%);
-      pointer-events: none;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      z-index: 3;
-      bottom: 23px;
-      left: 50%;
-      width: 44px;
-      height: 60px;
-      transform: translateX(-50%);
-    }
-
-    .hero-scroll::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      height: 45px;
-      background: linear-gradient(transparent, var(--signal));
-      transform: translateX(-50%);
-      animation: scroll 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scroll {
-      50% {
-        opacity: .22;
-        transform: translateX(-50%) scaleY(.6);
-      }
-    }
-
-    /* ENERGÍA REAL */
-
-    .statement {
-      padding: clamp(88px, 11vw, 150px) 0 clamp(96px, 10vw, 138px);
-    }
-
-    .statement-grid {
-      display: grid;
-      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
-      gap: clamp(32px, 6vw, 96px);
-      align-items: start;
-    }
-
-    .eyebrow {
-      color: var(--signal);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .14em;
-      line-height: 1.5;
-      text-transform: uppercase;
-    }
-
-    .about-image {
-      position: relative;
-      width: 100%;
-      margin: 18px 0 0;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      background: #15120f;
-    }
-
-    .about-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, var(--ink), transparent 32%),
-        linear-gradient(0deg, var(--ink), transparent 28%);
-      pointer-events: none;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(1) contrast(1.08);
-      transform: scale(1.04);
-    }
-
-    .about-copy {
-      padding-top: 18px;
-    }
-
-    .about-copy h1 {
-      max-width: 100%;
-      margin: 22px 0 36px;
-      font-size: clamp(48px, 7vw, 115px);
-      font-weight: 700;
-      letter-spacing: -.095em;
-      line-height: .84;
-      text-transform: uppercase;
-    }
-
-    .about-copy h1 em {
-      color: var(--signal);
-      font-style: normal;
-    }
-
-    .about-copy p {
-      max-width: 38ch;
-      color: var(--muted);
-      font-size: clamp(16px, 1.35vw, 20px);
-      line-height: 1.62;
-    }
-
-    .about-copy p + p {
-      margin-top: 16px;
-    }
-
-    .facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px 36px;
-      margin-top: 48px;
-    }
-
-    .fact {
-      min-width: 142px;
-      padding-top: 11px;
-      border-top: 1px solid var(--signal);
-    }
-
-    .fact b {
-      display: block;
-      color: var(--paper);
-      font-size: clamp(43px, 5vw, 75px);
-      font-weight: 700;
-      letter-spacing: -.075em;
-      line-height: .8;
-    }
-
-    .fact span {
-      display: block;
-      margin-top: 11px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      line-height: 1.5;
-      text-transform: uppercase;
-    }
-
-    .territory {
-      max-width: 56ch !important;
-      margin-top: 36px !important;
-      color: var(--muted) !important;
-      font-family: var(--mono);
-      font-size: 10px !important;
-      letter-spacing: .07em;
-      line-height: 1.7 !important;
-      text-transform: uppercase;
-    }
-
-    /* GALERÍA EDITORIAL */
-
-    .sequence {
-      padding: 0 0 clamp(96px, 11vw, 160px);
-      overflow: hidden;
-    }
-
-    .sequence-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 42px;
-    }
-
-    .sequence-head h2 {
-      max-width: 690px;
-      margin: 12px 0 0;
-      font-size: clamp(52px, 8vw, 128px);
-      font-weight: 700;
-      letter-spacing: -.095em;
-      line-height: .77;
-      text-transform: uppercase;
-    }
-
-    .sequence-head p:last-child {
-      max-width: 270px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-      text-align: right;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.36fr .64fr .74fr;
-      grid-template-rows: repeat(2, minmax(230px, 1fr));
-      gap: 12px;
-      min-height: min(64vw, 760px);
-    }
-
-    .frame {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      background: #15120f;
-    }
-
-    .frame:nth-child(1) {
-      grid-row: 1 / 3;
-    }
-
-    .frame:nth-child(2) {
-      grid-column: 2 / 4;
-    }
-
-    .frame:nth-child(3) {
-      grid-column: 2;
-    }
-
-    .frame:nth-child(4) {
-      grid-column: 3;
-    }
-
-    .frame:nth-child(5) {
-      display: none;
-    }
-
-    .frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(1) brightness(.72);
-      transition: transform 1s var(--ease), filter .65s ease;
-    }
-
-    .frame:nth-child(1) img {
-      object-position: center;
-    }
-
-    .frame:hover img {
-      filter: grayscale(0) brightness(1);
-      transform: scale(1.055);
-    }
-
-    .frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(0deg, rgba(9, 8, 7, .84), transparent 45%),
-        linear-gradient(180deg, rgba(9, 8, 7, .15), transparent 25%);
-      pointer-events: none;
-    }
-
-    .frame span {
-      position: absolute;
-      z-index: 2;
-      right: 17px;
-      bottom: 15px;
-      left: 17px;
-      color: var(--paper);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .frame span i {
-      color: var(--signal);
-      font-style: normal;
-    }
-
-    .gallery-progress {
-      display: none;
-    }
-
-    /* PAQUETES */
-
-    .signals {
-      position: relative;
-      padding: clamp(108px, 12vw, 160px) 0 clamp(92px, 10vw, 140px);
-      background: var(--paper);
-      color: var(--ink);
-    }
-
-    .signals::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: min(8vw, 110px);
-      background: var(--ink);
-      clip-path: polygon(0 0, 100% 0, 100% 58%, 0 100%);
-    }
-
-    .signals .shell {
-      position: relative;
-      padding-top: min(8vw, 110px);
-    }
-
-    .signals .eyebrow {
-      color: var(--signal);
-    }
-
-    .signals h2 {
-      max-width: 820px;
-      margin: 14px 0 56px;
-      font-size: clamp(53px, 8vw, 125px);
-      font-weight: 700;
-      letter-spacing: -.095em;
-      line-height: .75;
-      text-transform: uppercase;
-    }
-
-    .mode-list {
-      border-top: 1px solid rgba(9, 8, 7, .22);
-    }
-
-    .mode {
-      display: grid;
-      grid-template-columns: 72px minmax(210px, .84fr) minmax(240px, 1.15fr) 20px;
-      gap: 26px;
-      align-items: center;
-      width: 100%;
-      min-height: 144px;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(9, 8, 7, .22);
-      background: transparent;
-      color: inherit;
-      cursor: pointer;
-      text-align: left;
-      transition: padding .35s var(--ease), color .25s ease, background .25s ease;
-    }
-
-    .mode:hover,
-    .mode.active {
-      padding-right: 18px;
-      padding-left: 18px;
-      background: rgba(233, 108, 62, .05);
-      color: var(--signal);
-    }
-
-    .mode-no {
-      color: rgba(9, 8, 7, .45);
-      font-family: var(--mono);
-      font-size: 10px;
-    }
-
-    .mode-name {
-      font-size: clamp(28px, 3.7vw, 58px);
-      font-weight: 700;
-      letter-spacing: -.075em;
-      line-height: .82;
-      text-transform: uppercase;
-    }
-
-    .mode-copy {
-      max-width: 395px;
-      color: rgba(9, 8, 7, .68);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .mode-dot {
-      width: 13px;
-      height: 13px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      transition: background .25s ease, transform .25s ease;
-    }
-
-    .mode.active .mode-dot,
-    .mode:hover .mode-dot {
-      background: currentColor;
-      transform: scale(1.22);
-    }
-
-    .mode-note {
-      max-width: 650px;
-      margin: 26px 0 0 auto;
-      color: rgba(9, 8, 7, .55);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .06em;
-      line-height: 1.65;
-      text-align: right;
-      text-transform: uppercase;
-    }
-
-    /* CONTACTO */
-
-    .contact {
-      position: relative;
-      display: grid;
-      min-height: 100svh;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .contact::before,
-    .contact::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      transform: translateY(17%);
-      pointer-events: none;
-    }
-
-    .contact::before {
-      width: min(90vw, 1200px);
-      height: min(90vw, 1200px);
-      border: 1px solid rgba(233, 108, 62, .36);
-      animation: orbit 18s linear infinite;
-    }
-
-    .contact::after {
-      width: min(62vw, 820px);
-      height: min(62vw, 820px);
-      border: 1px solid rgba(236, 231, 222, .11);
-      animation: orbit-reverse 13s linear infinite;
-    }
-
-    .contact.has-selection::before {
-      border-color: rgba(233, 108, 62, .78);
-      animation-duration: 6s;
-    }
-
-    .contact.has-selection::after {
-      border-color: rgba(236, 231, 222, .3);
-    }
-
-    @keyframes orbit {
-      from { transform: translateY(17%) rotate(0deg); }
-      to { transform: translateY(17%) rotate(360deg); }
-    }
-
-    @keyframes orbit-reverse {
-      from { transform: translateY(17%) rotate(360deg); }
-      to { transform: translateY(17%) rotate(0deg); }
-    }
-
-    .contact-inner {
-      position: relative;
-      z-index: 1;
-      width: min(760px, 88vw);
-      padding: 112px 0;
-      text-align: center;
-    }
-
-    .contact h2 {
-      margin: 16px 0 24px;
-      font-size: clamp(63px, 12vw, 177px);
-      font-weight: 700;
-      letter-spacing: -.095em;
-      line-height: .7;
-      text-transform: uppercase;
-    }
-
-    .contact h2 span {
-      color: transparent;
-      -webkit-text-stroke: 1px var(--signal);
-    }
-
-    .contact-intro {
-      max-width: 470px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .request {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin: 40px 0 0;
-    }
-
-    .pick {
-      min-height: 118px;
-      padding: 15px;
-      border: 1px solid rgba(236, 231, 222, .21);
-      background: rgba(236, 231, 222, .025);
-      color: var(--paper);
-      cursor: pointer;
-      text-align: left;
-      transition: background .3s ease, border-color .3s ease, transform .3s var(--ease), color .3s ease;
-    }
-
-    .pick:hover,
-    .pick.active {
-      border-color: var(--signal);
-      background: var(--signal);
-      color: var(--ink);
-      transform: translateY(-5px);
-    }
-
-    .pick small {
-      display: block;
-      margin-bottom: 24px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .1em;
-      opacity: .7;
-    }
-
-    .pick b {
-      display: block;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -.04em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .context {
-      width: 100%;
-      min-height: 56px;
-      margin-top: 8px;
-      padding: 17px 18px;
-      border: 1px solid rgba(236, 231, 222, .21);
-      outline: none;
-      background: rgba(236, 231, 222, .025);
-      color: var(--paper);
-      font-size: 16px;
-      transition: border-color .2s ease, background .2s ease;
-    }
-
-    .context:focus {
-      border-color: var(--signal);
-      background: rgba(236, 231, 222, .06);
-    }
-
-    .context::placeholder {
-      color: rgba(236, 231, 222, .42);
-    }
-
-    .contact-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 218px;
-      min-height: 56px;
-      padding: 18px 22px;
-      border: 1px solid var(--signal);
-      background: var(--signal);
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: transform .3s var(--ease), background .3s ease, border-color .3s ease;
-    }
-
-    .cta:hover {
-      background: #ff8d62;
-      transform: translateY(-4px);
-    }
-
-    .mail {
-      border-color: rgba(236, 231, 222, .3);
-      background: transparent;
-      color: var(--paper);
-    }
-
-    .mail:hover {
-      border-color: var(--paper);
-      background: rgba(236, 231, 222, .08);
-    }
-
-    .contact-foot {
-      max-width: 500px;
-      margin: 22px auto 0;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .06em;
-      line-height: 1.65;
-      text-transform: uppercase;
-    }
-
-    /* FOOTER */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 25px 4vw;
-      border-top: 1px solid rgba(236, 231, 222, .12);
-    }
-
-    footer a:first-child {
-      display: grid;
-      width: 44px;
-      height: 44px;
-      place-items: center;
-    }
-
-    footer img {
-      width: 29px;
-      height: 29px;
-      opacity: .8;
-    }
-
-    footer p {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .footer-socials a {
-      display: grid;
-      width: 40px;
-      height: 40px;
-      place-items: center;
-      color: var(--muted);
-      font-size: 15px;
-      transition: color .2s ease, transform .2s var(--ease);
-    }
-
-    .footer-socials a:hover {
-      color: var(--signal);
-      transform: translateY(-2px);
-    }
-
-    .mobile-booking {
-      position: fixed;
-      z-index: 15;
-      right: 16px;
-      bottom: max(16px, env(safe-area-inset-bottom));
-      display: none;
-      align-items: center;
-      gap: 9px;
-      min-height: 52px;
-      padding: 0 17px;
-      border: 1px solid var(--signal);
-      background: var(--signal);
-      color: var(--ink);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .28);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    /* MÓVIL: EXPERIENCIA PRINCIPAL */
-
-    @media (max-width: 800px) {
-      :root {
-        --wide: 88vw;
-      }
-
-      .nav {
-        padding: 12px var(--mobile-gutter);
-      }
-
-      .nav-end > a:not(.social-icon),
-      .nav-end .social-icon:nth-last-child(1) {
-        display: none;
-      }
-
-      .nav-end {
-        gap: 0;
-      }
-
-      .social-icon {
-        width: 44px;
-        height: 44px;
-        border-color: rgba(236, 231, 222, .25);
-      }
-
-      .hero {
-        min-height: 100svh;
-        min-height: 100dvh;
-      }
-
-      .hero video {
-        object-position: center center;
-      }
-
-      .hero::after {
-        background:
-          linear-gradient(180deg, rgba(9, 8, 7, .22) 0%, transparent 35%, transparent 64%, var(--ink) 100%),
-          radial-gradient(circle at 50% 44%, transparent 28%, rgba(0, 0, 0, .25) 100%);
-      }
-
-      .hero-scroll {
-        bottom: 16px;
-      }
-
-      .statement {
-        padding: 82px 0 92px;
-      }
-
-      .statement-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .statement-grid > div:first-child {
-        display: contents;
-      }
-
-      .statement-grid > div:first-child .eyebrow {
-        order: -2;
-      }
-
-      .about-image {
-        order: -1;
-        margin-top: 16px;
-        aspect-ratio: 4 / 4.7;
-      }
-
-      .about-copy {
-        padding: 0;
-      }
-
-      .about-copy h1 {
-        margin: 18px 0 28px;
-        font-size: clamp(58px, 18vw, 86px);
-        line-height: .8;
-      }
-
-      .about-copy p {
-        max-width: 34ch;
-        font-size: 16px;
-        line-height: 1.65;
-      }
-
-      .about-copy p + p {
-        margin-top: 15px;
-      }
-
-      .facts {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        margin-top: 40px;
-      }
-
-      .fact {
-        min-width: 0;
-      }
-
-      .fact b {
-        font-size: clamp(48px, 15vw, 65px);
-      }
-
-      .fact span {
-        font-size: 9px;
-      }
-
-      .territory {
-        margin-top: 30px !important;
-        font-size: 9px !important;
-      }
-
-      .sequence {
-        padding-bottom: 100px;
-      }
-
-      .sequence-head {
-        display: block;
-        margin-bottom: 28px;
-      }
-
-      .sequence-head h2 {
-        font-size: clamp(57px, 18vw, 92px);
-        line-height: .75;
-      }
-
-      .sequence-head p:last-child {
-        max-width: 31ch;
-        margin-top: 22px;
-        text-align: left;
-      }
-
-      .sequence > .shell:last-child {
-        width: 100%;
-        margin: 0;
-      }
-
-      .gallery {
-        display: flex;
-        gap: 12px;
-        width: 100%;
-        min-height: auto;
-        padding: 0 var(--mobile-gutter) 14px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-padding-left: var(--mobile-gutter);
-        overscroll-behavior-x: contain;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        touch-action: pan-x;
-      }
-
-      .gallery::-webkit-scrollbar {
-        display: none;
-      }
-
-      .frame,
-      .frame:nth-child(1),
-      .frame:nth-child(2),
-      .frame:nth-child(3),
-      .frame:nth-child(4),
-      .frame:nth-child(5) {
-        display: block;
-        flex: 0 0 86vw;
-        width: 86vw;
-        height: min(122vw, 650px);
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-      }
-
-      .frame:nth-child(1) img {
-        object-position: center;
-      }
-
-      .frame span {
-        right: 18px;
-        bottom: 18px;
-        left: 18px;
-      }
-
-      .gallery-progress {
-        display: flex;
-        gap: 5px;
-        width: 88vw;
-        margin: 4px auto 0;
-      }
-
-      .gallery-progress span {
-        flex: 1;
-        height: 1px;
-        background: rgba(236, 231, 222, .24);
-        transition: background .25s ease, transform .25s ease;
-      }
-
-      .gallery-progress span.active {
-        background: var(--signal);
-        transform: scaleY(2);
-      }
-
-      .signals {
-        padding: 100px 0 86px;
-      }
-
-      .signals::before {
-        height: 54px;
-      }
-
-      .signals .shell {
-        padding-top: 50px;
-      }
-
-      .signals h2 {
-        margin-bottom: 38px;
-        font-size: clamp(57px, 18vw, 92px);
-        line-height: .76;
-      }
-
-      .mode {
-        grid-template-columns: 30px 1fr 17px;
-        gap: 13px;
-        min-height: 0;
-        padding: 25px 0;
-      }
-
-      .mode:hover,
-      .mode.active {
-        padding-right: 0;
-        padding-left: 0;
-        background: transparent;
-      }
-
-      .mode-name {
-        font-size: clamp(31px, 10.8vw, 50px);
-        line-height: .84;
-      }
-
-      .mode-copy {
-        grid-column: 2 / 4;
-        max-width: 34ch;
-        margin-top: 2px;
-        font-size: 13px;
-        line-height: 1.55;
-      }
-
-      .mode-dot {
-        width: 12px;
-        height: 12px;
-      }
-
-      .mode-note {
-        max-width: 35ch;
-        margin: 24px 0 0;
-        font-size: 9px;
-        text-align: left;
-      }
-
-      .contact {
-        min-height: auto;
-      }
-
-      .contact::before {
-        width: 128vw;
-        height: 128vw;
-      }
-
-      .contact::after {
-        width: 88vw;
-        height: 88vw;
-      }
-
-      .contact-inner {
-        width: 88vw;
-        padding: 92px 0 112px;
-      }
-
-      .contact h2 {
-        margin: 14px 0 23px;
-        font-size: clamp(61px, 19vw, 108px);
-        line-height: .72;
-      }
-
-      .contact-intro {
-        max-width: 31ch;
-        font-size: 16px;
-      }
-
-      .request {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-top: 34px;
-      }
-
-      .pick {
-        display: grid;
-        grid-template-columns: 32px 1fr;
-        gap: 14px;
-        align-items: center;
-        min-height: 70px;
-        padding: 15px 16px;
-      }
-
-      .pick small {
-        margin: 0;
-      }
-
-      .pick b {
-        font-size: 15px;
-        line-height: 1.05;
-      }
-
-      .pick b br {
-        display: none;
-      }
-
-      .context {
-        min-height: 58px;
-        margin-top: 8px;
-        font-size: 16px;
-      }
-
-      .contact-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-top: 10px;
-      }
-
-      .cta {
-        width: 100%;
-        min-width: 0;
-        min-height: 58px;
-      }
-
-      .contact-foot {
-        max-width: 32ch;
-        margin-top: 21px;
-        font-size: 9px;
-      }
-
-      footer {
-        padding: 18px var(--mobile-gutter) calc(18px + env(safe-area-inset-bottom));
-      }
-
-      footer p {
-        display: none;
-      }
-
-      .footer-socials {
-        gap: 2px;
-      }
-
-      .mobile-booking {
-        display: inline-flex;
-      }
-    }
-
-    @media (min-width: 801px) {
-      .gallery {
-        grid-template-columns: 1.25fr .75fr .72fr;
-      }
-
-      .frame:nth-child(5) {
-        display: block;
-        grid-column: 2 / 4;
-      }
+      --wide: min(1240px, 92vw);
+      --gutter: 4vw;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--surface); scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { min-width: 320px; margin: 0; overflow-x: hidden; background: var(--surface); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { border: 0; }
+    img { display: block; max-width: 100%; }
+    button, a, input { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid rgba(236, 109, 78, .42); outline-offset: 4px; }
+    .shell { width: var(--wide); margin: 0 auto; }
+    .eyebrow { margin: 0; color: var(--coral-deep); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .reveal.on { opacity: 1; transform: none; }
+    .glass { border: 1px solid var(--glass-border); background: var(--glass-light); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px) saturate(130%); -webkit-backdrop-filter: blur(18px) saturate(130%); }
+
+    .button { display: inline-flex; min-height: 51px; align-items: center; justify-content: center; gap: 9px; padding: 14px 19px; border: 1px solid var(--coral); border-radius: 999px; background: var(--coral); box-shadow: 0 9px 20px rgba(201, 75, 52, .21); color: #fff; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: -.02em; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .28s var(--ease); }
+    .button:hover { border-color: var(--coral-deep); background: var(--coral-deep); box-shadow: 0 13px 26px rgba(201, 75, 52, .28); transform: translateY(-3px); }
+    .button.secondary { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .34); box-shadow: none; color: var(--ink); }
+    .button.secondary:hover { border-color: rgba(255, 255, 255, .95); background: rgba(255, 255, 255, .68); box-shadow: var(--shadow-soft); }
+
+    /* Header */
+    .header { position: fixed; z-index: 60; top: 0; right: 0; left: 0; padding: 15px var(--gutter); transition: transform .42s var(--ease); }
+    .header.off { transform: translateY(-125%); }
+    .header-inner { display: flex; max-width: 1420px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 18px; transition: border-color .3s ease, background .3s ease, box-shadow .3s ease, padding .3s ease, border-radius .3s ease; }
+    .header.scrolled .header-inner { padding: 9px 13px 9px 15px; border: 1px solid var(--glass-border); border-radius: 22px; background: rgba(255, 252, 248, .69); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px) saturate(130%); -webkit-backdrop-filter: blur(18px) saturate(130%); }
+    .brand { position: relative; display: grid; width: 60px; height: 54px; flex: 0 0 auto; place-items: center; }
+    .brand::before { position: absolute; width: 48px; height: 48px; border: 1px solid rgba(236, 109, 78, .48); border-radius: 50%; content: ""; transition: transform .42s var(--ease), border-color .25s ease, box-shadow .25s ease; }
+    .brand img { position: relative; width: 45px; height: 45px; object-fit: contain; transition: transform .35s var(--ease), filter .25s ease; }
+    .brand:hover::before { border-color: var(--coral); box-shadow: 0 0 0 7px rgba(236, 109, 78, .11); transform: rotate(13deg) scale(1.08); }
+    .brand:hover img { filter: sepia(.28) saturate(1.2); transform: rotate(-3deg) translateY(-2px); }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(16px, 2vw, 31px); margin-left: auto; }
+    .desktop-nav a { position: relative; padding: 7px 0; color: var(--ink-muted); font-size: 13px; font-weight: 700; transition: color .2s ease; }
+    .desktop-nav a::after { position: absolute; right: 0; bottom: 1px; left: 0; height: 2px; border-radius: 999px; background: var(--coral); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
+    .desktop-nav a:hover, .desktop-nav a.active { color: var(--ink); }
+    .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .social-icon { display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid rgba(255, 255, 255, .58); border-radius: 50%; background: rgba(255, 255, 255, .28); color: var(--ink-muted); font-size: 14px; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s var(--ease); }
+    .social-icon:hover { border-color: rgba(236, 109, 78, .62); background: rgba(255, 240, 233, .7); color: var(--coral-deep); transform: translateY(-2px); }
+    .header-cta { min-height: 42px; padding: 10px 15px; font-size: 12px; }
+    .menu-toggle { display: none; width: 42px; height: 42px; align-items: center; justify-content: center; border: 1px solid var(--glass-border); border-radius: 50%; background: rgba(255, 252, 248, .58); color: var(--ink); cursor: pointer; font-size: 16px; backdrop-filter: blur(12px); }
+    .mobile-menu { position: fixed; z-index: 55; top: 0; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; padding: 100px 7vw 31px; background: linear-gradient(145deg, rgba(248, 242, 235, .94), rgba(232, 218, 207, .88)); opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity .3s ease, transform .3s var(--ease); backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; transform: none; }
+    .mobile-menu nav { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+    .mobile-menu nav a:not(.button) { color: var(--ink); font-size: clamp(35px, 10vw, 55px); font-weight: 700; letter-spacing: -.07em; line-height: .9; }
+    .mobile-menu .button { width: 100%; margin-top: 12px; }
+    .mobile-socials { display: flex; gap: 9px; margin-top: auto; }
+
+    /* Hero */
+    .hero { position: relative; min-height: min(830px, 100svh); padding: 119px 0 57px; overflow: hidden; background: var(--surface-deep); }
+    .hero-media { position: absolute; inset: 0; background: url("assets/img/hero-poster.webp") center / cover no-repeat; filter: saturate(.86) contrast(.96); transform: scale(1.02); }
+    .hero-media::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(248, 242, 235, .89) 0%, rgba(248, 242, 235, .73) 36%, rgba(248, 242, 235, .20) 72%, rgba(248, 242, 235, .08) 100%), linear-gradient(0deg, rgba(40, 34, 33, .18), transparent 45%); content: ""; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(8px); pointer-events: none; }
+    .hero-orb.one { top: 12%; right: 13%; width: min(22vw, 270px); height: min(22vw, 270px); background: rgba(183, 165, 204, .42); }
+    .hero-orb.two { right: 30%; bottom: -10%; width: min(28vw, 360px); height: min(28vw, 360px); background: rgba(240, 180, 124, .37); }
+    .hero .shell { position: relative; z-index: 1; display: grid; min-height: calc(min(830px, 100svh) - 176px); grid-template-columns: minmax(0, .95fr) minmax(270px, .55fr); align-items: end; }
+    .hero-card { max-width: 690px; padding: clamp(24px, 3.5vw, 43px); border-radius: 27px; }
+    .hero-card .eyebrow { display: inline-flex; padding: 7px 10px; border: 1px solid rgba(236, 109, 78, .24); border-radius: 999px; background: rgba(255, 240, 233, .57); }
+    .hero h1 { max-width: 660px; margin: 16px 0 18px; font-size: clamp(57px, 7.5vw, 112px); font-weight: 700; letter-spacing: -.09em; line-height: .79; text-transform: uppercase; }
+    .hero h1 span { color: var(--coral); }
+    .hero-lead { max-width: 495px; margin: 0; color: var(--ink-muted); font-size: clamp(17px, 1.42vw, 21px); line-height: 1.52; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 27px; }
+    .hero-tag { justify-self: end; max-width: 252px; margin: 0 5px 8px auto; padding: 16px; border-radius: 19px; color: var(--ink); font-family: var(--mono); font-size: 9px; letter-spacing: .03em; line-height: 1.55; text-transform: uppercase; }
+    .hero-tag i { display: inline-grid; width: 28px; height: 28px; place-items: center; margin-bottom: 9px; border-radius: 50%; background: rgba(236, 109, 78, .13); color: var(--coral-deep); font-size: 13px; }
+
+    /* Shared section head */
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .5fr); gap: 42px; align-items: end; }
+    .section-head h2, .about h2, .quote h2, .contact-card h2 { margin: 12px 0 0; font-size: clamp(48px, 6.4vw, 94px); font-weight: 700; letter-spacing: -.085em; line-height: .82; text-transform: uppercase; }
+    .section-head h2 span, .about h2 span, .contact-card h2 span { color: var(--coral); }
+    .section-intro { max-width: 34ch; margin: 0 0 4px auto; color: var(--ink-muted); font-size: 16px; line-height: 1.62; }
+
+    /* Services */
+    .services { position: relative; padding: clamp(83px, 10vw, 133px) 0; overflow: hidden; background: linear-gradient(155deg, var(--surface) 0%, #f2e7dc 100%); }
+    .services::before { position: absolute; top: -18%; left: -7%; width: min(33vw, 420px); height: min(33vw, 420px); border-radius: 50%; background: rgba(183, 165, 204, .20); content: ""; filter: blur(18px); }
+    .event-selector { position: relative; margin-top: clamp(41px, 5.8vw, 68px); padding: clamp(22px, 3.3vw, 39px); border-radius: 25px; }
+    .event-group + .event-group { margin-top: 26px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .7); }
+    .group-label { display: grid; grid-template-columns: 1fr auto 1fr; gap: 13px; align-items: center; margin: 0 0 17px; color: var(--ink-muted); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-align: center; text-transform: uppercase; }
+    .group-label::before, .group-label::after { height: 1px; background: rgba(101, 94, 89, .25); content: ""; }
+    .pills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .event-pill { display: inline-flex; min-height: 47px; align-items: center; justify-content: space-between; gap: 18px; padding: 9px 12px 9px 16px; border: 1px solid rgba(255, 255, 255, .74); border-radius: 999px; background: rgba(255, 255, 255, .43); box-shadow: 0 4px 13px rgba(72, 53, 39, .04); color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: -.02em; transition: border-color .22s ease, background .22s ease, color .22s ease, box-shadow .22s ease, transform .26s var(--ease); }
+    .event-pill i { color: var(--coral); font-size: 12px; font-style: normal; transition: color .2s ease, transform .22s var(--ease); }
+    .event-pill:hover, .event-pill.active { border-color: var(--coral); background: var(--coral); box-shadow: 0 9px 20px rgba(201, 75, 52, .20); color: #fff; transform: translateY(-2px); }
+    .event-pill:hover i, .event-pill.active i { color: #fff; transform: translateX(3px); }
+    .hidden-pills { display: none; margin-top: 9px; }
+    .hidden-pills.visible { display: flex; }
+    .more-events { margin-top: 15px; padding: 0; background: transparent; color: var(--coral-deep); cursor: pointer; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .more-events:hover { color: var(--ink); }
+    .event-detail { max-height: 0; margin-top: 0; overflow: hidden; opacity: 0; transition: max-height .65s var(--ease), margin .42s var(--ease), opacity .32s ease; }
+    .event-detail.open { max-height: 1040px; margin-top: 26px; opacity: 1; }
+    .event-detail-inner { display: grid; grid-template-columns: minmax(0, .73fr) minmax(0, 1.27fr); gap: clamp(25px, 5.5vw, 74px); padding: clamp(23px, 3.2vw, 38px); border: 1px solid rgba(255, 255, 255, .73); border-radius: 21px; background: rgba(255, 252, 248, .73); box-shadow: var(--shadow-soft); backdrop-filter: blur(20px) saturate(130%); -webkit-backdrop-filter: blur(20px) saturate(130%); }
+    .detail-kicker { display: block; margin-bottom: 14px; color: var(--coral-deep); font-family: var(--mono); font-size: 9px; letter-spacing: .09em; }
+    .event-detail h3 { max-width: 12ch; margin: 0; font-size: clamp(31px, 4vw, 55px); font-weight: 700; letter-spacing: -.075em; line-height: .85; text-transform: uppercase; }
+    .detail-copy { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.64; }
+    .detail-options { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0; }
+    .detail-options span { padding: 8px 10px; border: 1px solid rgba(236, 109, 78, .17); border-radius: 999px; background: rgba(255, 240, 233, .65); color: var(--coral-deep); font-family: var(--mono); font-size: 8px; letter-spacing: .025em; line-height: 1.35; text-transform: uppercase; }
+    .detail-note { margin: 0 0 21px; color: var(--ink-muted); font-size: 13px; line-height: 1.55; }
+
+    /* Four visual services */
+    .service-photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin-top: clamp(28px, 4vw, 48px); }
+    .service-photo-card { position: relative; display: flex; min-height: 460px; overflow: hidden; align-items: flex-end; border: 1px solid rgba(255, 255, 255, .7); border-radius: 29px; background: #524039; box-shadow: 0 12px 34px rgba(70, 47, 33, .10); color: #fff; isolation: isolate; transition: transform .45s var(--ease), box-shadow .45s ease, border-radius .45s var(--ease), opacity .35s ease; }
+    .service-photo-card img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) brightness(.80); transform: scale(1.01); transition: transform .8s var(--ease), filter .55s ease; }
+    .service-photo-card::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgba(31, 24, 20, .05) 16%, rgba(31, 24, 20, .79) 100%); content: ""; transition: opacity .45s ease; }
+    .service-photo-card:hover { border-radius: 35px; box-shadow: 0 23px 48px rgba(70, 47, 33, .20); transform: translateY(-7px); }
+    .service-photo-card:hover img { filter: saturate(1.07) brightness(1); transform: scale(1.065); }
+    .service-photo-card:hover::after { opacity: .72; }
+    .service-photo-grid:has(.service-photo-card:hover) .service-photo-card:not(:hover) { opacity: .83; }
+    .service-photo-content { width: 100%; padding: 21px; transition: transform .4s var(--ease); }
+    .service-photo-card:hover .service-photo-content { transform: translateY(-4px); }
+    .service-photo-content > span { display: inline-block; margin-bottom: 13px; padding: 6px 8px; border: 1px solid rgba(255, 255, 255, .45); border-radius: 999px; background: rgba(255, 255, 255, .12); font-family: var(--mono); font-size: 8px; letter-spacing: .05em; text-transform: uppercase; backdrop-filter: blur(8px); }
+    .service-photo-content h3 { margin: 0; font-size: clamp(25px, 2.1vw, 34px); font-weight: 700; letter-spacing: -.065em; line-height: .86; text-transform: uppercase; }
+    .service-photo-content p { margin: 14px 0 0; font-size: 13px; line-height: 1.5; }
+    .service-photo-content button { display: inline-flex; align-items: center; gap: 8px; margin-top: 17px; padding: 0; background: transparent; color: #fff; cursor: pointer; font-size: 13px; font-weight: 700; transition: color .2s ease, transform .22s var(--ease); }
+    .service-photo-content button:hover { color: #ffe09a; transform: translateX(3px); }
+    .service-photo-content button i { font-size: 12px; }
+
+    /* Quick quote */
+    .quote { position: relative; padding: clamp(83px, 10vw, 133px) 0; overflow: hidden; background: linear-gradient(125deg, #efdacb 0%, #f5b991 49%, #e29a7f 100%); }
+    .quote::before { position: absolute; top: -23%; right: -7%; width: min(44vw, 560px); height: min(44vw, 560px); border: 1px solid rgba(255, 255, 255, .40); border-radius: 50%; content: ""; }
+    .quote::after { position: absolute; bottom: -32%; left: 22%; width: min(29vw, 380px); height: min(29vw, 380px); border-radius: 50%; background: rgba(183, 165, 204, .25); content: ""; filter: blur(20px); }
+    .quote-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(35px, 7vw, 110px); align-items: start; }
+    .quote .eyebrow { color: rgba(92, 47, 35, .85); }
+    .quote h2 { margin: 12px 0 20px; }
+    .quote-intro { max-width: 33ch; margin: 0; color: rgba(54, 37, 30, .76); font-size: 17px; line-height: 1.6; }
+    .quote-note { display: flex; gap: 10px; align-items: flex-start; max-width: 34ch; margin: 25px 0 0; color: rgba(54, 37, 30, .68); font-family: var(--mono); font-size: 9px; letter-spacing: .025em; line-height: 1.65; text-transform: uppercase; }
+    .quote-note i { margin-top: 1px; color: var(--coral-deep); font-size: 14px; }
+    .quote-form { padding: clamp(22px, 3.3vw, 37px); border-radius: 23px; }
+    .field-block { padding: 0 0 21px; margin: 0 0 21px; border: 0; border-bottom: 1px solid rgba(101, 94, 89, .18); }
+    .field-title { display: flex; gap: 10px; align-items: baseline; margin: 0 0 14px; font-size: 16px; font-weight: 700; letter-spacing: -.035em; }
+    .field-title b { color: var(--coral-deep); font-family: var(--mono); font-size: 9px; font-weight: 400; letter-spacing: .08em; }
+    .choice-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .choice { padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .66); border-radius: 999px; background: rgba(255, 255, 255, .43); color: var(--ink-muted); cursor: pointer; font-size: 13px; font-weight: 700; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .22s var(--ease); }
+    .choice:hover, .choice.active { border-color: var(--coral); background: var(--coral); color: #fff; transform: translateY(-2px); }
+    .quick-fields { display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; margin-top: 3px; }
+    .input-label { display: block; color: var(--ink-muted); font-family: var(--mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
+    .input-label input { width: 100%; margin-top: 9px; padding: 11px 0; border: 0; border-bottom: 1px solid rgba(101, 94, 89, .35); outline: none; background: transparent; color: var(--ink); font-family: var(--sans); font-size: 15px; transition: border-color .2s ease; }
+    .input-label input:focus { border-color: var(--coral); }
+    .quote-actions { display: flex; flex-direction: column; gap: 9px; margin-top: 25px; }
+    .quote-actions .button { width: 100%; }
+    .validation { min-height: 17px; margin: 0; color: #a13d2b; font-family: var(--mono); font-size: 9px; letter-spacing: .025em; line-height: 1.45; text-align: center; text-transform: uppercase; }
+
+    /* About */
+    .about { padding: clamp(83px, 10vw, 133px) 0; background: linear-gradient(165deg, var(--surface) 0%, #f3e7dc 100%); }
+    .about-grid { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: clamp(37px, 7vw, 105px); align-items: center; }
+    .portrait-card { position: relative; max-width: 480px; padding: 9px; border-radius: 26px; }
+    .portrait-card::after { position: absolute; right: -18px; bottom: 25px; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .72); border-radius: 13px; background: rgba(255, 252, 248, .68); box-shadow: var(--shadow-soft); color: var(--coral-deep); content: "MÚSICA QUE SE ADAPTA A TU GENTE."; font-family: var(--mono); font-size: 8px; letter-spacing: .04em; line-height: 1.45; text-transform: uppercase; backdrop-filter: blur(13px); }
+    .about-image { overflow: hidden; border-radius: 19px; aspect-ratio: 4 / 4.7; background: var(--surface-deep); }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .portrait-card:hover img { transform: scale(1.035); }
+    .about h2 { margin: 12px 0 26px; }
+    .about-copy > p:not(.eyebrow) { max-width: 55ch; margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.66; }
+    .about-copy > p + p { margin-top: 13px !important; }
+    .trust-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 30px; }
+    .trust-card { min-height: 101px; padding: 16px; border-radius: 16px; }
+    .trust-card strong { display: block; color: var(--coral-deep); font-size: clamp(25px, 3vw, 38px); font-weight: 700; letter-spacing: -.07em; line-height: .9; }
+    .trust-card span { display: block; margin-top: 9px; color: var(--ink-muted); font-family: var(--mono); font-size: 8px; letter-spacing: .04em; line-height: 1.45; text-transform: uppercase; }
+    .about-location { margin-top: 16px !important; color: var(--ink-muted) !important; font-family: var(--mono); font-size: 9px !important; letter-spacing: .04em; line-height: 1.6 !important; text-transform: uppercase; }
+    .about .button { margin-top: 25px; }
+
+    /* Contact */
+    .contact { padding: 0 0 clamp(55px, 7vw, 82px); background: var(--surface); }
+    .contact-card { position: relative; overflow: hidden; padding: clamp(48px, 7vw, 88px); border-radius: 28px; background: linear-gradient(130deg, #91a99e 0%, #83a298 52%, #6d9388 100%); color: #fff; text-align: center; }
+    .contact-card::before, .contact-card::after { position: absolute; border: 1px solid rgba(255, 255, 255, .28); border-radius: 50%; content: ""; pointer-events: none; }
+    .contact-card::before { top: -50%; left: -10%; width: min(52vw, 680px); height: min(52vw, 680px); }
+    .contact-card::after { right: -8%; bottom: -77%; width: min(44vw, 560px); height: min(44vw, 560px); }
+    .contact-card > * { position: relative; z-index: 1; }
+    .contact-card .eyebrow { color: rgba(255, 255, 255, .83); }
+    .contact-card h2 { max-width: 760px; margin-right: auto; margin-left: auto; font-size: clamp(52px, 7vw, 99px); line-height: .8; }
+    .contact-card h2 span { color: #ffe09a; }
+    .contact-intro { max-width: 520px; margin: 0 auto; color: rgba(255, 255, 255, .9); font-size: 17px; line-height: 1.62; }
+    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .contact-card .button { border-color: #ffe09a; background: #ffe09a; box-shadow: 0 10px 22px rgba(37, 47, 42, .16); color: var(--ink); }
+    .contact-card .button:hover { border-color: #ffeab8; background: #ffeab8; }
+    .contact-card .button.secondary { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .12); color: #fff; }
+    .contact-card .button.secondary:hover { border-color: #fff; background: rgba(255, 255, 255, .2); }
+    .contact-foot { margin: 20px 0 0; color: rgba(255, 255, 255, .76); font-family: var(--mono); font-size: 8px; letter-spacing: .06em; line-height: 1.6; text-transform: uppercase; }
+
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px var(--gutter) calc(21px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--surface); }
+    .footer-brand img { width: 39px; height: 39px; object-fit: contain; }
+    footer p { margin: 0; color: var(--ink-muted); font-family: var(--mono); font-size: 8px; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
+    .footer-socials { display: flex; gap: 7px; }
+    .footer-socials a { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255, 255, 255, .68); border-radius: 50%; background: rgba(255, 255, 255, .38); color: var(--ink-muted); font-size: 13px; transition: color .2s ease, border-color .2s ease, transform .2s var(--ease); }
+    .footer-socials a:hover { border-color: var(--coral); color: var(--coral-deep); transform: translateY(-2px); }
+    .mobile-quote { position: fixed; z-index: 45; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .60); border-radius: 999px; background: var(--coral); box-shadow: 0 11px 25px rgba(150, 67, 45, .29); color: #fff; font-size: 13px; font-weight: 700; }
+
+    @media (max-width: 1080px) {
+      .service-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service-photo-card { min-height: 410px; }
+    }
+
+    @media (max-width: 900px) {
+      :root { --wide: 88vw; --gutter: 6vw; }
+      .desktop-nav, .header-actions > .social-icon, .header-cta { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .hero { min-height: auto; padding: 104px 0 42px; }
+      .hero-media { background-position: 62% center; }
+      .hero-media::after { background: linear-gradient(180deg, rgba(248, 242, 235, .74) 0%, rgba(248, 242, 235, .52) 46%, rgba(248, 242, 235, .18) 100%), linear-gradient(90deg, rgba(248, 242, 235, .5), transparent 70%); }
+      .hero .shell { min-height: 643px; grid-template-columns: 1fr; align-items: start; }
+      .hero-card { max-width: 590px; padding: 24px; }
+      .hero h1 { font-size: clamp(54px, 13.7vw, 90px); }
+      .hero-tag { align-self: end; justify-self: start; margin: 0 0 4px; }
+      .section-head { grid-template-columns: 1fr; gap: 23px; }
+      .section-head h2, .about h2, .quote h2 { font-size: clamp(49px, 13.5vw, 84px); }
+      .section-intro { margin: 0; }
+      .event-detail.open { max-height: 1510px; }
+      .event-detail-inner { grid-template-columns: 1fr; gap: 23px; }
+      .quote-layout { grid-template-columns: 1fr; gap: 33px; }
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .portrait-card { width: min(100%, 510px); }
+      .mobile-quote { display: inline-flex; }
+      .contact-card::before { top: -10%; left: -42%; width: 95vw; height: 95vw; }
+      .contact-card::after { right: -36%; bottom: -20%; width: 87vw; height: 87vw; }
+    }
+
+    @media (max-width: 580px) {
+      .header { padding-top: 10px; padding-bottom: 10px; }
+      .brand { width: 57px; height: 49px; }
+      .brand::before { width: 45px; height: 45px; }
+      .brand img { width: 42px; height: 42px; }
+      .hero .shell { min-height: 592px; }
+      .hero-card { padding: 21px; border-radius: 22px; }
+      .hero h1 { font-size: clamp(49px, 14.7vw, 72px); line-height: .81; }
+      .hero-lead { font-size: 16px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      .section-head h2, .about h2, .quote h2 { font-size: clamp(45px, 14.9vw, 68px); line-height: .83; }
+      .event-selector { padding: 19px; border-radius: 20px; }
+      .event-pill { width: 100%; }
+      .group-label { font-size: 8px; }
+      .event-detail-inner { padding: 22px; }
+      .event-detail h3 { font-size: clamp(32px, 10.8vw, 47px); }
+      .detail-copy { font-size: 15px; }
+      .service-photo-grid { display: flex; width: calc(100% + 12vw); margin-right: -6vw; margin-left: -6vw; padding: 0 6vw 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .service-photo-grid::-webkit-scrollbar { display: none; }
+      .service-photo-card { min-width: 83vw; min-height: 500px; scroll-snap-align: start; }
+      .service-photo-grid:has(.service-photo-card:hover) .service-photo-card:not(:hover) { opacity: 1; }
+      .quick-fields { grid-template-columns: 1fr; }
+      .contact { padding-bottom: 42px; }
+      .contact-card { padding: 48px 21px; border-radius: 21px; }
+      .contact-card h2 { font-size: clamp(48px, 14vw, 68px); }
+      .contact-actions { display: grid; grid-template-columns: 1fr; }
+      .portrait-card::after { right: -5px; bottom: 15px; max-width: 160px; }
+      footer p { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
-
 <body>
-  <nav class="nav" id="nav" aria-label="Navegación">
-    <a class="mark" href="#inicio" aria-label="Volver al inicio">
-      <img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" />
-    </a>
-
-    <div class="nav-end">
-      <a href="#propuesta">Perfil</a>
-      <a href="#escenas">Eventos</a>
-      <a href="#modos">Paquetes</a>
-      <a href="#contacto">Contacto</a>
-
-      <a class="social-icon" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-      </a>
-
-      <a class="social-icon" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
-      </a>
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="DJ César Channel, volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a class="active" href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#quien-soy">Quién soy</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a class="social-icon" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DJ César Channel"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a class="social-icon" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok de DJ César Channel"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        <a class="button header-cta" href="#cotiza">Cotiza tu evento</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
     </div>
-  </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Navegación móvil">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#quien-soy">Quién soy</a>
+      <a href="#contacto">Contacto</a>
+      <a class="button" href="#cotiza">Cotiza tu evento</a>
+    </nav>
+    <div class="mobile-socials" aria-label="Redes sociales">
+      <a class="social-icon" href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a class="social-icon" href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+    </div>
+  </div>
 
   <main>
-    <section class="hero" id="inicio" aria-label="DJ César Channel">
-      <video autoplay muted loop playsinline poster="assets/img/hero-poster.webp" id="heroVideo">
-        <source src="assets/img/hero-main.webm" type="video/webm" />
-        <source src="assets/img/hero-main.mp4" type="video/mp4" />
-      </video>
-
-      <a class="hero-scroll" href="#propuesta" aria-label="Ver información de DJ César Channel"></a>
+    <section class="hero" id="inicio" aria-label="DJ César Channel, eventos en Ciudad de México">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-orb one" aria-hidden="true"></div>
+      <div class="hero-orb two" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="hero-card glass reveal">
+          <p class="eyebrow">DJ César Channel · CDMX</p>
+          <h1>DJ, música y producción para celebrar <span>en grande.</span></h1>
+          <p class="hero-lead">Bodas, fiestas privadas y eventos corporativos. Una propuesta musical y técnica pensada para tu gente, tu espacio y tu momento.</p>
+          <div class="hero-actions">
+            <a class="button" href="#cotiza"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza por WhatsApp</a>
+            <a class="button secondary" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+        <aside class="hero-tag glass reveal" aria-label="Servicios disponibles">
+          <i class="fa-solid fa-music" aria-hidden="true"></i><br />
+          DJ · Audio · Iluminación<br />Música en vivo · Producción
+        </aside>
+      </div>
     </section>
 
-    <section class="statement" id="propuesta">
-      <div class="shell statement-grid">
-        <div class="reveal">
-          <p class="eyebrow">DJ César Channel | Eventos en CDMX</p>
-
-          <figure class="about-image">
-            <img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" />
-          </figure>
+    <section class="services" id="servicios">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">01 / Servicios</p>
+            <h2>Eventos que <span>suenan</span><br />y <span>lucen</span> increíbles.</h2>
+          </div>
+          <p class="section-intro">Música, sonido, iluminación y talento adaptados a tu celebración. Elige el tipo de evento para conocer las posibilidades.</p>
         </div>
 
-        <div class="about-copy reveal">
-          <p class="eyebrow">Selección musical para lo que está sonando.</p>
-
-          <h1>
-            ENERGÍA<br />
-            <em>REAL.</em>
-          </h1>
-
-          <p>El lugar, el horario y tus invitados determinan la música; no una playlist.</p>
-
-          <p>Bodas, fiestas privadas, eventos familiares, graduaciones, inauguraciones y proyectos corporativos.</p>
-
-          <p>Música en vivo con criterio, desde que llega el primer invitado hasta el último baile.</p>
-
-          <div class="facts" aria-label="Experiencia profesional">
-            <div class="fact">
-              <b>8+</b>
-              <span>Años de experiencia</span>
+        <div class="event-selector glass reveal">
+          <div class="event-group">
+            <p class="group-label">Empresas / profesionales</p>
+            <div class="pills" role="group" aria-label="Eventos para empresas y profesionales">
+              <button class="event-pill" type="button" data-event="Corporativo"><span>Corporativo</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Afterwork"><span>Afterwork</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Inauguración"><span>Inauguración</span><i aria-hidden="true">→</i></button>
             </div>
-
-            <div class="fact">
-              <b>400+</b>
-              <span>Eventos realizados</span>
+            <div class="pills hidden-pills" id="business-more">
+              <button class="event-pill" type="button" data-event="Lanzamiento de marca"><span>Lanzamiento de marca</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Gala o cena de empresa"><span>Gala o cena de empresa</span><i aria-hidden="true">→</i></button>
             </div>
+            <button class="more-events" type="button" data-target="business-more">+ Ver todos los formatos</button>
           </div>
 
-          <p class="territory">
-            Ubicación: Ciudad de México y área metropolitana.<br />
-            Eventos foráneos sujetos a disponibilidad.
-          </p>
+          <div class="event-group">
+            <p class="group-label">Particulares</p>
+            <div class="pills" role="group" aria-label="Eventos particulares">
+              <button class="event-pill" type="button" data-event="Boda"><span>Boda</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Fiesta privada"><span>Fiesta privada</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Graduación"><span>Graduación</span><i aria-hidden="true">→</i></button>
+            </div>
+            <div class="pills hidden-pills" id="private-more">
+              <button class="event-pill" type="button" data-event="Cumpleaños"><span>Cumpleaños</span><i aria-hidden="true">→</i></button>
+              <button class="event-pill" type="button" data-event="Aniversario"><span>Aniversario</span><i aria-hidden="true">→</i></button>
+            </div>
+            <button class="more-events" type="button" data-target="private-more">+ Ver todos los formatos</button>
+          </div>
+
+          <div class="event-detail" id="event-detail" aria-live="polite">
+            <div class="event-detail-inner">
+              <div>
+                <span class="detail-kicker" id="detail-kicker">01 / FORMATO</span>
+                <h3 id="detail-title">TU EVENTO.</h3>
+              </div>
+              <div>
+                <p class="detail-copy" id="detail-copy">Elige el formato que buscas para conocer las posibilidades.</p>
+                <div class="detail-options" id="detail-options"></div>
+                <p class="detail-note" id="detail-note"></p>
+                <a class="button" id="detail-whatsapp" href="https://wa.me/525624685267" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-photo-grid reveal" aria-label="Soluciones para tu evento">
+          <article class="service-photo-card">
+            <img src="assets/img/gallery-pista.webp" alt="Personas celebrando en una pista de baile" loading="lazy" decoding="async" />
+            <div class="service-photo-content">
+              <span>01 / Eventos</span>
+              <h3>Eventos<br />y fiestas</h3>
+              <p>Bodas, celebraciones, graduaciones y corporativos pensados para disfrutar de principio a fin.</p>
+              <button type="button" data-solution="Eventos y fiestas">Ver opciones <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </article>
+
+          <article class="service-photo-card">
+            <img src="assets/img/gallery-booth.webp" alt="DJ César Channel en cabina durante un evento" loading="lazy" decoding="async" />
+            <div class="service-photo-content">
+              <span>02 / DJ</span>
+              <h3>DJ y<br />curaduría</h3>
+              <p>Selección musical en vivo y sets que se adaptan al ritmo de cada celebración.</p>
+              <button type="button" data-solution="DJ y curaduría musical">Ver DJ sets <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </article>
+
+          <article class="service-photo-card">
+            <img src="assets/img/gallery-cabina.webp" alt="Equipo de sonido e iluminación para un evento" loading="lazy" decoding="async" />
+            <div class="service-photo-content">
+              <span>03 / Producción</span>
+              <h3>Audio, luz<br />y producción</h3>
+              <p>Sonido, iluminación y recursos técnicos para que todo se vea y se escuche como debe.</p>
+              <button type="button" data-solution="Audio, luz y producción">Ver producción <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </article>
+
+          <article class="service-photo-card">
+            <img src="assets/img/gallery-ambiente.webp" alt="Música en vivo durante un evento" loading="lazy" decoding="async" />
+            <div class="service-photo-content">
+              <span>04 / Talento</span>
+              <h3>Música en vivo<br />y talento</h3>
+              <p>Mariachi, norteño, músicos, artistas y formatos especiales para otra dimensión del evento.</p>
+              <button type="button" data-solution="Música en vivo y talento">Ver talento <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="sequence" id="escenas">
-      <div class="shell sequence-head reveal">
-        <div>
-          <p class="eyebrow">03 / Escenas</p>
-          <h2>ANTES.<br />DURANTE.<br />DESPUÉS.</h2>
+    <section class="quote" id="cotiza">
+      <div class="shell quote-layout">
+        <div class="reveal">
+          <p class="eyebrow">02 / Cotización rápida</p>
+          <h2>Cuéntanos<br />tu idea.</h2>
+          <p class="quote-intro">En menos de un minuto puedes preparar un mensaje con lo básico. César te responde con opciones pensadas para tu evento.</p>
+          <p class="quote-note"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> La solicitud se abre directamente en WhatsApp. No guardamos tus datos en la web.</p>
         </div>
 
-        <p>No hay dos pistas iguales. La música cambia según el espacio, el momento y la gente que lo ocupa.</p>
-      </div>
-
-      <div class="shell">
-        <div class="gallery reveal" id="gallery" aria-label="Galería de eventos">
-          <figure class="frame">
-            <img src="assets/img/gallery-pista.webp" alt="Pista de baile durante una fiesta" loading="lazy" decoding="async" />
-            <span><i>01</i> / Pista</span>
-          </figure>
-
-          <figure class="frame">
-            <img src="assets/img/gallery-booth.webp" alt="DJ César Channel en cabina" loading="lazy" decoding="async" />
-            <span><i>02</i> / Cabina</span>
-          </figure>
-
-          <figure class="frame">
-            <img src="assets/img/gallery-cabina.webp" alt="Controles de DJ durante un evento" loading="lazy" decoding="async" />
-            <span><i>03</i> / Selección</span>
-          </figure>
-
-          <figure class="frame">
-            <img src="assets/img/gallery-espacio.webp" alt="Espacio preparado para una celebración" loading="lazy" decoding="async" />
-            <span><i>04</i> / Espacio</span>
-          </figure>
-
-          <figure class="frame">
-            <img src="assets/img/gallery-ambiente.webp" alt="Ambiente de llegada durante un evento" loading="lazy" decoding="async" />
-            <span><i>05</i> / Llegada</span>
-          </figure>
-        </div>
-
-        <div class="gallery-progress" aria-hidden="true">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <form class="quote-form glass reveal" id="quote-form" novalidate>
+          <fieldset class="field-block">
+            <legend class="field-title"><b>01</b> ¿Qué quieres celebrar?</legend>
+            <div class="choice-list" data-choice-group="eventType">
+              <button class="choice" type="button" data-value="Boda">Boda</button>
+              <button class="choice" type="button" data-value="Fiesta privada">Fiesta privada</button>
+              <button class="choice" type="button" data-value="Corporativo / marca">Corporativo / marca</button>
+              <button class="choice" type="button" data-value="Graduación">Graduación</button>
+              <button class="choice" type="button" data-value="Otro">Otro</button>
+            </div>
+          </fieldset>
+          <fieldset class="field-block">
+            <legend class="field-title"><b>02</b> ¿Qué necesitas?</legend>
+            <div class="choice-list" data-choice-group="service">
+              <button class="choice" type="button" data-value="Solo DJ">Solo DJ</button>
+              <button class="choice" type="button" data-value="DJ + Audio">DJ + Audio</button>
+              <button class="choice" type="button" data-value="DJ + Audio + Iluminación">DJ + Audio + Iluminación</button>
+              <button class="choice" type="button" data-value="Producción completa">Producción completa</button>
+              <button class="choice" type="button" data-value="Necesito orientación">Quiero orientación</button>
+            </div>
+          </fieldset>
+          <div class="quick-fields">
+            <label class="input-label">Fecha del evento
+              <input id="event-date" type="date" name="date" />
+            </label>
+            <fieldset style="margin:0; padding:0; border:0;">
+              <legend class="input-label" style="margin-bottom:9px;">Zona</legend>
+              <div class="choice-list" data-choice-group="location">
+                <button class="choice" type="button" data-value="CDMX">CDMX</button>
+                <button class="choice" type="button" data-value="Área metropolitana">Área metropolitana</button>
+                <button class="choice" type="button" data-value="Evento foráneo">Fuera de CDMX</button>
+              </div>
+            </fieldset>
+          </div>
+          <div class="quote-actions">
+            <p class="validation" id="validation" role="alert"></p>
+            <button class="button" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Preparar mensaje de WhatsApp</button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <section class="signals" id="modos">
-      <div class="shell">
-        <p class="eyebrow reveal">04 / Paquetes</p>
-
-        <h2 class="reveal">
-          ELIGE<br />
-          TU PAQUETE.
-        </h2>
-
-        <div class="mode-list reveal" role="radiogroup" aria-label="Paquete de servicio">
-          <button class="mode active" type="button" data-service="Solo DJ" role="radio" aria-checked="true">
-            <span class="mode-no mono">01</span>
-            <span class="mode-name">Solo DJ</span>
-            <span class="mode-copy"><strong>Tú pones el equipo.</strong><br />Set de DJ en vivo utilizando el sistema de audio e iluminación que ya tengan contratado en tu salón, jardín o casa.</span>
-            <span class="mode-dot" aria-hidden="true"></span>
-          </button>
-
-          <button class="mode" type="button" data-service="DJ + Equipo Básico" role="radio" aria-checked="false">
-            <span class="mode-no mono">02</span>
-            <span class="mode-name">DJ +<br />Equipo Básico</span>
-            <span class="mode-copy"><strong>Lo indispensable.</strong><br />Set de DJ en vivo con tornamesas y sistema de audio profesional para resolver la música y el ambiente de tu fiesta.</span>
-            <span class="mode-dot" aria-hidden="true"></span>
-          </button>
-
-          <button class="mode" type="button" data-service="DJ + Equipo Premium" role="radio" aria-checked="false">
-            <span class="mode-no mono">03</span>
-            <span class="mode-name">DJ +<br />Equipo Premium</span>
-            <span class="mode-copy"><strong>La experiencia completa.</strong><br />Tornamesas, audio de alta potencia, iluminación para la pista y pantalla LED para visuales o karaoke.</span>
-            <span class="mode-dot" aria-hidden="true"></span>
-          </button>
+    <section class="about" id="quien-soy">
+      <div class="shell about-grid">
+        <figure class="portrait-card glass reveal">
+          <div class="about-image"><img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" /></div>
+        </figure>
+        <div class="about-copy reveal">
+          <p class="eyebrow">03 / Quién soy</p>
+          <h2>Hola, soy<br /><span>César Channel.</span></h2>
+          <p>Soy DJ, manager y creador de experiencias musicales para eventos.</p>
+          <p>Durante más de ocho años he acompañado bodas, celebraciones familiares, graduaciones, fiestas privadas, inauguraciones y eventos corporativos en Ciudad de México.</p>
+          <p>Cada celebración es distinta. Por eso la música, el equipo y el talento que proponemos se adaptan a tus invitados, al espacio y a la energía que quieres crear.</p>
+          <div class="trust-grid" aria-label="Experiencia profesional">
+            <div class="trust-card glass"><strong>8+</strong><span>Años de experiencia</span></div>
+            <div class="trust-card glass"><strong>400+</strong><span>Eventos realizados</span></div>
+            <div class="trust-card glass"><strong>CDMX</strong><span>Y área metropolitana</span></div>
+            <div class="trust-card glass"><strong>RED</strong><span>De talento y proveedores</span></div>
+          </div>
+          <p class="about-location">Eventos foráneos sujetos a disponibilidad.</p>
+          <a class="button" href="#cotiza">Cuéntame tu idea <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
-
-        <p class="mode-note reveal">Selecciona el punto de partida ideal. El servicio se ajusta al tamaño del lugar y a las necesidades de tu evento.</p>
       </div>
     </section>
 
     <section class="contact" id="contacto">
-      <div class="contact-inner reveal">
-        <p class="eyebrow">05 / Contacto</p>
-
-        <h2>
-          HABLEMOS<br />
-          <span>DE TU EVENTO</span>
-        </h2>
-
-        <p class="contact-intro">Comparte la fecha, el lugar y el número aproximado de invitados. Recibe una propuesta clara, sin letras chiquitas y 100% a tu medida.</p>
-
-        <div class="request" aria-label="Tipo de evento">
-          <button class="pick active" type="button" data-event="Bodas" aria-pressed="true">
-            <small class="mono">A</small>
-            <b>Bodas</b>
-          </button>
-
-          <button class="pick" type="button" data-event="Fiestas y eventos privados" aria-pressed="false">
-            <small class="mono">B</small>
-            <b>Fiestas y<br />eventos privados</b>
-          </button>
-
-          <button class="pick" type="button" data-event="Corporativos y marcas" aria-pressed="false">
-            <small class="mono">C</small>
-            <b>Corporativos<br />y marcas</b>
-          </button>
+      <div class="shell">
+        <div class="contact-card reveal">
+          <p class="eyebrow">04 / Contacto</p>
+          <h2>¿Listo para<br /><span>celebrar?</span></h2>
+          <p class="contact-intro">Cuéntanos la fecha y la idea. Armamos una propuesta para tu espacio, tu gente y el tipo de momento que quieres crear.</p>
+          <div class="contact-actions">
+            <a class="button" href="#cotiza"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp · Cotiza tu evento</a>
+            <a class="button secondary" href="mailto:cesarmejiacarballo43@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel">Escribir por email</a>
+          </div>
+          <p class="contact-foot">Respuesta personalizada · CDMX y área metropolitana</p>
         </div>
-
-        <input
-          class="context"
-          id="eventContext"
-          type="text"
-          maxlength="180"
-          placeholder="Fecha, lugar, invitados aprox. (opcional)"
-          aria-label="Detalles del evento"
-          autocomplete="off"
-        />
-
-        <div class="contact-actions">
-          <a
-            id="whatsapp"
-            class="cta"
-            href="https://wa.me/525624685267"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fa-brands fa-whatsapp" aria-hidden="true" style="margin-right:9px"></i>
-            Reservar fecha
-          </a>
-
-          <a
-            id="mailLink"
-            class="cta mail"
-            href="mailto:cesarmejiacarballo43@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel"
-            aria-label="Solicitar información por correo"
-          >
-            Solicitar info
-          </a>
-        </div>
-
-        <p class="contact-foot">¿Tienes otra idea en mente? Nos adaptamos a cualquier tipo de celebración o concepto.</p>
       </div>
     </section>
   </main>
 
-  <a class="mobile-booking" href="#contacto" aria-label="Ir a reservar fecha">
-    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    Reservar fecha
-  </a>
+  <a class="mobile-quote" href="#cotiza" aria-label="Ir a cotizar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza tu evento</a>
 
   <footer>
-    <a href="#inicio" aria-label="Volver al inicio">
-      <img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" />
-    </a>
-
-    <p>DJ César Channel · Ciudad de México</p>
-
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-      </a>
-
-      <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
-      </a>
+    <a class="footer-brand" href="#inicio" aria-label="Volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
+    <p>DJ César Channel · Ciudad de México · <span id="year"></span></p>
+    <div class="footer-socials" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://www.tiktok.com/@cesarchannel?_r=1&_t=ZS-97IOU3j77Y4" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
     </div>
   </footer>
 
   <script>
-    const nav = document.getElementById("nav");
-    let lastY = 0;
+    const waNumber = "525624685267";
+    const header = document.getElementById("header");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const eventDetail = document.getElementById("event-detail");
+    const detailKicker = document.getElementById("detail-kicker");
+    const detailTitle = document.getElementById("detail-title");
+    const detailCopy = document.getElementById("detail-copy");
+    const detailOptions = document.getElementById("detail-options");
+    const detailNote = document.getElementById("detail-note");
+    const detailWhatsApp = document.getElementById("detail-whatsapp");
+    const form = document.getElementById("quote-form");
+    const validation = document.getElementById("validation");
+    const state = { eventType: "", service: "", location: "" };
 
+    const eventData = {
+      "Corporativo": { kicker: "01 / EMPRESAS", title: "EVENTOS CORPORATIVOS", copy: "Música y producción para marcas, equipos y celebraciones de empresa. La propuesta se adapta a la audiencia, el concepto y cada momento: recepción, cóctel, cena, networking o pista de baile.", options: ["DJ y curaduría musical", "Audio e iluminación", "Microfonía", "Música en vivo y talento", "Producción a medida"], note: "Servicios y talento coordinados según tus necesidades, presupuesto y disponibilidad.", cta: "Cotizar evento corporativo" },
+      "Afterwork": { kicker: "01 / EMPRESAS", title: "AFTERWORK", copy: "Una transición perfecta entre trabajo y celebración. Música, ambiente y producción para conectar equipos, clientes o comunidades en un formato relajado y bien cuidado.", options: ["DJ set a medida", "Audio e iluminación", "Curaduría por horario", "Música en vivo", "Producción ligera"], note: "La propuesta se adapta al venue, duración, público y energía que buscas crear.", cta: "Cotizar afterwork" },
+      "Inauguración": { kicker: "01 / EMPRESAS", title: "INAUGURACIONES", copy: "Una apertura necesita una atmósfera con identidad. Diseñamos el acompañamiento musical y técnico para recibir, presentar y celebrar un nuevo espacio, marca o proyecto.", options: ["DJ y ambientación", "Audio y microfonía", "Iluminación", "Música en vivo", "Formato de marca"], note: "También podemos coordinar recursos complementarios mediante una red de proveedores.", cta: "Cotizar inauguración" },
+      "Lanzamiento de marca": { kicker: "01 / EMPRESAS", title: "LANZAMIENTOS DE MARCA", copy: "Música y producción alineadas al universo de tu marca. Desde la llegada de invitados hasta el momento central y la celebración posterior, cada parte sostiene el concepto.", options: ["DJ curado por concepto", "Audio e iluminación", "Visuales", "Talento y shows", "Producción a medida"], note: "La propuesta se construye alrededor del briefing, público, espacio y presupuesto.", cta: "Cotizar lanzamiento" },
+      "Gala o cena de empresa": { kicker: "01 / EMPRESAS", title: "GALAS Y CENAS", copy: "Una experiencia elegante, con música y recursos técnicos que acompañan la conversación, los reconocimientos y el momento de celebración sin perder el ritmo.", options: ["DJ de recepción y pista", "Audio para speeches", "Microfonía", "Iluminación", "Música en vivo"], note: "Los formatos se ajustan al protocolo, aforo y programación del evento.", cta: "Cotizar gala o cena" },
+      "Boda": { kicker: "02 / PARTICULARES", title: "BODAS", copy: "Desde la bienvenida y el cóctel hasta el último baile. La música se construye alrededor de la historia de la pareja, sus invitados y los momentos que quieren recordar.", options: ["DJ para recepción y pista", "Audio e iluminación", "Ceremonia y brindis", "Mariachi, norteño o música en vivo", "Visuales y formatos especiales"], note: "¿Necesitas algo más? Coordinamos proveedores y soluciones complementarias según tu idea y disponibilidad.", cta: "Cotizar una boda" },
+      "Fiesta privada": { kicker: "02 / PARTICULARES", title: "FIESTAS PRIVADAS", copy: "Cumpleaños, aniversarios y celebraciones que necesitan una pista con energía real. Todo se adapta al espacio, invitados, duración y estilo de tu evento.", options: ["DJ set a medida", "Audio e iluminación", "Cabina y microfonía", "Artistas, músicos o shows", "Producción personalizada"], note: "Cuéntanos tu idea: coordinamos la solución adecuada a través de una red profesional.", cta: "Cotizar mi fiesta" },
+      "Graduación": { kicker: "02 / PARTICULARES", title: "GRADUACIONES", copy: "Una celebración para cerrar una etapa y abrir otra con toda la energía. DJ, producción y formatos especiales para una noche que se queda en la memoria.", options: ["DJ y curaduría musical", "Audio e iluminación", "Micrófonos", "Música en vivo", "Formatos especiales"], note: "La propuesta se ajusta al número de invitados, salón, escuela o venue y horario del evento.", cta: "Cotizar graduación" },
+      "Cumpleaños": { kicker: "02 / PARTICULARES", title: "CUMPLEAÑOS", copy: "Una fiesta pensada para celebrar como se debe: con la música correcta, una pista viva y opciones de producción que hagan que cada momento se sienta especial.", options: ["DJ set a medida", "Audio e iluminación", "Música en vivo", "Shows y artistas", "Producción especial"], note: "Desde una reunión íntima hasta una fiesta grande: todo se adapta a tu idea y disponibilidad.", cta: "Cotizar cumpleaños" },
+      "Aniversario": { kicker: "02 / PARTICULARES", title: "ANIVERSARIOS", copy: "Un aniversario merece una atmósfera personal. Diseñamos la música y el formato para acompañar la celebración desde el primer brindis hasta el último baile.", options: ["DJ personalizado", "Audio e iluminación", "Micrófonos", "Mariachi o música en vivo", "Ambientación y producción"], note: "Podemos ayudar a coordinar soluciones complementarias según el concepto del evento.", cta: "Cotizar aniversario" }
+    };
+
+    const solutionMap = {
+      "Eventos y fiestas": "Necesito orientación",
+      "DJ y curaduría musical": "Solo DJ",
+      "Audio, luz y producción": "Producción completa",
+      "Música en vivo y talento": "Necesito orientación"
+    };
+
+    function makeWhatsAppUrl(eventType, service) {
+      const message = ["Hola César, quiero solicitar una cotización.", "", "Tipo de evento: " + (eventType || "Por definir"), "Servicio de interés: " + (service || "Quiero orientación"), "Fecha:", "Ubicación:", "", "¿Tienes disponibilidad?"].join("\n");
+      return "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+    }
+
+    function syncEventChoice(eventName) {
+      const corporate = ["Corporativo", "Afterwork", "Inauguración", "Lanzamiento de marca", "Gala o cena de empresa"];
+      const other = ["Cumpleaños", "Aniversario"];
+      document.querySelectorAll('[data-choice-group="eventType"] .choice').forEach((choice) => {
+        const matches = choice.dataset.value === eventName || (corporate.includes(eventName) && choice.dataset.value === "Corporativo / marca") || (other.includes(eventName) && choice.dataset.value === "Otro");
+        choice.classList.toggle("active", matches);
+        if (matches) state.eventType = choice.dataset.value;
+      });
+    }
+
+    function showEventDetail(eventName, pill) {
+      const data = eventData[eventName];
+      if (!data) return;
+      document.querySelectorAll(".event-pill").forEach((item) => item.classList.remove("active"));
+      pill.classList.add("active");
+      detailKicker.textContent = data.kicker;
+      detailTitle.textContent = data.title;
+      detailCopy.textContent = data.copy;
+      detailOptions.innerHTML = data.options.map((item) => "<span>" + item + "</span>").join("");
+      detailNote.textContent = data.note;
+      detailWhatsApp.innerHTML = data.cta + ' <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>';
+      detailWhatsApp.href = makeWhatsAppUrl(eventName, "Información y propuesta para " + eventName);
+      eventDetail.classList.add("open");
+      state.eventType = eventName;
+      syncEventChoice(eventName);
+      if (innerWidth < 901) eventDetail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    document.querySelectorAll(".event-pill").forEach((pill) => pill.addEventListener("click", () => showEventDetail(pill.dataset.event, pill)));
+
+    document.querySelectorAll(".more-events").forEach((button) => button.addEventListener("click", () => {
+      const target = document.getElementById(button.dataset.target);
+      const visible = target.classList.toggle("visible");
+      button.textContent = visible ? "− Ver menos formatos" : "+ Ver todos los formatos";
+    }));
+
+    document.querySelectorAll(".service-photo-content button").forEach((button) => button.addEventListener("click", () => {
+      const selectedService = solutionMap[button.dataset.solution] || "Necesito orientación";
+      state.service = selectedService;
+      document.querySelectorAll('[data-choice-group="service"] .choice').forEach((choice) => choice.classList.toggle("active", choice.dataset.value === selectedService));
+      document.getElementById("cotiza").scrollIntoView({ behavior: "smooth" });
+    }));
+
+    document.querySelectorAll("[data-choice-group]").forEach((group) => {
+      const groupName = group.dataset.choiceGroup;
+      group.querySelectorAll(".choice").forEach((choice) => choice.addEventListener("click", () => {
+        group.querySelectorAll(".choice").forEach((item) => item.classList.remove("active"));
+        choice.classList.add("active");
+        state[groupName] = choice.dataset.value;
+        validation.textContent = "";
+      }));
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!state.eventType || !state.service) {
+        validation.textContent = "Elige qué quieres celebrar y qué necesitas para continuar.";
+        return;
+      }
+      const rawDate = document.getElementById("event-date").value;
+      const date = rawDate ? new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "long", year: "numeric" }).format(new Date(rawDate + "T12:00:00")) : "Aún por definir";
+      const message = [
+        "Hola César, me gustaría solicitar una cotización para mi evento.", "",
+        "Tipo de evento: " + state.eventType,
+        "Servicio de interés: " + state.service,
+        "Fecha: " + date,
+        "Ubicación: " + (state.location || "Aún por definir"), "",
+        "¿Tienes disponibilidad y me puedes compartir una propuesta?"
+      ].join("\n");
+      window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("open");
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+    document.querySelectorAll(".mobile-menu a").forEach((link) => link.addEventListener("click", closeMobileMenu));
+
+    const navLinks = [...document.querySelectorAll(".desktop-nav a")];
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const link = document.querySelector('.desktop-nav a[href="#' + entry.target.id + '"]');
+      if (link) { navLinks.forEach((item) => item.classList.remove("active")); link.classList.add("active"); }
+    }), { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add("on"); observer.unobserve(entry.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+    let lastY = 0;
     addEventListener("scroll", () => {
       const y = scrollY;
-
-      if (y > lastY && y > 120) {
-        nav.classList.add("off");
-      } else {
-        nav.classList.remove("off");
-      }
-
+      header.classList.toggle("scrolled", y > 12);
+      if (y > lastY && y > 170 && !mobileMenu.classList.contains("open")) header.classList.add("off"); else header.classList.remove("off");
       lastY = y;
     }, { passive: true });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("on");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .12 });
-
-    document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
-
-    const modes = [...document.querySelectorAll(".mode")];
-    const picks = [...document.querySelectorAll(".pick")];
-    const context = document.getElementById("eventContext");
-    const whatsapp = document.getElementById("whatsapp");
-    const mailLink = document.getElementById("mailLink");
-    const contact = document.querySelector(".contact");
-    const gallery = document.getElementById("gallery");
-    const progressItems = [...document.querySelectorAll(".gallery-progress span")];
-
-    let service = "Solo DJ";
-    let eventType = "Bodas";
-    let selectionTimer;
-
-    function animateSelection() {
-      contact.classList.add("has-selection");
-
-      clearTimeout(selectionTimer);
-
-      selectionTimer = setTimeout(() => {
-        contact.classList.remove("has-selection");
-      }, 850);
-    }
-
-    function makeMessage() {
-      const details = context.value.trim();
-
-      const whatsappMessage =
-        "Hola César, quiero reservar fecha para mi evento." +
-        "\n\nTipo de evento: " + eventType +
-        "\nPaquete: " + service +
-        (details ? "\nDetalles: " + details : "") +
-        "\n\n¿Tienes disponibilidad?";
-
-      whatsapp.href =
-        "https://wa.me/525624685267?text=" +
-        encodeURIComponent(whatsappMessage);
-
-      const mailSubject = "Solicitud de información - DJ César Channel";
-      const mailBody =
-        "Hola César," +
-        "\n\nQuiero solicitar información para mi evento." +
-        "\n\nTipo de evento: " + eventType +
-        "\nPaquete: " + service +
-        (details ? "\nDetalles: " + details : "") +
-        "\n\nQuedo atento. Gracias.";
-
-      mailLink.href =
-        "mailto:cesarmejiacarballo43@gmail.com?subject=" +
-        encodeURIComponent(mailSubject) +
-        "&body=" +
-        encodeURIComponent(mailBody);
-    }
-
-    function updateGalleryProgress() {
-      if (!gallery || !progressItems.length || innerWidth > 800) return;
-
-      const frameWidth = gallery.querySelector(".frame").offsetWidth;
-      const gap = 12;
-      const index = Math.round(gallery.scrollLeft / (frameWidth + gap));
-
-      progressItems.forEach((item, itemIndex) => {
-        item.classList.toggle("active", itemIndex === Math.min(index, progressItems.length - 1));
-      });
-    }
-
-    modes.forEach((mode) => {
-      mode.addEventListener("click", () => {
-        modes.forEach((item) => {
-          item.classList.remove("active");
-          item.setAttribute("aria-checked", "false");
-        });
-
-        mode.classList.add("active");
-        mode.setAttribute("aria-checked", "true");
-        service = mode.dataset.service;
-
-        makeMessage();
-        animateSelection();
-      });
-
-      mode.addEventListener("keydown", (event) => {
-        const index = modes.indexOf(mode);
-
-        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-          event.preventDefault();
-          modes[(index + 1) % modes.length].focus();
-          modes[(index + 1) % modes.length].click();
-        }
-
-        if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-          event.preventDefault();
-          modes[(index - 1 + modes.length) % modes.length].focus();
-          modes[(index - 1 + modes.length) % modes.length].click();
-        }
-      });
-    });
-
-    picks.forEach((pick) => {
-      pick.addEventListener("click", () => {
-        picks.forEach((item) => {
-          item.classList.remove("active");
-          item.setAttribute("aria-pressed", "false");
-        });
-
-        pick.classList.add("active");
-        pick.setAttribute("aria-pressed", "true");
-        eventType = pick.dataset.event;
-
-        makeMessage();
-        animateSelection();
-      });
-    });
-
-    context.addEventListener("input", makeMessage);
-
-    gallery?.addEventListener("scroll", updateGalleryProgress, { passive: true });
-    addEventListener("resize", updateGalleryProgress, { passive: true });
-
-    makeMessage();
-    updateGalleryProgress();
-
-    const video = document.getElementById("heroVideo");
-
-    if (video) {
-      video.muted = true;
-      video.play().catch(() => {});
-    }
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
