@@ -67,17 +67,13 @@
     .header { position: relative; z-index: 50; min-height: 120px; padding: 17px var(--gutter) 0; border-bottom: 1px solid var(--line); background: var(--white); }
     .header-inner { display: grid; max-width: 1440px; min-height: 102px; margin: 0 auto; grid-template-columns: minmax(260px, 1fr) auto; grid-template-rows: 42px 60px; column-gap: 30px; }
     .brand { display: flex; grid-row: 1 / 3; align-items: center; gap: 14px; width: fit-content; }
-    .brand-mark { position: relative; display: grid; width: 58px; height: 58px; flex: 0 0 58px; place-items: center; }
-    .brand-mark::before { position: absolute; width: 48px; height: 48px; border: 2px solid var(--ink); border-radius: 50%; content: ""; transition: border-color .25s ease, box-shadow .25s ease, transform .35s var(--ease); }
-    .brand-mark::after { position: absolute; width: 28px; height: 28px; border: 2px solid var(--ink); border-radius: 50%; content: ""; transform: translate(-5px, -4px); transition: border-color .25s ease, transform .35s var(--ease); }
-    .brand:hover .brand-mark::before { border-color: var(--coral); box-shadow: 0 0 0 7px rgba(243, 115, 53, .11); transform: rotate(14deg) scale(1.06); }
-    .brand:hover .brand-mark::after { border-color: var(--coral); transform: translate(-2px, -2px) rotate(-14deg); }
-    .brand-logo { width: 47px; height: 47px; object-fit: contain; }
+    .brand-mark { display: grid; width: 58px; height: 58px; flex: 0 0 58px; place-items: center; }
+    .brand-logo { width: 47px; height: 47px; object-fit: contain; transition: filter .25s ease, transform .28s var(--ease); }
+    .brand:hover .brand-logo { filter: sepia(.25) saturate(1.16); transform: translateY(-2px); }
     .brand-name { color: var(--ink); font-size: clamp(25px, 2.7vw, 39px); font-weight: 700; letter-spacing: -.07em; line-height: .88; text-transform: uppercase; }
     .top-actions { display: flex; grid-column: 2; align-items: center; justify-content: flex-end; gap: 18px; }
     .top-link { display: inline-grid; width: 26px; height: 26px; place-items: center; color: var(--ink); font-size: 17px; transition: color .2s ease, transform .2s var(--ease); }
     .top-link:hover { color: var(--coral); transform: translateY(-2px); }
-    .top-divider { width: 1px; height: 18px; background: var(--line); }
     .main-nav { display: flex; grid-column: 2; align-items: end; justify-content: flex-end; gap: 0; }
     .main-nav a { display: flex; min-height: 49px; align-items: center; padding: 0 19px; color: var(--ink); font-size: 15px; font-weight: 500; transition: background .2s ease, color .2s ease; }
     .main-nav a:hover, .main-nav a.active { background: var(--coral); color: #fff; }
@@ -198,7 +194,8 @@
     .footer-socials { display: flex; gap: 7px; }
     .footer-socials a { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink-soft); font-size: 13px; transition: border-color .2s ease, color .2s ease, transform .2s var(--ease); }
     .footer-socials a:hover { border-color: var(--coral); color: var(--coral-dark); transform: translateY(-2px); }
-    .mobile-whatsapp { position: fixed; z-index: 42; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .68); border-radius: 999px; background: var(--coral); box-shadow: 0 12px 27px rgba(176, 65, 24, .3); color: #fff; font-size: 13px; font-weight: 700; }
+    .mobile-whatsapp { position: fixed; z-index: 42; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .68); border-radius: 999px; background: var(--coral); box-shadow: 0 12px 27px rgba(176, 65, 24, .3); color: #fff; font-size: 13px; font-weight: 700; transition: opacity .22s ease, transform .22s var(--ease), visibility .22s ease; }
+    .mobile-whatsapp.is-hidden { visibility: hidden; opacity: 0; pointer-events: none; transform: translateY(16px); }
 
     /* Service modal */
     .service-modal { position: fixed; z-index: 100; inset: 0; display: grid; overflow-y: auto; padding: clamp(14px, 3vw, 38px); background: rgba(21, 18, 16, .58); opacity: 0; pointer-events: none; transition: opacity .25s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
@@ -218,7 +215,7 @@
     .modal-intro { max-width: 49ch; margin: 25px 0 0; color: var(--ink); font-size: 18px; font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
     .modal-body { max-width: 54ch; margin: 16px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
     .modal-list-title { margin: 26px 0 11px; color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-    .modal-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .modal-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
     .modal-list span { padding: 9px 11px; border: 1px solid rgba(243, 115, 53, .19); border-radius: 999px; background: #fff1e8; color: var(--coral-dark); font-family: var(--mono); font-size: 8px; letter-spacing: .025em; line-height: 1.35; text-transform: uppercase; }
     .modal-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
 
@@ -234,8 +231,6 @@
       .header-inner { display: flex; min-height: 56px; align-items: center; }
       .brand { gap: 9px; }
       .brand-mark { width: 44px; height: 44px; flex-basis: 44px; }
-      .brand-mark::before { width: 37px; height: 37px; border-width: 1.5px; }
-      .brand-mark::after { width: 21px; height: 21px; border-width: 1.5px; transform: translate(-4px, -3px); }
       .brand-logo { width: 35px; height: 35px; }
       .brand-name { font-size: 23px; }
       .top-actions, .main-nav { display: none; }
@@ -298,16 +293,16 @@
       footer p { display: none; }
       .mobile-whatsapp { display: inline-flex; }
       .service-modal { padding: 0; }
-      .modal-dialog { min-height: 100svh; border-radius: 0; }
+      .modal-dialog { min-height: 100dvh; border-radius: 0; }
       .modal-grid { display: block; }
       .modal-photo { min-height: 260px; height: 37svh; }
       .modal-photo img { min-height: 0; }
-      .modal-content { padding: 36px 23px 110px; }
+      .modal-content { padding: 36px 23px calc(34px + env(safe-area-inset-bottom)); }
       .modal-back { top: 15px; left: 15px; }
       .modal-close { top: 14px; right: 14px; }
       .modal-content h2 { font-size: clamp(39px, 11vw, 58px); }
       .modal-intro { font-size: 17px; }
-      .modal-actions { position: fixed; z-index: 4; right: 0; bottom: 0; left: 0; margin: 0; padding: 12px 16px max(12px, env(safe-area-inset-bottom)); background: rgba(251, 247, 242, .94); box-shadow: 0 -8px 21px rgba(42, 28, 20, .09); backdrop-filter: blur(12px); }
+      .modal-actions { position: static; z-index: auto; right: auto; bottom: auto; left: auto; display: block; margin-top: 28px; padding: 0; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
       .modal-actions .button { width: 100%; }
     }
 
@@ -428,14 +423,8 @@
             <h3 class="step-title">¿Quién eres?</h3>
             <p class="step-help">Así entendemos mejor el tipo de propuesta que necesitas.</p>
             <div class="persona-grid">
-              <button class="persona-card" type="button" data-persona="Empresa / profesional">
-                <i class="fa-solid fa-building" aria-hidden="true"></i>
-                <span><strong>Empresa / profesional</strong><span>Organizo un evento de marca, empresa o institución.</span></span>
-              </button>
-              <button class="persona-card" type="button" data-persona="Particular">
-                <i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i>
-                <span><strong>Particular</strong><span>Estoy organizando una boda, fiesta o celebración personal.</span></span>
-              </button>
+              <button class="persona-card" type="button" data-persona="Empresa / profesional"><i class="fa-solid fa-building" aria-hidden="true"></i><span><strong>Empresa / profesional</strong><span>Organizo un evento de marca, empresa o institución.</span></span></button>
+              <button class="persona-card" type="button" data-persona="Particular"><i class="fa-solid fa-champagne-glasses" aria-hidden="true"></i><span><strong>Particular</strong><span>Estoy organizando una boda, fiesta o celebración personal.</span></span></button>
             </div>
             <div class="funnel-actions"><span></span><button class="button next" type="button" data-next="2">Siguiente <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
           </div>
@@ -466,12 +455,8 @@
             <h3 class="step-title">¿Cuándo y dónde?</h3>
             <p class="step-help">Con una fecha aproximada y la zona podemos empezar a revisar opciones.</p>
             <div class="details-grid">
-              <label class="field-label">Fecha del evento
-                <input id="event-date" type="date" />
-              </label>
-              <label class="field-label">Invitados aproximados <span style="opacity:.55; text-transform:none;">(opcional)</span>
-                <input id="event-guests" type="text" maxlength="40" placeholder="Ej. 120 personas" />
-              </label>
+              <label class="field-label">Fecha del evento<input id="event-date" type="date" /></label>
+              <label class="field-label">Invitados aproximados <span style="opacity:.55; text-transform:none;">(opcional)</span><input id="event-guests" type="text" maxlength="40" placeholder="Ej. 120 personas" /></label>
             </div>
             <div class="location-field">
               <p class="field-label" style="margin:0 0 10px;">Zona</p>
@@ -481,9 +466,7 @@
                 <button class="choice" type="button" data-location="Fuera de CDMX">Fuera de CDMX</button>
               </div>
             </div>
-            <label class="field-label notes-field">¿Algo más que debamos saber? <span style="opacity:.55; text-transform:none;">(opcional)</span>
-              <textarea id="event-notes" maxlength="300" placeholder="Lugar, horario, estilo, artistas que te interesan o cualquier idea."></textarea>
-            </label>
+            <label class="field-label notes-field">¿Algo más que debamos saber? <span style="opacity:.55; text-transform:none;">(opcional)</span><textarea id="event-notes" maxlength="300" placeholder="Lugar, horario, estilo, artistas que te interesan o cualquier idea."></textarea></label>
             <div class="funnel-actions"><button class="back" type="button" data-back="3"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Atrás</button><button class="button" id="send-whatsapp" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotizar por WhatsApp</button></div>
             <p class="validation" id="funnel-validation" role="alert"></p>
             <p class="tiny-note">Al continuar se abrirá WhatsApp con los datos que seleccionaste. No guardamos tu información en esta web.</p>
@@ -600,14 +583,7 @@
       }
     };
 
-    const funnel = {
-      current: 1,
-      persona: "",
-      event: "",
-      needs: [],
-      location: ""
-    };
-
+    const funnel = { current: 1, persona: "", event: "", needs: [], location: "" };
     const eventOptions = {
       "Empresa / profesional": ["Convención o congreso", "Inauguración", "Lanzamiento de marca", "Afterwork", "Cena o gala", "Fiesta de fin de año", "Activación o evento especial", "Otro"],
       "Particular": ["Boda", "Fiesta privada", "Cumpleaños", "Aniversario", "Graduación", "Reunión familiar", "Otro"]
@@ -693,7 +669,7 @@
       funnel.location = button.dataset.location;
     }));
 
-    function validateStep(nextStep) {
+    function validateStep() {
       if (funnel.current === 1 && !funnel.persona) return "Elige si organizas el evento como empresa/profesional o particular.";
       if (funnel.current === 2 && !funnel.event) return "Elige la opción más cercana al evento que quieres celebrar.";
       if (funnel.current === 3 && !funnel.needs.length) return "Elige al menos una opción o selecciona “Quiero orientación”.";
@@ -701,7 +677,7 @@
     }
 
     document.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", () => {
-      const error = validateStep(Number(button.dataset.next));
+      const error = validateStep();
       if (error) {
         const step = button.closest(".funnel-step");
         const helper = step.querySelector(".step-help");
@@ -724,7 +700,7 @@
       const date = rawDate ? new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "long", year: "numeric" }).format(new Date(rawDate + "T12:00:00")) : "Aún no tengo fecha definida";
       const guests = document.getElementById("event-guests").value.trim() || "Aún por definir";
       const notes = document.getElementById("event-notes").value.trim() || "Sin detalles adicionales";
-      const url = whatsappUrl([
+      window.open(whatsappUrl([
         "Hola César, me gustaría solicitar una cotización.", "",
         "Soy: " + funnel.persona,
         "Evento: " + funnel.event,
@@ -735,8 +711,7 @@
         "Detalles: " + notes,
         "",
         "¿Tienes disponibilidad y me puedes compartir una propuesta?"
-      ]);
-      window.open(url, "_blank", "noopener,noreferrer");
+      ]), "_blank", "noopener,noreferrer");
     });
 
     function closeMobileNav() {
@@ -773,6 +748,15 @@
       }
     }), { threshold: .12 });
     document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+    const footer = document.querySelector("footer");
+    const mobileWhatsapp = document.querySelector(".mobile-whatsapp");
+    if (footer && mobileWhatsapp) {
+      const footerObserver = new IntersectionObserver(([entry]) => {
+        mobileWhatsapp.classList.toggle("is-hidden", entry.isIntersecting);
+      }, { threshold: 0.15 });
+      footerObserver.observe(footer);
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
