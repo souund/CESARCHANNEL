@@ -47,7 +47,7 @@
       --header-border: rgba(23, 22, 21, .14);
       --header-shadow: transparent;
       --surface-card: rgba(255, 255, 255, .48);
-      --funnel-card: rgba(255, 252, 248, .73);
+      --funnel-card: rgba(255, 252, 248, .78);
       --modal-surface: var(--paper);
       --modal-chip-bg: #fff1e8;
       --modal-chip-line: rgba(243, 115, 53, .19);
@@ -77,7 +77,7 @@
       --header-border: rgba(247, 240, 231, .13);
       --header-shadow: rgba(0, 0, 0, .3);
       --surface-card: rgba(255, 255, 255, .06);
-      --funnel-card: rgba(30, 22, 26, .84);
+      --funnel-card: rgba(30, 22, 26, .86);
       --modal-surface: #1c171a;
       --modal-chip-bg: rgba(255, 111, 125, .14);
       --modal-chip-line: rgba(255, 111, 125, .3);
@@ -157,18 +157,18 @@
     .service-detail-trigger:hover { color: var(--coral-dark); transform: translateY(-2px); }
     .service-detail-trigger:hover i { transform: translateX(4px); }
 
-    .funnel { position: relative; padding: clamp(75px, 10vw, 130px) 0; overflow: hidden; background: radial-gradient(circle at 12% 14%, rgba(255, 232, 179, .38) 0 2%, transparent 26%), radial-gradient(circle at 87% 78%, rgba(170, 143, 211, .36) 0 3%, transparent 30%), linear-gradient(125deg, #f5c69e 0%, #f39d71 48%, #dc785d 100%); transition: background .32s ease; }
-    html[data-theme="dark"] .funnel { background: radial-gradient(circle at 12% 14%, rgba(255, 177, 125, .18) 0 2%, transparent 26%), radial-gradient(circle at 87% 78%, rgba(171, 140, 227, .20) 0 3%, transparent 30%), linear-gradient(125deg, #51291e 0%, #7c3927 50%, #4b2924 100%); }
-    .funnel::before { position: absolute; inset: 0; border: 0; border-radius: 0; background-image: linear-gradient(125deg, transparent 0 47%, rgba(255, 255, 255, .16) 47.2% 47.45%, transparent 47.65% 100%), radial-gradient(rgba(91, 47, 31, .20) .75px, transparent .75px); background-size: 100% 100%, 8px 8px; content: ""; opacity: .45; pointer-events: none; }
-    .funnel::after { position: absolute; bottom: -200px; left: 5%; width: 420px; height: 420px; border-radius: 50%; background: rgba(178, 158, 211, .30); content: ""; filter: blur(42px); pointer-events: none; }
+    .funnel { position: relative; padding: clamp(75px, 10vw, 130px) 0; overflow: hidden; background: linear-gradient(135deg, #ea835d 0%, #f4aa78 43%, #d96650 100%); transition: background .32s ease; }
+    html[data-theme="dark"] .funnel { background: linear-gradient(135deg, #452820 0%, #773f31 48%, #37242a 100%); }
+    .funnel::before { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .085) 0 1px, transparent 1px 24px), repeating-linear-gradient(45deg, rgba(86, 41, 29, .06) 0 1px, transparent 1px 24px); content: ""; opacity: .75; pointer-events: none; }
+    .funnel::after { position: absolute; top: -16vw; right: -12vw; width: min(52vw, 690px); height: min(52vw, 690px); border: 1px solid rgba(255, 245, 233, .42); border-radius: 50%; box-shadow: 0 0 0 42px rgba(255, 245, 233, .055), 0 0 0 84px rgba(255, 245, 233, .035), 0 0 0 126px rgba(255, 245, 233, .025); content: ""; opacity: .9; pointer-events: none; }
     .funnel-shell { position: relative; z-index: 1; }
     .funnel-head { max-width: 680px; margin-bottom: 34px; }
     .funnel-head .eyebrow { color: rgba(76, 37, 25, .88); }
     html[data-theme="dark"] .funnel-head .eyebrow { color: #ffb090; }
     .funnel-head h2 { margin: 10px 0 13px; font-size: clamp(43px, 6vw, 78px); font-weight: 700; letter-spacing: -.08em; line-height: .85; text-transform: uppercase; }
-    .funnel-head p:not(.eyebrow) { max-width: 49ch; margin: 0; color: rgba(49, 29, 23, .76); font-size: 16px; line-height: 1.57; }
+    .funnel-head p:not(.eyebrow) { max-width: 49ch; margin: 0; color: rgba(49, 29, 23, .80); font-size: 16px; line-height: 1.57; }
     html[data-theme="dark"] .funnel-head p:not(.eyebrow) { color: rgba(255, 237, 227, .78); }
-    .funnel-ui { max-width: 950px; padding: clamp(22px, 3.2vw, 38px); border: 1px solid rgba(255, 255, 255, .67); border-radius: 25px; background: var(--funnel-card); box-shadow: 0 18px 46px rgba(102, 47, 28, .14); backdrop-filter: blur(20px) saturate(135%); -webkit-backdrop-filter: blur(20px) saturate(135%); transition: background .32s ease, border-color .32s ease; }
+    .funnel-ui { max-width: 950px; padding: clamp(22px, 3.2vw, 38px); border: 1px solid rgba(255, 255, 255, .72); border-radius: 25px; background: var(--funnel-card); box-shadow: 0 18px 46px rgba(102, 47, 28, .17); backdrop-filter: blur(20px) saturate(135%); -webkit-backdrop-filter: blur(20px) saturate(135%); transition: background .32s ease, border-color .32s ease; }
     .progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 32px; }
     .progress-item { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-family: var(--mono); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; opacity: .66; }
     .progress-item::before { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border: 1px solid var(--line); border-radius: 50%; content: attr(data-step); font-size: 8px; }
@@ -290,10 +290,12 @@
       .mobile-nav.open { opacity: 1; pointer-events: auto; transform: none; }
       .mobile-nav a:not(.button) { padding: 12px 0; color: var(--ink); font-size: clamp(34px, 11vw, 52px); font-weight: 700; letter-spacing: -.075em; line-height: .95; }
       .mobile-nav .button { width: 100%; margin-top: 18px; }
-      .mobile-socials { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); }
-      .mobile-socials a, .mobile-socials .mobile-theme-toggle { display: grid; width: 44px; height: 44px; min-width: 44px; min-height: 44px; place-items: center; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--ink); font-size: 16px; line-height: 1; box-shadow: none; }
-      .mobile-socials .mobile-theme-toggle { margin-left: auto; }
-      .mobile-socials a:hover, .mobile-socials .mobile-theme-toggle:hover { border-color: var(--coral); background: rgba(243, 115, 53, .10); color: var(--coral); transform: translateY(-2px); }
+      .mobile-socials { display: flex; align-items: center; gap: 18px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); }
+      .mobile-socials a { display: inline-flex; width: 28px; height: 34px; flex: 0 0 28px; align-items: center; justify-content: center; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--ink); font-size: 28px; line-height: 1; transition: color .2s ease, transform .2s var(--ease); }
+      .mobile-socials a i { display: block; width: 1em; height: 1em; margin: 0; line-height: 1; text-align: center; }
+      .mobile-socials a:hover { color: var(--coral); transform: translateY(-2px); }
+      .mobile-socials .mobile-theme-toggle { display: inline-flex; width: 42px; height: 42px; min-width: 42px; min-height: 42px; flex: 0 0 42px; align-items: center; justify-content: center; margin: 0 0 0 auto; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--ink); font-size: 16px; line-height: 1; box-shadow: none; }
+      .mobile-socials .mobile-theme-toggle:hover { border-color: var(--coral); background: rgba(243, 115, 53, .10); color: var(--coral); transform: translateY(-2px); }
       .hero { min-height: 580px; }
       .hero-content { min-height: 580px; padding: 35px var(--gutter) clamp(44px, 12vw, 72px); }
       .hero-actions { margin-top: 0; }
@@ -308,8 +310,8 @@
       .service-card h3 { margin-top: 21px; font-size: 26px; }
       .service-card p { max-width: 27ch; font-size: 15px; }
       .funnel { padding: 67px 0 75px; }
-      .funnel::before { background-size: 100% 100%, 7px 7px; opacity: .36; }
-      .funnel::after { bottom: -190px; left: -85px; width: 340px; height: 340px; filter: blur(38px); }
+      .funnel::before { background-size: auto, auto; opacity: .58; }
+      .funnel::after { top: -150px; right: -190px; width: 410px; height: 410px; box-shadow: 0 0 0 28px rgba(255, 245, 233, .055), 0 0 0 56px rgba(255, 245, 233, .035), 0 0 0 84px rgba(255, 245, 233, .025); }
       .funnel-head { margin-bottom: 26px; }
       .funnel-head h2 { font-size: clamp(40px, 12vw, 58px); }
       .funnel-ui { padding: 21px; border-radius: 21px; }
@@ -329,8 +331,8 @@
       .funnel-actions .button { width: auto; }
       .about { padding: 69px 0 80px; }
       .about-layout { grid-template-columns: 1fr; gap: 39px; }
-      .about-photo { width: 100%; }
-      .about-photo-frame { border-radius: 25px; aspect-ratio: 4 / 4.5; }
+      .about-photo { width: min(100%, 520px); margin-right: auto; margin-left: auto; }
+      .about-photo-frame { margin-right: auto; margin-left: auto; border-radius: 25px; aspect-ratio: 4 / 4.5; }
       .about-kicker { right: 11px; bottom: -15px; }
       .about-copy h2 { font-size: clamp(41px, 12.4vw, 60px); }
       .about-copy .lead { font-size: 20px; }
