@@ -14,454 +14,25 @@
   <title>DJ César Channel | Eventos en CDMX</title>
 
   <script>
-    (function () {
-      try {
-        const savedTheme = localStorage.getItem("cesar-channel-theme");
-        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = savedTheme || preferredTheme;
-      } catch (error) {}
-    })();
+    // Tema optimizado - inline crítico
+    (function(){try{const t=localStorage.getItem("cesar-channel-theme")||(window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}})();
   </script>
 
   <link rel="icon" type="image/png" href="assets/img/favicon-32.png" />
-  <link rel="preload" as="image" href="assets/img/hero-poster.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
-    /* ===== ROOT & BASE ===== */
-    :root {
-      --ink: #1a1512;
-      --ink-soft: #6d6058;
-      --paper: #fbf6ee;
-      --paper-deep: #f0e3d3;
-      --white: #fffefb;
-      --coral: #f2673a;
-      --coral-dark: #c8481c;
-      --sage: #4f8577;
-      --sage-dark: #2c5a4e;
-      --apricot: #f6b685;
-      --lavender: #b39fd1;
-      --line: rgba(23, 22, 21, .14);
-      --header-border: rgba(23, 22, 21, .14);
-      --header-shadow: transparent;
-      --surface-card: rgba(255, 255, 255, .48);
-      --funnel-card: rgba(255, 252, 248, .78);
-      --modal-surface: var(--paper);
-      --modal-chip-bg: #fff1e8;
-      --modal-chip-line: rgba(243, 115, 53, .19);
-      --hero-overlay: linear-gradient(180deg, rgba(7, 6, 5, .06) 0%, rgba(7, 6, 5, .2) 100%);
-      --modal-backdrop: rgba(21, 18, 16, .58);
-      --footer-bg: var(--white);
-      --sans: "DM Sans", sans-serif;
-      --mono: "Space Mono", monospace;
-      --ease: cubic-bezier(.16, 1, .3, 1);
-      --wide: min(1320px, 92vw);
-      --gutter: 3.5vw;
-    }
-
-    html[data-theme="dark"] {
-      --ink: #f7f0e7;
-      --ink-soft: #cabdb0;
-      --paper: #121013;
-      --paper-deep: #221c22;
-      --white: #1c171a;
-      --coral: #ff6f7d;
-      --coral-dark: #ffb199;
-      --sage: #3fa392;
-      --sage-dark: #17423b;
-      --apricot: #f0995f;
-      --lavender: #ab8ce3;
-      --line: rgba(247, 240, 231, .15);
-      --header-border: rgba(247, 240, 231, .13);
-      --header-shadow: rgba(0, 0, 0, .3);
-      --surface-card: rgba(255, 255, 255, .06);
-      --funnel-card: rgba(30, 22, 26, .86);
-      --modal-surface: #1c171a;
-      --modal-chip-bg: rgba(255, 111, 125, .14);
-      --modal-chip-line: rgba(255, 111, 125, .3);
-      --hero-overlay: linear-gradient(180deg, rgba(4, 3, 5, .25) 0%, rgba(4, 3, 5, .52) 100%);
-      --modal-backdrop: rgba(0, 0, 0, .78);
-      --footer-bg: #1c171a;
-    }
-
-    * { box-sizing: border-box; }
-    html { background: var(--paper); scroll-behavior: smooth; scroll-padding-top: 110px; }
-    body { min-width: 320px; margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; transition: background .32s ease, color .32s ease; }
-    body.modal-open { overflow: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; }
-    button { border: 0; }
-    img { display: block; max-width: 100%; }
-    button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
-    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(243, 115, 53, .48); outline-offset: 4px; }
-    .shell { width: var(--wide); margin: 0 auto; }
-    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    .eyebrow { margin: 0; color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .085em; line-height: 1.5; text-transform: uppercase; }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .68s var(--ease), transform .68s var(--ease); }
-    .reveal.on { opacity: 1; transform: none; }
-
-    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 9px; padding: 13px 20px; border: 1px solid var(--coral); border-radius: 999px; background: var(--coral); box-shadow: 0 9px 20px rgba(203, 78, 23, .20); color: #fff; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: -.015em; transition: background .22s ease, border-color .22s ease, color .22s ease, box-shadow .25s ease, transform .25s var(--ease); }
-    .button:hover { border-color: var(--coral-dark); background: var(--coral-dark); box-shadow: 0 13px 28px rgba(203, 78, 23, .28); transform: translateY(-3px); }
-    .button.light { border-color: #1d1a18; background: rgba(255, 255, 255, .96); box-shadow: 0 7px 15px rgba(0, 0, 0, .12); color: #171615; }
-    .button.light:hover { border-color: var(--coral); background: var(--coral); color: #fff; }
-    .button.ghost { border-color: rgba(255, 255, 255, .62); background: rgba(255, 255, 255, .12); box-shadow: none; color: #fff; }
-    .button.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .22); }
-
-    /* ===== HEADER & NAV ===== */
-    .header { position: relative; z-index: 50; min-height: 120px; padding: 17px var(--gutter) 0; border-bottom: 1px solid var(--header-border); background: var(--white); box-shadow: 0 2px 14px var(--header-shadow); transition: background .32s ease, border-color .32s ease, box-shadow .32s ease; }
-    .header-inner { display: grid; max-width: 1440px; min-height: 102px; margin: 0 auto; grid-template-columns: minmax(260px, 1fr) auto; grid-template-rows: 42px 60px; column-gap: 30px; }
-    .brand { display: flex; grid-row: 1 / 3; align-items: center; gap: 14px; width: fit-content; }
-    .brand-mark { display: grid; width: 58px; height: 58px; flex: 0 0 58px; place-items: center; }
-    .brand-logo { width: 47px; height: 47px; object-fit: contain; transition: filter .25s ease, transform .28s var(--ease); }
-    html[data-theme="dark"] .brand-logo { filter: invert(1) brightness(1.4) grayscale(1); }
-    .brand:hover .brand-logo { filter: sepia(.25) saturate(1.16); transform: translateY(-2px); }
-    html[data-theme="dark"] .brand:hover .brand-logo { filter: invert(72%) sepia(48%) saturate(1200%) hue-rotate(330deg) brightness(107%) contrast(102%); }
-    .brand-name { width: clamp(135px, 12vw, 175px); color: var(--ink); font-size: clamp(11px, 1vw, 14px); font-weight: 700; letter-spacing: .02em; line-height: 1.08; text-transform: uppercase; transition: color .32s ease; }
-    .brand-name span { display: block; text-align: left; }
-    .top-actions { display: flex; grid-column: 2; align-items: center; justify-content: flex-end; gap: 18px; }
-    .top-link { display: inline-grid; width: 26px; height: 26px; place-items: center; color: var(--ink); font-size: 17px; transition: color .2s ease, transform .2s var(--ease); }
-    .top-link:hover { color: var(--coral); transform: translateY(-2px); }
-    .theme-toggle { display: inline-grid; width: 30px; height: 30px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; font-size: 13px; transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s var(--ease); }
-    .theme-toggle:hover { border-color: var(--coral); background: rgba(243, 115, 53, .11); color: var(--coral); transform: translateY(-2px); }
-    .main-nav { display: flex; grid-column: 2; align-items: end; justify-content: flex-end; gap: 0; }
-    .main-nav a { display: flex; min-height: 49px; align-items: center; padding: 0 19px; color: var(--ink); font-size: 15px; font-weight: 500; transition: background .2s ease, color .2s ease; }
-    .main-nav a:hover, .main-nav a.active { background: var(--coral); color: #fff; }
-    .menu-toggle { display: none; }
-    .mobile-nav { display: none; }
-
-    /* ===== HERO ===== */
-    .hero { position: relative; min-height: min(720px, 76svh); overflow: hidden; background: #312820; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.03) contrast(1.02); transform: scale(1.01); }
-    html[data-theme="dark"] .hero-video { filter: saturate(.84) brightness(.78) contrast(1.08); }
-    .hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); transition: background .32s ease; }
-    .hero-content { position: relative; z-index: 1; display: grid; min-height: min(720px, 76svh); align-content: end; justify-items: center; padding: 56px var(--gutter) clamp(56px, 9vw, 104px); text-align: center; }
-    .hero-actions { display: flex; justify-content: center; margin-top: 0; }
-    .hero-actions .button { min-width: 195px; }
-
-    /* ===== SERVICES ===== */
-    .services { padding: clamp(72px, 9vw, 116px) 0; background: var(--white); transition: background .32s ease; }
-    .services-head { max-width: 760px; margin: 0 auto 42px; text-align: center; }
-    .services-head h2 { margin: 10px 0 0; font-size: clamp(39px, 5vw, 67px); font-weight: 700; letter-spacing: -.075em; line-height: .9; text-transform: uppercase; }
-    .services-head h2 span { color: var(--coral); }
-    .service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(19px, 2.5vw, 37px); }
-    .service-card { position: relative; display: flex; flex-direction: column; min-width: 0; align-items: center; color: var(--ink); text-align: center; }
-    .service-image-wrap { position: relative; width: min(100%, 245px); overflow: hidden; border-radius: 50%; aspect-ratio: 1; background: var(--paper-deep); box-shadow: 0 10px 22px rgba(51, 35, 27, .09); }
-    .service-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .75s var(--ease), filter .45s ease; }
-    html[data-theme="dark"] .service-image-wrap img { filter: saturate(.75) brightness(.82) contrast(1.04); }
-    .service-image-wrap::after { position: absolute; inset: 0; border: 1px solid var(--line); border-radius: inherit; content: ""; pointer-events: none; transition: box-shadow .35s ease, border-color .3s ease; }
-    .service-card:hover .service-image-wrap img { filter: saturate(1.13) contrast(1.02); transform: scale(1.07); }
-    .service-card:hover .service-image-wrap::after { box-shadow: inset 0 0 0 8px rgba(243, 115, 53, .14); }
-    .service-card h3 { min-height: 48px; margin: 24px 0 13px; color: var(--coral); font-size: clamp(20px, 1.75vw, 28px); font-weight: 700; letter-spacing: -.06em; line-height: .94; text-transform: uppercase; }
-    .service-card p { max-width: 26ch; margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -.025em; line-height: 1.33; }
-    .service-detail-trigger { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; padding: 0; background: transparent; color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 700; transition: color .2s ease, transform .2s var(--ease); }
-    .service-detail-trigger i { color: var(--coral); font-size: 12px; transition: transform .2s var(--ease); }
-    .service-detail-trigger:hover { color: var(--coral-dark); transform: translateY(-2px); }
-    .service-detail-trigger:hover i { transform: translateX(4px); }
-
-    /* ===== FUNNEL (COTIZACIÓN) - MEJORADO ===== */
-    .funnel {
-      position: relative;
-      padding: clamp(75px, 10vw, 130px) 0;
-      overflow: hidden;
-      /* Fondo moderno: degradado vibrante de púrpura a rosa/naranja */
-      background: linear-gradient(135deg, #4a1a5e 0%, #b13b6c 45%, #e8735a 80%, #f6b685 100%);
-      transition: background .32s ease;
-    }
-    html[data-theme="dark"] .funnel {
-      background: linear-gradient(135deg, #1e0a2b 0%, #6b1e47 45%, #9e3e3a 80%, #3f2021 100%);
-    }
-    /* Textura de ondas/brillo sutil para dar sensación de música/luz */
-    .funnel::before {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 8px);
-      content: "";
-      pointer-events: none;
-    }
-    /* Elemento decorativo de "onda" sutil que no compite */
-    .funnel::after {
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: min(60vw, 700px);
-      height: min(60vw, 700px);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 0 0 60px rgba(255, 255, 255, 0.03), 0 0 0 120px rgba(255, 255, 255, 0.01);
-      content: "";
-      pointer-events: none;
-      transform: rotate(25deg);
-    }
-
-    .funnel-shell { position: relative; z-index: 1; }
-    .funnel-head { max-width: 680px; margin-bottom: 34px; }
-    .funnel-head .eyebrow { color: rgba(255, 240, 230, 0.9); }
-    html[data-theme="dark"] .funnel-head .eyebrow { color: #ffb090; }
-    .funnel-head h2 { margin: 10px 0 13px; font-size: clamp(43px, 6vw, 78px); font-weight: 700; letter-spacing: -.08em; line-height: .85; text-transform: uppercase; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.2); }
-    .funnel-head p:not(.eyebrow) { max-width: 49ch; margin: 0; color: rgba(255, 245, 240, 0.9); font-size: 16px; line-height: 1.57; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-    html[data-theme="dark"] .funnel-head p:not(.eyebrow) { color: rgba(255, 237, 227, .85); }
-
-    .funnel-ui {
-      max-width: 950px;
-      padding: clamp(22px, 3.2vw, 38px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 25px;
-      background: var(--funnel-card);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      transition: background .32s ease, border-color .32s ease;
-    }
-    html[data-theme="dark"] .funnel-ui {
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 32px; }
-    .progress-item { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-family: var(--mono); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; opacity: .66; }
-    .progress-item::before { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border: 1px solid var(--line); border-radius: 50%; content: attr(data-step); font-size: 8px; }
-    .progress-item.active { color: var(--ink); opacity: 1; }
-    .progress-item.active::before { border-color: var(--coral); background: var(--coral); color: #fff; }
-    .funnel-step { display: none; animation: step-in .35s var(--ease); }
-    .funnel-step.active { display: block; }
-    @keyframes step-in { from { opacity: 0; transform: translateX(13px); } to { opacity: 1; transform: none; } }
-    .step-title { margin: 0; font-size: clamp(28px, 3.7vw, 43px); font-weight: 700; letter-spacing: -.06em; line-height: .93; text-transform: uppercase; }
-    .step-help { max-width: 55ch; margin: 10px 0 22px; color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
-    .persona-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
-    .persona-card { display: flex; min-height: 148px; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 21px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface-card); color: var(--ink); cursor: pointer; text-align: left; transition: border-color .22s ease, background .22s ease, box-shadow .22s ease, transform .25s var(--ease); }
-    .persona-card i { color: var(--coral); font-size: 22px; }
-    .persona-card strong { display: block; margin-top: 16px; font-size: 18px; letter-spacing: -.04em; }
-    .persona-card span { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 13px; line-height: 1.35; }
-    .persona-card:hover, .persona-card.active { border-color: var(--coral); background: rgba(255, 240, 232, .72); box-shadow: 0 10px 22px rgba(195, 82, 38, .12); transform: translateY(-3px); }
-    html[data-theme="dark"] .persona-card:hover, html[data-theme="dark"] .persona-card.active { background: rgba(255, 128, 80, .13); }
-    .choice-grid { display: flex; flex-wrap: wrap; gap: 9px; }
-    .choice { min-height: 44px; padding: 10px 15px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-card); color: var(--ink); cursor: pointer; font-size: 14px; font-weight: 700; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s var(--ease); }
-    .choice:hover, .choice.active { border-color: var(--coral); background: var(--coral); color: #fff; transform: translateY(-2px); }
-    .funnel-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 29px; }
-    .funnel-actions .back { padding: 10px 0; background: transparent; color: var(--ink-soft); cursor: pointer; font-size: 13px; font-weight: 700; }
-    .funnel-actions .back:hover { color: var(--coral-dark); }
-    .funnel-actions .next { min-width: 136px; }
-    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .field-label { display: block; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .055em; text-transform: uppercase; }
-    .field-label input, .field-label textarea { width: 100%; margin-top: 9px; padding: 11px 0; border: 0; border-bottom: 1px solid var(--line); outline: 0; background: transparent; color: var(--ink); font-family: var(--sans); font-size: 15px; transition: border-color .2s ease; }
-    .field-label input:focus, .field-label textarea:focus { border-color: var(--coral); }
-    .field-label textarea { min-height: 82px; resize: vertical; }
-    .location-field { margin-top: 24px; }
-    .notes-field { margin-top: 22px; }
-    .tiny-note { margin: 19px 0 0; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; line-height: 1.55; text-transform: uppercase; }
-    .validation { min-height: 17px; margin: 0; color: #a33f27; font-family: var(--mono); font-size: 9px; line-height: 1.4; text-transform: uppercase; }
-    html[data-theme="dark"] .validation { color: #ff8f70; }
-
-    /* ===== ABOUT ===== */
-    .about { padding: clamp(77px, 10vw, 130px) 0; background: var(--paper); transition: background .32s ease; }
-    .about-layout { display: grid; grid-template-columns: minmax(0, .93fr) minmax(0, 1.07fr); gap: clamp(33px, 6vw, 93px); align-items: center; }
-    .about-photo { position: relative; width: min(100%, 520px); overflow: visible; }
-    .about-photo-frame { overflow: hidden; border-radius: 31px; aspect-ratio: 4 / 4.6; background: var(--paper-deep); box-shadow: 0 18px 42px rgba(54, 39, 30, .14); }
-    .about-photo-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .85s var(--ease); }
-    .about-photo:hover img { transform: scale(1.04); }
-    .about-kicker { position: absolute; right: -15px; bottom: 26px; max-width: 200px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255, 253, 249, .79); box-shadow: 0 11px 27px rgba(54, 39, 30, .12); color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .04em; line-height: 1.42; text-transform: uppercase; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-    html[data-theme="dark"] .about-kicker { background: rgba(31, 27, 25, .88); }
-    .about-copy h2 { margin: 11px 0 19px; font-size: clamp(42px, 5.8vw, 78px); font-weight: 700; letter-spacing: -.08em; line-height: .86; text-transform: uppercase; }
-    .about-copy h2 span { color: var(--coral); }
-    .about-copy .lead { max-width: 38ch; margin: 0; color: var(--ink); font-size: clamp(18px, 1.7vw, 23px); font-weight: 600; letter-spacing: -.035em; line-height: 1.3; }
-    .about-copy .body { max-width: 49ch; margin: 18px 0 0; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
-    .about-proof { display: flex; flex-wrap: wrap; gap: 9px 18px; margin: 27px 0 0; padding-top: 17px; border-top: 1px solid var(--line); color: var(--ink); font-family: var(--mono); font-size: 10px; letter-spacing: .025em; line-height: 1.5; text-transform: uppercase; }
-    .about-proof span + span::before { margin-right: 18px; color: var(--coral); content: "•"; }
-    .about-network { margin: 11px 0 0; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .055em; line-height: 1.5; text-transform: uppercase; }
-
-    /* ===== CONTACT - MEJORADO ===== */
-    .contact { padding: 0 0 clamp(52px, 7vw, 85px); background: var(--paper); transition: background .32s ease; }
-    .contact-panel {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(51px, 7vw, 92px);
-      border-radius: 32px;
-      /* Nuevo degradado: verde esmeralda a cian/azul vibrante */
-      background: linear-gradient(135deg, #0f4c3a 0%, #1b7a5e 45%, #3a9d8c 75%, #5bb8b3 100%);
-      box-shadow: 0 18px 45px rgba(15, 60, 50, 0.3);
-      color: #fff;
-      text-align: center;
-    }
-    html[data-theme="dark"] .contact-panel {
-      background: linear-gradient(135deg, #0a2d24 0%, #145240 45%, #1f7866 75%, #2e8f89 100%);
-    }
-    .contact-panel::before {
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: min(50vw, 600px);
-      height: min(50vw, 600px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-      content: "";
-      pointer-events: none;
-    }
-    .contact-panel::after {
-      position: absolute;
-      bottom: -40%;
-      left: -10%;
-      width: min(45vw, 550px);
-      height: min(45vw, 550px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
-      content: "";
-      pointer-events: none;
-    }
-    .contact-panel > * { position: relative; z-index: 1; }
-    .contact-panel .eyebrow { color: rgba(255, 255, 255, 0.8); }
-    .contact-panel h2 { max-width: 830px; margin: 10px auto 18px; font-size: clamp(46px, 6.6vw, 91px); font-weight: 700; letter-spacing: -.08em; line-height: .84; text-transform: uppercase; }
-    .contact-panel h2 span { color: #ffd966; }
-    .contact-panel p:not(.eyebrow):not(.contact-meta) { max-width: 490px; margin: 0 auto; color: rgba(255, 255, 255, 0.95); font-size: 17px; line-height: 1.58; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .contact-panel .button { border-color: #ffd966; background: #ffd966; box-shadow: 0 10px 22px rgba(0, 30, 20, 0.25); color: #1a3a32; }
-    .contact-panel .button:hover { border-color: #fff0c7; background: #fff0c7; color: #1a3a32; }
-    .contact-panel .button.ghost { border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.1); box-shadow: none; color: #fff; }
-    .contact-panel .button.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.2); }
-    .contact-meta { margin: 20px 0 0; color: rgba(255, 255, 255, 0.8); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; line-height: 1.5; text-transform: uppercase; }
-
-    /* ===== FOOTER ===== */
-    footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px var(--gutter) calc(22px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--footer-bg); transition: background .32s ease, border-color .32s ease; }
-    .footer-mark { display: grid; width: 38px; height: 38px; place-items: center; }
-    .footer-mark img { width: 34px; height: 34px; object-fit: contain; }
-    html[data-theme="dark"] .footer-mark img { filter: invert(1) brightness(1.4) grayscale(1); }
-    footer p { margin: 0; color: var(--ink-soft); font-family: var(--mono); font-size: 9px; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
-    .footer-socials { display: flex; gap: 7px; }
-    .footer-socials a { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink-soft); font-size: 13px; transition: border-color .2s ease, color .2s ease, transform .2s var(--ease); }
-    .footer-socials a:hover { border-color: var(--coral); color: var(--coral-dark); transform: translateY(-2px); }
-    .mobile-whatsapp { position: fixed; z-index: 42; right: 15px; bottom: max(15px, env(safe-area-inset-bottom)); display: none; min-height: 53px; align-items: center; gap: 8px; padding: 0 17px; border: 1px solid rgba(255, 255, 255, .68); border-radius: 999px; background: var(--coral); box-shadow: 0 12px 27px rgba(176, 65, 24, .3); color: #fff; font-size: 13px; font-weight: 700; transition: opacity .22s ease, transform .22s var(--ease), visibility .22s ease; }
-    .mobile-whatsapp.is-hidden { visibility: hidden; opacity: 0; pointer-events: none; transform: translateY(16px); }
-
-    /* ===== MODAL ===== */
-    .service-modal { position: fixed; z-index: 100; inset: 0; display: grid; overflow-y: auto; padding: clamp(14px, 3vw, 38px); background: var(--modal-backdrop); opacity: 0; pointer-events: none; transition: opacity .25s ease, background .32s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-    .service-modal.open { opacity: 1; pointer-events: auto; }
-    .modal-dialog { position: relative; width: min(1120px, 100%); min-height: min(700px, calc(100svh - 28px)); margin: auto; overflow: hidden; border-radius: 27px; background: var(--modal-surface); box-shadow: 0 25px 70px rgba(0, 0, 0, .28); transform: translateY(16px) scale(.985); transition: transform .32s var(--ease), background .32s ease; }
-    .service-modal.open .modal-dialog { transform: none; }
-    .modal-close { position: absolute; z-index: 3; top: 18px; right: 18px; display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: rgba(255, 253, 249, .78); color: #171615; cursor: pointer; font-size: 19px; box-shadow: 0 5px 15px rgba(0, 0, 0, .1); backdrop-filter: blur(12px); }
-    .modal-back { position: absolute; z-index: 3; top: 20px; left: 21px; display: inline-flex; min-height: 39px; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 253, 249, .78); color: #171615; cursor: pointer; font-size: 12px; font-weight: 700; box-shadow: 0 5px 15px rgba(0, 0, 0, .1); backdrop-filter: blur(12px); }
-    html[data-theme="dark"] .modal-close, html[data-theme="dark"] .modal-back { border-color: rgba(255,255,255,.2); background: rgba(28,25,23,.86); color: #f5eee6; }
-    .modal-grid { display: grid; min-height: inherit; grid-template-columns: minmax(330px, .83fr) minmax(0, 1.17fr); }
-    .modal-photo { position: relative; min-height: 100%; background: var(--paper-deep); }
-    .modal-photo img { width: 100%; height: 100%; min-height: 100%; object-fit: cover; }
-    .modal-photo::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12, 10, 9, .47), transparent 48%); content: ""; }
-    .modal-photo-label { position: absolute; z-index: 1; right: 29px; bottom: 27px; left: 29px; color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
-    .modal-content { padding: clamp(92px, 9vw, 122px) clamp(27px, 5vw, 69px) 38px; }
-    .modal-content .eyebrow { margin-bottom: 12px; }
-    .modal-content h2 { max-width: 13ch; margin: 0; font-size: clamp(42px, 5.4vw, 74px); font-weight: 700; letter-spacing: -.085em; line-height: .84; text-transform: uppercase; }
-    .modal-intro { max-width: 49ch; margin: 25px 0 0; color: var(--ink); font-size: 18px; font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
-    .modal-body { max-width: 54ch; margin: 16px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
-    .modal-list-title { margin: 26px 0 11px; color: var(--coral-dark); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-    .modal-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-    .modal-list span { padding: 9px 11px; border: 1px solid var(--modal-chip-line); border-radius: 999px; background: var(--modal-chip-bg); color: var(--coral-dark); font-family: var(--mono); font-size: 8px; letter-spacing: .025em; line-height: 1.35; text-transform: uppercase; }
-    .modal-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1000px) {
-      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 42px; }
-      .service-image-wrap { width: min(100%, 290px); }
-      .modal-grid { grid-template-columns: .8fr 1.2fr; }
-    }
-
-    @media (max-width: 760px) {
-      :root { --wide: 88vw; --gutter: 6vw; }
-      .header { position: sticky; top: 0; min-height: 72px; padding: 8px var(--gutter); box-shadow: 0 3px 18px var(--header-shadow); }
-      .header-inner { display: flex; min-height: 56px; align-items: center; }
-      .brand { gap: 9px; }
-      .brand-mark { width: 44px; height: 44px; flex-basis: 44px; }
-      .brand-logo { width: 35px; height: 35px; }
-      .brand-name { width: clamp(106px, 31vw, 138px); font-size: clamp(9px, 2.7vw, 11px); line-height: 1.1; }
-      .top-actions, .main-nav { display: none; }
-      .menu-toggle { display: inline-grid; width: 43px; height: 43px; margin-left: auto; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--ink); cursor: pointer; font-size: 17px; }
-      .mobile-nav { position: fixed; z-index: 49; top: 72px; right: 0; left: 0; display: flex; min-height: calc(100svh - 72px); flex-direction: column; padding: 32px var(--gutter); background: var(--paper); opacity: 0; pointer-events: none; transform: translateY(-10px); transition: opacity .25s ease, transform .28s var(--ease), background .32s ease; backdrop-filter: blur(18px); }
-      .mobile-nav.open { opacity: 1; pointer-events: auto; transform: none; }
-      .mobile-nav a:not(.button) { padding: 12px 0; color: var(--ink); font-size: clamp(34px, 11vw, 52px); font-weight: 700; letter-spacing: -.075em; line-height: .95; }
-      .mobile-nav .button { width: 100%; margin-top: 18px; }
-      .mobile-socials { display: flex; align-items: center; gap: 18px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); }
-      .mobile-socials a { display: inline-flex; width: 28px; height: 34px; flex: 0 0 28px; align-items: center; justify-content: center; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--ink); font-size: 28px; line-height: 1; transition: color .2s ease, transform .2s var(--ease); }
-      .mobile-socials a i { display: block; width: 1em; height: 1em; margin: 0; line-height: 1; text-align: center; }
-      .mobile-socials a:hover { color: var(--coral); transform: translateY(-2px); }
-      .mobile-socials .mobile-theme-toggle { display: inline-flex; width: 42px; height: 42px; min-width: 42px; min-height: 42px; flex: 0 0 42px; align-items: center; justify-content: center; margin: 0 0 0 auto; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--white); color: var(--ink); font-size: 16px; line-height: 1; box-shadow: none; }
-      .mobile-socials .mobile-theme-toggle:hover { border-color: var(--coral); background: rgba(243, 115, 53, .10); color: var(--coral); transform: translateY(-2px); }
-      .hero { min-height: 580px; }
-      .hero-content { min-height: 580px; padding: 35px var(--gutter) clamp(44px, 12vw, 72px); }
-      .hero-actions { margin-top: 0; }
-      .hero-actions .button { min-width: 0; }
-      .services { padding: 65px 0 72px; }
-      .services-head { margin-bottom: 34px; }
-      .services-head h2 { font-size: clamp(37px, 11.4vw, 52px); }
-      .service-grid { display: flex; width: calc(100% + 12vw); margin-right: -6vw; margin-left: -6vw; gap: 15px; padding: 0 6vw 14px; overflow-x: auto; scroll-padding-left: 6vw; scroll-snap-type: x mandatory; scrollbar-width: none; }
-      .service-grid::-webkit-scrollbar { display: none; }
-      .service-card { min-width: 80vw; scroll-snap-align: start; }
-      .service-image-wrap { width: min(72vw, 290px); }
-      .service-card h3 { margin-top: 21px; font-size: 26px; }
-      .service-card p { max-width: 27ch; font-size: 15px; }
-      .funnel { padding: 67px 0 75px; }
-      .funnel::before { background-size: auto, auto; opacity: .58; }
-      .funnel::after { top: -150px; right: -190px; width: 410px; height: 410px; box-shadow: 0 0 0 28px rgba(255, 245, 233, .055), 0 0 0 56px rgba(255, 245, 233, .035), 0 0 0 84px rgba(255, 245, 233, .025); }
-      .funnel-head { margin-bottom: 26px; }
-      .funnel-head h2 { font-size: clamp(40px, 12vw, 58px); }
-      .funnel-ui { padding: 21px; border-radius: 21px; }
-      .progress { gap: 4px; margin-bottom: 25px; }
-      .progress-item { justify-content: center; font-size: 0; }
-      .progress-item::before { width: 24px; height: 24px; flex-basis: 24px; font-size: 9px; }
-      .step-title { font-size: clamp(29px, 9.5vw, 41px); }
-      .step-help { margin-bottom: 18px; font-size: 15px; }
-      .persona-grid { grid-template-columns: 1fr; }
-      .persona-card { min-height: 108px; padding: 17px; }
-      .persona-card i { font-size: 19px; }
-      .persona-card strong { margin-top: 7px; }
-      .choice-grid { gap: 8px; }
-      .choice { min-height: 45px; font-size: 13px; }
-      .details-grid { grid-template-columns: 1fr; gap: 20px; }
-      .funnel-actions { margin-top: 25px; }
-      .funnel-actions .button { width: auto; }
-      .about { padding: 69px 0 80px; }
-      .about-layout { grid-template-columns: 1fr; gap: 39px; }
-      .about-photo { width: min(100%, 520px); margin-right: auto; margin-left: auto; }
-      .about-photo-frame { margin-right: auto; margin-left: auto; border-radius: 25px; aspect-ratio: 4 / 4.5; }
-      .about-kicker { right: 11px; bottom: -15px; }
-      .about-copy h2 { font-size: clamp(41px, 12.4vw, 60px); }
-      .about-copy .lead { font-size: 20px; }
-      .about-copy .body { font-size: 16px; }
-      .about-proof { gap: 7px 10px; font-size: 9px; }
-      .about-proof span + span::before { margin-right: 10px; }
-      .contact { padding-bottom: 42px; }
-      .contact-panel { padding: 50px 21px; border-radius: 24px; }
-      .contact-panel h2 { font-size: clamp(42px, 12vw, 61px); }
-      .contact-actions { display: grid; grid-template-columns: 1fr; }
-      .contact-actions .button { width: 100%; }
-      footer p { display: none; }
-      .mobile-whatsapp { display: inline-flex; }
-      .service-modal { padding: 0; }
-      .modal-dialog { min-height: 100dvh; border-radius: 0; }
-      .modal-grid { display: block; }
-      .modal-photo { min-height: 260px; height: 37svh; }
-      .modal-photo img { min-height: 0; }
-      .modal-content { padding: 36px 23px calc(34px + env(safe-area-inset-bottom)); }
-      .modal-back { top: 15px; left: 15px; }
-      .modal-close { top: 14px; right: 14px; }
-      .modal-content h2 { font-size: clamp(39px, 11vw, 58px); }
-      .modal-intro { font-size: 17px; }
-      .modal-actions { position: static; z-index: auto; right: auto; bottom: auto; left: auto; display: block; margin-top: 28px; padding: 0; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
-      .modal-actions .button { width: 100%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
+    :root{--ink:#1a1512;--ink-soft:#6d6058;--paper:#fbf6ee;--paper-deep:#f0e3d3;--white:#fffefb;--coral:#f2673a;--coral-dark:#c8481c;--sage:#4f8577;--sage-dark:#2c5a4e;--apricot:#f6b685;--lavender:#b39fd1;--line:rgba(23,22,21,.14);--header-border:rgba(23,22,21,.14);--header-shadow:transparent;--surface-card:rgba(255,255,255,.48);--funnel-card:rgba(255,252,248,.78);--modal-surface:var(--paper);--modal-chip-bg:#fff1e8;--modal-chip-line:rgba(243,115,53,.19);--hero-overlay:linear-gradient(180deg,rgba(7,6,5,.06)0%,rgba(7,6,5,.2)100%);--modal-backdrop:rgba(21,18,16,.58);--footer-bg:var(--white);--sans:"DM Sans",sans-serif;--mono:"Space Mono",monospace;--ease:cubic-bezier(.16,1,.3,1);--wide:min(1320px,92vw);--gutter:3.5vw}html[data-theme=dark]{--ink:#f7f0e7;--ink-soft:#cabdb0;--paper:#121013;--paper-deep:#221c22;--white:#1c171a;--coral:#ff6f7d;--coral-dark:#ffb199;--sage:#3fa392;--sage-dark:#17423b;--apricot:#f0995f;--lavender:#ab8ce3;--line:rgba(247,240,231,.15);--header-border:rgba(247,240,231,.13);--header-shadow:rgba(0,0,0,.3);--surface-card:rgba(255,255,255,.06);--funnel-card:rgba(30,22,26,.86);--modal-surface:#1c171a;--modal-chip-bg:rgba(255,111,125,.14);--modal-chip-line:rgba(255,111,125,.3);--hero-overlay:linear-gradient(180deg,rgba(4,3,5,.25)0%,rgba(4,3,5,.52)100%);--modal-backdrop:rgba(0,0,0,.78);--footer-bg:#1c171a}*{box-sizing:border-box}html{background:var(--paper);scroll-behavior:smooth;scroll-padding-top:110px}body{min-width:320px;margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .32s ease,color .32s ease}body.modal-open{overflow:hidden}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{border:0}img{display:block;max-width:100%}button,a,input,textarea{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(243,115,53,.48);outline-offset:4px}.shell{width:var(--wide);margin:0 auto}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.eyebrow{margin:0;color:var(--coral-dark);font-family:var(--mono);font-size:9px;letter-spacing:.085em;line-height:1.5;text-transform:uppercase}.reveal{opacity:0;transform:translateY(18px);transition:opacity .68s var(--ease),transform .68s var(--ease)}.reveal.on{opacity:1;transform:none}.button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border:1px solid var(--coral);border-radius:999px;background:var(--coral);box-shadow:0 9px 20px rgba(203,78,23,.2);color:#fff;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:-.015em;transition:background .22s ease,border-color .22s ease,color .22s ease,box-shadow .25s ease,transform .25s var(--ease)}.button:hover{border-color:var(--coral-dark);background:var(--coral-dark);box-shadow:0 13px 28px rgba(203,78,23,.28);transform:translateY(-3px)}.button.light{border-color:#1d1a18;background:rgba(255,255,255,.96);box-shadow:0 7px 15px rgba(0,0,0,.12);color:#171615}.button.light:hover{border-color:var(--coral);background:var(--coral);color:#fff}.button.ghost{border-color:rgba(255,255,255,.62);background:rgba(255,255,255,.12);box-shadow:none;color:#fff}.button.ghost:hover{border-color:#fff;background:rgba(255,255,255,.22)}.header{position:relative;z-index:50;min-height:120px;padding:17px var(--gutter) 0;border-bottom:1px solid var(--header-border);background:var(--white);box-shadow:0 2px 14px var(--header-shadow);transition:background .32s ease,border-color .32s ease,box-shadow .32s ease}.header-inner{display:grid;max-width:1440px;min-height:102px;margin:0 auto;grid-template-columns:minmax(260px,1fr) auto;grid-template-rows:42px 60px;column-gap:30px}.brand{display:flex;grid-row:1/3;align-items:center;gap:14px;width:fit-content}.brand-mark{display:grid;width:58px;height:58px;flex:0 0 58px;place-items:center}.brand-logo{width:47px;height:47px;object-fit:contain;transition:filter .25s ease,transform .28s var(--ease)}html[data-theme=dark] .brand-logo{filter:invert(1) brightness(1.4) grayscale(1)}.brand:hover .brand-logo{filter:sepia(.25) saturate(1.16);transform:translateY(-2px)}html[data-theme=dark] .brand:hover .brand-logo{filter:invert(72%) sepia(48%) saturate(1200%) hue-rotate(330deg) brightness(107%) contrast(102%)}.brand-name{width:clamp(135px,12vw,175px);color:var(--ink);font-size:clamp(11px,1vw,14px);font-weight:700;letter-spacing:.02em;line-height:1.08;text-transform:uppercase;transition:color .32s ease}.brand-name span{display:block;text-align:left}.top-actions{display:flex;grid-column:2;align-items:center;justify-content:flex-end;gap:18px}.top-link{display:inline-grid;width:26px;height:26px;place-items:center;color:var(--ink);font-size:17px;transition:color .2s ease,transform .2s var(--ease)}.top-link:hover{color:var(--coral);transform:translateY(-2px)}.theme-toggle{display:inline-grid;width:30px;height:30px;place-items:center;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;font-size:13px;transition:border-color .2s ease,color .2s ease,background .2s ease,transform .2s var(--ease)}.theme-toggle:hover{border-color:var(--coral);background:rgba(243,115,53,.11);color:var(--coral);transform:translateY(-2px)}.main-nav{display:flex;grid-column:2;align-items:end;justify-content:flex-end;gap:0}.main-nav a{display:flex;min-height:49px;align-items:center;padding:0 19px;color:var(--ink);font-size:15px;font-weight:500;transition:background .2s ease,color .2s ease}.main-nav a:hover,.main-nav a.active{background:var(--coral);color:#fff}.menu-toggle{display:none}.mobile-nav{display:none}.hero{position:relative;min-height:min(720px,76svh);overflow:hidden;background:#312820}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.03) contrast(1.02);transform:scale(1.01)}html[data-theme=dark] .hero-video{filter:saturate(.84) brightness(.78) contrast(1.08)}.hero-overlay{position:absolute;inset:0;background:var(--hero-overlay);transition:background .32s ease}.hero-content{position:relative;z-index:1;display:grid;min-height:min(720px,76svh);align-content:end;justify-items:center;padding:56px var(--gutter) clamp(56px,9vw,104px);text-align:center}.hero-actions{display:flex;justify-content:center;margin-top:0}.hero-actions .button{min-width:195px}.services{padding:clamp(72px,9vw,116px) 0;background:var(--white);transition:background .32s ease}.services-head{max-width:760px;margin:0 auto 42px;text-align:center}.services-head h2{margin:10px 0 0;font-size:clamp(39px,5vw,67px);font-weight:700;letter-spacing:-.075em;line-height:.9;text-transform:uppercase}.services-head h2 span{color:var(--coral)}.service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(19px,2.5vw,37px)}.service-card{position:relative;display:flex;flex-direction:column;min-width:0;align-items:center;color:var(--ink);text-align:center}.service-image-wrap{position:relative;width:min(100%,245px);overflow:hidden;border-radius:50%;aspect-ratio:1;background:var(--paper-deep);box-shadow:0 10px 22px rgba(51,35,27,.09)}.service-image-wrap img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(.98);transition:transform .75s var(--ease),filter .45s ease}html[data-theme=dark] .service-image-wrap img{filter:saturate(.75) brightness(.82) contrast(1.04)}.service-image-wrap::after{position:absolute;inset:0;border:1px solid var(--line);border-radius:inherit;content:"";pointer-events:none;transition:box-shadow .35s ease,border-color .3s ease}.service-card:hover .service-image-wrap img{filter:saturate(1.13) contrast(1.02);transform:scale(1.07)}.service-card:hover .service-image-wrap::after{box-shadow:inset 0 0 0 8px rgba(243,115,53,.14)}.service-card h3{min-height:48px;margin:24px 0 13px;color:var(--coral);font-size:clamp(20px,1.75vw,28px);font-weight:700;letter-spacing:-.06em;line-height:.94;text-transform:uppercase}.service-card p{max-width:26ch;margin:0;font-size:15px;font-weight:600;letter-spacing:-.025em;line-height:1.33}.service-detail-trigger{display:inline-flex;align-items:center;gap:7px;margin-top:18px;padding:0;background:transparent;color:var(--ink);cursor:pointer;font-size:13px;font-weight:700;transition:color .2s ease,transform .2s var(--ease)}.service-detail-trigger i{color:var(--coral);font-size:12px;transition:transform .2s var(--ease)}.service-detail-trigger:hover{color:var(--coral-dark);transform:translateY(-2px)}.service-detail-trigger:hover i{transform:translateX(4px)}.funnel{position:relative;padding:clamp(75px,10vw,130px) 0;overflow:hidden;background:linear-gradient(135deg,#4a1a5e 0%,#b13b6c 45%,#e8735a 80%,#f6b685 100%);transition:background .32s ease}html[data-theme=dark] .funnel{background:linear-gradient(135deg,#1e0a2b 0%,#6b1e47 45%,#9e3e3a 80%,#3f2021 100%)}.funnel::before{position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,255,255,.15) 0%,transparent 60%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.1) 0%,transparent 50%),repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 2px,transparent 2px 8px);content:"";pointer-events:none}.funnel::after{position:absolute;top:-20%;right:-10%;width:min(60vw,700px);height:min(60vw,700px);border-radius:50%;background:rgba(255,255,255,.06);box-shadow:0 0 0 60px rgba(255,255,255,.03),0 0 0 120px rgba(255,255,255,.01);content:"";pointer-events:none;transform:rotate(25deg)}.funnel-shell{position:relative;z-index:1}.funnel-head{max-width:680px;margin-bottom:34px}.funnel-head .eyebrow{color:rgba(255,240,230,.9)}html[data-theme=dark] .funnel-head .eyebrow{color:#ffb090}.funnel-head h2{margin:10px 0 13px;font-size:clamp(43px,6vw,78px);font-weight:700;letter-spacing:-.08em;line-height:.85;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.2)}.funnel-head p:not(.eyebrow){max-width:49ch;margin:0;color:rgba(255,245,240,.9);font-size:16px;line-height:1.57;text-shadow:0 1px 4px rgba(0,0,0,.1)}html[data-theme=dark] .funnel-head p:not(.eyebrow){color:rgba(255,237,227,.85)}.funnel-ui{max-width:950px;padding:clamp(22px,3.2vw,38px);border:1px solid rgba(255,255,255,.5);border-radius:25px;background:var(--funnel-card);box-shadow:0 18px 46px rgba(0,0,0,.3);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);transition:background .32s ease,border-color .32s ease}html[data-theme=dark] .funnel-ui{border-color:rgba(255,255,255,.2)}.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:32px}.progress-item{display:flex;align-items:center;gap:8px;color:var(--ink-soft);font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;opacity:.66}.progress-item::before{display:grid;width:20px;height:20px;flex:0 0 20px;place-items:center;border:1px solid var(--line);border-radius:50%;content:attr(data-step);font-size:8px}.progress-item.active{color:var(--ink);opacity:1}.progress-item.active::before{border-color:var(--coral);background:var(--coral);color:#fff}.funnel-step{display:none;animation:step-in .35s var(--ease)}.funnel-step.active{display:block}@keyframes step-in{0%{opacity:0;transform:translateX(13px)}to{opacity:1;transform:none}}.step-title{margin:0;font-size:clamp(28px,3.7vw,43px);font-weight:700;letter-spacing:-.06em;line-height:.93;text-transform:uppercase}.step-help{max-width:55ch;margin:10px 0 22px;color:var(--ink-soft);font-size:15px;line-height:1.55}.persona-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.persona-card{display:flex;min-height:148px;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:21px;border:1px solid var(--line);border-radius:17px;background:var(--surface-card);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .22s ease,background .22s ease,box-shadow .22s ease,transform .25s var(--ease)}.persona-card i{color:var(--coral);font-size:22px}.persona-card strong{display:block;margin-top:16px;font-size:18px;letter-spacing:-.04em}.persona-card span{display:block;margin-top:5px;color:var(--ink-soft);font-size:13px;line-height:1.35}.persona-card:hover,.persona-card.active{border-color:var(--coral);background:rgba(255,240,232,.72);box-shadow:0 10px 22px rgba(195,82,38,.12);transform:translateY(-3px)}html[data-theme=dark] .persona-card:hover,html[data-theme=dark] .persona-card.active{background:rgba(255,128,80,.13)}.choice-grid{display:flex;flex-wrap:wrap;gap:9px}.choice{min-height:44px;padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:var(--surface-card);color:var(--ink);cursor:pointer;font-size:14px;font-weight:700;transition:border-color .2s ease,background .2s ease,color .2s ease,transform .2s var(--ease)}.choice:hover,.choice.active{border-color:var(--coral);background:var(--coral);color:#fff;transform:translateY(-2px)}.funnel-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:29px}.funnel-actions .back{padding:10px 0;background:transparent;color:var(--ink-soft);cursor:pointer;font-size:13px;font-weight:700}.funnel-actions .back:hover{color:var(--coral-dark)}.funnel-actions .next{min-width:136px}.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field-label{display:block;color:var(--ink-soft);font-family:var(--mono);font-size:9px;letter-spacing:.055em;text-transform:uppercase}.field-label input,.field-label textarea{width:100%;margin-top:9px;padding:11px 0;border:0;border-bottom:1px solid var(--line);outline:0;background:transparent;color:var(--ink);font-family:var(--sans);font-size:15px;transition:border-color .2s ease}.field-label input:focus,.field-label textarea:focus{border-color:var(--coral)}.field-label textarea{min-height:82px;resize:vertical}.location-field{margin-top:24px}.notes-field{margin-top:22px}.tiny-note{margin:19px 0 0;color:var(--ink-soft);font-family:var(--mono);font-size:9px;line-height:1.55;text-transform:uppercase}.validation{min-height:17px;margin:0;color:#a33f27;font-family:var(--mono);font-size:9px;line-height:1.4;text-transform:uppercase}html[data-theme=dark] .validation{color:#ff8f70}.about{padding:clamp(77px,10vw,130px) 0;background:var(--paper);transition:background .32s ease}.about-layout{display:grid;grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);gap:clamp(33px,6vw,93px);align-items:center}.about-photo{position:relative;width:min(100%,520px);overflow:visible}.about-photo-frame{overflow:hidden;border-radius:31px;aspect-ratio:4/4.6;background:var(--paper-deep);box-shadow:0 18px 42px rgba(54,39,30,.14)}.about-photo-frame img{width:100%;height:100%;object-fit:cover;transition:transform .85s var(--ease)}.about-photo:hover img{transform:scale(1.04)}.about-kicker{position:absolute;right:-15px;bottom:26px;max-width:200px;padding:12px 14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,253,249,.79);box-shadow:0 11px 27px rgba(54,39,30,.12);color:var(--coral-dark);font-family:var(--mono);font-size:9px;letter-spacing:.04em;line-height:1.42;text-transform:uppercase;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}html[data-theme=dark] .about-kicker{background:rgba(31,27,25,.88)}.about-copy h2{margin:11px 0 19px;font-size:clamp(42px,5.8vw,78px);font-weight:700;letter-spacing:-.08em;line-height:.86;text-transform:uppercase}.about-copy h2 span{color:var(--coral)}.about-copy .lead{max-width:38ch;margin:0;color:var(--ink);font-size:clamp(18px,1.7vw,23px);font-weight:600;letter-spacing:-.035em;line-height:1.3}.about-copy .body{max-width:49ch;margin:18px 0 0;color:var(--ink-soft);font-size:16px;line-height:1.6}.about-proof{display:flex;flex-wrap:wrap;gap:9px 18px;margin:27px 0 0;padding-top:17px;border-top:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:10px;letter-spacing:.025em;line-height:1.5;text-transform:uppercase}.about-proof span+span::before{margin-right:18px;color:var(--coral);content:"•"}.about-network{margin:11px 0 0;color:var(--ink-soft);font-family:var(--mono);font-size:9px;letter-spacing:.055em;line-height:1.5;text-transform:uppercase}.contact{padding:0 0 clamp(52px,7vw,85px);background:var(--paper);transition:background .32s ease}.contact-panel{position:relative;overflow:hidden;padding:clamp(51px,7vw,92px);border-radius:32px;background:linear-gradient(135deg,#0f4c3a 0%,#1b7a5e 45%,#3a9d8c 75%,#5bb8b3 100%);box-shadow:0 18px 45px rgba(15,60,50,.3);color:#fff;text-align:center}html[data-theme=dark] .contact-panel{background:linear-gradient(135deg,#0a2d24 0%,#145240 45%,#1f7866 75%,#2e8f89 100%)}.contact-panel::before{position:absolute;top:-30%;right:-10%;width:min(50vw,600px);height:min(50vw,600px);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);content:"";pointer-events:none}.contact-panel::after{position:absolute;bottom:-40%;left:-10%;width:min(45vw,550px);height:min(45vw,550px);border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.08) 0%,transparent 70%);content:"";pointer-events:none}.contact-panel>*{position:relative;z-index:1}.contact-panel .eyebrow{color:rgba(255,255,255,.8)}.contact-panel h2{max-width:830px;margin:10px auto 18px;font-size:clamp(46px,6.6vw,91px);font-weight:700;letter-spacing:-.08em;line-height:.84;text-transform:uppercase}.contact-panel h2 span{color:#ffd966}.contact-panel p:not(.eyebrow):not(.contact-meta){max-width:490px;margin:0 auto;color:rgba(255,255,255,.95);font-size:17px;line-height:1.58;text-shadow:0 1px 4px rgba(0,0,0,.1)}.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}.contact-panel .button{border-color:#ffd966;background:#ffd966;box-shadow:0 10px 22px rgba(0,30,20,.25);color:#1a3a32}.contact-panel .button:hover{border-color:#fff0c7;background:#fff0c7;color:#1a3a32}.contact-panel .button.ghost{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);box-shadow:none;color:#fff}.contact-panel .button.ghost:hover{border-color:#fff;background:rgba(255,255,255,.2)}.contact-meta{margin:20px 0 0;color:rgba(255,255,255,.8);font-family:var(--mono);font-size:9px;letter-spacing:.07em;line-height:1.5;text-transform:uppercase}footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px var(--gutter) calc(22px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--footer-bg);transition:background .32s ease,border-color .32s ease}.footer-mark{display:grid;width:38px;height:38px;place-items:center}.footer-mark img{width:34px;height:34px;object-fit:contain}html[data-theme=dark] .footer-mark img{filter:invert(1) brightness(1.4) grayscale(1)}footer p{margin:0;color:var(--ink-soft);font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-align:center;text-transform:uppercase}.footer-socials{display:flex;gap:7px}.footer-socials a{display:grid;width:34px;height:34px;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);font-size:13px;transition:border-color .2s ease,color .2s ease,transform .2s var(--ease)}.footer-socials a:hover{border-color:var(--coral);color:var(--coral-dark);transform:translateY(-2px)}.mobile-whatsapp{position:fixed;z-index:42;right:15px;bottom:max(15px,env(safe-area-inset-bottom));display:none;min-height:53px;align-items:center;gap:8px;padding:0 17px;border:1px solid rgba(255,255,255,.68);border-radius:999px;background:var(--coral);box-shadow:0 12px 27px rgba(176,65,24,.3);color:#fff;font-size:13px;font-weight:700;transition:opacity .22s ease,transform .22s var(--ease),visibility .22s ease}.mobile-whatsapp.is-hidden{visibility:hidden;opacity:0;pointer-events:none;transform:translateY(16px)}.service-modal{position:fixed;z-index:100;inset:0;display:grid;overflow-y:auto;padding:clamp(14px,3vw,38px);background:var(--modal-backdrop);opacity:0;pointer-events:none;transition:opacity .25s ease,background .32s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.service-modal.open{opacity:1;pointer-events:auto}.modal-dialog{position:relative;width:min(1120px,100%);min-height:min(700px,calc(100svh - 28px));margin:auto;overflow:hidden;border-radius:27px;background:var(--modal-surface);box-shadow:0 25px 70px rgba(0,0,0,.28);transform:translateY(16px) scale(.985);transition:transform .32s var(--ease),background .32s ease}.service-modal.open .modal-dialog{transform:none}.modal-close{position:absolute;z-index:3;top:18px;right:18px;display:grid;width:43px;height:43px;place-items:center;border:1px solid var(--line);border-radius:50%;background:rgba(255,253,249,.78);color:#171615;cursor:pointer;font-size:19px;box-shadow:0 5px 15px rgba(0,0,0,.1);backdrop-filter:blur(12px)}.modal-back{position:absolute;z-index:3;top:20px;left:21px;display:inline-flex;min-height:39px;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,253,249,.78);color:#171615;cursor:pointer;font-size:12px;font-weight:700;box-shadow:0 5px 15px rgba(0,0,0,.1);backdrop-filter:blur(12px)}html[data-theme=dark] .modal-close,html[data-theme=dark] .modal-back{border-color:rgba(255,255,255,.2);background:rgba(28,25,23,.86);color:#f5eee6}.modal-grid{display:grid;min-height:inherit;grid-template-columns:minmax(330px,.83fr) minmax(0,1.17fr)}.modal-photo{position:relative;min-height:100%;background:var(--paper-deep)}.modal-photo img{width:100%;height:100%;min-height:100%;object-fit:cover}.modal-photo::after{position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,10,9,.47),transparent 48%);content:""}.modal-photo-label{position:absolute;z-index:1;right:29px;bottom:27px;left:29px;color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.08em;line-height:1.5;text-transform:uppercase}.modal-content{padding:clamp(92px,9vw,122px) clamp(27px,5vw,69px) 38px}.modal-content .eyebrow{margin-bottom:12px}.modal-content h2{max-width:13ch;margin:0;font-size:clamp(42px,5.4vw,74px);font-weight:700;letter-spacing:-.085em;line-height:.84;text-transform:uppercase}.modal-intro{max-width:49ch;margin:25px 0 0;color:var(--ink);font-size:18px;font-weight:600;letter-spacing:-.025em;line-height:1.4}.modal-body{max-width:54ch;margin:16px 0 0;color:var(--ink-soft);font-size:15px;line-height:1.65}.modal-list-title{margin:26px 0 11px;color:var(--coral-dark);font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase}.modal-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}.modal-list span{padding:9px 11px;border:1px solid var(--modal-chip-line);border-radius:999px;background:var(--modal-chip-bg);color:var(--coral-dark);font-family:var(--mono);font-size:8px;letter-spacing:.025em;line-height:1.35;text-transform:uppercase}.modal-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}@media(max-width:1000px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:42px}.service-image-wrap{width:min(100%,290px)}.modal-grid{grid-template-columns:.8fr 1.2fr}}@media(max-width:760px){:root{--wide:88vw;--gutter:6vw}.header{position:sticky;top:0;min-height:72px;padding:8px var(--gutter);box-shadow:0 3px 18px var(--header-shadow)}.header-inner{display:flex;min-height:56px;align-items:center}.brand{gap:9px}.brand-mark{width:44px;height:44px;flex-basis:44px}.brand-logo{width:35px;height:35px}.brand-name{width:clamp(106px,31vw,138px);font-size:clamp(9px,2.7vw,11px);line-height:1.1}.top-actions,.main-nav{display:none}.menu-toggle{display:inline-grid;width:43px;height:43px;margin-left:auto;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--white);color:var(--ink);cursor:pointer;font-size:17px}.mobile-nav{position:fixed;z-index:49;top:72px;right:0;left:0;display:flex;min-height:calc(100svh - 72px);flex-direction:column;padding:32px var(--gutter);background:var(--paper);opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity .25s ease,transform .28s var(--ease),background .32s ease;backdrop-filter:blur(18px)}.mobile-nav.open{opacity:1;pointer-events:auto;transform:none}.mobile-nav a:not(.button){padding:12px 0;color:var(--ink);font-size:clamp(34px,11vw,52px);font-weight:700;letter-spacing:-.075em;line-height:.95}.mobile-nav .button{width:100%;margin-top:18px}.mobile-socials{display:flex;align-items:center;gap:18px;margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}.mobile-socials a{display:inline-flex;width:28px;height:34px;flex:0 0 28px;align-items:center;justify-content:center;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:var(--ink);font-size:28px;line-height:1;transition:color .2s ease,transform .2s var(--ease)}.mobile-socials a i{display:block;width:1em;height:1em;margin:0;line-height:1;text-align:center}.mobile-socials a:hover{color:var(--coral);transform:translateY(-2px)}.mobile-socials .mobile-theme-toggle{display:inline-flex;width:42px;height:42px;min-width:42px;min-height:42px;flex:0 0 42px;align-items:center;justify-content:center;margin:0 0 0 auto;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--white);color:var(--ink);font-size:16px;line-height:1;box-shadow:none}.mobile-socials .mobile-theme-toggle:hover{border-color:var(--coral);background:rgba(243,115,53,.10);color:var(--coral);transform:translateY(-2px)}.hero{min-height:580px}.hero-content{min-height:580px;padding:35px var(--gutter) clamp(44px,12vw,72px)}.hero-actions{margin-top:0}.hero-actions .button{min-width:0}.services{padding:65px 0 72px}.services-head{margin-bottom:34px}.services-head h2{font-size:clamp(37px,11.4vw,52px)}.service-grid{display:flex;width:calc(100% + 12vw);margin-right:-6vw;margin-left:-6vw;gap:15px;padding:0 6vw 14px;overflow-x:auto;scroll-padding-left:6vw;scroll-snap-type:x mandatory;scrollbar-width:none}.service-grid::-webkit-scrollbar{display:none}.service-card{min-width:80vw;scroll-snap-align:start}.service-image-wrap{width:min(72vw,290px)}.service-card h3{margin-top:21px;font-size:26px}.service-card p{max-width:27ch;font-size:15px}.funnel{padding:67px 0 75px}.funnel::before{background-size:auto,auto;opacity:.58}.funnel::after{top:-150px;right:-190px;width:410px;height:410px;box-shadow:0 0 0 28px rgba(255,245,233,.055),0 0 0 56px rgba(255,245,233,.035),0 0 0 84px rgba(255,245,233,.025)}.funnel-head{margin-bottom:26px}.funnel-head h2{font-size:clamp(40px,12vw,58px)}.funnel-ui{padding:21px;border-radius:21px}.progress{gap:4px;margin-bottom:25px}.progress-item{justify-content:center;font-size:0}.progress-item::before{width:24px;height:24px;flex-basis:24px;font-size:9px}.step-title{font-size:clamp(29px,9.5vw,41px)}.step-help{margin-bottom:18px;font-size:15px}.persona-grid{grid-template-columns:1fr}.persona-card{min-height:108px;padding:17px}.persona-card i{font-size:19px}.persona-card strong{margin-top:7px}.choice-grid{gap:8px}.choice{min-height:45px;font-size:13px}.details-grid{grid-template-columns:1fr;gap:20px}.funnel-actions{margin-top:25px}.funnel-actions .button{width:auto}.about{padding:69px 0 80px}.about-layout{grid-template-columns:1fr;gap:39px}.about-photo{width:min(100%,520px);margin-right:auto;margin-left:auto}.about-photo-frame{margin-right:auto;margin-left:auto;border-radius:25px;aspect-ratio:4/4.5}.about-kicker{right:11px;bottom:-15px}.about-copy h2{font-size:clamp(41px,12.4vw,60px)}.about-copy .lead{font-size:20px}.about-copy .body{font-size:16px}.about-proof{gap:7px 10px;font-size:9px}.about-proof span+span::before{margin-right:10px}.contact{padding-bottom:42px}.contact-panel{padding:50px 21px;border-radius:24px}.contact-panel h2{font-size:clamp(42px,12vw,61px)}.contact-actions{display:grid;grid-template-columns:1fr}.contact-actions .button{width:100%}footer p{display:none}.mobile-whatsapp{display:inline-flex}.service-modal{padding:0}.modal-dialog{min-height:100dvh;border-radius:0}.modal-grid{display:block}.modal-photo{min-height:260px;height:37svh}.modal-photo img{min-height:0}.modal-content{padding:36px 23px calc(34px + env(safe-area-inset-bottom))}.modal-back{top:15px;left:15px}.modal-close{top:14px;right:14px}.modal-content h2{font-size:clamp(39px,11vw,58px)}.modal-intro{font-size:17px}.modal-actions{position:static;z-index:auto;right:auto;bottom:auto;left:auto;display:block;margin-top:28px;padding:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}.modal-actions .button{width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <header class="header">
     <div class="header-inner">
       <a class="brand" href="#inicio" aria-label="DJ César Channel, volver al inicio">
-        <span class="brand-mark" aria-hidden="true"><img class="brand-logo" src="assets/img/logo-dj-cesar-channel.svg" alt="" /></span>
+        <span class="brand-mark" aria-hidden="true"><img class="brand-logo" src="assets/img/logo-dj-cesar-channel.svg" alt="" width="47" height="47" /></span>
         <span class="brand-name" aria-hidden="true"><span>DJ · Música</span><span>Producción</span></span>
         <span class="sr-only">DJ César Channel</span>
       </a>
@@ -502,7 +73,7 @@
 
   <main>
     <section class="hero" id="inicio" aria-label="DJ César Channel: DJ, música y producción">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.webp" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-poster.webp" aria-hidden="true">
         <source src="assets/img/hero-main.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -523,30 +94,30 @@
 
         <div class="service-grid" aria-label="Servicios de DJ César Channel">
           <article class="service-card reveal">
-            <div class="service-image-wrap"><img src="assets/img/gallery-booth.webp" alt="Evento corporativo con DJ y asistentes" loading="lazy" decoding="async" /></div>
+            <div class="service-image-wrap"><img src="assets/img/gallery-booth.webp" alt="Evento corporativo con DJ y asistentes" loading="lazy" decoding="async" width="245" height="245" /></div>
             <h3>Eventos<br />corporativos</h3>
             <p>Música, producción y formatos para marcas, empresas y celebraciones profesionales.</p>
             <button class="service-detail-trigger" type="button" data-service="corporativo">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
           <article class="service-card reveal">
-            <div class="service-image-wrap"><img src="assets/img/gallery-pista.webp" alt="Pista de baile durante una boda o fiesta" loading="lazy" decoding="async" /></div>
+            <div class="service-image-wrap"><img src="assets/img/gallery-pista.webp" alt="Pista de baile durante una boda o fiesta" loading="lazy" decoding="async" width="245" height="245" /></div>
             <h3>Bodas y<br />fiestas</h3>
             <p>DJ, producción y energía para celebrar cada momento, desde la bienvenida hasta el último baile.</p>
             <button class="service-detail-trigger" type="button" data-service="bodas">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
           <article class="service-card reveal">
-            <div class="service-image-wrap"><img src="assets/img/gallery-cabina.webp" alt="Equipo de audio e iluminación para un evento" loading="lazy" decoding="async" /></div>
+            <div class="service-image-wrap"><img src="assets/img/gallery-cabina.webp" alt="Equipo de audio e iluminación para un evento" loading="lazy" decoding="async" width="245" height="245" /></div>
             <h3>Audio, luz<br />y producción</h3>
             <p>Sonido, iluminación y recursos técnicos adaptados a tu espacio, aforo y tipo de evento.</p>
             <button class="service-detail-trigger" type="button" data-service="produccion">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
 
           <article class="service-card reveal">
-            <div class="service-image-wrap"><img src="assets/img/gallery-ambiente.webp" alt="Músico actuando en vivo durante un evento" loading="lazy" decoding="async" /></div>
+            <div class="service-image-wrap"><img src="assets/img/gallery-ambiente.webp" alt="Músico actuando en vivo durante un evento" loading="lazy" decoding="async" width="245" height="245" /></div>
             <h3>Música en vivo<br />y talento</h3>
-            <p>Mariachi, norteño, músicos, artistas, DJs y formatos especiales para darle otra dimensión al evento.</p>
+            <p>Músicos, artistas, DJs y formatos especiales para darle otra dimensión al evento.</p>
             <button class="service-detail-trigger" type="button" data-service="talento">Más información <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
           </article>
         </div>
@@ -558,7 +129,7 @@
         <div class="funnel-head reveal">
           <p class="eyebrow">Cotización</p>
           <h2>Cuéntanos<br />tu idea.</h2>
-          <p>Elige lo esencial y te llevamos a WhatsApp con una solicitud lista para enviar. Toma menos de un minuto.</p>
+          <p>Elige lo esencial y te llevamos a WhatsApp con una solicitud lista para enviar.</p>
         </div>
 
         <div class="funnel-ui reveal" id="funnel-ui">
@@ -597,7 +168,7 @@
               <button class="choice multi-choice" type="button" data-service-choice="Apoyo con proveedores">Apoyo con proveedores</button>
               <button class="choice multi-choice" type="button" data-service-choice="Quiero orientación">Quiero orientación</button>
             </div>
-            <p class="tiny-note">Podemos coordinar salones, mobiliario, ambientación, copas, visuales y otros recursos mediante una red de colaboradores, según disponibilidad.</p>
+            <p class="tiny-note">Podemos coordinar salones, mobiliario, ambientación, copas, visuales y otros recursos mediante una red de colaboradores.</p>
             <div class="funnel-actions"><button class="back" type="button" data-back="2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Atrás</button><button class="button next" type="button" data-next="4">Siguiente <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
           </div>
 
@@ -628,16 +199,16 @@
     <section class="about" id="quien-soy">
       <div class="shell about-layout">
         <figure class="about-photo reveal">
-          <div class="about-photo-frame"><img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" /></div>
-          <figcaption class="about-kicker">8+ años creando momentos</figcaption>
+          <div class="about-photo-frame"><img src="assets/img/bio-portrait-cesar.webp" alt="DJ César Channel durante un evento" loading="lazy" decoding="async" width="520" height="598" /></div>
+          <figcaption class="about-kicker">8+ AÑOS DE TRAYECTORIA</figcaption>
         </figure>
         <div class="about-copy reveal">
           <p class="eyebrow">Quién soy</p>
           <h2>Hola, soy<br /><span>César Channel.</span></h2>
-          <p class="lead">DJ, manager y creador de experiencias musicales para eventos.</p>
-          <p class="body">No trabajo con playlists fijas. Escucho el lugar, leo a la gente y construyo la energía que necesita cada momento. Bodas, fiestas privadas, graduaciones, inauguraciones y eventos corporativos.</p>
+          <p class="lead">DJ, MANAGER y creador de experiencias musicales para eventos.</p>
+          <p class="body">Escucho el lugar, leo a la gente y construyo la energía que necesita cada momento. Bodas, fiestas privadas, activaciones, inauguraciones y eventos corporativos.</p>
           <div class="about-proof"><span>400+ eventos realizados</span><span>CDMX + área metropolitana</span></div>
-          <p class="about-network">Red de talento y proveedores · Eventos foráneos sujetos a disponibilidad.</p>
+          <p class="about-network">Red de talento y proveedores</p>
         </div>
       </div>
     </section>
@@ -647,12 +218,12 @@
         <div class="contact-panel reveal">
           <p class="eyebrow">Contacto</p>
           <h2>Hagamos que<br /><span>suceda.</span></h2>
-          <p>Cuéntanos la fecha, el lugar y lo que imaginas. Te ayudamos a convertirlo en una experiencia que todos quieran recordar.</p>
+          <p>Cuéntanos la fecha, el lugar y lo que imaginas. Te ayudamos a convertirlo en una experiencia memorable.</p>
           <div class="contact-actions">
             <a class="button" href="#funnel"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp · Cotiza tu evento</a>
             <a class="button ghost" href="mailto:cesarmejiacarballo43@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20-%20DJ%20C%C3%A9sar%20Channel">Escribir por email</a>
           </div>
-          <p class="contact-meta">CDMX + área metropolitana · Respuesta personalizada</p>
+          <p class="contact-meta">CDMX + ÁREA METROPOLITANA</p>
         </div>
       </div>
     </section>
@@ -661,7 +232,7 @@
   <a class="mobile-whatsapp" href="#funnel" aria-label="Cotizar tu evento por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Cotiza tu evento</a>
 
   <footer>
-    <a class="footer-mark" href="#inicio" aria-label="Volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" /></a>
+    <a class="footer-mark" href="#inicio" aria-label="Volver al inicio"><img src="assets/img/logo-dj-cesar-channel.svg" alt="DJ César Channel" width="34" height="34" /></a>
     <p>DJ César Channel · Ciudad de México · <span id="year"></span></p>
     <div class="footer-socials" aria-label="Redes sociales">
       <a href="https://www.instagram.com/cesarchannel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -689,74 +260,82 @@
   </div>
 
   <script>
+    // Configuración optimizada
     const WA_NUMBER = "525624685267";
-    const mobileNav = document.getElementById("mobile-nav");
-    const menuToggle = document.getElementById("menu-toggle");
-    const modal = document.getElementById("service-modal");
-    const modalClose = document.getElementById("modal-close");
-    const modalBack = document.getElementById("modal-back");
-    const modalTitle = document.getElementById("modal-title");
-    const modalImage = document.getElementById("modal-image");
-    const modalEye = document.getElementById("modal-eyebrow");
-    const modalIntro = document.getElementById("modal-intro");
-    const modalBody = document.getElementById("modal-body");
-    const modalList = document.getElementById("modal-list");
-    const modalListTitle = document.getElementById("modal-list-title");
-    const modalPhotoLabel = document.getElementById("modal-photo-label");
-    const modalWhatsApp = document.getElementById("modal-whatsapp");
-    const funnelValidation = document.getElementById("funnel-validation");
-    const themeColorMeta = document.getElementById("theme-color-meta");
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
+    // Tema - ya se maneja en el inline script
+    const themeColorMeta = document.getElementById("theme-color-meta");
+    
     function updateThemeControls(theme) {
       const isDark = theme === "dark";
-      document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-        button.setAttribute("aria-label", isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
-        button.setAttribute("title", isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
-        button.innerHTML = isDark ? '<i class="fa-solid fa-sun" aria-hidden="true"></i>' : '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+      $$("[data-theme-toggle]").forEach(btn => {
+        btn.setAttribute("aria-label", isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+        btn.setAttribute("title", isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+        btn.innerHTML = isDark ? '<i class="fa-solid fa-sun" aria-hidden="true"></i>' : '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
       });
-      themeColorMeta.setAttribute("content", isDark ? "#171514" : "#fbf7f2");
+      themeColorMeta.content = isDark ? "#171514" : "#fbf7f2";
     }
-
+    
     function setTheme(theme) {
       document.documentElement.dataset.theme = theme;
-      try { localStorage.setItem("cesar-channel-theme", theme); } catch (error) {}
+      try { localStorage.setItem("cesar-channel-theme", theme); } catch (e) {}
       updateThemeControls(theme);
     }
-
-    document.querySelectorAll("[data-theme-toggle]").forEach((button) => button.addEventListener("click", () => {
+    
+    $$("[data-theme-toggle]").forEach(btn => btn.addEventListener("click", () => {
       setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
     }));
     updateThemeControls(document.documentElement.dataset.theme || "light");
 
+    // Servicios - datos
     const services = {
-      corporativo: { eyebrow: "01 / Servicios", title: "Eventos corporativos", image: "assets/img/gallery-booth.webp", imageAlt: "Evento corporativo con DJ y asistentes", photoLabel: "Música con identidad para marcas, equipos y empresas.", intro: "Un lanzamiento, una inauguración o una fiesta de empresa necesitan una atmósfera que acompañe la identidad de la marca y a las personas que están presentes.", body: "César Channel diseña la selección musical y el formato técnico según el objetivo, el público, el horario y el espacio. Desde una recepción elegante hasta una pista de baile, cada momento tiene un ritmo distinto. Como DJ y manager, también puede coordinar audio, iluminación, músicos, DJs invitados, artistas y soluciones de producción mediante una red de colaboradores profesionales.", listTitle: "Formatos posibles", list: ["Convenciones", "Inauguraciones", "Lanzamientos de marca", "Cenas y galas", "Fiestas de fin de año", "Desfiles y activaciones"], cta: "Cotizar evento corporativo" },
-      bodas: { eyebrow: "02 / Servicios", title: "Bodas y fiestas", image: "assets/img/gallery-pista.webp", imageAlt: "Pista de baile durante una boda o fiesta", photoLabel: "La música acompaña cada momento, hasta el último baile.", intro: "Una boda, un cumpleaños o un aniversario se recuerdan por sus personas y por los momentos que compartieron. La música es parte de todo: bienvenida, brindis, cena y pista.", body: "César Channel trabaja con selección musical en vivo, lectura de pista y una propuesta que se adapta a los anfitriones y sus invitados. No se trata de una playlist fija: se trata de saber qué necesita cada momento para que todos quieran quedarse. Además del DJ set, es posible sumar audio, iluminación, microfonía para ceremonias o brindis y formatos especiales de música en vivo, según la idea y disponibilidad.", listTitle: "Celebraciones", list: ["Bodas", "Cumpleaños", "Aniversarios", "Graduaciones", "Reuniones sociales", "Fiestas privadas"], cta: "Cotizar boda o fiesta" },
-      produccion: { eyebrow: "03 / Servicios", title: "Audio, luz y producción", image: "assets/img/gallery-cabina.webp", imageAlt: "Equipo de audio e iluminación para un evento", photoLabel: "La producción correcta cambia por completo cómo se vive el evento.", intro: "El sonido y la iluminación no son un extra: son la diferencia entre un evento que simplemente ocurre y uno que se siente como debe.", body: "Cada propuesta se adapta al número de invitados, la acústica, la distribución del venue y el tipo de celebración. César puede coordinar sistemas de audio, cabina de DJ, iluminación, microfonía, pantallas, visuales y recursos técnicos mediante proveedores profesionales. También se pueden gestionar soluciones complementarias como copas para boda, renta de salones, mobiliario, ambientación o producción a medida, según necesidades y disponibilidad.", listTitle: "Puede integrar", list: ["Audio profesional", "Iluminación para pista", "Cabina de DJ", "Micrófonos para speeches", "Pantallas y visuales", "Producción a medida"], cta: "Pedir propuesta de producción" },
-      talento: { eyebrow: "04 / Servicios", title: "Música en vivo y talento", image: "assets/img/gallery-ambiente.webp", imageAlt: "Músico actuando en vivo durante un evento", photoLabel: "El talento adecuado puede transformar la energía de la noche.", intro: "Algunos eventos piden algo más que una cabina: una entrada con mariachi, una intervención norteña o el artista adecuado para cambiar la energía por completo.", body: "Gracias a una red construida durante más de ocho años como DJ y manager, César Channel puede proponer y coordinar talento profesional según el estilo, formato, presupuesto y disponibilidad de cada evento. La idea no es llenar el evento por llenar: es encontrar la participación que tenga sentido para tu celebración y conecte con tus invitados.", listTitle: "Opciones disponibles", list: ["Mariachi", "Norteño", "DJs profesionales", "Músicos en vivo", "Artistas y shows", "Imitadores y formatos especiales"], cta: "Quiero música en vivo" }
+      corporativo: { eyebrow: "01 / Servicios", title: "Eventos corporativos", image: "assets/img/gallery-booth.webp", imageAlt: "Evento corporativo con DJ y asistentes", photoLabel: "Música con identidad para marcas, equipos y empresas.", intro: "Un lanzamiento, una inauguración o una fiesta de empresa necesitan una atmósfera que acompañe la identidad de la marca y a las personas que están presentes.", body: "Selección musical y el formato técnico según el objetivo, el público, el horario y el espacio. Desde una recepción elegante hasta una pista de baile, cada momento tiene un ritmo distinto. Coodinación de audio, iluminación, músicos, DJs invitados, artistas y soluciones de producción mediante una red de colaboradores profesionales.", listTitle: "Formatos posibles", list: ["Convenciones", "Inauguraciones", "Lanzamientos de marca", "Cenas y galas", "Fiestas de fin de año", "Desfiles y activaciones"], cta: "Cotizar evento corporativo" },
+      bodas: { eyebrow: "02 / Servicios", title: "Bodas y fiestas", image: "assets/img/gallery-pista.webp", imageAlt: "Pista de baile durante una boda o fiesta", photoLabel: "La música acompaña cada momento, hasta el último baile.", intro: "Una boda, un cumpleaños o un aniversario se recuerdan por sus personas y por los momentos que compartieron. La música es parte de todo: bienvenida, brindis, cena y pista.", body: "Selección musical en vivo, lectura de pista y una propuesta que se adapta a los anfitriones y sus invitados. Se trata de saber qué necesita cada momento para que todos quieran quedarse. Además del DJ set, es posible sumar audio, iluminación, microfonía para ceremonias o brindis y formatos especiales de música en vivo, según la idea y disponibilidad.", listTitle: "Celebraciones", list: ["Bodas", "Cumpleaños", "Aniversarios", "Graduaciones", "Reuniones sociales", "Fiestas privadas"], cta: "Cotizar boda o fiesta" },
+      produccion: { eyebrow: "03 / Servicios", title: "Audio, luz y producción", image: "assets/img/gallery-cabina.webp", imageAlt: "Equipo de audio e iluminación para un evento", photoLabel: "La producción correcta cambia por completo cómo se vive el evento.", intro: "El sonido y la iluminación no son un extra: son la diferencia entre un evento que simplemente ocurre y uno que se siente como debe.", body: "Cada propuesta se adapta al número de invitados, la acústica, la distribución del venue y el tipo de celebración. Coordinación de sistemas de audio, cabina de DJ, iluminación, microfonía, pantallas, visuales y recursos técnicos mediante proveedores profesionales. También se pueden gestionar soluciones complementarias como copas para boda, renta de salones, mobiliario, ambientación o producción a medida, según necesidades y disponibilidad.", listTitle: "Puede integrar", list: ["Audio profesional", "Iluminación para pista", "Cabina de DJ", "Micrófonos para speeches", "Pantallas y visuales", "Producción a medida"], cta: "Pedir propuesta de producción" },
+      talento: { eyebrow: "04 / Servicios", title: "Música en vivo y talento", image: "assets/img/gallery-ambiente.webp", imageAlt: "Músico actuando en vivo durante un evento", photoLabel: "El talento adecuado puede transformar la energía de la noche.", intro: "Algunos eventos piden algo más que una cabina: una entrada con mariachi, una intervención norteña o el artista adecuado para cambiar la energía por completo.", body: "Gracias a una red construida durante más de ocho años como DJ y manager, propuestas y coordinación de talento profesional según el estilo, formato, presupuesto y disponibilidad de cada evento. La idea no es llenar el evento por llenar: es encontrar la participación que tenga sentido para tu celebración y conecte con tus invitados.", listTitle: "Opciones disponibles", list: ["Mariachi", "Conjuntos", "Norteño", "DJs profesionales", "Músicos en vivo", "Artistas y shows", "Formatos especiales"], cta: "Quiero talento en vivo" }
     };
 
-    const funnel = { current: 1, persona: "", event: "", needs: [], location: "" };
-    const eventOptions = {
-      "Empresa / profesional": ["Convención o congreso", "Inauguración", "Lanzamiento de marca", "Afterwork", "Cena o gala", "Fiesta de fin de año", "Activación o evento especial", "Otro"],
-      "Particular": ["Boda", "Fiesta privada", "Cumpleaños", "Aniversario", "Graduación", "Reunión familiar", "Otro"]
-    };
+    // Modal
+    const modal = $("#service-modal");
+    const modalClose = $("#modal-close");
+    const modalBack = $("#modal-back");
+    const modalTitle = $("#modal-title");
+    const modalImage = $("#modal-image");
+    const modalEye = $("#modal-eyebrow");
+    const modalIntro = $("#modal-intro");
+    const modalBody = $("#modal-body");
+    const modalList = $("#modal-list");
+    const modalListTitle = $("#modal-list-title");
+    const modalPhotoLabel = $("#modal-photo-label");
+    const modalWhatsApp = $("#modal-whatsapp");
 
-    function whatsappUrl(lines) { return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n")); }
-
-    function openModal(serviceKey) {
-      const service = services[serviceKey];
-      if (!service) return;
-      modalEye.textContent = service.eyebrow;
-      modalTitle.textContent = service.title;
-      modalImage.src = service.image;
-      modalImage.alt = service.imageAlt;
-      modalPhotoLabel.textContent = service.photoLabel;
-      modalIntro.textContent = service.intro;
-      modalBody.textContent = service.body;
-      modalListTitle.textContent = service.listTitle;
-      modalList.innerHTML = service.list.map((item) => "<span>" + item + "</span>").join("");
-      modalWhatsApp.innerHTML = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ' + service.cta;
-      modalWhatsApp.href = whatsappUrl(["Hola César, quiero solicitar información.", "", "Servicio de interés: " + service.title, "Tipo de evento:", "Fecha:", "Ubicación:", "Número de invitados:", "Idea general:", "", "¿Tienes disponibilidad y me puedes compartir una propuesta?"]);
+    function openModal(key) {
+      const s = services[key];
+      if (!s) return;
+      modalEye.textContent = s.eyebrow;
+      modalTitle.textContent = s.title;
+      modalImage.src = s.image;
+      modalImage.alt = s.imageAlt;
+      modalPhotoLabel.textContent = s.photoLabel;
+      modalIntro.textContent = s.intro;
+      modalBody.textContent = s.body;
+      modalListTitle.textContent = s.listTitle;
+      modalList.innerHTML = s.list.map(item => "<span>" + item + "</span>").join("");
+      modalWhatsApp.innerHTML = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ' + s.cta;
+      modalWhatsApp.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent([
+        "Hola César, quiero solicitar información.",
+        "",
+        "Servicio de interés: " + s.title,
+        "Tipo de evento:",
+        "Fecha:",
+        "Ubicación:",
+        "Número de invitados:",
+        "Idea general:",
+        "",
+        "¿Tienes disponibilidad y me puedes compartir una propuesta?"
+      ].join("\n"));
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");
@@ -769,49 +348,57 @@
       document.body.classList.remove("modal-open");
     }
 
-    document.querySelectorAll(".service-detail-trigger").forEach((button) => button.addEventListener("click", () => openModal(button.dataset.service)));
+    $$(".service-detail-trigger").forEach(btn => btn.addEventListener("click", () => openModal(btn.dataset.service)));
     modalClose.addEventListener("click", closeModal);
     modalBack.addEventListener("click", closeModal);
-    modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
-    addEventListener("keydown", (event) => { if (event.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+
+    // Funnel
+    const funnel = { current: 1, persona: "", event: "", needs: [], location: "" };
+    const funnelValidation = $("#funnel-validation");
+    const eventOptions = {
+      "Empresa / profesional": ["Convención o congreso", "Inauguración", "Lanzamiento de marca", "Afterwork", "Cena o gala", "Fiesta de fin de año", "Activación o evento especial", "Otro"],
+      "Particular": ["Boda", "Fiesta privada", "Cumpleaños", "Aniversario", "Graduación", "Reunión familiar", "Otro"]
+    };
 
     function showStep(step) {
       funnel.current = step;
-      document.querySelectorAll(".funnel-step").forEach((item) => item.classList.toggle("active", Number(item.dataset.step) === step));
-      document.querySelectorAll(".progress-item").forEach((item) => item.classList.toggle("active", Number(item.dataset.progress) <= step));
+      $$(".funnel-step").forEach(el => el.classList.toggle("active", Number(el.dataset.step) === step));
+      $$(".progress-item").forEach(el => el.classList.toggle("active", Number(el.dataset.progress) <= step));
       funnelValidation.textContent = "";
     }
 
     function renderEventOptions() {
-      const target = document.getElementById("event-options");
+      const target = $("#event-options");
       const items = eventOptions[funnel.persona] || [];
-      target.innerHTML = items.map((item) => '<button class="choice" type="button" data-event="' + item + '">' + item + "</button>").join("");
-      target.querySelectorAll("[data-event]").forEach((button) => button.addEventListener("click", () => {
-        target.querySelectorAll("[data-event]").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        funnel.event = button.dataset.event;
+      target.innerHTML = items.map(item => '<button class="choice" type="button" data-event="' + item + '">' + item + "</button>").join("");
+      target.querySelectorAll("[data-event]").forEach(btn => btn.addEventListener("click", () => {
+        target.querySelectorAll("[data-event]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        funnel.event = btn.dataset.event;
       }));
     }
 
-    document.querySelectorAll(".persona-card").forEach((button) => button.addEventListener("click", () => {
-      document.querySelectorAll(".persona-card").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      funnel.persona = button.dataset.persona;
+    $$(".persona-card").forEach(btn => btn.addEventListener("click", () => {
+      $$(".persona-card").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      funnel.persona = btn.dataset.persona;
       funnel.event = "";
       renderEventOptions();
     }));
 
-    document.querySelectorAll(".multi-choice").forEach((button) => button.addEventListener("click", () => {
-      const value = button.dataset.serviceChoice;
-      const active = button.classList.toggle("active");
-      if (active && !funnel.needs.includes(value)) funnel.needs.push(value);
-      if (!active) funnel.needs = funnel.needs.filter((item) => item !== value);
+    $$(".multi-choice").forEach(btn => btn.addEventListener("click", () => {
+      const v = btn.dataset.serviceChoice;
+      const active = btn.classList.toggle("active");
+      if (active && !funnel.needs.includes(v)) funnel.needs.push(v);
+      if (!active) funnel.needs = funnel.needs.filter(item => item !== v);
     }));
 
-    document.querySelectorAll("[data-location]").forEach((button) => button.addEventListener("click", () => {
-      document.querySelectorAll("[data-location]").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      funnel.location = button.dataset.location;
+    $$("[data-location]").forEach(btn => btn.addEventListener("click", () => {
+      $$("[data-location]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      funnel.location = btn.dataset.location;
     }));
 
     function validateStep() {
@@ -821,28 +408,45 @@
       return "";
     }
 
-    document.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", () => {
-      const error = validateStep();
-      if (error) {
-        const helper = button.closest(".funnel-step").querySelector(".step-help");
-        helper.textContent = error;
-        helper.style.color = "#a33f27";
-        setTimeout(() => { helper.style.color = ""; }, 1800);
+    $$("[data-next]").forEach(btn => btn.addEventListener("click", () => {
+      const err = validateStep();
+      if (err) {
+        const help = btn.closest(".funnel-step").querySelector(".step-help");
+        help.textContent = err;
+        help.style.color = "#a33f27";
+        setTimeout(() => { help.style.color = ""; }, 1800);
         return;
       }
-      showStep(Number(button.dataset.next));
+      showStep(Number(btn.dataset.next));
     }));
 
-    document.querySelectorAll("[data-back]").forEach((button) => button.addEventListener("click", () => showStep(Number(button.dataset.back))));
+    $$("[data-back]").forEach(btn => btn.addEventListener("click", () => showStep(Number(btn.dataset.back))));
 
-    document.getElementById("send-whatsapp").addEventListener("click", () => {
+    $("#send-whatsapp").addEventListener("click", () => {
       if (!funnel.location) { funnelValidation.textContent = "Elige una zona para continuar."; return; }
-      const rawDate = document.getElementById("event-date").value;
+      const rawDate = $("#event-date").value;
       const date = rawDate ? new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "long", year: "numeric" }).format(new Date(rawDate + "T12:00:00")) : "Aún no tengo fecha definida";
-      const guests = document.getElementById("event-guests").value.trim() || "Aún por definir";
-      const notes = document.getElementById("event-notes").value.trim() || "Sin detalles adicionales";
-      window.open(whatsappUrl(["Hola César, me gustaría solicitar una cotización.", "", "Soy: " + funnel.persona, "Evento: " + funnel.event, "Necesito: " + funnel.needs.join(", "), "Fecha: " + date, "Zona: " + funnel.location, "Invitados aproximados: " + guests, "Detalles: " + notes, "", "¿Tienes disponibilidad y me puedes compartir una propuesta?"]), "_blank", "noopener,noreferrer");
+      const guests = $("#event-guests").value.trim() || "Aún por definir";
+      const notes = $("#event-notes").value.trim() || "Sin detalles adicionales";
+      const msg = [
+        "Hola César, me gustaría solicitar una cotización.",
+        "",
+        "Soy: " + funnel.persona,
+        "Evento: " + funnel.event,
+        "Necesito: " + funnel.needs.join(", "),
+        "Fecha: " + date,
+        "Zona: " + funnel.location,
+        "Invitados aproximados: " + guests,
+        "Detalles: " + notes,
+        "",
+        "¿Tienes disponibilidad y me puedes compartir una propuesta?"
+      ];
+      window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg.join("\n")), "_blank", "noopener,noreferrer");
     });
+
+    // Mobile nav
+    const mobileNav = $("#mobile-nav");
+    const menuToggle = $("#menu-toggle");
 
     function closeMobileNav() {
       mobileNav.classList.remove("open");
@@ -858,28 +462,31 @@
       menuToggle.innerHTML = opened ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     });
 
-    document.querySelectorAll(".mobile-nav a").forEach((link) => link.addEventListener("click", closeMobileNav));
+    $$(".mobile-nav a").forEach(link => link.addEventListener("click", closeMobileNav));
 
-    const mainLinks = [...document.querySelectorAll(".main-nav a")];
-    const sections = [...document.querySelectorAll("main section[id]")];
-    const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    // Navegación activa
+    const mainLinks = $$(".main-nav a");
+    const sections = $$("main section[id]");
+    const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const link = document.querySelector('.main-nav a[href="#' + entry.target.id + '"]');
       if (link) {
-        mainLinks.forEach((item) => item.classList.remove("active"));
+        mainLinks.forEach(l => l.classList.remove("active"));
         link.classList.add("active");
       }
     }), { rootMargin: "-38% 0px -55% 0px", threshold: 0 });
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach(s => sectionObserver.observe(s));
 
-    const revealObserver = new IntersectionObserver((entries, observer) => entries.forEach((entry) => {
+    // Reveal animations - optimizado
+    const revealObserver = new IntersectionObserver((entries, obs) => entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("on");
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     }), { threshold: .12 });
-    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
+    // Footer y WhatsApp flotante
     const footer = document.querySelector("footer");
     const mobileWhatsapp = document.querySelector(".mobile-whatsapp");
     if (footer && mobileWhatsapp) {
@@ -887,17 +494,19 @@
       footerObserver.observe(footer);
     }
 
+    // Año
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Video - optimizado
     const heroVideo = document.querySelector(".hero-video");
     if (heroVideo) {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const syncMotionPreference = () => {
+      const syncMotion = () => {
         if (prefersReducedMotion.matches) heroVideo.pause();
         else heroVideo.play().catch(() => {});
       };
-      syncMotionPreference();
-      prefersReducedMotion.addEventListener("change", syncMotionPreference);
+      syncMotion();
+      prefersReducedMotion.addEventListener("change", syncMotion);
       heroVideo.addEventListener("error", () => heroVideo.style.display = "none");
     }
   </script>
